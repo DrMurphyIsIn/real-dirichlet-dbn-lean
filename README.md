@@ -168,6 +168,12 @@ These are the components of the trust base:
   small `challenge/ChallengeDefs.lean`: six constants (`thetaC`, `PhiC` and its two auxiliary proof terms,
   `parityK`, `Hchi`) on top of Mathlib.
 
+- **The local build environment.** bb's replays were built against a local tree, `$HOME/oai-replay`: openai/math
+  `adc7f124`, Lean v4.34.1, Mathlib `d13f23b`. Its sources, lakefile, manifest and patches were checked against a
+  clone of `adc7f124`. Its `.lake/packages` dependency checkouts were NOT hashed; they were touched on 2026-10-24
+  (`provenance/OAI_ENV.md`). The sandboxed Comparator run rebuilds OpenAI's environment from the public pins,
+  independently of that tree. That run, not the local replays, is the reference result.
+
 What has **not** been done yet: the runs above were local and unsandboxed, on macOS. The sandboxed Comparator
 run has not been completed. It will be a bwrap sandbox on Linux, against the challenge in `challenge/`, whose
 statement and trusted definitions were written by the auditor rather than by the proof's authors, with every
@@ -269,7 +275,7 @@ lean/MD5SUMS.txt    md5 of every file under lean/, cross-checked against the aud
 logs/               five-checker replays, in-environment checks, the rc3 audit, numerics, md5 manifest
 logs/comparator_sandboxed/   placeholder for the sandboxed Comparator run
 challenge/          the Comparator challenge by the auditor: ChallengeDefs, Challenge, two tampers, configs, pre-flight
-provenance/         ISLAND_SOURCE (where lean/island/ comes from); PROVENANCE.md (what of the build environment was checked)
+provenance/         ISLAND_SOURCE (where lean/island/ comes from); OAI_ENV.md (what of the local build environment was checked)
 scripts/            verify_md5.sh, materialize.sh
 paper/              the paper (in preparation)
 ```
