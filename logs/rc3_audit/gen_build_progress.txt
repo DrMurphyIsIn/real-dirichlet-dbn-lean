@@ -1,0 +1,9 @@
+GenFourier rc=0 64s
+GenDefs rc=0 5s
+GenHeatApprox rc=0 5s
+GenM1Approx rc=0 5s
+GenM1Parametric rc=0 4s
+GenScale rc=0 5s
+GenTheta rc=0 5s
+BbGenCheck rc=0
+DONE

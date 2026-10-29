@@ -1,0 +1,12 @@
+repo=https://github.com/openai/math.git
+commit=adc7f1241b42e322a6451854ab7e4b4c146bf78a
+subdir=lean
+toolchain=leanprover/lean4:v4.34.1
+mathlib=d13f23b723b8a846827a245b89c10fc7d3f11612
+lakefile_md5=c8078fb22110e025937c45f02a84de9c
+manifest_md5=8c3ec864da5d9ce3cd9dcc22ad4bf601
+toolchain_md5=fe6195d02cc4cc628ced5ae0aca74814
+nonvanishing_path=OAI/NumberTheory/DirichletL/Nonvanishing.lean
+nonvanishing_md5=ea8efdb1ac1e972fbaa32dc11b57e4e1
+challenge_path=ComparatorChallenges/DirichletSevenEighths.lean
+challenge_md5=4870cf09b9cde16874d4cc7b8ffde2eb

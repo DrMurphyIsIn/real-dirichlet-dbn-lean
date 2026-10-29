@@ -1,0 +1,29 @@
+DBNHadamardCount rc=0 38s src=e76f64baa4ae02425a17468d5ba3a77e
+DBNHadamardLinear rc=0 5s src=1ca471743275e9eceaf548e068925326
+DBNHadamardMean rc=0 5s src=8069c2dae45cdecbc8bdbe6d02981b4e
+DBNHadamardProduct rc=0 5s src=da8f08cd814ff3e306f12cc2e4b0fef8
+DBNStep rc=0 6s src=f6e28cd163128383b2f170413246091b
+DBNHurwitz rc=0 4s src=b4d0746216ccef1d833c3a6b808ab67e
+DBNHadamard rc=0 6s src=46c3b88624ff518d11238643fc016ab5
+GenFourier rc=0 4s src=261aa493e4a6818d72e1e53418f3da6b
+GenDefs rc=0 5s src=c5c6e856a3350c30e3033c395179c5e4
+GenHeatApprox rc=0 5s src=282fe6c7ed305e949ffdfffaf67c0de0
+GenM1Approx rc=0 5s src=23f22b6504403a5faa11828ff632d7bb
+GenM1Parametric rc=0 4s src=99f5dfdc73a783cb5cb0aef05343d2ab
+GenScale rc=0 5s src=6f6086289fbc904ed31111f138e363db
+GenTheta rc=0 6s src=3dbf6decea4cdb0c5b59c3bde29cd7ce
+GenMellin rc=0 4s src=cb5c2820b6644ddede204b18c55cba9e
+GenMellin2 rc=0 5s src=67e1af810b90053cd3b951a9e30e5794
+GenBridge rc=0 4s src=5691f87d1074e49cc6f693fda85740ad
+GenStrip rc=0 4s src=8aa81558100896f8cda5de696e56a638
+GenThetaFE rc=0 5s src=8aeec9b012db751af3f30f43b8468f8b
+GenChi4 rc=0 5s src=9acc262c28b122dd31a1e6b7a4a0266b
+DONE
+GaussQuad rc=0 70s src=51b4e49457d71aee212f8b326e5743f8
+GaussPrime rc=0 4s src=6fb94967249b258eca58f385680803f7
+DONE
+GaussCRT rc=0 82s src=dce09dba5f57afbc59fd7a95d0a2432b
+GaussPow rc=0 4s src=16bd30ef9c4af3391c896123bfd57092
+GaussTwo rc=0 4s src=3800b2cc8c89ef5385fab3f9f57b19ac
+GaussSign rc=0 4s src=038836477de3bffb8ba2c46fd535eb5c
+DONE

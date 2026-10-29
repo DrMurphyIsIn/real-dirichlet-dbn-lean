@@ -1,0 +1,8 @@
+BbD2bTamper.lean:12:2: error: Type mismatch
+  DBN.Gen.bridge hχ1 hχc hc hc0 hc1 hgam heven z
+has type
+  (DBN.Gen.thetaDecayKernel hc hc0 hc1 ⋯ heven).Hd 0 z =
+    1 / 8 * ↑N ^ ((1 / 2 + I * z / 2 + ↑k) / 2) * DirichletCharacter.completedLFunction χ (1 / 2 + I * z / 2)
+but is expected to have type
+  (DBN.Gen.thetaDecayKernel hc hc0 hc1 ⋯ heven).Hd 0 z =
+    1 / 4 * ↑N ^ ((1 / 2 + I * z / 2 + ↑k) / 2) * DirichletCharacter.completedLFunction χ (1 / 2 + I * z / 2)

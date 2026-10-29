@@ -1,0 +1,12 @@
+BbGaussTamper.lean:5:100: error: Type mismatch
+  DBN.Gen.gaussG_eq N
+has type
+  DBN.Gen.gaussG N = (1 + I) * (1 + (-I) ^ N) / 2 * ↑√↑N
+but is expected to have type
+  DBN.Gen.gaussG N = (1 - I) * (1 + (-I) ^ N) / 2 * ↑√↑N
+BbGaussTamper.lean:8:44: error: Type mismatch
+  DBN.Gen.rootNumber_eq_one_of_prime hp2 χ hχ1 hreal
+has type
+  χ.rootNumber = 1
+but is expected to have type
+  χ.rootNumber = -1

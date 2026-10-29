@@ -1,0 +1,76 @@
+BbD2bpCheck.lean:22:34: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+BbD2bpCheck.lean:28:15: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+@DBN.Gen.dirichlet_real_zeros_of_rootNumber : ∀ {N : ℕ} [inst : NeZero N] {χ : DirichletCharacter ℂ N},
+  χ.IsPrimitive →
+    χ ≠ (1 : DirichletCharacter ℂ N) →
+      (∀ (n : ℕ), (χ ↑n).im = (0 : ℝ)) →
+        χ.rootNumber = (1 : ℂ) →
+          (∀ (s : ℂ), (7 / 8 : ℝ) < s.re → DirichletCharacter.LFunction χ s ≠ (0 : ℂ)) →
+            ∀ (t : ℝ), (9 / 32 : ℝ) ≤ t → ∀ (z : ℂ), DBN.Gen.Hchi χ t z = (0 : ℂ) → z.im = (0 : ℝ)
+DBN.Gen.chiM4_real_zeros : (∀ (s : ℂ), (7 / 8 : ℝ) < s.re → DirichletCharacter.LFunction DBN.Gen.chiM4 s ≠ (0 : ℂ)) →
+  ∀ (t : ℝ), (9 / 32 : ℝ) ≤ t → ∀ (z : ℂ), DBN.Gen.Hchi DBN.Gen.chiM4 t z = (0 : ℂ) → z.im = (0 : ℝ)
+def DBN.Gen.Hchi : {N : ℕ} → DirichletCharacter ℂ N → ℝ → ℂ → ℂ :=
+fun {N} χ t z =>
+  ∫ (u : ℝ) in Set.Ioi 0,
+    ↑(Real.exp (t * u ^ 2)) * ↑(DBN.Gen.PhiC (fun n => (χ ↑n).re) (DBN.Gen.parityK χ) (↑N) u) * cos (z * ↑u)
+'DBN.Gen.theta_fe' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DBN.Gen.PhiC_even_of_rootNumber' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DBN.Gen.dirichlet_real_zeros_of_rootNumber' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DBN.Gen.rootNumber_chiM4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DBN.Gen.chiM4_isPrimitive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DBN.Gen.chiM4_real_zeros' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BbD2bp.chiM4_real_zeros_of_oai' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BbD2bp.chiM4_bridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+bb_audit BbD2bp.chiM4_real_zeros_of_oai: closure constants = 62739; walk axioms = [Classical.choice,
+ Quot.sound,
+ propext]; collectAxioms = [Classical.choice, Quot.sound, propext]; agree = true
+bb_audit BbD2bp.chiM4_real_zeros_of_oai: statement constants and their modules:
+And <- Init.Prelude
+CommGroupWithZero.toCommMonoidWithZero <- Mathlib.Algebra.GroupWithZero.Defs
+CommRing.toCommMonoid <- Mathlib.Algebra.Ring.Defs
+Complex <- Mathlib.Basic.Complex.Basic
+Complex.im <- Mathlib.Basic.Complex.Basic
+Complex.instField <- Mathlib.Basic.Complex.Basic
+Complex.instOne <- Mathlib.Basic.Complex.Basic
+Complex.instZero <- Mathlib.Basic.Complex.Basic
+Complex.re <- Mathlib.Basic.Complex.Basic
+DBN.Gen.Hchi <- GenThetaFE
+DBN.Gen.chiM4 <- GenChi4
+DirichletCharacter <- Mathlib.NumberTheory.DirichletCharacter.Basic
+DirichletCharacter.LFunction <- Mathlib.NumberTheory.LSeries.DirichletContinuation
+DivInvMonoid.toDiv <- Mathlib.Algebra.Group.DivInvMonoid
+Eq <- Init.Prelude
+Field.toSemifield <- Mathlib.Algebra.Field.Defs
+HDiv.hDiv <- Init.Prelude
+LE.le <- Init.Prelude
+LT.lt <- Init.Prelude
+MulChar.hasOne <- Mathlib.NumberTheory.MulChar.Basic
+MulZeroClass.toZero <- Mathlib.Algebra.GroupWithZero.Defs
+Nat <- Init.Prelude
+Nat.instAtLeastTwoHAddOfNat <- Mathlib.Data.Nat.Init
+Nat.instMulZeroClass <- Mathlib.Algebra.GroupWithZero.Nat
+Nat.instNeZeroSucc <- Init.Data.Nat.Basic
+Ne <- Init.Core
+NeZero <- Init.Data.NeZero
+Not <- Init.Prelude
+OfNat.ofNat <- Init.Prelude
+One.toOfNat1 <- Init.Data.Zero
+Real <- Mathlib.Basic.Real.Basic
+Real.instDivInvMonoid <- Mathlib.Basic.Real.Basic
+Real.instLE <- Mathlib.Basic.Real.Basic
+Real.instLT <- Mathlib.Basic.Real.Basic
+Real.instNatCast <- Mathlib.Basic.Real.Basic
+Real.instZero <- Mathlib.Basic.Real.Basic
+Semifield.toCommGroupWithZero <- Mathlib.Algebra.Field.Defs
+ZMod <- Mathlib.Data.ZMod.Defs
+ZMod.commRing <- Mathlib.Data.ZMod.Defs
+Zero.toOfNat0 <- Init.Data.Zero
+instHDiv <- Init.Prelude
+instOfNatAtLeastTwo <- Mathlib.Data.Nat.Cast.Defs
+instOfNatNat <- Init.Prelude

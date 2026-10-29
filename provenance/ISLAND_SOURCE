@@ -1,0 +1,5 @@
+source_repo=https://github.com/DrMurphyIsIn/qrh-debruijn-newman.git
+source_commit=afd94c7ddf8bea3a3b8bb2e95657cccae463993c
+source_dir=lean/dbn
+modules=DBNHadamardCount DBNHadamardLinear DBNHadamardMean DBNHadamardProduct DBNStep DBNHurwitz DBNHadamard
+patched=DBNHadamardProduct DBNHadamardMean

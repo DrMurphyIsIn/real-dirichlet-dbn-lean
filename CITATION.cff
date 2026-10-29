@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below, and cite de Bruijn (1950) for the engine, Freire, Gonzalez-Riquelme, Munoz, Poblete and Salinas (arXiv:2610.27343) for the conditional statement, and OpenAI's quasi-Riemann hypothesis preprint for the 7/8 half-plane."
+title: "Every real primitive Dirichlet L-function has de Bruijn-Newman constant at most 9/32: a kernel-checked proof in Lean 4"
+authors:
+  - family-names: Murphy
+    given-names: Peter W.
+license: Apache-2.0
+version: v1.0.0
+keywords:
+  - de Bruijn-Newman constant
+  - Dirichlet L-functions
+  - real primitive characters
+  - Gauss sums
+  - heat flow
+  - Lean 4
+  - formal verification
+abstract: >-
+  For every real primitive Dirichlet character chi != 1, every zero of the de Bruijn-Newman heat flow of the
+  completed L-function Lambda(s, chi) is real at every time t >= 9/32; classically, Lambda_chi <= 9/32. The
+  statement is proved in Lean 4 (v4.34.1, Mathlib d13f23b) in one environment with OpenAI's kernel-checked
+  theorem that Dirichlet L-functions do not vanish on Re s > 7/8 (openai/math at adc7f124), together with a
+  second theorem in the same conjunction identifying the Lean heat flow at t = 0 with (1/8) times the classical
+  Lambda(s, chi). The proof depends only on propext, Classical.choice and Quot.sound and was replayed by five
+  independent checkers. Reusable formal components: de Bruijn's theorem for a generic even kernel, Gauss's sign
+  theorem (the root number of every real primitive character is 1, in Mathlib's normalisation), and the Mellin
+  bridge from the theta kernel to Mathlib's completedLFunction. The conditional statement Lambda_L <= 9/32 under
+  a zero-free strip of half-width 3/4 is due to Freire, Gonzalez-Riquelme, Munoz, Poblete and Salinas
+  (arXiv:2610.27343); the engine is de Bruijn's 1950 theorem. This is not a new analytic bound and not progress
+  on the generalized Riemann hypothesis, which corresponds to Lambda_chi <= 0.

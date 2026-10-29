@@ -1,0 +1,13 @@
+$HOME/e9-research/review_cn1/p1p6/gauss12/bb_gauss_numeric.py:17: SymPyDeprecationWarning: 
+
+The `sympy.ntheory.residue_ntheory.legendre_symbol` has been moved to `sympy.functions.combinatorial.numbers.legendre_symbol`.
+
+See https://docs.sympy.org/latest/explanation/active-deprecations.html#deprecated-ntheory-symbolic-functions
+for details.
+
+This has been deprecated since SymPy version 1.13. It
+will be removed in a future version of SymPy.
+
+  tau = mp.fsum(legendre_symbol(a, p) * mp.expjpi(2 * mp.mpf(a) / p) for a in range(1, p))
+S1: max |G(N) - formula| over N = 1..200: 6.6454e-38
+S2: max |rootNumber - 1| over odd primes < 500: 4.2167e-41  failures: []

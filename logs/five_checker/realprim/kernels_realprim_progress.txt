@@ -1,0 +1,12 @@
+export realprim.ndjson rc=0 bytes=1730925548 md5=ae0c51bd91939cfa1a4236da5c379b6b
+ctrl leanchecker-paranoid rc=1 16s
+ctrl nanoda rc=101 3s
+ctrl con-leche rc=1 5s
+ctrl con-ron rc=1 6s
+ctrl leanchecker rc=1 15s
+realprim leanchecker-paranoid rc=0 322s
+realprim nanoda rc=0 57s
+realprim con-leche rc=0 41s
+realprim con-ron rc=0 74s
+realprim leanchecker rc=0 270s
+DONE

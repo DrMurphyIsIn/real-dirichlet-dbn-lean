@@ -1,0 +1,29 @@
+BbGaussBridgeTamper.lean:8:69: error: Type mismatch
+  DBN.Gen.Hchi_bridge χ hprim hχ1 hreal z
+has type
+  DBN.Gen.Hchi χ 0 z =
+    1 / 8 * ↑N ^ ((1 / 2 + I * z / 2 + ↑(DBN.Gen.parityK χ)) / 2) *
+      DirichletCharacter.completedLFunction χ (1 / 2 + I * z / 2)
+but is expected to have type
+  DBN.Gen.Hchi χ 0 z =
+    1 / 4 * ↑N ^ ((1 / 2 + I * z / 2 + ↑(DBN.Gen.parityK χ)) / 2) *
+      DirichletCharacter.completedLFunction χ (1 / 2 + I * z / 2)
+BbGaussBridgeTamper.lean:14:95: error: Tactic `assumption` failed
+
+N : ℕ
+inst✝ : NeZero N
+χ : DirichletCharacter ℂ N
+hχ1 : χ ≠ 1
+hreal : ∀ (n : ℕ), (χ ↑n).im = 0
+z : ℂ
+⊢ χ.IsPrimitive
+BbGaussBridgeTamper.lean:20:69: error: Type mismatch
+  DBN.Gen.Hchi_bridge χ hprim hχ1 hreal z
+has type
+  DBN.Gen.Hchi χ 0 z =
+    1 / 8 * ↑N ^ ((1 / 2 + I * z / 2 + ↑(DBN.Gen.parityK χ)) / 2) *
+      DirichletCharacter.completedLFunction χ (1 / 2 + I * z / 2)
+but is expected to have type
+  DBN.Gen.Hchi χ 0 z =
+    1 / 8 * ↑N ^ ((1 / 2 + I * z / 2 + (1 - ↑(DBN.Gen.parityK χ))) / 2) *
+      DirichletCharacter.completedLFunction χ (1 / 2 + I * z / 2)

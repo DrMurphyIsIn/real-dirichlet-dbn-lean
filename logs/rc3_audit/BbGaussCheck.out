@@ -1,0 +1,109 @@
+DBN.Gen.gaussG_eq : ∀ (N : ℕ) [NeZero N],
+  DBN.Gen.gaussG N = ((1 : ℂ) + Complex.I) * ((1 : ℂ) + (-Complex.I) ^ N) / (2 : ℂ) * ↑√↑N
+def DBN.Gen.gaussG : ℕ → ℂ :=
+fun N => ∑ j, Complex.exp (2 * ↑Real.pi * Complex.I * ↑↑j ^ 2 / ↑N)
+@DBN.Gen.rootNumber_eq_one_of_prime : ∀ {p : ℕ} [hp : Fact (Nat.Prime p)],
+  p ≠ (2 : ℕ) →
+    ∀ (χ : DirichletCharacter ℂ p),
+      χ ≠ (1 : DirichletCharacter ℂ p) → (∀ (n : ℕ), (χ ↑n).im = (0 : ℝ)) → χ.rootNumber = (1 : ℂ)
+@DBN.Gen.prime_real_zeros : ∀ {p : ℕ} [hp : Fact (Nat.Prime p)],
+  p ≠ (2 : ℕ) →
+    ∀ (χ : DirichletCharacter ℂ p),
+      χ ≠ (1 : DirichletCharacter ℂ p) →
+        (∀ (n : ℕ), (χ ↑n).im = (0 : ℝ)) →
+          (∀ (s : ℂ), (7 / 8 : ℝ) < s.re → DirichletCharacter.LFunction χ s ≠ (0 : ℂ)) →
+            ∀ (t : ℝ), (9 / 32 : ℝ) ≤ t → ∀ (z : ℂ), DBN.Gen.Hchi χ t z = (0 : ℂ) → z.im = (0 : ℝ)
+'DBN.Gen.gaussG_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DBN.Gen.real_char_eq_quadraticChar' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DBN.Gen.gaussSum_eq_gaussG' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DBN.Gen.isPrimitive_of_prime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DBN.Gen.rootNumber_eq_one_of_prime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DBN.Gen.prime_real_zeros' depends on axioms: [propext, Classical.choice, Quot.sound]
+bb_audit DBN.Gen.gaussG_eq: closure constants = 52770; walk axioms = [Classical.choice,
+ Quot.sound,
+ propext]; collectAxioms = [Classical.choice, Quot.sound, propext]; agree = true
+bb_audit DBN.Gen.gaussG_eq: statement constants and their modules:
+Complex <- Mathlib.Basic.Complex.Basic
+Complex.I <- Mathlib.Basic.Complex.Basic
+Complex.instAdd <- Mathlib.Basic.Complex.Basic
+Complex.instDivInvMonoid <- Mathlib.Basic.Complex.Basic
+Complex.instMul <- Mathlib.Basic.Complex.Basic
+Complex.instNatCast <- Mathlib.Basic.Complex.Basic
+Complex.instNeg <- Mathlib.Basic.Complex.Basic
+Complex.instOne <- Mathlib.Basic.Complex.Basic
+Complex.instSemiring <- Mathlib.Basic.Complex.Basic
+Complex.ofReal <- Mathlib.Basic.Complex.Basic
+DBN.Gen.gaussG <- GaussQuad
+DivInvMonoid.toDiv <- Mathlib.Algebra.Group.DivInvMonoid
+Eq <- Init.Prelude
+HAdd.hAdd <- Init.Prelude
+HDiv.hDiv <- Init.Prelude
+HMul.hMul <- Init.Prelude
+HPow.hPow <- Init.Prelude
+Monoid.toNPow <- Mathlib.Algebra.Group.Monoid
+MulZeroClass.toZero <- Mathlib.Algebra.GroupWithZero.Defs
+NPow.toPow <- Mathlib.Algebra.Group.Monoid
+Nat <- Init.Prelude
+Nat.cast <- Init.Data.Cast
+Nat.instAtLeastTwoHAddOfNat <- Mathlib.Data.Nat.Init
+Nat.instMulZeroClass <- Mathlib.Algebra.GroupWithZero.Nat
+Nat.instNeZeroSucc <- Init.Data.Nat.Basic
+NeZero <- Init.Data.NeZero
+Neg.neg <- Init.Prelude
+OfNat.ofNat <- Init.Prelude
+One.toOfNat1 <- Init.Data.Zero
+Real <- Mathlib.Basic.Real.Basic
+Real.instNatCast <- Mathlib.Basic.Real.Basic
+Real.sqrt <- Mathlib.Analysis.Real.Sqrt
+Semiring.toMonoid <- Mathlib.Algebra.Ring.Defs
+instHAdd <- Init.Prelude
+instHDiv <- Init.Prelude
+instHMul <- Init.Prelude
+instHPow <- Init.Prelude
+instOfNatAtLeastTwo <- Mathlib.Data.Nat.Cast.Defs
+instOfNatNat <- Init.Prelude
+bb_audit DBN.Gen.rootNumber_eq_one_of_prime: closure constants = 55001; walk axioms = [Classical.choice,
+ Quot.sound,
+ propext]; collectAxioms = [Classical.choice, Quot.sound, propext]; agree = true
+bb_audit DBN.Gen.rootNumber_eq_one_of_prime: statement constants and their modules:
+AddGroupWithOne.toAddMonoidWithOne <- Mathlib.Data.Int.Cast.Defs
+AddMonoidWithOne.toNatCast <- Mathlib.Data.Nat.Cast.Defs
+CommGroupWithZero.toCommMonoidWithZero <- Mathlib.Algebra.GroupWithZero.Defs
+CommRing.toCommMonoid <- Mathlib.Algebra.Ring.Defs
+Complex <- Mathlib.Basic.Complex.Basic
+Complex.im <- Mathlib.Basic.Complex.Basic
+Complex.instField <- Mathlib.Basic.Complex.Basic
+Complex.instOne <- Mathlib.Basic.Complex.Basic
+DFunLike.coe <- Mathlib.Data.FunLike.Basic
+DirichletCharacter <- Mathlib.NumberTheory.DirichletCharacter.Basic
+DirichletCharacter.rootNumber <- Mathlib.NumberTheory.LSeries.DirichletContinuation
+DivisionRing.toRing <- Mathlib.Algebra.Field.Defs
+Eq <- Init.Prelude
+Fact <- Mathlib.Basic.Logic.Basic
+Field.toDivisionRing <- Mathlib.Algebra.Field.Defs
+Field.toSemifield <- Mathlib.Algebra.Field.Defs
+LinearOrderedCommMonoidWithZero.toIsBotZeroClass <- Mathlib.Algebra.Order.GroupWithZero.Canonical
+MulChar.hasOne <- Mathlib.NumberTheory.MulChar.Basic
+MulChar.instFunLike <- Mathlib.NumberTheory.MulChar.Basic
+MulZeroClass.toZero <- Mathlib.Algebra.GroupWithZero.Defs
+Nat <- Init.Prelude
+Nat.Prime <- Mathlib.Data.Nat.Prime.Defs
+Nat.Prime.one_lt' <- Mathlib.Data.Nat.Prime.Defs
+Nat.cast <- Init.Data.Cast
+Nat.instLinearOrderedCommMonoidWithZero <- Mathlib.Algebra.Order.Ring.Nat
+Nat.instMulZeroClass <- Mathlib.Algebra.GroupWithZero.Nat
+Nat.instOne <- Mathlib.Algebra.Group.Nat.Defs
+Nat.instPreorder <- Mathlib.Data.Nat.Basic
+Ne <- Init.Core
+NeZero.of_gt' <- Mathlib.Algebra.Order.IsBotOne
+OfNat.ofNat <- Init.Prelude
+One.toOfNat1 <- Init.Data.Zero
+Real <- Mathlib.Basic.Real.Basic
+Real.instZero <- Mathlib.Basic.Real.Basic
+Ring.toAddGroupWithOne <- Mathlib.Algebra.Ring.Defs
+Semifield.toCommGroupWithZero <- Mathlib.Algebra.Field.Defs
+ZMod <- Mathlib.Data.ZMod.Defs
+ZMod.commRing <- Mathlib.Data.ZMod.Defs
+ZMod.instField <- Mathlib.Algebra.Field.ZMod
+Zero.toOfNat0 <- Init.Data.Zero
+instOfNatNat <- Init.Prelude

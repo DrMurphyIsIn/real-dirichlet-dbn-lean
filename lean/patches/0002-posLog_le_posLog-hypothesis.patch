@@ -1,0 +1,11 @@
+--- a/DBNHadamardMean.lean
++++ b/DBNHadamardMean.lean
+@@ -113,7 +113,7 @@
+   refine circleAverage_mono_on_of_le_circle hmero.circleIntegrable_posLog_norm fun z hz ↦ ?_
+   rw [Metric.mem_sphere, dist_zero_right, abs_of_pos hR] at hz
+   calc Real.posLog ‖P₀ z‖ ≤ Real.posLog (Real.exp (K * ‖z‖ ^ p)) :=
+-        Real.posLog_le_posLog (norm_nonneg _) (hPgrowth z)
++        Real.posLog_le_posLog (by linarith [norm_nonneg (P₀ z)]) (hPgrowth z)
+     _ = K * ‖z‖ ^ p := posLog_exp_of_nonneg (mul_nonneg hK (Real.rpow_nonneg (norm_nonneg _) _))
+     _ = K * R ^ p := by rw [hz]
+ 

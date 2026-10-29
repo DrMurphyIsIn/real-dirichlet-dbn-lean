@@ -1,0 +1,18 @@
+BbOaiRealPrimTamper.lean:6:79: error: Application type mismatch: The argument
+  hs
+has type
+  3 / 4 < x✝.re
+but is expected to have type
+  7 / 8 < x✝.re
+in the application
+  OAI.DirichletCharacter.LFunction_ne_zero_of_seven_eighths_lt_re χ hs
+BbOaiRealPrimTamper.lean:9:71: error: Type mismatch
+  bb_real_primitive_real_zeros_oai
+has type
+  ∀ (χ : DirichletCharacter ℂ ?m.31),
+    χ.IsPrimitive →
+      χ ≠ 1 → (∀ (n : ℕ), (χ ↑n).im = 0) → ∀ (t : ℝ), 9 / 32 ≤ t → ∀ (z : ℂ), DBN.Gen.Hchi χ t z = 0 → z.im = 0
+but is expected to have type
+  ∀ (χ : DirichletCharacter ℂ N✝),
+    χ.IsPrimitive →
+      χ ≠ 1 → (∀ (n : ℕ), (χ ↑n).im = 0) → ∀ (t : ℝ), 1 / 4 ≤ t → ∀ (z : ℂ), DBN.Gen.Hchi χ t z = 0 → z.im = 0

@@ -1,0 +1,241 @@
+bb_real_primitive_meaning_oai : (∀ {N : ℕ} [NeZero N] (χ : DirichletCharacter ℂ N),
+    χ.IsPrimitive →
+      χ ≠ (1 : DirichletCharacter ℂ N) →
+        (∀ (n : ℕ), (χ ↑n).im = (0 : ℝ)) →
+          ∀ (t : ℝ), (9 / 32 : ℝ) ≤ t → ∀ (z : ℂ), DBN.Gen.Hchi χ t z = (0 : ℂ) → z.im = (0 : ℝ)) ∧
+  ∀ {N : ℕ} [inst : NeZero N] (χ : DirichletCharacter ℂ N),
+    χ.IsPrimitive →
+      χ ≠ (1 : DirichletCharacter ℂ N) →
+        (∀ (n : ℕ), (χ ↑n).im = (0 : ℝ)) →
+          ∀ (z : ℂ),
+            DBN.Gen.Hchi χ (0 : ℝ) z =
+              (1 / 8 : ℂ) * ↑N ^ (((1 / 2 : ℂ) + Complex.I * z / (2 : ℂ) + ↑(DBN.Gen.parityK χ)) / (2 : ℂ)) *
+                DirichletCharacter.completedLFunction χ ((1 / 2 : ℂ) + Complex.I * z / (2 : ℂ))
+'bb_real_primitive_meaning_oai' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DBN.Gen.Hchi_bridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+bb_audit bb_real_primitive_meaning_oai: closure constants = 126656; walk axioms = [Classical.choice,
+ Quot.sound,
+ propext]; collectAxioms = [Classical.choice, Quot.sound, propext]; agree = true
+bb_audit bb_real_primitive_meaning_oai: statement constants and their modules:
+AddGroupWithOne.toAddMonoidWithOne <- Mathlib.Data.Int.Cast.Defs
+AddMonoidWithOne.toNatCast <- Mathlib.Data.Nat.Cast.Defs
+And <- Init.Prelude
+CommGroupWithZero.toCommMonoidWithZero <- Mathlib.Algebra.GroupWithZero.Defs
+CommRing.toCommMonoid <- Mathlib.Algebra.Ring.Defs
+CommRing.toRing <- Mathlib.Algebra.Ring.Defs
+Complex <- Mathlib.Basic.Complex.Basic
+Complex.I <- Mathlib.Basic.Complex.Basic
+Complex.im <- Mathlib.Basic.Complex.Basic
+Complex.instAdd <- Mathlib.Basic.Complex.Basic
+Complex.instDivInvMonoid <- Mathlib.Basic.Complex.Basic
+Complex.instField <- Mathlib.Basic.Complex.Basic
+Complex.instMul <- Mathlib.Basic.Complex.Basic
+Complex.instNatCast <- Mathlib.Basic.Complex.Basic
+Complex.instOne <- Mathlib.Basic.Complex.Basic
+Complex.instPow <- Mathlib.Analysis.SpecialFunctions.Pow.Complex
+Complex.instZero <- Mathlib.Basic.Complex.Basic
+DBN.Gen.Hchi <- GenThetaFE
+DBN.Gen.parityK <- GenThetaFE
+DFunLike.coe <- Mathlib.Data.FunLike.Basic
+DirichletCharacter <- Mathlib.NumberTheory.DirichletCharacter.Basic
+DirichletCharacter.IsPrimitive <- Mathlib.NumberTheory.DirichletCharacter.Basic
+DirichletCharacter.completedLFunction <- Mathlib.NumberTheory.LSeries.DirichletContinuation
+DivInvMonoid.toDiv <- Mathlib.Algebra.Group.DivInvMonoid
+Eq <- Init.Prelude
+Field.toSemifield <- Mathlib.Algebra.Field.Defs
+HAdd.hAdd <- Init.Prelude
+HDiv.hDiv <- Init.Prelude
+HMul.hMul <- Init.Prelude
+HPow.hPow <- Init.Prelude
+LE.le <- Init.Prelude
+MulChar.hasOne <- Mathlib.NumberTheory.MulChar.Basic
+MulChar.instFunLike <- Mathlib.NumberTheory.MulChar.Basic
+MulZeroClass.toZero <- Mathlib.Algebra.GroupWithZero.Defs
+Nat <- Init.Prelude
+Nat.cast <- Init.Data.Cast
+Nat.instAtLeastTwoHAddOfNat <- Mathlib.Data.Nat.Init
+Nat.instMulZeroClass <- Mathlib.Algebra.GroupWithZero.Nat
+Nat.instNeZeroSucc <- Init.Data.Nat.Basic
+Ne <- Init.Core
+NeZero <- Init.Data.NeZero
+OfNat.ofNat <- Init.Prelude
+One.toOfNat1 <- Init.Data.Zero
+Real <- Mathlib.Basic.Real.Basic
+Real.instDivInvMonoid <- Mathlib.Basic.Real.Basic
+Real.instLE <- Mathlib.Basic.Real.Basic
+Real.instNatCast <- Mathlib.Basic.Real.Basic
+Real.instZero <- Mathlib.Basic.Real.Basic
+Ring.toAddGroupWithOne <- Mathlib.Algebra.Ring.Defs
+Semifield.toCommGroupWithZero <- Mathlib.Algebra.Field.Defs
+ZMod <- Mathlib.Data.ZMod.Defs
+ZMod.commRing <- Mathlib.Data.ZMod.Defs
+Zero.toOfNat0 <- Init.Data.Zero
+instHAdd <- Init.Prelude
+instHDiv <- Init.Prelude
+instHMul <- Init.Prelude
+instHPow <- Init.Prelude
+instOfNatAtLeastTwo <- Mathlib.Data.Nat.Cast.Defs
+instOfNatNat <- Init.Prelude
+bb_audit DBN.Gen.Hchi_bridge: closure constants = 65482; walk axioms = [Classical.choice,
+ Quot.sound,
+ propext]; collectAxioms = [Classical.choice, Quot.sound, propext]; agree = true
+bb_audit DBN.Gen.Hchi_bridge: statement constants and their modules:
+AddGroupWithOne.toAddMonoidWithOne <- Mathlib.Data.Int.Cast.Defs
+AddMonoidWithOne.toNatCast <- Mathlib.Data.Nat.Cast.Defs
+CommGroupWithZero.toCommMonoidWithZero <- Mathlib.Algebra.GroupWithZero.Defs
+CommRing.toCommMonoid <- Mathlib.Algebra.Ring.Defs
+CommRing.toRing <- Mathlib.Algebra.Ring.Defs
+Complex <- Mathlib.Basic.Complex.Basic
+Complex.I <- Mathlib.Basic.Complex.Basic
+Complex.im <- Mathlib.Basic.Complex.Basic
+Complex.instAdd <- Mathlib.Basic.Complex.Basic
+Complex.instDivInvMonoid <- Mathlib.Basic.Complex.Basic
+Complex.instField <- Mathlib.Basic.Complex.Basic
+Complex.instMul <- Mathlib.Basic.Complex.Basic
+Complex.instNatCast <- Mathlib.Basic.Complex.Basic
+Complex.instOne <- Mathlib.Basic.Complex.Basic
+Complex.instPow <- Mathlib.Analysis.SpecialFunctions.Pow.Complex
+DBN.Gen.Hchi <- GenThetaFE
+DBN.Gen.parityK <- GenThetaFE
+DFunLike.coe <- Mathlib.Data.FunLike.Basic
+DirichletCharacter <- Mathlib.NumberTheory.DirichletCharacter.Basic
+DirichletCharacter.IsPrimitive <- Mathlib.NumberTheory.DirichletCharacter.Basic
+DirichletCharacter.completedLFunction <- Mathlib.NumberTheory.LSeries.DirichletContinuation
+DivInvMonoid.toDiv <- Mathlib.Algebra.Group.DivInvMonoid
+Eq <- Init.Prelude
+Field.toSemifield <- Mathlib.Algebra.Field.Defs
+HAdd.hAdd <- Init.Prelude
+HDiv.hDiv <- Init.Prelude
+HMul.hMul <- Init.Prelude
+HPow.hPow <- Init.Prelude
+MulChar.hasOne <- Mathlib.NumberTheory.MulChar.Basic
+MulChar.instFunLike <- Mathlib.NumberTheory.MulChar.Basic
+MulZeroClass.toZero <- Mathlib.Algebra.GroupWithZero.Defs
+Nat <- Init.Prelude
+Nat.cast <- Init.Data.Cast
+Nat.instAtLeastTwoHAddOfNat <- Mathlib.Data.Nat.Init
+Nat.instMulZeroClass <- Mathlib.Algebra.GroupWithZero.Nat
+Nat.instNeZeroSucc <- Init.Data.Nat.Basic
+Ne <- Init.Core
+NeZero <- Init.Data.NeZero
+OfNat.ofNat <- Init.Prelude
+One.toOfNat1 <- Init.Data.Zero
+Real <- Mathlib.Basic.Real.Basic
+Real.instZero <- Mathlib.Basic.Real.Basic
+Ring.toAddGroupWithOne <- Mathlib.Algebra.Ring.Defs
+Semifield.toCommGroupWithZero <- Mathlib.Algebra.Field.Defs
+ZMod <- Mathlib.Data.ZMod.Defs
+ZMod.commRing <- Mathlib.Data.ZMod.Defs
+Zero.toOfNat0 <- Init.Data.Zero
+instHAdd <- Init.Prelude
+instHDiv <- Init.Prelude
+instHMul <- Init.Prelude
+instHPow <- Init.Prelude
+instOfNatAtLeastTwo <- Mathlib.Data.Nat.Cast.Defs
+instOfNatNat <- Init.Prelude
+∀ {N : Nat} [inst : @NeZero.{0} Nat (@MulZeroClass.toZero.{0} Nat Nat.instMulZeroClass) N]
+  (χ :
+    @DirichletCharacter.{0} Complex
+      (@CommGroupWithZero.toCommMonoidWithZero.{0} Complex
+        (@Semifield.toCommGroupWithZero.{0} Complex (@Field.toSemifield.{0} Complex Complex.instField)))
+      N),
+  @DirichletCharacter.IsPrimitive.{0} Complex
+      (@CommGroupWithZero.toCommMonoidWithZero.{0} Complex
+        (@Semifield.toCommGroupWithZero.{0} Complex (@Field.toSemifield.{0} Complex Complex.instField)))
+      N χ →
+    @Ne.{1}
+        (@DirichletCharacter.{0} Complex
+          (@CommGroupWithZero.toCommMonoidWithZero.{0} Complex
+            (@Semifield.toCommGroupWithZero.{0} Complex (@Field.toSemifield.{0} Complex Complex.instField)))
+          N)
+        χ
+        (@OfNat.ofNat.{0}
+          (@DirichletCharacter.{0} Complex
+            (@CommGroupWithZero.toCommMonoidWithZero.{0} Complex
+              (@Semifield.toCommGroupWithZero.{0} Complex (@Field.toSemifield.{0} Complex Complex.instField)))
+            N)
+          (nat_lit 1)
+          (@One.toOfNat1.{0}
+            (@DirichletCharacter.{0} Complex
+              (@CommGroupWithZero.toCommMonoidWithZero.{0} Complex
+                (@Semifield.toCommGroupWithZero.{0} Complex (@Field.toSemifield.{0} Complex Complex.instField)))
+              N)
+            (@MulChar.hasOne.{0, 0} (ZMod N) (@CommRing.toCommMonoid.{0} (ZMod N) (ZMod.commRing N)) Complex
+              (@CommGroupWithZero.toCommMonoidWithZero.{0} Complex
+                (@Semifield.toCommGroupWithZero.{0} Complex (@Field.toSemifield.{0} Complex Complex.instField)))))) →
+      (∀ (n : Nat),
+          @Eq.{1} Real
+            (Complex.im
+              (@DFunLike.coe.{1, 1, 1}
+                (@DirichletCharacter.{0} Complex
+                  (@CommGroupWithZero.toCommMonoidWithZero.{0} Complex
+                    (@Semifield.toCommGroupWithZero.{0} Complex (@Field.toSemifield.{0} Complex Complex.instField)))
+                  N)
+                (ZMod N) (fun (x : ZMod N) => Complex)
+                (@MulChar.instFunLike.{0, 0} (ZMod N) (@CommRing.toCommMonoid.{0} (ZMod N) (ZMod.commRing N)) Complex
+                  (@CommGroupWithZero.toCommMonoidWithZero.{0} Complex
+                    (@Semifield.toCommGroupWithZero.{0} Complex (@Field.toSemifield.{0} Complex Complex.instField))))
+                χ
+                (@Nat.cast.{0} (ZMod N)
+                  (@AddMonoidWithOne.toNatCast.{0} (ZMod N)
+                    (@AddGroupWithOne.toAddMonoidWithOne.{0} (ZMod N)
+                      (@Ring.toAddGroupWithOne.{0} (ZMod N) (@CommRing.toRing.{0} (ZMod N) (ZMod.commRing N)))))
+                  n)))
+            (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero))) →
+        ∀ (z : Complex),
+          @Eq.{1} Complex
+            (@DBN.Gen.Hchi N χ (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero)) z)
+            (@HMul.hMul.{0, 0, 0} Complex Complex Complex (@instHMul.{0} Complex Complex.instMul)
+              (@HMul.hMul.{0, 0, 0} Complex Complex Complex (@instHMul.{0} Complex Complex.instMul)
+                (@HDiv.hDiv.{0, 0, 0} Complex Complex Complex
+                  (@instHDiv.{0} Complex (@DivInvMonoid.toDiv.{0} Complex Complex.instDivInvMonoid))
+                  (@OfNat.ofNat.{0} Complex (nat_lit 1) (@One.toOfNat1.{0} Complex Complex.instOne))
+                  (@OfNat.ofNat.{0} Complex (nat_lit 8)
+                    (@instOfNatAtLeastTwo.{0} Complex (nat_lit 8) Complex.instNatCast
+                      (@Nat.instAtLeastTwoHAddOfNat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+                        (@Nat.instNeZeroSucc (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))))))
+                (@HPow.hPow.{0, 0, 0} Complex Complex Complex (@instHPow.{0, 0} Complex Complex Complex.instPow)
+                  (@Nat.cast.{0} Complex Complex.instNatCast N)
+                  (@HDiv.hDiv.{0, 0, 0} Complex Complex Complex
+                    (@instHDiv.{0} Complex (@DivInvMonoid.toDiv.{0} Complex Complex.instDivInvMonoid))
+                    (@HAdd.hAdd.{0, 0, 0} Complex Complex Complex (@instHAdd.{0} Complex Complex.instAdd)
+                      (@HAdd.hAdd.{0, 0, 0} Complex Complex Complex (@instHAdd.{0} Complex Complex.instAdd)
+                        (@HDiv.hDiv.{0, 0, 0} Complex Complex Complex
+                          (@instHDiv.{0} Complex (@DivInvMonoid.toDiv.{0} Complex Complex.instDivInvMonoid))
+                          (@OfNat.ofNat.{0} Complex (nat_lit 1) (@One.toOfNat1.{0} Complex Complex.instOne))
+                          (@OfNat.ofNat.{0} Complex (nat_lit 2)
+                            (@instOfNatAtLeastTwo.{0} Complex (nat_lit 2) Complex.instNatCast
+                              (@Nat.instAtLeastTwoHAddOfNat
+                                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+                                (@Nat.instNeZeroSucc (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))))))
+                        (@HDiv.hDiv.{0, 0, 0} Complex Complex Complex
+                          (@instHDiv.{0} Complex (@DivInvMonoid.toDiv.{0} Complex Complex.instDivInvMonoid))
+                          (@HMul.hMul.{0, 0, 0} Complex Complex Complex (@instHMul.{0} Complex Complex.instMul)
+                            Complex.I z)
+                          (@OfNat.ofNat.{0} Complex (nat_lit 2)
+                            (@instOfNatAtLeastTwo.{0} Complex (nat_lit 2) Complex.instNatCast
+                              (@Nat.instAtLeastTwoHAddOfNat
+                                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+                                (@Nat.instNeZeroSucc (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))))))))
+                      (@Nat.cast.{0} Complex Complex.instNatCast (@DBN.Gen.parityK N χ)))
+                    (@OfNat.ofNat.{0} Complex (nat_lit 2)
+                      (@instOfNatAtLeastTwo.{0} Complex (nat_lit 2) Complex.instNatCast
+                        (@Nat.instAtLeastTwoHAddOfNat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+                          (@Nat.instNeZeroSucc (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))))))))
+              (@DirichletCharacter.completedLFunction N inst χ
+                (@HAdd.hAdd.{0, 0, 0} Complex Complex Complex (@instHAdd.{0} Complex Complex.instAdd)
+                  (@HDiv.hDiv.{0, 0, 0} Complex Complex Complex
+                    (@instHDiv.{0} Complex (@DivInvMonoid.toDiv.{0} Complex Complex.instDivInvMonoid))
+                    (@OfNat.ofNat.{0} Complex (nat_lit 1) (@One.toOfNat1.{0} Complex Complex.instOne))
+                    (@OfNat.ofNat.{0} Complex (nat_lit 2)
+                      (@instOfNatAtLeastTwo.{0} Complex (nat_lit 2) Complex.instNatCast
+                        (@Nat.instAtLeastTwoHAddOfNat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+                          (@Nat.instNeZeroSucc (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))))))
+                  (@HDiv.hDiv.{0, 0, 0} Complex Complex Complex
+                    (@instHDiv.{0} Complex (@DivInvMonoid.toDiv.{0} Complex Complex.instDivInvMonoid))
+                    (@HMul.hMul.{0, 0, 0} Complex Complex Complex (@instHMul.{0} Complex Complex.instMul) Complex.I z)
+                    (@OfNat.ofNat.{0} Complex (nat_lit 2)
+                      (@instOfNatAtLeastTwo.{0} Complex (nat_lit 2) Complex.instNatCast
+                        (@Nat.instAtLeastTwoHAddOfNat (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+                          (@Nat.instNeZeroSucc
+                            (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))))))))) : Prop

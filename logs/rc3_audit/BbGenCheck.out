@@ -1,0 +1,88 @@
+bb: regression statement Expr.eqv island dbn_debruijn_parametric = true
+@DBN.Gen.dbn_debruijn_parametric : ∀ {K : DBN.Gen.Kernel} (t0 Y : ℝ),
+  (∀ (z : ℂ), DBN.Gen.H K t0 z = (0 : ℂ) → z.im ^ (2 : ℕ) ≤ Y) →
+    ∀ (t : ℝ), t0 ≤ t → ∀ (z : ℂ), DBN.Gen.H K t z = (0 : ℂ) → z.im ^ (2 : ℕ) ≤ max (Y - (2 : ℝ) * (t - t0)) (0 : ℝ)
+structure DBN.Gen.Kernel : Type
+number of parameters: 0
+fields:
+  DBN.Gen.Kernel.Φ : ℝ → ℝ
+  DBN.Gen.Kernel.cont : Continuous self.Φ
+  DBN.Gen.Kernel.even : ∀ (u : ℝ), self.Φ (-u) = self.Φ u
+  DBN.Gen.Kernel.C : ℝ
+  DBN.Gen.Kernel.C_nonneg : 0 ≤ self.C
+  DBN.Gen.Kernel.bound : ∀ {u : ℝ}, 0 ≤ u → |self.Φ u| ≤ self.C * (rexp (9 * u) * rexp (-(π / 2) * rexp (4 * u)))
+  DBN.Gen.Kernel.ne : ∃ u, self.Φ u ≠ 0
+constructor:
+  DBN.Gen.Kernel.mk (Φ : ℝ → ℝ) (cont : Continuous Φ) (even : ∀ (u : ℝ), Φ (-u) = Φ u) (C : ℝ) (C_nonneg : 0 ≤ C)
+    (bound : ∀ {u : ℝ}, 0 ≤ u → |Φ u| ≤ C * (rexp (9 * u) * rexp (-(π / 2) * rexp (4 * u)))) (ne : ∃ u, Φ u ≠ 0) :
+    DBN.Gen.Kernel
+'bb_regression' depends on axioms: [propext, Classical.choice, Quot.sound]
+bb_audit bb_regression: closure constants = 60301; walk axioms = [Classical.choice,
+ Quot.sound,
+ propext]; collectAxioms = [Classical.choice, Quot.sound, propext]; agree = true
+bb_audit bb_regression: statement constants and their modules:
+Complex <- Mathlib.Basic.Complex.Basic
+Complex.im <- Mathlib.Basic.Complex.Basic
+Complex.instZero <- Mathlib.Basic.Complex.Basic
+DBN.H <- DBNDefs
+Eq <- Init.Prelude
+HMul.hMul <- Init.Prelude
+HPow.hPow <- Init.Prelude
+HSub.hSub <- Init.Prelude
+LE.le <- Init.Prelude
+Max.max <- Init.Prelude
+Monoid.toNPow <- Mathlib.Algebra.Group.Monoid
+NPow.toPow <- Mathlib.Algebra.Group.Monoid
+Nat <- Init.Prelude
+Nat.instAtLeastTwoHAddOfNat <- Mathlib.Data.Nat.Init
+Nat.instNeZeroSucc <- Init.Data.Nat.Basic
+OfNat.ofNat <- Init.Prelude
+Real <- Mathlib.Basic.Real.Basic
+Real.instLE <- Mathlib.Basic.Real.Basic
+Real.instMax <- Mathlib.Basic.Real.Basic
+Real.instMonoid <- Mathlib.Basic.Real.Basic
+Real.instMul <- Mathlib.Basic.Real.Basic
+Real.instNatCast <- Mathlib.Basic.Real.Basic
+Real.instSub <- Mathlib.Basic.Real.Basic
+Real.instZero <- Mathlib.Basic.Real.Basic
+Zero.toOfNat0 <- Init.Data.Zero
+instHMul <- Init.Prelude
+instHPow <- Init.Prelude
+instHSub <- Init.Prelude
+instOfNatAtLeastTwo <- Mathlib.Data.Nat.Cast.Defs
+instOfNatNat <- Init.Prelude
+bb_audit DBN.Gen.dbn_debruijn_parametric: closure constants = 57992; walk axioms = [Classical.choice,
+ Quot.sound,
+ propext]; collectAxioms = [Classical.choice, Quot.sound, propext]; agree = true
+bb_audit DBN.Gen.dbn_debruijn_parametric: statement constants and their modules:
+Complex <- Mathlib.Basic.Complex.Basic
+Complex.im <- Mathlib.Basic.Complex.Basic
+Complex.instZero <- Mathlib.Basic.Complex.Basic
+DBN.Gen.H <- GenDefs
+DBN.Gen.Kernel <- GenDefs
+Eq <- Init.Prelude
+HMul.hMul <- Init.Prelude
+HPow.hPow <- Init.Prelude
+HSub.hSub <- Init.Prelude
+LE.le <- Init.Prelude
+Max.max <- Init.Prelude
+Monoid.toNPow <- Mathlib.Algebra.Group.Monoid
+NPow.toPow <- Mathlib.Algebra.Group.Monoid
+Nat <- Init.Prelude
+Nat.instAtLeastTwoHAddOfNat <- Mathlib.Data.Nat.Init
+Nat.instNeZeroSucc <- Init.Data.Nat.Basic
+OfNat.ofNat <- Init.Prelude
+Real <- Mathlib.Basic.Real.Basic
+Real.instLE <- Mathlib.Basic.Real.Basic
+Real.instMax <- Mathlib.Basic.Real.Basic
+Real.instMonoid <- Mathlib.Basic.Real.Basic
+Real.instMul <- Mathlib.Basic.Real.Basic
+Real.instNatCast <- Mathlib.Basic.Real.Basic
+Real.instSub <- Mathlib.Basic.Real.Basic
+Real.instZero <- Mathlib.Basic.Real.Basic
+Zero.toOfNat0 <- Init.Data.Zero
+instHMul <- Init.Prelude
+instHPow <- Init.Prelude
+instHSub <- Init.Prelude
+instOfNatAtLeastTwo <- Mathlib.Data.Nat.Cast.Defs
+instOfNatNat <- Init.Prelude

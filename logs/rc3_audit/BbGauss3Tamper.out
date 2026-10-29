@@ -1,0 +1,13 @@
+BbGauss3Tamper.lean:5:25: error: Type mismatch
+  DBN.Gen.rootNumber_eq_one_of_real_primitive χ hprim hreal
+has type
+  χ.rootNumber = 1
+but is expected to have type
+  χ.rootNumber = -1
+BbGauss3Tamper.lean:8:74: error: Tactic `assumption` failed
+
+N : ℕ
+inst✝ : NeZero N
+χ : DirichletCharacter ℂ N
+hreal : ∀ (n : ℕ), (χ ↑n).im = 0
+⊢ χ.IsPrimitive

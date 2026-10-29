@@ -1,0 +1,108 @@
+@DBN.Gen.bridge : ∀ {N : ℕ} [inst : NeZero N] {χ : DirichletCharacter ℂ N} {c : ℕ → ℝ} {k : ℕ},
+  χ ≠ (1 : DirichletCharacter ℂ N) →
+    (∀ (n : ℕ), χ ↑n = ↑(c n)) →
+      ∀ (hc : ∀ (n : ℕ), |c n| ≤ (1 : ℝ)) (hc0 : c (0 : ℕ) = (0 : ℝ)) (hc1 : c (1 : ℕ) = (1 : ℝ)),
+        (∀ (s : ℂ), χ.gammaFactor s = (s + ↑k).Gammaℝ) →
+          ∀ (heven : ∀ (u : ℝ), DBN.Gen.PhiC c k (↑N) (-u) = DBN.Gen.PhiC c k (↑N) u) (z : ℂ),
+            (DBN.Gen.thetaDecayKernel hc hc0 hc1 ⋯ heven).Hd (0 : ℝ) z =
+              (1 / 8 : ℂ) * ↑N ^ (((1 / 2 : ℂ) + Complex.I * z / (2 : ℂ) + ↑k) / (2 : ℂ)) *
+                DirichletCharacter.completedLFunction χ ((1 / 2 : ℂ) + Complex.I * z / (2 : ℂ))
+'DBN.Gen.bridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+bb_audit DBN.Gen.bridge: closure constants = 56097; walk axioms = [Classical.choice,
+ Quot.sound,
+ propext]; collectAxioms = [Classical.choice, Quot.sound, propext]; agree = true
+bb_audit DBN.Gen.bridge: statement constants and their modules:
+AddGroupWithOne.toAddMonoidWithOne <- Mathlib.Data.Int.Cast.Defs
+AddMonoid.toAddZeroClass <- Mathlib.Algebra.Group.Monoid
+AddMonoidWithOne.toAddMonoid <- Mathlib.Data.Nat.Cast.Defs
+AddMonoidWithOne.toNatCast <- Mathlib.Data.Nat.Cast.Defs
+AddZero.toZero <- Mathlib.Algebra.Group.Monoid
+AddZeroClass.toAddZero <- Mathlib.Algebra.Group.Monoid
+CommGroupWithZero.toCommMonoidWithZero <- Mathlib.Algebra.GroupWithZero.Defs
+CommRing.toCommMonoid <- Mathlib.Algebra.Ring.Defs
+CommRing.toRing <- Mathlib.Algebra.Ring.Defs
+Complex <- Mathlib.Basic.Complex.Basic
+Complex.Gammaℝ <- Mathlib.Analysis.SpecialFunctions.Gamma.Deligne
+Complex.I <- Mathlib.Basic.Complex.Basic
+Complex.instAdd <- Mathlib.Basic.Complex.Basic
+Complex.instDivInvMonoid <- Mathlib.Basic.Complex.Basic
+Complex.instField <- Mathlib.Basic.Complex.Basic
+Complex.instMul <- Mathlib.Basic.Complex.Basic
+Complex.instNatCast <- Mathlib.Basic.Complex.Basic
+Complex.instOne <- Mathlib.Basic.Complex.Basic
+Complex.instPow <- Mathlib.Analysis.SpecialFunctions.Pow.Complex
+Complex.ofReal <- Mathlib.Basic.Complex.Basic
+DBN.Gen.DecayKernel.Hd <- GenScale
+DBN.Gen.PhiC <- GenTheta
+DBN.Gen.thetaDecayKernel <- GenTheta
+DFunLike.coe <- Mathlib.Data.FunLike.Basic
+DirichletCharacter <- Mathlib.NumberTheory.DirichletCharacter.Basic
+DirichletCharacter.completedLFunction <- Mathlib.NumberTheory.LSeries.DirichletContinuation
+DirichletCharacter.gammaFactor <- Mathlib.NumberTheory.LSeries.DirichletContinuation
+DivInvMonoid.toDiv <- Mathlib.Algebra.Group.DivInvMonoid
+Eq <- Init.Prelude
+Eq.symm <- Init.Prelude
+Eq.trans <- Init.Prelude
+Field.toSemifield <- Mathlib.Algebra.Field.Defs
+FloorRing.toFloorSemiring <- Mathlib.Algebra.Order.Floor.Defs
+FloorSemiring.instCharZero <- Mathlib.Algebra.Order.Floor.Defs
+HAdd.hAdd <- Init.Prelude
+HDiv.hDiv <- Init.Prelude
+HMul.hMul <- Init.Prelude
+HPow.hPow <- Init.Prelude
+IsOrderedAddMonoid.toAddLeftMono <- Mathlib.Algebra.Order.Monoid.Defs
+LE.le <- Init.Prelude
+LT.lt <- Init.Prelude
+LinearOrderedCommMonoidWithZero.toIsBotZeroClass <- Mathlib.Algebra.Order.GroupWithZero.Canonical
+MulChar.hasOne <- Mathlib.NumberTheory.MulChar.Basic
+MulChar.instFunLike <- Mathlib.NumberTheory.MulChar.Basic
+MulZeroClass.toZero <- Mathlib.Algebra.GroupWithZero.Defs
+Nat <- Init.Prelude
+Nat.cast <- Init.Data.Cast
+Nat.cast_lt._simp_1 <- Mathlib.Data.Nat.Cast.Order.Basic
+Nat.cast_zero <- Mathlib.Data.Nat.Cast.Defs
+Nat.instAtLeastTwoHAddOfNat <- Mathlib.Data.Nat.Init
+Nat.instLinearOrderedCommMonoidWithZero <- Mathlib.Algebra.Order.Ring.Nat
+Nat.instMulZeroClass <- Mathlib.Algebra.GroupWithZero.Nat
+Nat.instNeZeroSucc <- Init.Data.Nat.Basic
+Nat.instPartialOrder <- Mathlib.Data.Nat.Basic
+Ne <- Init.Core
+NeZero <- Init.Data.NeZero
+NeZero.pos <- Mathlib.Algebra.Order.IsBotOne
+Neg.neg <- Init.Prelude
+OfNat.ofNat <- Init.Prelude
+One.toOfNat1 <- Init.Data.Zero
+Real <- Mathlib.Basic.Real.Basic
+Real.instAddCommMonoid <- Mathlib.Basic.Real.Basic
+Real.instAddGroup <- Mathlib.Basic.Real.Basic
+Real.instFloorRing <- Mathlib.Algebra.Order.Archimedean.Real.Basic
+Real.instIsOrderedAddMonoid <- Mathlib.Basic.Real.Basic
+Real.instLE <- Mathlib.Basic.Real.Basic
+Real.instLT <- Mathlib.Basic.Real.Basic
+Real.instNatCast <- Mathlib.Basic.Real.Basic
+Real.instNeg <- Mathlib.Basic.Real.Basic
+Real.instOne <- Mathlib.Basic.Real.Basic
+Real.instPreorder <- Mathlib.Basic.Real.Basic
+Real.instRing <- Mathlib.Basic.Real.Basic
+Real.instZero <- Mathlib.Basic.Real.Basic
+Real.instZeroLEOneClass <- Mathlib.Basic.Real.Basic
+Real.lattice <- Mathlib.Basic.Real.Basic
+Real.linearOrder <- Mathlib.Basic.Real.Basic
+Real.partialOrder <- Mathlib.Basic.Real.Basic
+Ring.toAddGroupWithOne <- Mathlib.Algebra.Ring.Defs
+Ring.toSemiring <- Mathlib.Algebra.Ring.Defs
+Semifield.toCommGroupWithZero <- Mathlib.Algebra.Field.Defs
+ZMod <- Mathlib.Data.ZMod.Defs
+ZMod.commRing <- Mathlib.Data.ZMod.Defs
+Zero.toOfNat0 <- Init.Data.Zero
+abs <- Mathlib.Algebra.Order.Group.Unbundled.Abs
+cast <- Init.Prelude
+congrArg <- Init.Prelude
+congrFun' <- Init.Prelude
+instHAdd <- Init.Prelude
+instHDiv <- Init.Prelude
+instHMul <- Init.Prelude
+instHPow <- Init.Prelude
+instLTNat <- Init.Prelude
+instOfNatAtLeastTwo <- Mathlib.Data.Nat.Cast.Defs
+instOfNatNat <- Init.Prelude

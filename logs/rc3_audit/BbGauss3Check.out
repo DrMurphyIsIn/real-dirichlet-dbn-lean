@@ -1,0 +1,95 @@
+@DBN.Gen.rootNumber_eq_one_of_real_primitive : ∀ {N : ℕ} [inst : NeZero N] (χ : DirichletCharacter ℂ N),
+  χ.IsPrimitive → (∀ (n : ℕ), (χ ↑n).im = (0 : ℝ)) → χ.rootNumber = (1 : ℂ)
+@DBN.Gen.real_primitive_real_zeros : ∀ {N : ℕ} [inst : NeZero N] (χ : DirichletCharacter ℂ N),
+  χ.IsPrimitive →
+    χ ≠ (1 : DirichletCharacter ℂ N) →
+      (∀ (n : ℕ), (χ ↑n).im = (0 : ℝ)) →
+        (∀ (s : ℂ), (7 / 8 : ℝ) < s.re → DirichletCharacter.LFunction χ s ≠ (0 : ℂ)) →
+          ∀ (t : ℝ), (9 / 32 : ℝ) ≤ t → ∀ (z : ℂ), DBN.Gen.Hchi χ t z = (0 : ℂ) → z.im = (0 : ℝ)
+'DBN.Gen.rootNumber_eq_one_of_real_primitive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DBN.Gen.real_primitive_real_zeros' depends on axioms: [propext, Classical.choice, Quot.sound]
+bb_audit DBN.Gen.rootNumber_eq_one_of_real_primitive: closure constants = 62454; walk axioms = [Classical.choice,
+ Quot.sound,
+ propext]; collectAxioms = [Classical.choice, Quot.sound, propext]; agree = true
+bb_audit DBN.Gen.rootNumber_eq_one_of_real_primitive: statement constants and their modules:
+AddGroupWithOne.toAddMonoidWithOne <- Mathlib.Data.Int.Cast.Defs
+AddMonoidWithOne.toNatCast <- Mathlib.Data.Nat.Cast.Defs
+CommGroupWithZero.toCommMonoidWithZero <- Mathlib.Algebra.GroupWithZero.Defs
+CommRing.toCommMonoid <- Mathlib.Algebra.Ring.Defs
+CommRing.toRing <- Mathlib.Algebra.Ring.Defs
+Complex <- Mathlib.Basic.Complex.Basic
+Complex.im <- Mathlib.Basic.Complex.Basic
+Complex.instField <- Mathlib.Basic.Complex.Basic
+Complex.instOne <- Mathlib.Basic.Complex.Basic
+DFunLike.coe <- Mathlib.Data.FunLike.Basic
+DirichletCharacter <- Mathlib.NumberTheory.DirichletCharacter.Basic
+DirichletCharacter.IsPrimitive <- Mathlib.NumberTheory.DirichletCharacter.Basic
+DirichletCharacter.rootNumber <- Mathlib.NumberTheory.LSeries.DirichletContinuation
+Eq <- Init.Prelude
+Field.toSemifield <- Mathlib.Algebra.Field.Defs
+MulChar.instFunLike <- Mathlib.NumberTheory.MulChar.Basic
+MulZeroClass.toZero <- Mathlib.Algebra.GroupWithZero.Defs
+Nat <- Init.Prelude
+Nat.cast <- Init.Data.Cast
+Nat.instMulZeroClass <- Mathlib.Algebra.GroupWithZero.Nat
+NeZero <- Init.Data.NeZero
+OfNat.ofNat <- Init.Prelude
+One.toOfNat1 <- Init.Data.Zero
+Real <- Mathlib.Basic.Real.Basic
+Real.instZero <- Mathlib.Basic.Real.Basic
+Ring.toAddGroupWithOne <- Mathlib.Algebra.Ring.Defs
+Semifield.toCommGroupWithZero <- Mathlib.Algebra.Field.Defs
+ZMod <- Mathlib.Data.ZMod.Defs
+ZMod.commRing <- Mathlib.Data.ZMod.Defs
+Zero.toOfNat0 <- Init.Data.Zero
+bb_audit DBN.Gen.real_primitive_real_zeros: closure constants = 70899; walk axioms = [Classical.choice,
+ Quot.sound,
+ propext]; collectAxioms = [Classical.choice, Quot.sound, propext]; agree = true
+bb_audit DBN.Gen.real_primitive_real_zeros: statement constants and their modules:
+AddGroupWithOne.toAddMonoidWithOne <- Mathlib.Data.Int.Cast.Defs
+AddMonoidWithOne.toNatCast <- Mathlib.Data.Nat.Cast.Defs
+CommGroupWithZero.toCommMonoidWithZero <- Mathlib.Algebra.GroupWithZero.Defs
+CommRing.toCommMonoid <- Mathlib.Algebra.Ring.Defs
+CommRing.toRing <- Mathlib.Algebra.Ring.Defs
+Complex <- Mathlib.Basic.Complex.Basic
+Complex.im <- Mathlib.Basic.Complex.Basic
+Complex.instField <- Mathlib.Basic.Complex.Basic
+Complex.instZero <- Mathlib.Basic.Complex.Basic
+Complex.re <- Mathlib.Basic.Complex.Basic
+DBN.Gen.Hchi <- GenThetaFE
+DFunLike.coe <- Mathlib.Data.FunLike.Basic
+DirichletCharacter <- Mathlib.NumberTheory.DirichletCharacter.Basic
+DirichletCharacter.IsPrimitive <- Mathlib.NumberTheory.DirichletCharacter.Basic
+DirichletCharacter.LFunction <- Mathlib.NumberTheory.LSeries.DirichletContinuation
+DivInvMonoid.toDiv <- Mathlib.Algebra.Group.DivInvMonoid
+Eq <- Init.Prelude
+Field.toSemifield <- Mathlib.Algebra.Field.Defs
+HDiv.hDiv <- Init.Prelude
+LE.le <- Init.Prelude
+LT.lt <- Init.Prelude
+MulChar.hasOne <- Mathlib.NumberTheory.MulChar.Basic
+MulChar.instFunLike <- Mathlib.NumberTheory.MulChar.Basic
+MulZeroClass.toZero <- Mathlib.Algebra.GroupWithZero.Defs
+Nat <- Init.Prelude
+Nat.cast <- Init.Data.Cast
+Nat.instAtLeastTwoHAddOfNat <- Mathlib.Data.Nat.Init
+Nat.instMulZeroClass <- Mathlib.Algebra.GroupWithZero.Nat
+Nat.instNeZeroSucc <- Init.Data.Nat.Basic
+Ne <- Init.Core
+NeZero <- Init.Data.NeZero
+OfNat.ofNat <- Init.Prelude
+One.toOfNat1 <- Init.Data.Zero
+Real <- Mathlib.Basic.Real.Basic
+Real.instDivInvMonoid <- Mathlib.Basic.Real.Basic
+Real.instLE <- Mathlib.Basic.Real.Basic
+Real.instLT <- Mathlib.Basic.Real.Basic
+Real.instNatCast <- Mathlib.Basic.Real.Basic
+Real.instZero <- Mathlib.Basic.Real.Basic
+Ring.toAddGroupWithOne <- Mathlib.Algebra.Ring.Defs
+Semifield.toCommGroupWithZero <- Mathlib.Algebra.Field.Defs
+ZMod <- Mathlib.Data.ZMod.Defs
+ZMod.commRing <- Mathlib.Data.ZMod.Defs
+Zero.toOfNat0 <- Init.Data.Zero
+instHDiv <- Init.Prelude
+instOfNatAtLeastTwo <- Mathlib.Data.Nat.Cast.Defs
+instOfNatNat <- Init.Prelude

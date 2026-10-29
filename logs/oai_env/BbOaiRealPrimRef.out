@@ -1,0 +1,67 @@
+∀ {N : Nat} [@NeZero.{0} Nat (@MulZeroClass.toZero.{0} Nat Nat.instMulZeroClass) N]
+  (χ :
+    @DirichletCharacter.{0} Complex
+      (@CommGroupWithZero.toCommMonoidWithZero.{0} Complex
+        (@Semifield.toCommGroupWithZero.{0} Complex (@Field.toSemifield.{0} Complex Complex.instField)))
+      N),
+  @DirichletCharacter.IsPrimitive.{0} Complex
+      (@CommGroupWithZero.toCommMonoidWithZero.{0} Complex
+        (@Semifield.toCommGroupWithZero.{0} Complex (@Field.toSemifield.{0} Complex Complex.instField)))
+      N χ →
+    @Ne.{1}
+        (@DirichletCharacter.{0} Complex
+          (@CommGroupWithZero.toCommMonoidWithZero.{0} Complex
+            (@Semifield.toCommGroupWithZero.{0} Complex (@Field.toSemifield.{0} Complex Complex.instField)))
+          N)
+        χ
+        (@OfNat.ofNat.{0}
+          (@DirichletCharacter.{0} Complex
+            (@CommGroupWithZero.toCommMonoidWithZero.{0} Complex
+              (@Semifield.toCommGroupWithZero.{0} Complex (@Field.toSemifield.{0} Complex Complex.instField)))
+            N)
+          (nat_lit 1)
+          (@One.toOfNat1.{0}
+            (@DirichletCharacter.{0} Complex
+              (@CommGroupWithZero.toCommMonoidWithZero.{0} Complex
+                (@Semifield.toCommGroupWithZero.{0} Complex (@Field.toSemifield.{0} Complex Complex.instField)))
+              N)
+            (@MulChar.hasOne.{0, 0} (ZMod N) (@CommRing.toCommMonoid.{0} (ZMod N) (ZMod.commRing N)) Complex
+              (@CommGroupWithZero.toCommMonoidWithZero.{0} Complex
+                (@Semifield.toCommGroupWithZero.{0} Complex (@Field.toSemifield.{0} Complex Complex.instField)))))) →
+      (∀ (n : Nat),
+          @Eq.{1} Real
+            (Complex.im
+              (@DFunLike.coe.{1, 1, 1}
+                (@DirichletCharacter.{0} Complex
+                  (@CommGroupWithZero.toCommMonoidWithZero.{0} Complex
+                    (@Semifield.toCommGroupWithZero.{0} Complex (@Field.toSemifield.{0} Complex Complex.instField)))
+                  N)
+                (ZMod N) (fun (x : ZMod N) => Complex)
+                (@MulChar.instFunLike.{0, 0} (ZMod N) (@CommRing.toCommMonoid.{0} (ZMod N) (ZMod.commRing N)) Complex
+                  (@CommGroupWithZero.toCommMonoidWithZero.{0} Complex
+                    (@Semifield.toCommGroupWithZero.{0} Complex (@Field.toSemifield.{0} Complex Complex.instField))))
+                χ
+                (@Nat.cast.{0} (ZMod N)
+                  (@AddMonoidWithOne.toNatCast.{0} (ZMod N)
+                    (@AddGroupWithOne.toAddMonoidWithOne.{0} (ZMod N)
+                      (@Ring.toAddGroupWithOne.{0} (ZMod N) (@CommRing.toRing.{0} (ZMod N) (ZMod.commRing N)))))
+                  n)))
+            (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero))) →
+        ∀ (t : Real),
+          @LE.le.{0} Real Real.instLE
+              (@HDiv.hDiv.{0, 0, 0} Real Real Real
+                (@instHDiv.{0} Real (@DivInvMonoid.toDiv.{0} Real Real.instDivInvMonoid))
+                (@OfNat.ofNat.{0} Real (nat_lit 9)
+                  (@instOfNatAtLeastTwo.{0} Real (nat_lit 9) Real.instNatCast
+                    (@Nat.instAtLeastTwoHAddOfNat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+                      (@Nat.instNeZeroSucc (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))))))
+                (@OfNat.ofNat.{0} Real (nat_lit 32)
+                  (@instOfNatAtLeastTwo.{0} Real (nat_lit 32) Real.instNatCast
+                    (@Nat.instAtLeastTwoHAddOfNat (@OfNat.ofNat.{0} Nat (nat_lit 31) (instOfNatNat (nat_lit 31)))
+                      (@Nat.instNeZeroSucc (@OfNat.ofNat.{0} Nat (nat_lit 30) (instOfNatNat (nat_lit 30))))))))
+              t →
+            ∀ (z : Complex),
+              @Eq.{1} Complex (@DBN.Gen.Hchi N χ t z)
+                  (@OfNat.ofNat.{0} Complex (nat_lit 0) (@Zero.toOfNat0.{0} Complex Complex.instZero)) →
+                @Eq.{1} Real (Complex.im z)
+                  (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero)) : Prop

@@ -1,0 +1,20 @@
+BbD2cTamper.lean:15:70: error: linarith failed to find a contradiction
+N : ℕ
+inst✝ : NeZero N
+χ : DirichletCharacter ℂ N
+c : ℕ → ℝ
+k : ℕ
+hprim : χ.IsPrimitive
+hχ1 : χ ≠ 1
+hχc : ∀ (n : ℕ), χ ↑n = ↑(c n)
+hc : ∀ (n : ℕ), |c n| ≤ 1
+hc0 : c 0 = 0
+hc1 : c 1 = 1
+hgam : ∀ (s : ℂ), χ.gammaFactor s = (s + ↑k).Gammaℝ
+heven : ∀ (u : ℝ), DBN.Gen.PhiC c k (↑N) (-u) = DBN.Gen.PhiC c k (↑N) u
+hL : ∀ (s : ℂ), 7 / 8 < s.re → DirichletCharacter.LFunction χ s ≠ 0
+t : ℝ
+ht : 1 / 4 ≤ t
+a✝ : t < 9 / 16 / 2
+⊢ False
+failed
