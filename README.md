@@ -269,7 +269,7 @@ lean/MD5SUMS.txt    md5 of every file under lean/, cross-checked against the aud
 logs/               five-checker replays, in-environment checks, the rc3 audit, numerics, md5 manifest
 logs/comparator_sandboxed/   placeholder for the sandboxed Comparator run
 challenge/          the Comparator challenge by the auditor: ChallengeDefs, Challenge, two tampers, configs, pre-flight
-provenance/         ISLAND_SOURCE: where lean/island/ comes from
+provenance/         ISLAND_SOURCE (where lean/island/ comes from); PROVENANCE.md (what of the build environment was checked)
 scripts/            verify_md5.sh, materialize.sh
 paper/              the paper (in preparation)
 ```
