@@ -1,0 +1,2084 @@
+DUMP-BEGIN bb_real_primitive_meaning_oai
+kind=theorem levelParams=[] type=Lean.Expr.app
+  (Lean.Expr.app
+    (Lean.Expr.const `And [])
+    (Lean.Expr.forallE
+      `N
+      (Lean.Expr.const `Nat [])
+      (Lean.Expr.forallE
+        (Lean.Name.mkNum (Lean.Name.mkStr (Lean.Name.mkStr (Lean.Name.mkNum `inst.«_@».BbOaiMeaning 288809031) "_hygCtx") "_hyg") 12)
+        (Lean.Expr.app
+          (Lean.Expr.app
+            (Lean.Expr.app (Lean.Expr.const `NeZero [Lean.Level.zero]) (Lean.Expr.const `Nat []))
+            (Lean.Expr.app
+              (Lean.Expr.app (Lean.Expr.const `MulZeroClass.toZero [Lean.Level.zero]) (Lean.Expr.const `Nat []))
+              (Lean.Expr.const `Nat.instMulZeroClass [])))
+          (Lean.Expr.bvar 0))
+        (Lean.Expr.forallE
+          `χ
+          (Lean.Expr.app
+            (Lean.Expr.app
+              (Lean.Expr.app (Lean.Expr.const `DirichletCharacter [Lean.Level.zero]) (Lean.Expr.const `Complex []))
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.const `CommGroupWithZero.toCommMonoidWithZero [Lean.Level.zero])
+                  (Lean.Expr.const `Complex []))
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.const `Semifield.toCommGroupWithZero [Lean.Level.zero])
+                    (Lean.Expr.const `Complex []))
+                  (Lean.Expr.app
+                    (Lean.Expr.app (Lean.Expr.const `Field.toSemifield [Lean.Level.zero]) (Lean.Expr.const `Complex []))
+                    (Lean.Expr.const `Complex.instField [])))))
+            (Lean.Expr.bvar 1))
+          (Lean.Expr.forallE
+            (Lean.Name.mkNum `a._@._internal._hyg 0)
+            (Lean.Expr.app
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.const `DirichletCharacter.IsPrimitive [Lean.Level.zero])
+                    (Lean.Expr.const `Complex []))
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.const `CommGroupWithZero.toCommMonoidWithZero [Lean.Level.zero])
+                      (Lean.Expr.const `Complex []))
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.const `Semifield.toCommGroupWithZero [Lean.Level.zero])
+                        (Lean.Expr.const `Complex []))
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.const `Field.toSemifield [Lean.Level.zero])
+                          (Lean.Expr.const `Complex []))
+                        (Lean.Expr.const `Complex.instField [])))))
+                (Lean.Expr.bvar 2))
+              (Lean.Expr.bvar 0))
+            (Lean.Expr.forallE
+              (Lean.Name.mkNum `a._@._internal._hyg 0)
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.const `Ne [Lean.Level.succ (Lean.Level.zero)])
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.const `DirichletCharacter [Lean.Level.zero])
+                          (Lean.Expr.const `Complex []))
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.const `CommGroupWithZero.toCommMonoidWithZero [Lean.Level.zero])
+                            (Lean.Expr.const `Complex []))
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.const `Semifield.toCommGroupWithZero [Lean.Level.zero])
+                              (Lean.Expr.const `Complex []))
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.const `Field.toSemifield [Lean.Level.zero])
+                                (Lean.Expr.const `Complex []))
+                              (Lean.Expr.const `Complex.instField [])))))
+                      (Lean.Expr.bvar 3)))
+                  (Lean.Expr.bvar 1))
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.const `DirichletCharacter [Lean.Level.zero])
+                            (Lean.Expr.const `Complex []))
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.const `CommGroupWithZero.toCommMonoidWithZero [Lean.Level.zero])
+                              (Lean.Expr.const `Complex []))
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.const `Semifield.toCommGroupWithZero [Lean.Level.zero])
+                                (Lean.Expr.const `Complex []))
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.const `Field.toSemifield [Lean.Level.zero])
+                                  (Lean.Expr.const `Complex []))
+                                (Lean.Expr.const `Complex.instField [])))))
+                        (Lean.Expr.bvar 3)))
+                    (Lean.Expr.lit (Lean.Literal.natVal 1)))
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.const `One.toOfNat1 [Lean.Level.zero])
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.const `DirichletCharacter [Lean.Level.zero])
+                            (Lean.Expr.const `Complex []))
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.const `CommGroupWithZero.toCommMonoidWithZero [Lean.Level.zero])
+                              (Lean.Expr.const `Complex []))
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.const `Semifield.toCommGroupWithZero [Lean.Level.zero])
+                                (Lean.Expr.const `Complex []))
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.const `Field.toSemifield [Lean.Level.zero])
+                                  (Lean.Expr.const `Complex []))
+                                (Lean.Expr.const `Complex.instField [])))))
+                        (Lean.Expr.bvar 3)))
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.const `MulChar.hasOne [Lean.Level.zero, Lean.Level.zero])
+                            (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 3)))
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.const `CommRing.toCommMonoid [Lean.Level.zero])
+                              (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 3)))
+                            (Lean.Expr.app (Lean.Expr.const `ZMod.commRing []) (Lean.Expr.bvar 3))))
+                        (Lean.Expr.const `Complex []))
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.const `CommGroupWithZero.toCommMonoidWithZero [Lean.Level.zero])
+                          (Lean.Expr.const `Complex []))
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.const `Semifield.toCommGroupWithZero [Lean.Level.zero])
+                            (Lean.Expr.const `Complex []))
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.const `Field.toSemifield [Lean.Level.zero])
+                              (Lean.Expr.const `Complex []))
+                            (Lean.Expr.const `Complex.instField []))))))))
+              (Lean.Expr.forallE
+                (Lean.Name.mkNum `a._@._internal._hyg 0)
+                (Lean.Expr.forallE
+                  `n
+                  (Lean.Expr.const `Nat [])
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.const `Eq [Lean.Level.succ (Lean.Level.zero)])
+                        (Lean.Expr.const `Real []))
+                      (Lean.Expr.app
+                        (Lean.Expr.const `Complex.im [])
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const
+                                      `DFunLike.coe
+                                      [Lean.Level.succ (Lean.Level.zero),
+                                       Lean.Level.succ (Lean.Level.zero),
+                                       Lean.Level.succ (Lean.Level.zero)])
+                                    (Lean.Expr.app
+                                      (Lean.Expr.app
+                                        (Lean.Expr.app
+                                          (Lean.Expr.const `DirichletCharacter [Lean.Level.zero])
+                                          (Lean.Expr.const `Complex []))
+                                        (Lean.Expr.app
+                                          (Lean.Expr.app
+                                            (Lean.Expr.const `CommGroupWithZero.toCommMonoidWithZero [Lean.Level.zero])
+                                            (Lean.Expr.const `Complex []))
+                                          (Lean.Expr.app
+                                            (Lean.Expr.app
+                                              (Lean.Expr.const `Semifield.toCommGroupWithZero [Lean.Level.zero])
+                                              (Lean.Expr.const `Complex []))
+                                            (Lean.Expr.app
+                                              (Lean.Expr.app
+                                                (Lean.Expr.const `Field.toSemifield [Lean.Level.zero])
+                                                (Lean.Expr.const `Complex []))
+                                              (Lean.Expr.const `Complex.instField [])))))
+                                      (Lean.Expr.bvar 5)))
+                                  (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 5)))
+                                (Lean.Expr.lam
+                                  (Lean.Name.mkNum (Lean.Name.mkStr (Lean.Name.mkStr (Lean.Name.mkNum `x.«_@».Mathlib.Data.FunLike.Basic 2582841819) "_hygCtx") "_hyg") 11)
+                                  (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 5))
+                                  (Lean.Expr.const `Complex [])
+                                  (Lean.BinderInfo.default)))
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `MulChar.instFunLike [Lean.Level.zero, Lean.Level.zero])
+                                      (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 5)))
+                                    (Lean.Expr.app
+                                      (Lean.Expr.app
+                                        (Lean.Expr.const `CommRing.toCommMonoid [Lean.Level.zero])
+                                        (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 5)))
+                                      (Lean.Expr.app (Lean.Expr.const `ZMod.commRing []) (Lean.Expr.bvar 5))))
+                                  (Lean.Expr.const `Complex []))
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `CommGroupWithZero.toCommMonoidWithZero [Lean.Level.zero])
+                                    (Lean.Expr.const `Complex []))
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `Semifield.toCommGroupWithZero [Lean.Level.zero])
+                                      (Lean.Expr.const `Complex []))
+                                    (Lean.Expr.app
+                                      (Lean.Expr.app
+                                        (Lean.Expr.const `Field.toSemifield [Lean.Level.zero])
+                                        (Lean.Expr.const `Complex []))
+                                      (Lean.Expr.const `Complex.instField []))))))
+                            (Lean.Expr.bvar 3))
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.const `Nat.cast [Lean.Level.zero])
+                                (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 5)))
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.const `AddMonoidWithOne.toNatCast [Lean.Level.zero])
+                                  (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 5)))
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `AddGroupWithOne.toAddMonoidWithOne [Lean.Level.zero])
+                                    (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 5)))
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `Ring.toAddGroupWithOne [Lean.Level.zero])
+                                      (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 5)))
+                                    (Lean.Expr.app
+                                      (Lean.Expr.app
+                                        (Lean.Expr.const `CommRing.toRing [Lean.Level.zero])
+                                        (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 5)))
+                                      (Lean.Expr.app (Lean.Expr.const `ZMod.commRing []) (Lean.Expr.bvar 5)))))))
+                            (Lean.Expr.bvar 0)))))
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Real []))
+                        (Lean.Expr.lit (Lean.Literal.natVal 0)))
+                      (Lean.Expr.app
+                        (Lean.Expr.app (Lean.Expr.const `Zero.toOfNat0 [Lean.Level.zero]) (Lean.Expr.const `Real []))
+                        (Lean.Expr.const `Real.instZero []))))
+                  (Lean.BinderInfo.default))
+                (Lean.Expr.forallE
+                  `t
+                  (Lean.Expr.const `Real [])
+                  (Lean.Expr.forallE
+                    (Lean.Name.mkNum `a._@._internal._hyg 0)
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.app (Lean.Expr.const `LE.le [Lean.Level.zero]) (Lean.Expr.const `Real []))
+                          (Lean.Expr.const `Real.instLE []))
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `HDiv.hDiv [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                                    (Lean.Expr.const `Real []))
+                                  (Lean.Expr.const `Real []))
+                                (Lean.Expr.const `Real []))
+                              (Lean.Expr.app
+                                (Lean.Expr.app (Lean.Expr.const `instHDiv [Lean.Level.zero]) (Lean.Expr.const `Real []))
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `DivInvMonoid.toDiv [Lean.Level.zero])
+                                    (Lean.Expr.const `Real []))
+                                  (Lean.Expr.const `Real.instDivInvMonoid []))))
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                  (Lean.Expr.const `Real []))
+                                (Lean.Expr.lit (Lean.Literal.natVal 9)))
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `instOfNatAtLeastTwo [Lean.Level.zero])
+                                      (Lean.Expr.const `Real []))
+                                    (Lean.Expr.lit (Lean.Literal.natVal 9)))
+                                  (Lean.Expr.const `Real.instNatCast []))
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `Nat.instAtLeastTwoHAddOfNat [])
+                                    (Lean.Expr.app
+                                      (Lean.Expr.app
+                                        (Lean.Expr.app
+                                          (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                          (Lean.Expr.const `Nat []))
+                                        (Lean.Expr.lit (Lean.Literal.natVal 8)))
+                                      (Lean.Expr.app
+                                        (Lean.Expr.const `instOfNatNat [])
+                                        (Lean.Expr.lit (Lean.Literal.natVal 8)))))
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `Nat.instNeZeroSucc [])
+                                    (Lean.Expr.app
+                                      (Lean.Expr.app
+                                        (Lean.Expr.app
+                                          (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                          (Lean.Expr.const `Nat []))
+                                        (Lean.Expr.lit (Lean.Literal.natVal 7)))
+                                      (Lean.Expr.app
+                                        (Lean.Expr.const `instOfNatNat [])
+                                        (Lean.Expr.lit (Lean.Literal.natVal 7)))))))))
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                (Lean.Expr.const `Real []))
+                              (Lean.Expr.lit (Lean.Literal.natVal 32)))
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `instOfNatAtLeastTwo [Lean.Level.zero])
+                                    (Lean.Expr.const `Real []))
+                                  (Lean.Expr.lit (Lean.Literal.natVal 32)))
+                                (Lean.Expr.const `Real.instNatCast []))
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.const `Nat.instAtLeastTwoHAddOfNat [])
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.app
+                                        (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                        (Lean.Expr.const `Nat []))
+                                      (Lean.Expr.lit (Lean.Literal.natVal 31)))
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `instOfNatNat [])
+                                      (Lean.Expr.lit (Lean.Literal.natVal 31)))))
+                                (Lean.Expr.app
+                                  (Lean.Expr.const `Nat.instNeZeroSucc [])
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.app
+                                        (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                        (Lean.Expr.const `Nat []))
+                                      (Lean.Expr.lit (Lean.Literal.natVal 30)))
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `instOfNatNat [])
+                                      (Lean.Expr.lit (Lean.Literal.natVal 30))))))))))
+                      (Lean.Expr.bvar 0))
+                    (Lean.Expr.forallE
+                      `z
+                      (Lean.Expr.const `Complex [])
+                      (Lean.Expr.forallE
+                        (Lean.Name.mkNum `a._@._internal._hyg 0)
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.const `Eq [Lean.Level.succ (Lean.Level.zero)])
+                              (Lean.Expr.const `Complex []))
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app (Lean.Expr.const `DBN.Gen.Hchi []) (Lean.Expr.bvar 8))
+                                  (Lean.Expr.bvar 6))
+                                (Lean.Expr.bvar 2))
+                              (Lean.Expr.bvar 0)))
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                (Lean.Expr.const `Complex []))
+                              (Lean.Expr.lit (Lean.Literal.natVal 0)))
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.const `Zero.toOfNat0 [Lean.Level.zero])
+                                (Lean.Expr.const `Complex []))
+                              (Lean.Expr.const `Complex.instZero []))))
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.const `Eq [Lean.Level.succ (Lean.Level.zero)])
+                              (Lean.Expr.const `Real []))
+                            (Lean.Expr.app (Lean.Expr.const `Complex.im []) (Lean.Expr.bvar 1)))
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                (Lean.Expr.const `Real []))
+                              (Lean.Expr.lit (Lean.Literal.natVal 0)))
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.const `Zero.toOfNat0 [Lean.Level.zero])
+                                (Lean.Expr.const `Real []))
+                              (Lean.Expr.const `Real.instZero []))))
+                        (Lean.BinderInfo.default))
+                      (Lean.BinderInfo.default))
+                    (Lean.BinderInfo.default))
+                  (Lean.BinderInfo.default))
+                (Lean.BinderInfo.default))
+              (Lean.BinderInfo.default))
+            (Lean.BinderInfo.default))
+          (Lean.BinderInfo.default))
+        (Lean.BinderInfo.instImplicit))
+      (Lean.BinderInfo.implicit)))
+  (Lean.Expr.forallE
+    `N
+    (Lean.Expr.const `Nat [])
+    (Lean.Expr.forallE
+      (Lean.Name.mkNum (Lean.Name.mkStr (Lean.Name.mkStr (Lean.Name.mkNum `inst.«_@».BbOaiMeaning 288809031) "_hygCtx") "_hyg") 91)
+      (Lean.Expr.app
+        (Lean.Expr.app
+          (Lean.Expr.app (Lean.Expr.const `NeZero [Lean.Level.zero]) (Lean.Expr.const `Nat []))
+          (Lean.Expr.app
+            (Lean.Expr.app (Lean.Expr.const `MulZeroClass.toZero [Lean.Level.zero]) (Lean.Expr.const `Nat []))
+            (Lean.Expr.const `Nat.instMulZeroClass [])))
+        (Lean.Expr.bvar 0))
+      (Lean.Expr.forallE
+        `χ
+        (Lean.Expr.app
+          (Lean.Expr.app
+            (Lean.Expr.app (Lean.Expr.const `DirichletCharacter [Lean.Level.zero]) (Lean.Expr.const `Complex []))
+            (Lean.Expr.app
+              (Lean.Expr.app
+                (Lean.Expr.const `CommGroupWithZero.toCommMonoidWithZero [Lean.Level.zero])
+                (Lean.Expr.const `Complex []))
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.const `Semifield.toCommGroupWithZero [Lean.Level.zero])
+                  (Lean.Expr.const `Complex []))
+                (Lean.Expr.app
+                  (Lean.Expr.app (Lean.Expr.const `Field.toSemifield [Lean.Level.zero]) (Lean.Expr.const `Complex []))
+                  (Lean.Expr.const `Complex.instField [])))))
+          (Lean.Expr.bvar 1))
+        (Lean.Expr.forallE
+          (Lean.Name.mkNum `a._@._internal._hyg 0)
+          (Lean.Expr.app
+            (Lean.Expr.app
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.const `DirichletCharacter.IsPrimitive [Lean.Level.zero])
+                  (Lean.Expr.const `Complex []))
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.const `CommGroupWithZero.toCommMonoidWithZero [Lean.Level.zero])
+                    (Lean.Expr.const `Complex []))
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.const `Semifield.toCommGroupWithZero [Lean.Level.zero])
+                      (Lean.Expr.const `Complex []))
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.const `Field.toSemifield [Lean.Level.zero])
+                        (Lean.Expr.const `Complex []))
+                      (Lean.Expr.const `Complex.instField [])))))
+              (Lean.Expr.bvar 2))
+            (Lean.Expr.bvar 0))
+          (Lean.Expr.forallE
+            (Lean.Name.mkNum `a._@._internal._hyg 0)
+            (Lean.Expr.app
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.const `Ne [Lean.Level.succ (Lean.Level.zero)])
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.const `DirichletCharacter [Lean.Level.zero])
+                        (Lean.Expr.const `Complex []))
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.const `CommGroupWithZero.toCommMonoidWithZero [Lean.Level.zero])
+                          (Lean.Expr.const `Complex []))
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.const `Semifield.toCommGroupWithZero [Lean.Level.zero])
+                            (Lean.Expr.const `Complex []))
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.const `Field.toSemifield [Lean.Level.zero])
+                              (Lean.Expr.const `Complex []))
+                            (Lean.Expr.const `Complex.instField [])))))
+                    (Lean.Expr.bvar 3)))
+                (Lean.Expr.bvar 1))
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.const `DirichletCharacter [Lean.Level.zero])
+                          (Lean.Expr.const `Complex []))
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.const `CommGroupWithZero.toCommMonoidWithZero [Lean.Level.zero])
+                            (Lean.Expr.const `Complex []))
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.const `Semifield.toCommGroupWithZero [Lean.Level.zero])
+                              (Lean.Expr.const `Complex []))
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.const `Field.toSemifield [Lean.Level.zero])
+                                (Lean.Expr.const `Complex []))
+                              (Lean.Expr.const `Complex.instField [])))))
+                      (Lean.Expr.bvar 3)))
+                  (Lean.Expr.lit (Lean.Literal.natVal 1)))
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.const `One.toOfNat1 [Lean.Level.zero])
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.const `DirichletCharacter [Lean.Level.zero])
+                          (Lean.Expr.const `Complex []))
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.const `CommGroupWithZero.toCommMonoidWithZero [Lean.Level.zero])
+                            (Lean.Expr.const `Complex []))
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.const `Semifield.toCommGroupWithZero [Lean.Level.zero])
+                              (Lean.Expr.const `Complex []))
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.const `Field.toSemifield [Lean.Level.zero])
+                                (Lean.Expr.const `Complex []))
+                              (Lean.Expr.const `Complex.instField [])))))
+                      (Lean.Expr.bvar 3)))
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.const `MulChar.hasOne [Lean.Level.zero, Lean.Level.zero])
+                          (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 3)))
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.const `CommRing.toCommMonoid [Lean.Level.zero])
+                            (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 3)))
+                          (Lean.Expr.app (Lean.Expr.const `ZMod.commRing []) (Lean.Expr.bvar 3))))
+                      (Lean.Expr.const `Complex []))
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.const `CommGroupWithZero.toCommMonoidWithZero [Lean.Level.zero])
+                        (Lean.Expr.const `Complex []))
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.const `Semifield.toCommGroupWithZero [Lean.Level.zero])
+                          (Lean.Expr.const `Complex []))
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.const `Field.toSemifield [Lean.Level.zero])
+                            (Lean.Expr.const `Complex []))
+                          (Lean.Expr.const `Complex.instField []))))))))
+            (Lean.Expr.forallE
+              (Lean.Name.mkNum `a._@._internal._hyg 0)
+              (Lean.Expr.forallE
+                `n
+                (Lean.Expr.const `Nat [])
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.app (Lean.Expr.const `Eq [Lean.Level.succ (Lean.Level.zero)]) (Lean.Expr.const `Real []))
+                    (Lean.Expr.app
+                      (Lean.Expr.const `Complex.im [])
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.const
+                                    `DFunLike.coe
+                                    [Lean.Level.succ (Lean.Level.zero),
+                                     Lean.Level.succ (Lean.Level.zero),
+                                     Lean.Level.succ (Lean.Level.zero)])
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.app
+                                        (Lean.Expr.const `DirichletCharacter [Lean.Level.zero])
+                                        (Lean.Expr.const `Complex []))
+                                      (Lean.Expr.app
+                                        (Lean.Expr.app
+                                          (Lean.Expr.const `CommGroupWithZero.toCommMonoidWithZero [Lean.Level.zero])
+                                          (Lean.Expr.const `Complex []))
+                                        (Lean.Expr.app
+                                          (Lean.Expr.app
+                                            (Lean.Expr.const `Semifield.toCommGroupWithZero [Lean.Level.zero])
+                                            (Lean.Expr.const `Complex []))
+                                          (Lean.Expr.app
+                                            (Lean.Expr.app
+                                              (Lean.Expr.const `Field.toSemifield [Lean.Level.zero])
+                                              (Lean.Expr.const `Complex []))
+                                            (Lean.Expr.const `Complex.instField [])))))
+                                    (Lean.Expr.bvar 5)))
+                                (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 5)))
+                              (Lean.Expr.lam
+                                (Lean.Name.mkNum (Lean.Name.mkStr (Lean.Name.mkStr (Lean.Name.mkNum `x.«_@».Mathlib.Data.FunLike.Basic 2582841819) "_hygCtx") "_hyg") 11)
+                                (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 5))
+                                (Lean.Expr.const `Complex [])
+                                (Lean.BinderInfo.default)))
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `MulChar.instFunLike [Lean.Level.zero, Lean.Level.zero])
+                                    (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 5)))
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `CommRing.toCommMonoid [Lean.Level.zero])
+                                      (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 5)))
+                                    (Lean.Expr.app (Lean.Expr.const `ZMod.commRing []) (Lean.Expr.bvar 5))))
+                                (Lean.Expr.const `Complex []))
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.const `CommGroupWithZero.toCommMonoidWithZero [Lean.Level.zero])
+                                  (Lean.Expr.const `Complex []))
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `Semifield.toCommGroupWithZero [Lean.Level.zero])
+                                    (Lean.Expr.const `Complex []))
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `Field.toSemifield [Lean.Level.zero])
+                                      (Lean.Expr.const `Complex []))
+                                    (Lean.Expr.const `Complex.instField []))))))
+                          (Lean.Expr.bvar 3))
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.const `Nat.cast [Lean.Level.zero])
+                              (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 5)))
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.const `AddMonoidWithOne.toNatCast [Lean.Level.zero])
+                                (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 5)))
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.const `AddGroupWithOne.toAddMonoidWithOne [Lean.Level.zero])
+                                  (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 5)))
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `Ring.toAddGroupWithOne [Lean.Level.zero])
+                                    (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 5)))
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `CommRing.toRing [Lean.Level.zero])
+                                      (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 5)))
+                                    (Lean.Expr.app (Lean.Expr.const `ZMod.commRing []) (Lean.Expr.bvar 5)))))))
+                          (Lean.Expr.bvar 0)))))
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Real []))
+                      (Lean.Expr.lit (Lean.Literal.natVal 0)))
+                    (Lean.Expr.app
+                      (Lean.Expr.app (Lean.Expr.const `Zero.toOfNat0 [Lean.Level.zero]) (Lean.Expr.const `Real []))
+                      (Lean.Expr.const `Real.instZero []))))
+                (Lean.BinderInfo.default))
+              (Lean.Expr.forallE
+                `z
+                (Lean.Expr.const `Complex [])
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.const `Eq [Lean.Level.succ (Lean.Level.zero)])
+                      (Lean.Expr.const `Complex []))
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.app (Lean.Expr.const `DBN.Gen.Hchi []) (Lean.Expr.bvar 6))
+                          (Lean.Expr.bvar 4))
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Real []))
+                            (Lean.Expr.lit (Lean.Literal.natVal 0)))
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.const `Zero.toOfNat0 [Lean.Level.zero])
+                              (Lean.Expr.const `Real []))
+                            (Lean.Expr.const `Real.instZero []))))
+                      (Lean.Expr.bvar 0)))
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.const `HMul.hMul [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                              (Lean.Expr.const `Complex []))
+                            (Lean.Expr.const `Complex []))
+                          (Lean.Expr.const `Complex []))
+                        (Lean.Expr.app
+                          (Lean.Expr.app (Lean.Expr.const `instHMul [Lean.Level.zero]) (Lean.Expr.const `Complex []))
+                          (Lean.Expr.const `Complex.instMul [])))
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.const `HMul.hMul [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                                  (Lean.Expr.const `Complex []))
+                                (Lean.Expr.const `Complex []))
+                              (Lean.Expr.const `Complex []))
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.const `instHMul [Lean.Level.zero])
+                                (Lean.Expr.const `Complex []))
+                              (Lean.Expr.const `Complex.instMul [])))
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `HDiv.hDiv [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                                      (Lean.Expr.const `Complex []))
+                                    (Lean.Expr.const `Complex []))
+                                  (Lean.Expr.const `Complex []))
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `instHDiv [Lean.Level.zero])
+                                    (Lean.Expr.const `Complex []))
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `DivInvMonoid.toDiv [Lean.Level.zero])
+                                      (Lean.Expr.const `Complex []))
+                                    (Lean.Expr.const `Complex.instDivInvMonoid []))))
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                    (Lean.Expr.const `Complex []))
+                                  (Lean.Expr.lit (Lean.Literal.natVal 1)))
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `One.toOfNat1 [Lean.Level.zero])
+                                    (Lean.Expr.const `Complex []))
+                                  (Lean.Expr.const `Complex.instOne []))))
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                  (Lean.Expr.const `Complex []))
+                                (Lean.Expr.lit (Lean.Literal.natVal 8)))
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `instOfNatAtLeastTwo [Lean.Level.zero])
+                                      (Lean.Expr.const `Complex []))
+                                    (Lean.Expr.lit (Lean.Literal.natVal 8)))
+                                  (Lean.Expr.const `Complex.instNatCast []))
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `Nat.instAtLeastTwoHAddOfNat [])
+                                    (Lean.Expr.app
+                                      (Lean.Expr.app
+                                        (Lean.Expr.app
+                                          (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                          (Lean.Expr.const `Nat []))
+                                        (Lean.Expr.lit (Lean.Literal.natVal 7)))
+                                      (Lean.Expr.app
+                                        (Lean.Expr.const `instOfNatNat [])
+                                        (Lean.Expr.lit (Lean.Literal.natVal 7)))))
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `Nat.instNeZeroSucc [])
+                                    (Lean.Expr.app
+                                      (Lean.Expr.app
+                                        (Lean.Expr.app
+                                          (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                          (Lean.Expr.const `Nat []))
+                                        (Lean.Expr.lit (Lean.Literal.natVal 6)))
+                                      (Lean.Expr.app
+                                        (Lean.Expr.const `instOfNatNat [])
+                                        (Lean.Expr.lit (Lean.Literal.natVal 6))))))))))
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `HPow.hPow [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                                    (Lean.Expr.const `Complex []))
+                                  (Lean.Expr.const `Complex []))
+                                (Lean.Expr.const `Complex []))
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `instHPow [Lean.Level.zero, Lean.Level.zero])
+                                    (Lean.Expr.const `Complex []))
+                                  (Lean.Expr.const `Complex []))
+                                (Lean.Expr.const `Complex.instPow [])))
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.const `Nat.cast [Lean.Level.zero])
+                                  (Lean.Expr.const `Complex []))
+                                (Lean.Expr.const `Complex.instNatCast []))
+                              (Lean.Expr.bvar 6)))
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `HDiv.hDiv [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                                      (Lean.Expr.const `Complex []))
+                                    (Lean.Expr.const `Complex []))
+                                  (Lean.Expr.const `Complex []))
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `instHDiv [Lean.Level.zero])
+                                    (Lean.Expr.const `Complex []))
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `DivInvMonoid.toDiv [Lean.Level.zero])
+                                      (Lean.Expr.const `Complex []))
+                                    (Lean.Expr.const `Complex.instDivInvMonoid []))))
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.app
+                                        (Lean.Expr.app
+                                          (Lean.Expr.const
+                                            `HAdd.hAdd
+                                            [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                                          (Lean.Expr.const `Complex []))
+                                        (Lean.Expr.const `Complex []))
+                                      (Lean.Expr.const `Complex []))
+                                    (Lean.Expr.app
+                                      (Lean.Expr.app
+                                        (Lean.Expr.const `instHAdd [Lean.Level.zero])
+                                        (Lean.Expr.const `Complex []))
+                                      (Lean.Expr.const `Complex.instAdd [])))
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.app
+                                        (Lean.Expr.app
+                                          (Lean.Expr.app
+                                            (Lean.Expr.app
+                                              (Lean.Expr.const
+                                                `HAdd.hAdd
+                                                [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                                              (Lean.Expr.const `Complex []))
+                                            (Lean.Expr.const `Complex []))
+                                          (Lean.Expr.const `Complex []))
+                                        (Lean.Expr.app
+                                          (Lean.Expr.app
+                                            (Lean.Expr.const `instHAdd [Lean.Level.zero])
+                                            (Lean.Expr.const `Complex []))
+                                          (Lean.Expr.const `Complex.instAdd [])))
+                                      (Lean.Expr.app
+                                        (Lean.Expr.app
+                                          (Lean.Expr.app
+                                            (Lean.Expr.app
+                                              (Lean.Expr.app
+                                                (Lean.Expr.app
+                                                  (Lean.Expr.const
+                                                    `HDiv.hDiv
+                                                    [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                                                  (Lean.Expr.const `Complex []))
+                                                (Lean.Expr.const `Complex []))
+                                              (Lean.Expr.const `Complex []))
+                                            (Lean.Expr.app
+                                              (Lean.Expr.app
+                                                (Lean.Expr.const `instHDiv [Lean.Level.zero])
+                                                (Lean.Expr.const `Complex []))
+                                              (Lean.Expr.app
+                                                (Lean.Expr.app
+                                                  (Lean.Expr.const `DivInvMonoid.toDiv [Lean.Level.zero])
+                                                  (Lean.Expr.const `Complex []))
+                                                (Lean.Expr.const `Complex.instDivInvMonoid []))))
+                                          (Lean.Expr.app
+                                            (Lean.Expr.app
+                                              (Lean.Expr.app
+                                                (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                                (Lean.Expr.const `Complex []))
+                                              (Lean.Expr.lit (Lean.Literal.natVal 1)))
+                                            (Lean.Expr.app
+                                              (Lean.Expr.app
+                                                (Lean.Expr.const `One.toOfNat1 [Lean.Level.zero])
+                                                (Lean.Expr.const `Complex []))
+                                              (Lean.Expr.const `Complex.instOne []))))
+                                        (Lean.Expr.app
+                                          (Lean.Expr.app
+                                            (Lean.Expr.app
+                                              (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                              (Lean.Expr.const `Complex []))
+                                            (Lean.Expr.lit (Lean.Literal.natVal 2)))
+                                          (Lean.Expr.app
+                                            (Lean.Expr.app
+                                              (Lean.Expr.app
+                                                (Lean.Expr.app
+                                                  (Lean.Expr.const `instOfNatAtLeastTwo [Lean.Level.zero])
+                                                  (Lean.Expr.const `Complex []))
+                                                (Lean.Expr.lit (Lean.Literal.natVal 2)))
+                                              (Lean.Expr.const `Complex.instNatCast []))
+                                            (Lean.Expr.app
+                                              (Lean.Expr.app
+                                                (Lean.Expr.const `Nat.instAtLeastTwoHAddOfNat [])
+                                                (Lean.Expr.app
+                                                  (Lean.Expr.app
+                                                    (Lean.Expr.app
+                                                      (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                                      (Lean.Expr.const `Nat []))
+                                                    (Lean.Expr.lit (Lean.Literal.natVal 1)))
+                                                  (Lean.Expr.app
+                                                    (Lean.Expr.const `instOfNatNat [])
+                                                    (Lean.Expr.lit (Lean.Literal.natVal 1)))))
+                                              (Lean.Expr.app
+                                                (Lean.Expr.const `Nat.instNeZeroSucc [])
+                                                (Lean.Expr.app
+                                                  (Lean.Expr.app
+                                                    (Lean.Expr.app
+                                                      (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                                      (Lean.Expr.const `Nat []))
+                                                    (Lean.Expr.lit (Lean.Literal.natVal 0)))
+                                                  (Lean.Expr.app
+                                                    (Lean.Expr.const `instOfNatNat [])
+                                                    (Lean.Expr.lit (Lean.Literal.natVal 0))))))))))
+                                    (Lean.Expr.app
+                                      (Lean.Expr.app
+                                        (Lean.Expr.app
+                                          (Lean.Expr.app
+                                            (Lean.Expr.app
+                                              (Lean.Expr.app
+                                                (Lean.Expr.const
+                                                  `HDiv.hDiv
+                                                  [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                                                (Lean.Expr.const `Complex []))
+                                              (Lean.Expr.const `Complex []))
+                                            (Lean.Expr.const `Complex []))
+                                          (Lean.Expr.app
+                                            (Lean.Expr.app
+                                              (Lean.Expr.const `instHDiv [Lean.Level.zero])
+                                              (Lean.Expr.const `Complex []))
+                                            (Lean.Expr.app
+                                              (Lean.Expr.app
+                                                (Lean.Expr.const `DivInvMonoid.toDiv [Lean.Level.zero])
+                                                (Lean.Expr.const `Complex []))
+                                              (Lean.Expr.const `Complex.instDivInvMonoid []))))
+                                        (Lean.Expr.app
+                                          (Lean.Expr.app
+                                            (Lean.Expr.app
+                                              (Lean.Expr.app
+                                                (Lean.Expr.app
+                                                  (Lean.Expr.app
+                                                    (Lean.Expr.const
+                                                      `HMul.hMul
+                                                      [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                                                    (Lean.Expr.const `Complex []))
+                                                  (Lean.Expr.const `Complex []))
+                                                (Lean.Expr.const `Complex []))
+                                              (Lean.Expr.app
+                                                (Lean.Expr.app
+                                                  (Lean.Expr.const `instHMul [Lean.Level.zero])
+                                                  (Lean.Expr.const `Complex []))
+                                                (Lean.Expr.const `Complex.instMul [])))
+                                            (Lean.Expr.const `Complex.I []))
+                                          (Lean.Expr.bvar 0)))
+                                      (Lean.Expr.app
+                                        (Lean.Expr.app
+                                          (Lean.Expr.app
+                                            (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                            (Lean.Expr.const `Complex []))
+                                          (Lean.Expr.lit (Lean.Literal.natVal 2)))
+                                        (Lean.Expr.app
+                                          (Lean.Expr.app
+                                            (Lean.Expr.app
+                                              (Lean.Expr.app
+                                                (Lean.Expr.const `instOfNatAtLeastTwo [Lean.Level.zero])
+                                                (Lean.Expr.const `Complex []))
+                                              (Lean.Expr.lit (Lean.Literal.natVal 2)))
+                                            (Lean.Expr.const `Complex.instNatCast []))
+                                          (Lean.Expr.app
+                                            (Lean.Expr.app
+                                              (Lean.Expr.const `Nat.instAtLeastTwoHAddOfNat [])
+                                              (Lean.Expr.app
+                                                (Lean.Expr.app
+                                                  (Lean.Expr.app
+                                                    (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                                    (Lean.Expr.const `Nat []))
+                                                  (Lean.Expr.lit (Lean.Literal.natVal 1)))
+                                                (Lean.Expr.app
+                                                  (Lean.Expr.const `instOfNatNat [])
+                                                  (Lean.Expr.lit (Lean.Literal.natVal 1)))))
+                                            (Lean.Expr.app
+                                              (Lean.Expr.const `Nat.instNeZeroSucc [])
+                                              (Lean.Expr.app
+                                                (Lean.Expr.app
+                                                  (Lean.Expr.app
+                                                    (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                                    (Lean.Expr.const `Nat []))
+                                                  (Lean.Expr.lit (Lean.Literal.natVal 0)))
+                                                (Lean.Expr.app
+                                                  (Lean.Expr.const `instOfNatNat [])
+                                                  (Lean.Expr.lit (Lean.Literal.natVal 0)))))))))))
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `Nat.cast [Lean.Level.zero])
+                                      (Lean.Expr.const `Complex []))
+                                    (Lean.Expr.const `Complex.instNatCast []))
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app (Lean.Expr.const `DBN.Gen.parityK []) (Lean.Expr.bvar 6))
+                                    (Lean.Expr.bvar 4)))))
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                  (Lean.Expr.const `Complex []))
+                                (Lean.Expr.lit (Lean.Literal.natVal 2)))
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `instOfNatAtLeastTwo [Lean.Level.zero])
+                                      (Lean.Expr.const `Complex []))
+                                    (Lean.Expr.lit (Lean.Literal.natVal 2)))
+                                  (Lean.Expr.const `Complex.instNatCast []))
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `Nat.instAtLeastTwoHAddOfNat [])
+                                    (Lean.Expr.app
+                                      (Lean.Expr.app
+                                        (Lean.Expr.app
+                                          (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                          (Lean.Expr.const `Nat []))
+                                        (Lean.Expr.lit (Lean.Literal.natVal 1)))
+                                      (Lean.Expr.app
+                                        (Lean.Expr.const `instOfNatNat [])
+                                        (Lean.Expr.lit (Lean.Literal.natVal 1)))))
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `Nat.instNeZeroSucc [])
+                                    (Lean.Expr.app
+                                      (Lean.Expr.app
+                                        (Lean.Expr.app
+                                          (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                          (Lean.Expr.const `Nat []))
+                                        (Lean.Expr.lit (Lean.Literal.natVal 0)))
+                                      (Lean.Expr.app
+                                        (Lean.Expr.const `instOfNatNat [])
+                                        (Lean.Expr.lit (Lean.Literal.natVal 0))))))))))))
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.app (Lean.Expr.const `DirichletCharacter.completedLFunction []) (Lean.Expr.bvar 6))
+                          (Lean.Expr.bvar 5))
+                        (Lean.Expr.bvar 4))
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.const `HAdd.hAdd [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                                  (Lean.Expr.const `Complex []))
+                                (Lean.Expr.const `Complex []))
+                              (Lean.Expr.const `Complex []))
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.const `instHAdd [Lean.Level.zero])
+                                (Lean.Expr.const `Complex []))
+                              (Lean.Expr.const `Complex.instAdd [])))
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `HDiv.hDiv [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                                      (Lean.Expr.const `Complex []))
+                                    (Lean.Expr.const `Complex []))
+                                  (Lean.Expr.const `Complex []))
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `instHDiv [Lean.Level.zero])
+                                    (Lean.Expr.const `Complex []))
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `DivInvMonoid.toDiv [Lean.Level.zero])
+                                      (Lean.Expr.const `Complex []))
+                                    (Lean.Expr.const `Complex.instDivInvMonoid []))))
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                    (Lean.Expr.const `Complex []))
+                                  (Lean.Expr.lit (Lean.Literal.natVal 1)))
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `One.toOfNat1 [Lean.Level.zero])
+                                    (Lean.Expr.const `Complex []))
+                                  (Lean.Expr.const `Complex.instOne []))))
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                  (Lean.Expr.const `Complex []))
+                                (Lean.Expr.lit (Lean.Literal.natVal 2)))
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `instOfNatAtLeastTwo [Lean.Level.zero])
+                                      (Lean.Expr.const `Complex []))
+                                    (Lean.Expr.lit (Lean.Literal.natVal 2)))
+                                  (Lean.Expr.const `Complex.instNatCast []))
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `Nat.instAtLeastTwoHAddOfNat [])
+                                    (Lean.Expr.app
+                                      (Lean.Expr.app
+                                        (Lean.Expr.app
+                                          (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                          (Lean.Expr.const `Nat []))
+                                        (Lean.Expr.lit (Lean.Literal.natVal 1)))
+                                      (Lean.Expr.app
+                                        (Lean.Expr.const `instOfNatNat [])
+                                        (Lean.Expr.lit (Lean.Literal.natVal 1)))))
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `Nat.instNeZeroSucc [])
+                                    (Lean.Expr.app
+                                      (Lean.Expr.app
+                                        (Lean.Expr.app
+                                          (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                          (Lean.Expr.const `Nat []))
+                                        (Lean.Expr.lit (Lean.Literal.natVal 0)))
+                                      (Lean.Expr.app
+                                        (Lean.Expr.const `instOfNatNat [])
+                                        (Lean.Expr.lit (Lean.Literal.natVal 0))))))))))
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `HDiv.hDiv [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                                    (Lean.Expr.const `Complex []))
+                                  (Lean.Expr.const `Complex []))
+                                (Lean.Expr.const `Complex []))
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.const `instHDiv [Lean.Level.zero])
+                                  (Lean.Expr.const `Complex []))
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `DivInvMonoid.toDiv [Lean.Level.zero])
+                                    (Lean.Expr.const `Complex []))
+                                  (Lean.Expr.const `Complex.instDivInvMonoid []))))
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.app
+                                        (Lean.Expr.const `HMul.hMul [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                                        (Lean.Expr.const `Complex []))
+                                      (Lean.Expr.const `Complex []))
+                                    (Lean.Expr.const `Complex []))
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `instHMul [Lean.Level.zero])
+                                      (Lean.Expr.const `Complex []))
+                                    (Lean.Expr.const `Complex.instMul [])))
+                                (Lean.Expr.const `Complex.I []))
+                              (Lean.Expr.bvar 0)))
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                (Lean.Expr.const `Complex []))
+                              (Lean.Expr.lit (Lean.Literal.natVal 2)))
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `instOfNatAtLeastTwo [Lean.Level.zero])
+                                    (Lean.Expr.const `Complex []))
+                                  (Lean.Expr.lit (Lean.Literal.natVal 2)))
+                                (Lean.Expr.const `Complex.instNatCast []))
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.const `Nat.instAtLeastTwoHAddOfNat [])
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.app
+                                        (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                        (Lean.Expr.const `Nat []))
+                                      (Lean.Expr.lit (Lean.Literal.natVal 1)))
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `instOfNatNat [])
+                                      (Lean.Expr.lit (Lean.Literal.natVal 1)))))
+                                (Lean.Expr.app
+                                  (Lean.Expr.const `Nat.instNeZeroSucc [])
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.app
+                                        (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                        (Lean.Expr.const `Nat []))
+                                      (Lean.Expr.lit (Lean.Literal.natVal 0)))
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `instOfNatNat [])
+                                      (Lean.Expr.lit (Lean.Literal.natVal 0)))))))))))))
+                (Lean.BinderInfo.default))
+              (Lean.BinderInfo.default))
+            (Lean.BinderInfo.default))
+          (Lean.BinderInfo.default))
+        (Lean.BinderInfo.default))
+      (Lean.BinderInfo.instImplicit))
+    (Lean.BinderInfo.implicit)) (target: type only)
+DUMP-END bb_real_primitive_meaning_oai
+DUMP-BEGIN DBN.Gen.Hchi
+kind=def levelParams=[] type=Lean.Expr.forallE
+  `N
+  (Lean.Expr.const `Nat [])
+  (Lean.Expr.forallE
+    `χ
+    (Lean.Expr.app
+      (Lean.Expr.app
+        (Lean.Expr.app (Lean.Expr.const `DirichletCharacter [Lean.Level.zero]) (Lean.Expr.const `Complex []))
+        (Lean.Expr.app
+          (Lean.Expr.app
+            (Lean.Expr.const `CommGroupWithZero.toCommMonoidWithZero [Lean.Level.zero])
+            (Lean.Expr.const `Complex []))
+          (Lean.Expr.app
+            (Lean.Expr.app
+              (Lean.Expr.const `Semifield.toCommGroupWithZero [Lean.Level.zero])
+              (Lean.Expr.const `Complex []))
+            (Lean.Expr.app
+              (Lean.Expr.app (Lean.Expr.const `Field.toSemifield [Lean.Level.zero]) (Lean.Expr.const `Complex []))
+              (Lean.Expr.const `Complex.instField [])))))
+      (Lean.Expr.bvar 0))
+    (Lean.Expr.forallE
+      `t
+      (Lean.Expr.const `Real [])
+      (Lean.Expr.forallE `z (Lean.Expr.const `Complex []) (Lean.Expr.const `Complex []) (Lean.BinderInfo.default))
+      (Lean.BinderInfo.default))
+    (Lean.BinderInfo.default))
+  (Lean.BinderInfo.implicit) hints=regular 46 safety=safe all=[DBN.Gen.Hchi] value=Lean.Expr.lam
+  `N
+  (Lean.Expr.const `Nat [])
+  (Lean.Expr.lam
+    `χ
+    (Lean.Expr.app
+      (Lean.Expr.app
+        (Lean.Expr.app (Lean.Expr.const `DirichletCharacter [Lean.Level.zero]) (Lean.Expr.const `Complex []))
+        (Lean.Expr.app
+          (Lean.Expr.app
+            (Lean.Expr.const `CommGroupWithZero.toCommMonoidWithZero [Lean.Level.zero])
+            (Lean.Expr.const `Complex []))
+          (Lean.Expr.app
+            (Lean.Expr.app
+              (Lean.Expr.const `Semifield.toCommGroupWithZero [Lean.Level.zero])
+              (Lean.Expr.const `Complex []))
+            (Lean.Expr.app
+              (Lean.Expr.app (Lean.Expr.const `Field.toSemifield [Lean.Level.zero]) (Lean.Expr.const `Complex []))
+              (Lean.Expr.const `Complex.instField [])))))
+      (Lean.Expr.bvar 0))
+    (Lean.Expr.lam
+      `t
+      (Lean.Expr.const `Real [])
+      (Lean.Expr.lam
+        `z
+        (Lean.Expr.const `Complex [])
+        (Lean.Expr.app
+          (Lean.Expr.app
+            (Lean.Expr.app
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.const `MeasureTheory.integral [Lean.Level.zero, Lean.Level.zero])
+                      (Lean.Expr.const `Real []))
+                    (Lean.Expr.const `Complex []))
+                  (Lean.Expr.const `Complex.instNormedAddCommGroup []))
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.const `InnerProductSpace.toNormedSpace [Lean.Level.zero, Lean.Level.zero])
+                          (Lean.Expr.const `Real []))
+                        (Lean.Expr.const `Complex []))
+                      (Lean.Expr.const `Real.instRCLike []))
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.const `NormedAddCommGroup.toSeminormedAddCommGroup [Lean.Level.zero])
+                        (Lean.Expr.const `Complex []))
+                      (Lean.Expr.const `Complex.instNormedAddCommGroup [])))
+                  (Lean.Expr.const `instInnerProductSpaceRealComplex [])))
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.const `MeasureTheory.MeasureSpace.toMeasurableSpace [Lean.Level.zero])
+                  (Lean.Expr.const `Real []))
+                (Lean.Expr.const `Real.measureSpace [])))
+            (Lean.Expr.app
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.const `MeasureTheory.Measure.restrict [Lean.Level.zero])
+                    (Lean.Expr.const `Real []))
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.const `MeasureTheory.MeasureSpace.toMeasurableSpace [Lean.Level.zero])
+                      (Lean.Expr.const `Real []))
+                    (Lean.Expr.const `Real.measureSpace [])))
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.const `MeasureTheory.MeasureSpace.volume [Lean.Level.zero])
+                    (Lean.Expr.const `Real []))
+                  (Lean.Expr.const `Real.measureSpace [])))
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.app (Lean.Expr.const `Set.Ioi [Lean.Level.zero]) (Lean.Expr.const `Real []))
+                  (Lean.Expr.const `Real.instPreorder []))
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Real []))
+                    (Lean.Expr.lit (Lean.Literal.natVal 0)))
+                  (Lean.Expr.app
+                    (Lean.Expr.app (Lean.Expr.const `Zero.toOfNat0 [Lean.Level.zero]) (Lean.Expr.const `Real []))
+                    (Lean.Expr.const `Real.instZero []))))))
+          (Lean.Expr.lam
+            `u
+            (Lean.Expr.const `Real [])
+            (Lean.Expr.app
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.const `HMul.hMul [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                        (Lean.Expr.const `Complex []))
+                      (Lean.Expr.const `Complex []))
+                    (Lean.Expr.const `Complex []))
+                  (Lean.Expr.app
+                    (Lean.Expr.app (Lean.Expr.const `instHMul [Lean.Level.zero]) (Lean.Expr.const `Complex []))
+                    (Lean.Expr.const `Complex.instMul [])))
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.const `HMul.hMul [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                            (Lean.Expr.const `Complex []))
+                          (Lean.Expr.const `Complex []))
+                        (Lean.Expr.const `Complex []))
+                      (Lean.Expr.app
+                        (Lean.Expr.app (Lean.Expr.const `instHMul [Lean.Level.zero]) (Lean.Expr.const `Complex []))
+                        (Lean.Expr.const `Complex.instMul [])))
+                    (Lean.Expr.app
+                      (Lean.Expr.const `Complex.ofReal [])
+                      (Lean.Expr.app
+                        (Lean.Expr.const `Real.exp [])
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `HMul.hMul [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                                    (Lean.Expr.const `Real []))
+                                  (Lean.Expr.const `Real []))
+                                (Lean.Expr.const `Real []))
+                              (Lean.Expr.app
+                                (Lean.Expr.app (Lean.Expr.const `instHMul [Lean.Level.zero]) (Lean.Expr.const `Real []))
+                                (Lean.Expr.const `Real.instMul [])))
+                            (Lean.Expr.bvar 2))
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `HPow.hPow [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                                      (Lean.Expr.const `Real []))
+                                    (Lean.Expr.const `Nat []))
+                                  (Lean.Expr.const `Real []))
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `instHPow [Lean.Level.zero, Lean.Level.zero])
+                                      (Lean.Expr.const `Real []))
+                                    (Lean.Expr.const `Nat []))
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `NPow.toPow [Lean.Level.zero])
+                                      (Lean.Expr.const `Real []))
+                                    (Lean.Expr.app
+                                      (Lean.Expr.app
+                                        (Lean.Expr.const `Monoid.toNPow [Lean.Level.zero])
+                                        (Lean.Expr.const `Real []))
+                                      (Lean.Expr.const `Real.instMonoid [])))))
+                              (Lean.Expr.bvar 0))
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                  (Lean.Expr.const `Nat []))
+                                (Lean.Expr.lit (Lean.Literal.natVal 2)))
+                              (Lean.Expr.app
+                                (Lean.Expr.const `instOfNatNat [])
+                                (Lean.Expr.lit (Lean.Literal.natVal 2)))))))))
+                  (Lean.Expr.app
+                    (Lean.Expr.const `Complex.ofReal [])
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.const `DBN.Gen.PhiC [])
+                            (Lean.Expr.lam
+                              `n
+                              (Lean.Expr.const `Nat [])
+                              (Lean.Expr.app
+                                (Lean.Expr.const `Complex.re [])
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.app
+                                        (Lean.Expr.app
+                                          (Lean.Expr.app
+                                            (Lean.Expr.const
+                                              `DFunLike.coe
+                                              [Lean.Level.succ (Lean.Level.zero),
+                                               Lean.Level.succ (Lean.Level.zero),
+                                               Lean.Level.succ (Lean.Level.zero)])
+                                            (Lean.Expr.app
+                                              (Lean.Expr.app
+                                                (Lean.Expr.app
+                                                  (Lean.Expr.const `DirichletCharacter [Lean.Level.zero])
+                                                  (Lean.Expr.const `Complex []))
+                                                (Lean.Expr.app
+                                                  (Lean.Expr.app
+                                                    (Lean.Expr.const
+                                                      `CommGroupWithZero.toCommMonoidWithZero
+                                                      [Lean.Level.zero])
+                                                    (Lean.Expr.const `Complex []))
+                                                  (Lean.Expr.app
+                                                    (Lean.Expr.app
+                                                      (Lean.Expr.const `Semifield.toCommGroupWithZero [Lean.Level.zero])
+                                                      (Lean.Expr.const `Complex []))
+                                                    (Lean.Expr.app
+                                                      (Lean.Expr.app
+                                                        (Lean.Expr.const `Field.toSemifield [Lean.Level.zero])
+                                                        (Lean.Expr.const `Complex []))
+                                                      (Lean.Expr.const `Complex.instField [])))))
+                                              (Lean.Expr.bvar 5)))
+                                          (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 5)))
+                                        (Lean.Expr.lam
+                                          (Lean.Name.mkNum (Lean.Name.mkStr (Lean.Name.mkStr (Lean.Name.mkNum `x.«_@».Mathlib.Data.FunLike.Basic 2582841819) "_hygCtx") "_hyg") 11)
+                                          (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 5))
+                                          (Lean.Expr.const `Complex [])
+                                          (Lean.BinderInfo.default)))
+                                      (Lean.Expr.app
+                                        (Lean.Expr.app
+                                          (Lean.Expr.app
+                                            (Lean.Expr.app
+                                              (Lean.Expr.const `MulChar.instFunLike [Lean.Level.zero, Lean.Level.zero])
+                                              (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 5)))
+                                            (Lean.Expr.app
+                                              (Lean.Expr.app
+                                                (Lean.Expr.const `CommRing.toCommMonoid [Lean.Level.zero])
+                                                (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 5)))
+                                              (Lean.Expr.app (Lean.Expr.const `ZMod.commRing []) (Lean.Expr.bvar 5))))
+                                          (Lean.Expr.const `Complex []))
+                                        (Lean.Expr.app
+                                          (Lean.Expr.app
+                                            (Lean.Expr.const `CommGroupWithZero.toCommMonoidWithZero [Lean.Level.zero])
+                                            (Lean.Expr.const `Complex []))
+                                          (Lean.Expr.app
+                                            (Lean.Expr.app
+                                              (Lean.Expr.const `Semifield.toCommGroupWithZero [Lean.Level.zero])
+                                              (Lean.Expr.const `Complex []))
+                                            (Lean.Expr.app
+                                              (Lean.Expr.app
+                                                (Lean.Expr.const `Field.toSemifield [Lean.Level.zero])
+                                                (Lean.Expr.const `Complex []))
+                                              (Lean.Expr.const `Complex.instField []))))))
+                                    (Lean.Expr.bvar 4))
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.app
+                                        (Lean.Expr.const `Nat.cast [Lean.Level.zero])
+                                        (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 5)))
+                                      (Lean.Expr.app
+                                        (Lean.Expr.app
+                                          (Lean.Expr.const `AddMonoidWithOne.toNatCast [Lean.Level.zero])
+                                          (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 5)))
+                                        (Lean.Expr.app
+                                          (Lean.Expr.app
+                                            (Lean.Expr.const `AddGroupWithOne.toAddMonoidWithOne [Lean.Level.zero])
+                                            (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 5)))
+                                          (Lean.Expr.app
+                                            (Lean.Expr.app
+                                              (Lean.Expr.const `Ring.toAddGroupWithOne [Lean.Level.zero])
+                                              (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 5)))
+                                            (Lean.Expr.app
+                                              (Lean.Expr.app
+                                                (Lean.Expr.const `CommRing.toRing [Lean.Level.zero])
+                                                (Lean.Expr.app (Lean.Expr.const `ZMod []) (Lean.Expr.bvar 5)))
+                                              (Lean.Expr.app
+                                                (Lean.Expr.const `ZMod.commRing [])
+                                                (Lean.Expr.bvar 5)))))))
+                                    (Lean.Expr.bvar 0))))
+                              (Lean.BinderInfo.default)))
+                          (Lean.Expr.app
+                            (Lean.Expr.app (Lean.Expr.const `DBN.Gen.parityK []) (Lean.Expr.bvar 4))
+                            (Lean.Expr.bvar 3)))
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.app (Lean.Expr.const `Nat.cast [Lean.Level.zero]) (Lean.Expr.const `Real []))
+                            (Lean.Expr.const `Real.instNatCast []))
+                          (Lean.Expr.bvar 4)))
+                      (Lean.Expr.bvar 0)))))
+              (Lean.Expr.app
+                (Lean.Expr.const `Complex.cos [])
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.const `HMul.hMul [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                            (Lean.Expr.const `Complex []))
+                          (Lean.Expr.const `Complex []))
+                        (Lean.Expr.const `Complex []))
+                      (Lean.Expr.app
+                        (Lean.Expr.app (Lean.Expr.const `instHMul [Lean.Level.zero]) (Lean.Expr.const `Complex []))
+                        (Lean.Expr.const `Complex.instMul [])))
+                    (Lean.Expr.bvar 1))
+                  (Lean.Expr.app (Lean.Expr.const `Complex.ofReal []) (Lean.Expr.bvar 0)))))
+            (Lean.BinderInfo.default)))
+        (Lean.BinderInfo.default))
+      (Lean.BinderInfo.default))
+    (Lean.BinderInfo.default))
+  (Lean.BinderInfo.implicit)
+DUMP-END DBN.Gen.Hchi
+DUMP-BEGIN DBN.Gen.PhiC
+kind=def levelParams=[] type=Lean.Expr.forallE
+  `c
+  (Lean.Expr.forallE
+    (Lean.Name.mkNum `a._@._internal._hyg 0)
+    (Lean.Expr.const `Nat [])
+    (Lean.Expr.const `Real [])
+    (Lean.BinderInfo.default))
+  (Lean.Expr.forallE
+    `k
+    (Lean.Expr.const `Nat [])
+    (Lean.Expr.forallE
+      `q
+      (Lean.Expr.const `Real [])
+      (Lean.Expr.forallE `u (Lean.Expr.const `Real []) (Lean.Expr.const `Real []) (Lean.BinderInfo.default))
+      (Lean.BinderInfo.default))
+    (Lean.BinderInfo.default))
+  (Lean.BinderInfo.default) hints=regular 34 safety=safe all=[DBN.Gen.PhiC] value=Lean.Expr.lam
+  `c
+  (Lean.Expr.forallE
+    (Lean.Name.mkNum `a._@._internal._hyg 0)
+    (Lean.Expr.const `Nat [])
+    (Lean.Expr.const `Real [])
+    (Lean.BinderInfo.default))
+  (Lean.Expr.lam
+    `k
+    (Lean.Expr.const `Nat [])
+    (Lean.Expr.lam
+      `q
+      (Lean.Expr.const `Real [])
+      (Lean.Expr.lam
+        `u
+        (Lean.Expr.const `Real [])
+        (Lean.Expr.app
+          (Lean.Expr.app
+            (Lean.Expr.app
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.const `HMul.hMul [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                    (Lean.Expr.const `Real []))
+                  (Lean.Expr.const `Real []))
+                (Lean.Expr.const `Real []))
+              (Lean.Expr.app
+                (Lean.Expr.app (Lean.Expr.const `instHMul [Lean.Level.zero]) (Lean.Expr.const `Real []))
+                (Lean.Expr.const `Real.instMul [])))
+            (Lean.Expr.app
+              (Lean.Expr.const `Real.exp [])
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.const `HMul.hMul [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                          (Lean.Expr.const `Real []))
+                        (Lean.Expr.const `Real []))
+                      (Lean.Expr.const `Real []))
+                    (Lean.Expr.app
+                      (Lean.Expr.app (Lean.Expr.const `instHMul [Lean.Level.zero]) (Lean.Expr.const `Real []))
+                      (Lean.Expr.const `Real.instMul [])))
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.const `HAdd.hAdd [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                              (Lean.Expr.const `Real []))
+                            (Lean.Expr.const `Real []))
+                          (Lean.Expr.const `Real []))
+                        (Lean.Expr.app
+                          (Lean.Expr.app (Lean.Expr.const `instHAdd [Lean.Level.zero]) (Lean.Expr.const `Real []))
+                          (Lean.Expr.const `Real.instAdd [])))
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Real []))
+                          (Lean.Expr.lit (Lean.Literal.natVal 1)))
+                        (Lean.Expr.app
+                          (Lean.Expr.app (Lean.Expr.const `One.toOfNat1 [Lean.Level.zero]) (Lean.Expr.const `Real []))
+                          (Lean.Expr.const `Real.instOne []))))
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.const `HMul.hMul [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                                (Lean.Expr.const `Real []))
+                              (Lean.Expr.const `Real []))
+                            (Lean.Expr.const `Real []))
+                          (Lean.Expr.app
+                            (Lean.Expr.app (Lean.Expr.const `instHMul [Lean.Level.zero]) (Lean.Expr.const `Real []))
+                            (Lean.Expr.const `Real.instMul [])))
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Real []))
+                            (Lean.Expr.lit (Lean.Literal.natVal 2)))
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.const `instOfNatAtLeastTwo [Lean.Level.zero])
+                                  (Lean.Expr.const `Real []))
+                                (Lean.Expr.lit (Lean.Literal.natVal 2)))
+                              (Lean.Expr.const `Real.instNatCast []))
+                            (Lean.Expr.const `DBN.Gen.PhiC._proof_1 []))))
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.app (Lean.Expr.const `Nat.cast [Lean.Level.zero]) (Lean.Expr.const `Real []))
+                          (Lean.Expr.const `Real.instNatCast []))
+                        (Lean.Expr.bvar 2)))))
+                (Lean.Expr.bvar 0))))
+          (Lean.Expr.app
+            (Lean.Expr.app
+              (Lean.Expr.app (Lean.Expr.app (Lean.Expr.const `DBN.Gen.thetaC []) (Lean.Expr.bvar 3)) (Lean.Expr.bvar 2))
+              (Lean.Expr.bvar 1))
+            (Lean.Expr.app
+              (Lean.Expr.const `Real.exp [])
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.const `HMul.hMul [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                          (Lean.Expr.const `Real []))
+                        (Lean.Expr.const `Real []))
+                      (Lean.Expr.const `Real []))
+                    (Lean.Expr.app
+                      (Lean.Expr.app (Lean.Expr.const `instHMul [Lean.Level.zero]) (Lean.Expr.const `Real []))
+                      (Lean.Expr.const `Real.instMul [])))
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Real []))
+                      (Lean.Expr.lit (Lean.Literal.natVal 4)))
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.const `instOfNatAtLeastTwo [Lean.Level.zero])
+                            (Lean.Expr.const `Real []))
+                          (Lean.Expr.lit (Lean.Literal.natVal 4)))
+                        (Lean.Expr.const `Real.instNatCast []))
+                      (Lean.Expr.const `DBN.Gen.PhiC._proof_2 []))))
+                (Lean.Expr.bvar 0)))))
+        (Lean.BinderInfo.default))
+      (Lean.BinderInfo.default))
+    (Lean.BinderInfo.default))
+  (Lean.BinderInfo.default)
+DUMP-END DBN.Gen.PhiC
+DUMP-BEGIN DBN.Gen.PhiC._proof_1
+kind=theorem levelParams=[] type=Lean.Expr.app
+  (Lean.Expr.const `Nat.AtLeastTwo [])
+  (Lean.Expr.app
+    (Lean.Expr.app
+      (Lean.Expr.app
+        (Lean.Expr.app
+          (Lean.Expr.app
+            (Lean.Expr.app
+              (Lean.Expr.const `HAdd.hAdd [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+              (Lean.Expr.const `Nat []))
+            (Lean.Expr.const `Nat []))
+          (Lean.Expr.const `Nat []))
+        (Lean.Expr.app
+          (Lean.Expr.app (Lean.Expr.const `instHAdd [Lean.Level.zero]) (Lean.Expr.const `Nat []))
+          (Lean.Expr.const `instAddNat [])))
+      (Lean.Expr.app
+        (Lean.Expr.app
+          (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))
+          (Lean.Expr.lit (Lean.Literal.natVal 1)))
+        (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1)))))
+    (Lean.Expr.app
+      (Lean.Expr.app
+        (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))
+        (Lean.Expr.lit (Lean.Literal.natVal 1)))
+      (Lean.Expr.app
+        (Lean.Expr.const `instOfNatNat [])
+        (Lean.Expr.lit (Lean.Literal.natVal 1))))) all=[DBN.Gen.PhiC._proof_1] value=Lean.Expr.app
+  (Lean.Expr.app
+    (Lean.Expr.const `Nat.instAtLeastTwoHAddOfNat [])
+    (Lean.Expr.app
+      (Lean.Expr.app
+        (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))
+        (Lean.Expr.lit (Lean.Literal.natVal 1)))
+      (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1)))))
+  (Lean.Expr.app
+    (Lean.Expr.const `Nat.instNeZeroSucc [])
+    (Lean.Expr.app
+      (Lean.Expr.app
+        (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))
+        (Lean.Expr.lit (Lean.Literal.natVal 0)))
+      (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 0)))))
+DUMP-END DBN.Gen.PhiC._proof_1
+DUMP-BEGIN DBN.Gen.PhiC._proof_2
+kind=theorem levelParams=[] type=Lean.Expr.app
+  (Lean.Expr.const `Nat.AtLeastTwo [])
+  (Lean.Expr.app
+    (Lean.Expr.app
+      (Lean.Expr.app
+        (Lean.Expr.app
+          (Lean.Expr.app
+            (Lean.Expr.app
+              (Lean.Expr.const `HAdd.hAdd [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+              (Lean.Expr.const `Nat []))
+            (Lean.Expr.const `Nat []))
+          (Lean.Expr.const `Nat []))
+        (Lean.Expr.app
+          (Lean.Expr.app (Lean.Expr.const `instHAdd [Lean.Level.zero]) (Lean.Expr.const `Nat []))
+          (Lean.Expr.const `instAddNat [])))
+      (Lean.Expr.app
+        (Lean.Expr.app
+          (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))
+          (Lean.Expr.lit (Lean.Literal.natVal 3)))
+        (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 3)))))
+    (Lean.Expr.app
+      (Lean.Expr.app
+        (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))
+        (Lean.Expr.lit (Lean.Literal.natVal 1)))
+      (Lean.Expr.app
+        (Lean.Expr.const `instOfNatNat [])
+        (Lean.Expr.lit (Lean.Literal.natVal 1))))) all=[DBN.Gen.PhiC._proof_2] value=Lean.Expr.app
+  (Lean.Expr.app
+    (Lean.Expr.const `Nat.instAtLeastTwoHAddOfNat [])
+    (Lean.Expr.app
+      (Lean.Expr.app
+        (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))
+        (Lean.Expr.lit (Lean.Literal.natVal 3)))
+      (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 3)))))
+  (Lean.Expr.app
+    (Lean.Expr.const `Nat.instNeZeroSucc [])
+    (Lean.Expr.app
+      (Lean.Expr.app
+        (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))
+        (Lean.Expr.lit (Lean.Literal.natVal 2)))
+      (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 2)))))
+DUMP-END DBN.Gen.PhiC._proof_2
+DUMP-BEGIN DBN.Gen.thetaC
+kind=def levelParams=[] type=Lean.Expr.forallE
+  `c
+  (Lean.Expr.forallE
+    (Lean.Name.mkNum `a._@._internal._hyg 0)
+    (Lean.Expr.const `Nat [])
+    (Lean.Expr.const `Real [])
+    (Lean.BinderInfo.default))
+  (Lean.Expr.forallE
+    `k
+    (Lean.Expr.const `Nat [])
+    (Lean.Expr.forallE
+      `q
+      (Lean.Expr.const `Real [])
+      (Lean.Expr.forallE `x (Lean.Expr.const `Real []) (Lean.Expr.const `Real []) (Lean.BinderInfo.default))
+      (Lean.BinderInfo.default))
+    (Lean.BinderInfo.default))
+  (Lean.BinderInfo.default) hints=regular 33 safety=safe all=[DBN.Gen.thetaC] value=Lean.Expr.lam
+  `c
+  (Lean.Expr.forallE
+    (Lean.Name.mkNum `a._@._internal._hyg 0)
+    (Lean.Expr.const `Nat [])
+    (Lean.Expr.const `Real [])
+    (Lean.BinderInfo.default))
+  (Lean.Expr.lam
+    `k
+    (Lean.Expr.const `Nat [])
+    (Lean.Expr.lam
+      `q
+      (Lean.Expr.const `Real [])
+      (Lean.Expr.lam
+        `x
+        (Lean.Expr.const `Real [])
+        (Lean.Expr.app
+          (Lean.Expr.app
+            (Lean.Expr.app
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.app (Lean.Expr.const `tsum [Lean.Level.zero, Lean.Level.zero]) (Lean.Expr.const `Real []))
+                  (Lean.Expr.const `Nat []))
+                (Lean.Expr.const `Real.instAddCommMonoid []))
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.const `UniformSpace.toTopologicalSpace [Lean.Level.zero])
+                  (Lean.Expr.const `Real []))
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.const `PseudoMetricSpace.toUniformSpace [Lean.Level.zero])
+                    (Lean.Expr.const `Real []))
+                  (Lean.Expr.const `Real.pseudoMetricSpace []))))
+            (Lean.Expr.lam
+              `n
+              (Lean.Expr.const `Nat [])
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.const `HMul.hMul [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                          (Lean.Expr.const `Real []))
+                        (Lean.Expr.const `Real []))
+                      (Lean.Expr.const `Real []))
+                    (Lean.Expr.app
+                      (Lean.Expr.app (Lean.Expr.const `instHMul [Lean.Level.zero]) (Lean.Expr.const `Real []))
+                      (Lean.Expr.const `Real.instMul [])))
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.const `HMul.hMul [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                              (Lean.Expr.const `Real []))
+                            (Lean.Expr.const `Real []))
+                          (Lean.Expr.const `Real []))
+                        (Lean.Expr.app
+                          (Lean.Expr.app (Lean.Expr.const `instHMul [Lean.Level.zero]) (Lean.Expr.const `Real []))
+                          (Lean.Expr.const `Real.instMul [])))
+                      (Lean.Expr.app (Lean.Expr.bvar 4) (Lean.Expr.bvar 0)))
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.const `HPow.hPow [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                                (Lean.Expr.const `Real []))
+                              (Lean.Expr.const `Nat []))
+                            (Lean.Expr.const `Real []))
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.const `instHPow [Lean.Level.zero, Lean.Level.zero])
+                                (Lean.Expr.const `Real []))
+                              (Lean.Expr.const `Nat []))
+                            (Lean.Expr.app
+                              (Lean.Expr.app (Lean.Expr.const `NPow.toPow [Lean.Level.zero]) (Lean.Expr.const `Real []))
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.const `Monoid.toNPow [Lean.Level.zero])
+                                  (Lean.Expr.const `Real []))
+                                (Lean.Expr.const `Real.instMonoid [])))))
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.app (Lean.Expr.const `Nat.cast [Lean.Level.zero]) (Lean.Expr.const `Real []))
+                            (Lean.Expr.const `Real.instNatCast []))
+                          (Lean.Expr.bvar 0)))
+                      (Lean.Expr.bvar 3))))
+                (Lean.Expr.app
+                  (Lean.Expr.const `Real.exp [])
+                  (Lean.Expr.app
+                    (Lean.Expr.app
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.const `HDiv.hDiv [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                              (Lean.Expr.const `Real []))
+                            (Lean.Expr.const `Real []))
+                          (Lean.Expr.const `Real []))
+                        (Lean.Expr.app
+                          (Lean.Expr.app (Lean.Expr.const `instHDiv [Lean.Level.zero]) (Lean.Expr.const `Real []))
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.const `DivInvMonoid.toDiv [Lean.Level.zero])
+                              (Lean.Expr.const `Real []))
+                            (Lean.Expr.const `Real.instDivInvMonoid []))))
+                      (Lean.Expr.app
+                        (Lean.Expr.app
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.const `HMul.hMul [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                                  (Lean.Expr.const `Real []))
+                                (Lean.Expr.const `Real []))
+                              (Lean.Expr.const `Real []))
+                            (Lean.Expr.app
+                              (Lean.Expr.app (Lean.Expr.const `instHMul [Lean.Level.zero]) (Lean.Expr.const `Real []))
+                              (Lean.Expr.const `Real.instMul [])))
+                          (Lean.Expr.app
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `HMul.hMul [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                                      (Lean.Expr.const `Real []))
+                                    (Lean.Expr.const `Real []))
+                                  (Lean.Expr.const `Real []))
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `instHMul [Lean.Level.zero])
+                                    (Lean.Expr.const `Real []))
+                                  (Lean.Expr.const `Real.instMul [])))
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `Neg.neg [Lean.Level.zero])
+                                    (Lean.Expr.const `Real []))
+                                  (Lean.Expr.const `Real.instNeg []))
+                                (Lean.Expr.const `Real.pi [])))
+                            (Lean.Expr.app
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.app
+                                        (Lean.Expr.const `HPow.hPow [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])
+                                        (Lean.Expr.const `Real []))
+                                      (Lean.Expr.const `Nat []))
+                                    (Lean.Expr.const `Real []))
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.app
+                                        (Lean.Expr.const `instHPow [Lean.Level.zero, Lean.Level.zero])
+                                        (Lean.Expr.const `Real []))
+                                      (Lean.Expr.const `Nat []))
+                                    (Lean.Expr.app
+                                      (Lean.Expr.app
+                                        (Lean.Expr.const `NPow.toPow [Lean.Level.zero])
+                                        (Lean.Expr.const `Real []))
+                                      (Lean.Expr.app
+                                        (Lean.Expr.app
+                                          (Lean.Expr.const `Monoid.toNPow [Lean.Level.zero])
+                                          (Lean.Expr.const `Real []))
+                                        (Lean.Expr.const `Real.instMonoid [])))))
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.app
+                                      (Lean.Expr.const `Nat.cast [Lean.Level.zero])
+                                      (Lean.Expr.const `Real []))
+                                    (Lean.Expr.const `Real.instNatCast []))
+                                  (Lean.Expr.bvar 0)))
+                              (Lean.Expr.app
+                                (Lean.Expr.app
+                                  (Lean.Expr.app
+                                    (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])
+                                    (Lean.Expr.const `Nat []))
+                                  (Lean.Expr.lit (Lean.Literal.natVal 2)))
+                                (Lean.Expr.app
+                                  (Lean.Expr.const `instOfNatNat [])
+                                  (Lean.Expr.lit (Lean.Literal.natVal 2)))))))
+                        (Lean.Expr.bvar 1)))
+                    (Lean.Expr.bvar 2))))
+              (Lean.BinderInfo.default)))
+          (Lean.Expr.app (Lean.Expr.const `SummationFilter.unconditional [Lean.Level.zero]) (Lean.Expr.const `Nat [])))
+        (Lean.BinderInfo.default))
+      (Lean.BinderInfo.default))
+    (Lean.BinderInfo.default))
+  (Lean.BinderInfo.default)
+DUMP-END DBN.Gen.thetaC
+DUMP-BEGIN DBN.Gen.parityK
+kind=def levelParams=[] type=Lean.Expr.forallE
+  `N
+  (Lean.Expr.const `Nat [])
+  (Lean.Expr.forallE
+    `χ
+    (Lean.Expr.app
+      (Lean.Expr.app
+        (Lean.Expr.app (Lean.Expr.const `DirichletCharacter [Lean.Level.zero]) (Lean.Expr.const `Complex []))
+        (Lean.Expr.app
+          (Lean.Expr.app
+            (Lean.Expr.const `CommGroupWithZero.toCommMonoidWithZero [Lean.Level.zero])
+            (Lean.Expr.const `Complex []))
+          (Lean.Expr.app
+            (Lean.Expr.app
+              (Lean.Expr.const `Semifield.toCommGroupWithZero [Lean.Level.zero])
+              (Lean.Expr.const `Complex []))
+            (Lean.Expr.app
+              (Lean.Expr.app (Lean.Expr.const `Field.toSemifield [Lean.Level.zero]) (Lean.Expr.const `Complex []))
+              (Lean.Expr.const `Complex.instField [])))))
+      (Lean.Expr.bvar 0))
+    (Lean.Expr.const `Nat [])
+    (Lean.BinderInfo.default))
+  (Lean.BinderInfo.implicit) hints=regular 31 safety=safe all=[DBN.Gen.parityK] value=Lean.Expr.lam
+  `N
+  (Lean.Expr.const `Nat [])
+  (Lean.Expr.lam
+    `χ
+    (Lean.Expr.app
+      (Lean.Expr.app
+        (Lean.Expr.app (Lean.Expr.const `DirichletCharacter [Lean.Level.zero]) (Lean.Expr.const `Complex []))
+        (Lean.Expr.app
+          (Lean.Expr.app
+            (Lean.Expr.const `CommGroupWithZero.toCommMonoidWithZero [Lean.Level.zero])
+            (Lean.Expr.const `Complex []))
+          (Lean.Expr.app
+            (Lean.Expr.app
+              (Lean.Expr.const `Semifield.toCommGroupWithZero [Lean.Level.zero])
+              (Lean.Expr.const `Complex []))
+            (Lean.Expr.app
+              (Lean.Expr.app (Lean.Expr.const `Field.toSemifield [Lean.Level.zero]) (Lean.Expr.const `Complex []))
+              (Lean.Expr.const `Complex.instField [])))))
+      (Lean.Expr.bvar 0))
+    (Lean.Expr.app
+      (Lean.Expr.app
+        (Lean.Expr.app
+          (Lean.Expr.app
+            (Lean.Expr.app (Lean.Expr.const `ite [Lean.Level.succ (Lean.Level.zero)]) (Lean.Expr.const `Nat []))
+            (Lean.Expr.app
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.const `DirichletCharacter.Even [Lean.Level.zero])
+                    (Lean.Expr.const `Complex []))
+                  (Lean.Expr.const `Complex.commRing []))
+                (Lean.Expr.bvar 1))
+              (Lean.Expr.bvar 0)))
+          (Lean.Expr.app
+            (Lean.Expr.const `Classical.propDecidable [])
+            (Lean.Expr.app
+              (Lean.Expr.app
+                (Lean.Expr.app
+                  (Lean.Expr.app
+                    (Lean.Expr.const `DirichletCharacter.Even [Lean.Level.zero])
+                    (Lean.Expr.const `Complex []))
+                  (Lean.Expr.const `Complex.commRing []))
+                (Lean.Expr.bvar 1))
+              (Lean.Expr.bvar 0))))
+        (Lean.Expr.app
+          (Lean.Expr.app
+            (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))
+            (Lean.Expr.lit (Lean.Literal.natVal 0)))
+          (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 0)))))
+      (Lean.Expr.app
+        (Lean.Expr.app
+          (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))
+          (Lean.Expr.lit (Lean.Literal.natVal 1)))
+        (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1)))))
+    (Lean.BinderInfo.default))
+  (Lean.BinderInfo.implicit)
+DUMP-END DBN.Gen.parityK
+BbPreflightSol.lean:26:65: warning: `DBN.Gen.PhiC._proof_1` refers to an auto-generated auxiliary declaration. These are not stable across refactors; consider using a different approach.
+
+Note: This linter can be disabled with `set_option linter.auxLemma false`

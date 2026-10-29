@@ -1,0 +1,38 @@
+--- Chal vs Sol
+  bb_real_primitive_meaning_oai    raw=differs   norm=IDENTICAL md5(norm) sol=be924279 chal=be924279
+  DBN.Gen.Hchi                     raw=IDENTICAL norm=IDENTICAL md5(norm) sol=f6e23216 chal=f6e23216
+  DBN.Gen.PhiC                     raw=IDENTICAL norm=IDENTICAL md5(norm) sol=dc3be88c chal=dc3be88c
+  DBN.Gen.PhiC._proof_1            raw=IDENTICAL norm=IDENTICAL md5(norm) sol=d3da97ce chal=d3da97ce
+  DBN.Gen.PhiC._proof_2            raw=IDENTICAL norm=IDENTICAL md5(norm) sol=f3cd0ce3 chal=f3cd0ce3
+  DBN.Gen.thetaC                   raw=IDENTICAL norm=IDENTICAL md5(norm) sol=12256bff chal=12256bff
+  DBN.Gen.parityK                  raw=IDENTICAL norm=IDENTICAL md5(norm) sol=721da9ed chal=721da9ed
+--- TamperA vs Sol
+  bb_real_primitive_meaning_oai    raw=differs   norm=DIFFERENT md5(norm) sol=be924279 chal=c4cf0a61
+    first differing lines (norm):
+      -                                (Lean.Expr.lit (Lean.Literal.natVal 9)))
+      -                              (Lean.Expr.app
+      -                                (Lean.Expr.app
+      -                                  (Lean.Expr.app
+      -                                    (Lean.Expr.app
+      -                                      (Lean.Expr.const `instOfNatAtLeastTwo [Lean.Level.zero])
+  DBN.Gen.Hchi                     raw=IDENTICAL norm=IDENTICAL md5(norm) sol=f6e23216 chal=f6e23216
+  DBN.Gen.PhiC                     raw=IDENTICAL norm=IDENTICAL md5(norm) sol=dc3be88c chal=dc3be88c
+  DBN.Gen.PhiC._proof_1            raw=IDENTICAL norm=IDENTICAL md5(norm) sol=d3da97ce chal=d3da97ce
+  DBN.Gen.PhiC._proof_2            raw=IDENTICAL norm=IDENTICAL md5(norm) sol=f3cd0ce3 chal=f3cd0ce3
+  DBN.Gen.thetaC                   raw=IDENTICAL norm=IDENTICAL md5(norm) sol=12256bff chal=12256bff
+  DBN.Gen.parityK                  raw=IDENTICAL norm=IDENTICAL md5(norm) sol=721da9ed chal=721da9ed
+--- TamperB vs Sol
+  bb_real_primitive_meaning_oai    raw=differs   norm=DIFFERENT md5(norm) sol=be924279 chal=49f1029c
+    first differing lines (norm):
+      -                                (Lean.Expr.lit (Lean.Literal.natVal 8)))
+      +                                (Lean.Expr.lit (Lean.Literal.natVal 4)))
+      -                                    (Lean.Expr.lit (Lean.Literal.natVal 8)))
+      +                                    (Lean.Expr.lit (Lean.Literal.natVal 4)))
+      -                                        (Lean.Expr.lit (Lean.Literal.natVal 7)))
+      +                                        (Lean.Expr.lit (Lean.Literal.natVal 3)))
+  DBN.Gen.Hchi                     raw=IDENTICAL norm=IDENTICAL md5(norm) sol=f6e23216 chal=f6e23216
+  DBN.Gen.PhiC                     raw=IDENTICAL norm=IDENTICAL md5(norm) sol=dc3be88c chal=dc3be88c
+  DBN.Gen.PhiC._proof_1            raw=IDENTICAL norm=IDENTICAL md5(norm) sol=d3da97ce chal=d3da97ce
+  DBN.Gen.PhiC._proof_2            raw=IDENTICAL norm=IDENTICAL md5(norm) sol=f3cd0ce3 chal=f3cd0ce3
+  DBN.Gen.thetaC                   raw=IDENTICAL norm=IDENTICAL md5(norm) sol=12256bff chal=12256bff
+  DBN.Gen.parityK                  raw=IDENTICAL norm=IDENTICAL md5(norm) sol=721da9ed chal=721da9ed

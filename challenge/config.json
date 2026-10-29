@@ -1,0 +1,13 @@
+{
+    "challenge_module": "Challenge",
+    "solution_module": "BbOaiMeaning",
+    "theorem_names": [
+        "bb_real_primitive_meaning_oai"
+    ],
+    "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+    ],
+    "enable_nanoda": true
+}

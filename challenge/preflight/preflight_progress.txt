@@ -1,0 +1,10 @@
+build ChallengeDefs rc=0 81s src=67e538bce62d039a63d0cabcffd2797b
+build Challenge rc=0 5s src=73c1bf9423bfc17c9f2b1ed1496a3f84
+build ChallengeTamperA rc=0 4s src=d6ef5198ce5c64810477a0ffe8e26f6f
+build ChallengeTamperB rc=0 4s src=311631378a462aaa7199bce74ad42e6c
+BbPreflightChal rc=0 out=9e93938689b8d2f8a031eac4f45029b2
+BbPreflightTamperA rc=0 out=c41014ab5256d3dffdac1e361ab64d66
+BbPreflightTamperB rc=0 out=e08863c14cd6a77781c1b4d29c301988
+BbPreflightChalClosure rc=0 out=5afa69223aad57086afe36ef0686093f
+BbPreflightSol rc=0 out=4e171cb461cacaad59d01a3e1ed8a971
+DONE

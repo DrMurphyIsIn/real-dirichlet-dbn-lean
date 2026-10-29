@@ -1,0 +1,8 @@
+6a3157ed8dfd8b941a0921fd96f0fee1  CHALLENGE_NOTES.md
+73c1bf9423bfc17c9f2b1ed1496a3f84  Challenge.lean
+67e538bce62d039a63d0cabcffd2797b  ChallengeDefs.lean
+d6ef5198ce5c64810477a0ffe8e26f6f  ChallengeTamperA.lean
+311631378a462aaa7199bce74ad42e6c  ChallengeTamperB.lean
+1c2534bbdba4e1171b5183d6fdc30a2f  config_tamperA.json
+f34c06afd0e32d588fda31c477406b33  config_tamperB.json
+d563faf75a71cdf711852a4515200bad  config.json

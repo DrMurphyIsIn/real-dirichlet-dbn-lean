@@ -1,8 +1,8 @@
 # Λ_χ ≤ 9/32 for every real primitive Dirichlet character, kernel-checked
 
 > **Status: local release candidate, not yet public.** The Lean proof is complete and has been replayed by five
-> independent checkers on one machine. The sandboxed Comparator run against an independently written challenge
-> is still in progress (`challenge/`, `logs/comparator_sandboxed/`). The paper is being written (`paper/`). No DOI
+> independent checkers on one machine. The Comparator challenge, written independently by the auditor, is in
+> `challenge/`; the sandboxed run against it is still pending (`logs/comparator_sandboxed/`). The paper is being written (`paper/`). No DOI
 > has been assigned yet.
 
 ## The question
@@ -164,12 +164,14 @@ These are the components of the trust base:
   proof.
 - **Our definitions**, `DBN.Gen.Hchi` and `DBN.Gen.parityK` and what they unfold to (`PhiC`, `thetaC`). These are
   the only non-Mathlib constants in the statement. The second half of the theorem is what lets a reader check
-  that `Hchi` means what this README says. The Comparator challenge will isolate them in one small
-  `ChallengeDefs.lean`.
+  that `Hchi` means what this README says. The Comparator challenge isolates them, verbatim, in one
+  small `challenge/ChallengeDefs.lean`: six constants (`thetaC`, `PhiC` and its two auxiliary proof terms,
+  `parityK`, `Hchi`) on top of Mathlib.
 
 What has **not** been done yet: the runs above were local and unsandboxed, on macOS. The sandboxed Comparator
-run has not been completed. It will be a bwrap sandbox on Linux, with a challenge whose statement was written
-by the auditor rather than by the proof's authors, and every checker Comparator supports. Its logs will go in
+run has not been completed. It will be a bwrap sandbox on Linux, against the challenge in `challenge/`, whose
+statement and trusted definitions were written by the auditor rather than by the proof's authors, with every
+checker Comparator supports. Its logs will go in
 `logs/comparator_sandboxed/` when they exist.
 
 ## What this does and does not advance
@@ -266,7 +268,7 @@ lean/lakefile-stanza.lean   the lean_lib targets appended to OpenAI's lakefile
 lean/MD5SUMS.txt    md5 of every file under lean/, cross-checked against the auditor's records
 logs/               five-checker replays, in-environment checks, the rc3 audit, numerics, md5 manifest
 logs/comparator_sandboxed/   placeholder for the sandboxed Comparator run
-challenge/          placeholder for the Comparator challenge, being written by the auditor
+challenge/          the Comparator challenge by the auditor: ChallengeDefs, Challenge, two tampers, configs, pre-flight
 provenance/         ISLAND_SOURCE: where lean/island/ comes from
 scripts/            verify_md5.sh, materialize.sh
 paper/              the paper (in preparation)

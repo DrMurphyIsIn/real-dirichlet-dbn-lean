@@ -1,0 +1,7 @@
+bb_local_closure: 6 non-standard constants
+DBN.Gen.Hchi [def] <- GenThetaFE
+DBN.Gen.PhiC [def] <- GenTheta
+DBN.Gen.PhiC._proof_1 [theorem] <- GenTheta
+DBN.Gen.PhiC._proof_2 [theorem] <- GenTheta
+DBN.Gen.parityK [def] <- GenThetaFE
+DBN.Gen.thetaC [def] <- GenTheta
