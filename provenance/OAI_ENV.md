@@ -20,9 +20,11 @@ replays check every proof in the export, whatever its source. But the definition
 example Mathlib's `completedLFunction`, are trusted as they stood in that tree. So this is a gap in the local
 record, and we state it as one.
 
-**How it will be closed.** The sandboxed Comparator run does not reuse that local tree. It rebuilds OpenAI's
-environment independently, on Linux, from the public pins: openai/math `adc7f124`, Lean v4.34.1, Mathlib
-`d13f23b`, and OpenAI's lakefile, which fetches and patches the dependencies. It then builds this repository's
+**How it will be closed.** The sandboxed Comparator run does not reuse that local tree. It re-creates OpenAI's
+environment independently, on Linux, from the public pins: Lean v4.34.1; Mathlib taken from its official build
+cache at `d13f23b` (`lake exe cache get`), not rebuilt; PrimeNumberTheoremAnd and rellich-kondrachov cloned at
+their pins and patched with OpenAI's patches, per OpenAI's lakefile; and OpenAI's sources read unmodified at
+openai/math `adc7f124`. It then builds this repository's
 chain, at the md5s in `lean/MD5SUMS.txt`, on top. **That run, not the local replays, is the reference result.** `scripts/materialize.sh` and `.github/workflows/verify.yml`
 follow the same route from the public pins.
 
