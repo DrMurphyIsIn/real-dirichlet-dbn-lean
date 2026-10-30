@@ -32,12 +32,15 @@
   `IsPrimitive`, the Hurwitz-kernel functional equations) is Mathlib's.
 - **Verification.**
   - Lean's kernel: `#print axioms` gives `[propext, Classical.choice, Quot.sound]` for both conjuncts.
-  - A replay of the exported environment by five independent checkers (leanchecker, leanchecker-paranoid,
-    nanoda, con-leche, con-ron), each of which also rejected a `debug.skipKernelTC` negative control.
+  - A replay of the exported environment by five checkers from three implementation lineages (leanchecker,
+    leanchecker-paranoid, nanoda, con-leche, con-ron), each of which also rejected a `debug.skipKernelTC`
+    negative control.
   - Tampered statements were rejected.
-  - Everything was rebuilt and audited by an independent AI session (bb); its records are in `logs/`.
-  - Those replays were local and unsandboxed. A sandboxed Comparator run against an independently authored
-    challenge is pending (`challenge/`, `logs/comparator_sandboxed/`).
+  - Everything was rebuilt and audited by a separate AI session (bb); its records are in `logs/`.
+  - Those replays were local and unsandboxed. A sandboxed Comparator run against a separately written challenge
+    also accepted it, and rejected both tampered challenges (`challenge/`, `logs/comparator_sandboxed/`). It ran as
+    uid 0 with all capabilities dropped, and its logs were relayed to bb, who reproduced the solution export byte
+    for byte.
 - **Checkers.** nanoda (<https://github.com/ammkrn/nanoda_lib>), con-leche, con-ron, and Lean's leanchecker,
   as bundled with Lean v4.35.0-rc3. The export tool is lean4export 3.1.0, and Comparator is
   <https://github.com/leanprover/comparator>.
@@ -45,7 +48,7 @@
   (Claude, Anthropic), working under the direction of the author.
   - One session developed the generic library, the theta and Mellin modules, the Gauss sign theorem and the
     meaning link.
-  - A second session (bb) audited every stage independently. bb also wrote the compositions with OpenAI's
+  - A second, separate session (bb) audited every stage. bb also wrote the compositions with OpenAI's
     theorem and the check, reference and tamper files, and ran the replays.
   - The author set the scope and the accuracy rules, approved the steps that ran in OpenAI's environment, and
     decides what is published.

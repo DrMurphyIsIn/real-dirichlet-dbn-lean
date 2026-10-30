@@ -2,13 +2,14 @@
 
 This directory holds the statement-identity challenge for `bb_real_primitive_meaning_oai`: the file that a
 [Comparator](https://github.com/leanprover/comparator) run checks the proof against. It was written by bb, the
-independent auditor who verified the chain, not by the authors of the proof. Every file here is a byte-for-byte
+separate auditor session that verified the chain, not by the authors of the proof. Every file here is a byte-for-byte
 copy of bb's, as listed in bb's own manifests `MD5SUMS.txt` (md5 `6c933c842d470ecd6cf8f32a5fba388a`) and
 `preflight/MD5SUMS.txt` (md5 `9a359979399403987799f0e02a606ae5`). This README is the only file added; it is not
 part of bb's manifests. `CHALLENGE_NOTES.md` is bb's full design note, and this page summarises it.
 
-**The sandboxed Comparator run is still pending.** Nothing here has been through Comparator yet. What has run is
-bb's local, unsandboxed pre-flight in `preflight/`, described below.
+**The sandboxed Comparator run has been made and accepted the theorem; both tampers were rejected.** bb verified
+it (REVIEW_COMPARATOR_LAMBDA_CHI.md); its logs are being archived in `logs/comparator_sandboxed/`. bb's earlier
+local, unsandboxed pre-flight is in `preflight/`, described below.
 
 ## What is in here
 
@@ -77,13 +78,16 @@ bb ran a pre-flight on macOS with plain `lean`, unsandboxed (`preflight/prefligh
 This shows that the challenge *should* match and the tampers *should* be rejected. It is not the evidence itself:
 there was no sandbox, no export comparison and no kernel replay.
 
-## Still to come
+## The sandboxed run
 
-The run itself, per the publication's run spec:
-- Comparator v4.34.0, built for toolchain v4.34.1, with `--paranoid`;
-- inside a bwrap sandbox on Linux;
-- every checker Comparator supports;
-- both tampers, which must be rejected.
+The run was made on 30 October 2026 by another agent session, on Linux:
+- Comparator v4.34.0, built for toolchain v4.34.1;
+- inside a bwrap sandbox, as uid 0 with all capabilities dropped and no network;
+- with Lean's kernel and nanoda, and then with the paranoid set (leanchecker-paranoid, nanoda, con-leche, con-ron,
+  Lean's kernel; lean4lean N/A);
+- against these challenge files, with the solution chain at the md5s in `lean/MD5SUMS.txt`.
 
-bb will then verify the logs against these md5s and `lean/MD5SUMS.txt`. The full logs will go in
+It printed "Your solution is okay!", and both tampers were rejected with "Challenge and solution theorem statement do
+not match". bb verified the run against these md5s (REVIEW_COMPARATOR_LAMBDA_CHI.md). bb did not see the logs,
+whose verdict lines are relayed, but it reproduced the solution export byte for byte. The full logs will go in
 `logs/comparator_sandboxed/`.

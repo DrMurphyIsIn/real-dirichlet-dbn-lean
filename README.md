@@ -1,9 +1,8 @@
 # Λ_χ ≤ 9/32 for every real primitive Dirichlet character, kernel-checked
 
-> **Status: local release candidate, not yet public.** The Lean proof is complete and has been replayed by five
-> independent checkers on one machine. The Comparator challenge, written independently by the auditor, is in
-> `challenge/`; the sandboxed run against it is still pending (`logs/comparator_sandboxed/`). The paper is being written (`paper/`). No DOI
-> has been assigned yet.
+> **Status: local release candidate, not yet public.** The Lean proof is complete. Five checkers from three implementation
+> lineages replayed it locally, and a sandboxed Comparator run against a separately written challenge (`challenge/`) accepted
+> it (`logs/comparator_sandboxed/`). The paper is being written (`paper/`). No DOI has been assigned yet.
 
 ## The question
 
@@ -21,7 +20,7 @@ when t < Λ_χ. GRH for L(s, χ) is the statement Λ_χ ≤ 0. Upper bounds on �
 of L-functions comes to GRH, and they are much easier than GRH itself, because any zero-free region of fixed
 width gives one.
 
-This is exactly the bound we get. Freire, González-Riquelme, Muñoz, Poblete and Salinas (arXiv:2610.27343,
+This is exactly the bound we get. Freire, González-Riquelme, Muñoz, Poblete and Salinas (FGMPS, arXiv:2610.27343,
 Remarks 3.1 and 3.4) observed that if Λ(s, χ) has no zeros off the strip 1/8 ≤ Re s ≤ 7/8, then de Bruijn's
 theorem gives Λ_χ ≤ (3/4)²/2 = 9/32. In 2026 OpenAI released a Lean proof that every Dirichlet L-function is
 zero-free on Re s > 7/8. For a real character, χ̄ = χ and the functional equation reflects that
@@ -71,8 +70,8 @@ So the zero sets, and the constant Λ_χ, are the same. "Real primitive χ ≠ 1
 characters χ_D of fundamental discriminants D. The theorem quantifies over Mathlib's `IsPrimitive` directly and
 does not rely on that correspondence.
 
-The statement uses 43 constants for the first half and the same vocabulary for the second. Every one of them
-comes from Mathlib or Lean's core library, except `DBN.Gen.Hchi` and `DBN.Gen.parityK`. **None comes from
+The first half uses 43 constants, the whole conjunction 59. Every one comes from Mathlib or Lean's core library except
+`DBN.Gen.Hchi` (both halves) and `DBN.Gen.parityK` (second half). **None comes from
 OpenAI's library.** The auditor checked this by listing each constant with its module (`logs/oai_env/`).
 OpenAI's theorem is used in the proof, not in the statement.
 
@@ -98,8 +97,8 @@ on its own before the next one went on top.
    step. Evenness of Φ_χ is, because ∫₀^∞ is half the full-line integral only for an even kernel.
 4. **The strip** (`GenStrip`). A zero of `Hchi χ 0` is a zero of Λ(s, χ) at s = ½ + iz/2. The 7/8 half-plane,
    with Γ_ℝ ≠ 0, rules out Re s > 7/8. Mathlib's functional equation for primitive χ, with χ⁻¹ = χ for real χ,
-   reflects that to rule out Re s < 1/8. So |Im z| ≤ 3/4, and t ≥ (3/4)²/2 = 9/32. This is the only place
-   primitivity is used.
+   reflects that to rule out Re s < 1/8. So |Im z| ≤ 3/4, and t ≥ (3/4)²/2 = 9/32. Primitivity is used here
+   (the functional equation), in the theta functional equation, and in Gauss's theorem.
 5. **Evenness from the root number** (`GenThetaFE`). Classically, θ(1/x) = ε·x^{(1+2k)/2}·θ(x), with ε
    the root number, so Φ_χ(−u) = ε·Φ_χ(u). The Lean theorem `theta_fe` proves this functional equation when
    ε = 1, where ε is Mathlib's literal `rootNumber`. It is built from Mathlib's even and odd Hurwitz-kernel
@@ -122,8 +121,9 @@ on its own before the next one went on top.
    evenness from Gauss's sign theorem and then applies the Mellin bridge. The conjunction of the two is the
    theorem above.
 
-Every module of the chain compiled **unchanged** in OpenAI's environment. The port diff against the audited
-sources is empty, apart from two one-line proof repairs in the island, which are recorded in `lean/patches/`.
+Every module of the chain compiled **unchanged** in OpenAI's environment. All 27 chain files are byte-identical to the
+versions audited at Lean v4.35.0-rc3; the island files differ from the island's release afd94c7 by two one-line proof
+repairs (`lean/patches/`).
 
 ## What was checked, and by what
 
@@ -132,7 +132,8 @@ These are the components of the trust base:
 - **Lean's kernel**, at Lean v4.34.1. `#print axioms` gives `[propext, Classical.choice, Quot.sound]` for both
   halves. The auditor also wrote an independent closure walk, which agrees with `collectAxioms` over all 126,656
   constants (`logs/oai_env/BbOaiMeaningCheck.out`).
-- **Five independent checkers.** The environment containing the theorem was exported with lean4export (1.73 GB,
+- **Five checkers, from three implementation lineages** (Lean's kernel, twice; nanoda; the con-leche/con-ron pair). The
+  environment containing the theorem was exported with lean4export (1.73 GB,
   124,635 declarations). The export was replayed by leanchecker, leanchecker-paranoid, nanoda, con-leche and
   con-ron, and all five accepted it.
   - In the same run, each checker was given a negative control. The control is a false theorem `4 = 5`, injected
@@ -145,7 +146,7 @@ These are the components of the trust base:
     level.
   - Weakening OpenAI's 7/8 to 3/4 fails at OpenAI's own theorem.
   - Dropping primitivity breaks the proof (`logs/oai_env/`).
-- **An independent audit.** Every stage was rebuilt from source and reviewed by a separate AI session (bb).
+- **A separate audit.** Every stage was rebuilt from source and reviewed by a separate AI session (bb).
   - bb did this first at a second pin, Lean v4.35.0-rc3 with Mathlib `0493595e` (`lean/checks/rc3_audit/`,
     `logs/rc3_audit/`), and then in OpenAI's environment.
   - bb also checked the analytic normalisations numerically, independently of the Lean code (`logs/numerics/`).
@@ -158,32 +159,46 @@ These are the components of the trust base:
   accepted. The manuscript it
   formalises is unrefereed. OpenAI's tree builds with 23 compatibility patches to third-party dependencies,
   which their lakefile applies. Every exported constant still has its axioms checked, so no patch can add an
-  axiom unseen.
+  axiom unseen, and the statement uses no constant from a patched package: only Mathlib, Lean's core library and the two
+  definitions above.
 - **Mathlib's definitions**, at `d13f23b`: `DirichletCharacter`, `IsPrimitive`, `LFunction`,
   `completedLFunction`, `Gammaℝ`, the Bochner integral, `Complex.cos`. They are trusted as code, as for any Lean
   proof.
 - **Our definitions**, `DBN.Gen.Hchi` and `DBN.Gen.parityK` and what they unfold to (`PhiC`, `thetaC`). These are
-  the only non-Mathlib constants in the statement. The second half of the theorem is what lets a reader check
-  that `Hchi` means what this README says. The Comparator challenge isolates them, verbatim, in one
+  the only non-Mathlib constants in the statement. The second half, with Fourier uniqueness, is what lets a reader check that `Hchi` means
+  what this README says: the reader need only check that `Hchi χ t z = ∫₀^∞ e^{tu²} F(u) cos(zu) du` for one function F
+  independent of t and z. The Comparator challenge isolates them, verbatim, in one
   small `challenge/ChallengeDefs.lean`: six constants (`thetaC`, `PhiC` and its two auxiliary proof terms,
   `parityK`, `Hchi`) on top of Mathlib.
 
 - **The local build environment.** bb's replays were built against a local tree, `$HOME/oai-replay`: openai/math
   `adc7f124`, Lean v4.34.1, Mathlib `d13f23b`. Its sources, lakefile, manifest and patches were checked against a
   clone of `adc7f124`. Its `.lake/packages` dependency checkouts were NOT hashed; they were touched on 2026-10-24
-  (`provenance/OAI_ENV.md`). The sandboxed Comparator run rebuilds OpenAI's environment from the public pins,
-  independently of that tree. That run, not the local replays, is the reference result.
+  (`provenance/OAI_ENV.md`).
+- **The sandboxed Comparator run.** The sandboxed Comparator run (`logs/comparator_sandboxed/`) rebuilt OpenAI's
+  environment from the public pins, with Mathlib from its official build cache at `d13f23b`. Its solution export is
+  byte-identical to the one bb made from this local tree (md5 `5ca44ad5…`), which closes the unhashed-checkout gap for
+  the theorem's closure, relative to that cache. That run:
+  - was in a bwrap sandbox (uid 0, all capabilities dropped);
+  - used Comparator v4.34.0 with Lean's kernel and nanoda, then the paranoid set (leanchecker-paranoid, nanoda,
+    con-leche, con-ron, Lean's kernel; lean4lean N/A);
+  - accepted the theorem, and rejected both tampered challenges.
 
-What has **not** been done yet: the runs above were local and unsandboxed, on macOS. The sandboxed Comparator
-run has not been completed. It will be a bwrap sandbox on Linux, against the challenge in `challenge/`, whose
-statement and trusted definitions were written by the auditor rather than by the proof's authors, with every
-checker Comparator supports. Its logs will go in
-`logs/comparator_sandboxed/` when they exist.
+  Its logs were relayed to bb (REVIEW_COMPARATOR_LAMBDA_CHI.md).
+
+  The caveats the result carries:
+  - It ran as uid 0, so Comparator's assumption that the checker is not a privileged user is met in spirit, not in
+    letter.
+  - lean4lean could not take part.
+  - bb did not see the logs. Their verdict lines are relayed; bb reproduced the solution export byte for byte, but
+    not the kernel verdicts.
 
 ## What this does and does not advance
 
 Λ_χ ≤ 9/32 is not a new analytic bound. The conditional statement is in 2610.27343, the half-plane is OpenAI's,
-de Bruijn's theorem is from 1950, and the sign of the Gauss sum is Gauss's. It is not progress on GRH for these
+de Bruijn's theorem is from 1950, and the sign of the Gauss sum is Gauss's. For conductors up to 400, FGMPS's
+unconditional bounds already beat 9/32 for 136 of the 242 characters (χ₋₄ ≤ 0.26). Granting OpenAI's half-plane, their own
+D = 3/4 search improves on 9/32 for 149. It is not progress on GRH for these
 L-functions either; that would be Λ_χ ≤ 0. What is new is that the whole argument is now one kernel-checked
 proof term under the three standard axioms, for every real primitive character simultaneously. It is checked
 end to end in one Lean environment, from Mathlib's definition of `completedLFunction` to the reality of the
@@ -280,7 +295,7 @@ lean/OAI_PIN        openai/math repo, commit, toolchain, Mathlib, and md5s of th
 lean/lakefile-stanza.lean   the lean_lib targets appended to OpenAI's lakefile
 lean/MD5SUMS.txt    md5 of every file under lean/, cross-checked against the auditor's records
 logs/               five-checker replays, in-environment checks, the rc3 audit, numerics, md5 manifest
-logs/comparator_sandboxed/   placeholder for the sandboxed Comparator run
+logs/comparator_sandboxed/   placeholder until the sandboxed Comparator run's logs are archived here
 challenge/          the Comparator challenge by the auditor: ChallengeDefs, Challenge, two tampers, configs, pre-flight
 provenance/         ISLAND_SOURCE (where lean/island/ comes from); OAI_ENV.md (what of the local build environment was checked)
 scripts/            verify_md5.sh, materialize.sh, check_manifest.sh
@@ -303,7 +318,7 @@ paper/              the paper (in preparation)
   - All the Lean code and the audits were written by AI agent sessions (Claude, Anthropic), under the direction of
     the author. One session developed the generic library, the theta and Mellin modules, Gauss's sign theorem
     and the meaning link.
-  - A second, independent session (bb) audited and rebuilt every stage, wrote the compositions with OpenAI's
+  - A second, separate session (bb) audited and rebuilt every stage, wrote the compositions with OpenAI's
     theorem and the check files, and ran the replays.
   - The author set the scope and the accuracy rules, approved the work in OpenAI's environment, and decides what
     is published.

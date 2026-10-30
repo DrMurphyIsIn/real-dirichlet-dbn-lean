@@ -21,7 +21,7 @@ abstract: >-
   theorem that Dirichlet L-functions do not vanish on Re s > 7/8 (openai/math at adc7f124), together with a
   second theorem in the same conjunction identifying the Lean heat flow at t = 0 with (1/8) times the classical
   Lambda(s, chi). The proof depends only on propext, Classical.choice and Quot.sound and was replayed by five
-  independent checkers. Reusable formal components: de Bruijn's theorem for a generic even kernel, Gauss's sign
+  checkers from three implementation lineages. Reusable formal components: de Bruijn's theorem for a generic even kernel, Gauss's sign
   theorem (the root number of every real primitive character is 1, in Mathlib's normalisation), and the Mellin
   bridge from the theta kernel to Mathlib's completedLFunction. The conditional statement Lambda_L <= 9/32 under
   a zero-free strip of half-width 3/4 is due to Freire, Gonzalez-Riquelme, Munoz, Poblete and Salinas
