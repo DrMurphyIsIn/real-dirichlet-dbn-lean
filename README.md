@@ -207,7 +207,9 @@ checkout of openai/math. The recipe, with `$HOME`-relative paths:
    project is the `lean/` subdirectory, with toolchain `leanprover/lean4:v4.34.1` and Mathlib
    `d13f23b723b8a846827a245b89c10fc7d3f11612`. Its `lakefile.lean` (md5 `c8078fb2…`) and `lake-manifest.json`
    (md5 `8c3ec864…`) pin every dependency, and `lean/patches/` holds OpenAI's 23 compatibility patches.
-2. In `lean/`, run `lake update && lake exe cache get`, then
+2. In `lean/`, run `lake update`, then check that `lake-manifest.json` still has md5
+   `8c3ec864da5d9ce3cd9dcc22ad4bf601` (`lake update` can rewrite it; if it has changed, stop, because the
+   dependencies are no longer the pinned ones). Then run `lake exe cache get` and
    `lake build OAI.NumberTheory.DirichletL.Nonvanishing`. That is OpenAI's documented procedure, and their
    lakefile applies the patches. The auditor used the tree built on 7 October for an earlier replay of OpenAI's
    own Comparator challenge. bb checked its sources, lakefile, manifest, toolchain and patches file for file
@@ -242,15 +244,20 @@ lakefile has to stay the workspace root, because its hooks patch dependencies be
 scripts/verify_md5.sh                  # every file under lean/ and logs/ against its manifest
 scripts/materialize.sh --check-island  # openai/math at the pin, our modules inside; island re-derived from source
 cd work/oai
-lake update && lake exe cache get
+lake update && ../../scripts/check_manifest.sh && lake exe cache get   # stops if lake update rewrote the manifest
 lake build RDDBNIsland RDDBNGen RDDBNGauss RDDBNMain RDDBNNegativeControl
 lake env lean BbOaiMeaningCheck.lean   # [propext, Classical.choice, Quot.sound] for both halves
 lake env lean BbOaiMeaningRef.lean     # the bridge statement in pp.all, with no OpenAI module in scope
 lake env lean BbOaiMeaningTamper.lean  # must fail, 3 errors
 ```
 
-The stanza restores Lean's default `autoImplicit := true` for our libraries, because OpenAI's package turns it
-off and the auditor's plain-`lean` build had it on. **This Lake route has not itself been run yet**; the
+**autoImplicit.** OpenAI's package sets `autoImplicit := false`, but the auditor compiled the chain with plain
+`lean`, where the default is `true`. The stanza sets `autoImplicit := true` again on each of our libraries. That a
+library-level option overrides the package-level one here is untested. A read-only scan of the chain found no
+file that relies on auto-bound implicits: no undeclared universe variables, and no unbound short identifiers in
+any declaration header, beyond globals like `H` and `G` and names bound by `∀ᶠ`. Either way, a mismatch can only
+fail loudly. With auto-binding off, an identifier that relied on it becomes an "unknown identifier" error, and a
+name that resolves to a constant is never auto-bound, so no statement can change meaning silently. **This Lake route has not itself been run yet**; the
 auditor's evidence is from the plain-`lean` build above. `.github/workflows/verify.yml` runs it cold on Linux,
 with the axiom, statement-identity and tamper checks, but it has not been triggered either. Expect about 25 GB of
 disk and a few CPU-hours the first time.
@@ -276,7 +283,7 @@ logs/               five-checker replays, in-environment checks, the rc3 audit, 
 logs/comparator_sandboxed/   placeholder for the sandboxed Comparator run
 challenge/          the Comparator challenge by the auditor: ChallengeDefs, Challenge, two tampers, configs, pre-flight
 provenance/         ISLAND_SOURCE (where lean/island/ comes from); OAI_ENV.md (what of the local build environment was checked)
-scripts/            verify_md5.sh, materialize.sh
+scripts/            verify_md5.sh, materialize.sh, check_manifest.sh
 paper/              the paper (in preparation)
 ```
 

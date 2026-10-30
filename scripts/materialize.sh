@@ -10,7 +10,9 @@
 #   scripts/materialize.sh --check-island      # also re-derive lean/island/ from the dbn island at
 #                                              # provenance/ISLAND_SOURCE plus lean/patches/ (network)
 # Then, from work/oai:
-#   lake update && lake exe cache get
+#   lake update && ../../scripts/check_manifest.sh && lake exe cache get
+#                                              # lake update can rewrite the manifest: the check stops unless it is
+#                                              # still OpenAI's pinned one (manifest_md5 in lean/OAI_PIN)
 #   lake build RDDBNIsland RDDBNGen RDDBNGauss RDDBNMain RDDBNNegativeControl
 #   lake env lean BbOaiMeaningCheck.lean       # axioms [propext, Classical.choice, Quot.sound] for both conjuncts
 #   lake env lean BbOaiMeaningRef.lean         # the bridge statement in pp.all, WITHOUT OpenAI in the environment

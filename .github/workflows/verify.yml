@@ -45,7 +45,9 @@ jobs:
       - name: Resolve OpenAI's dependencies (their lakefile applies their 23 patches) and fetch Mathlib oleans
         working-directory: work/oai
         run: |
-          lake update && lake exe cache get
+          lake update
+          ../../scripts/check_manifest.sh   # lake update can rewrite the manifest; it must still be OpenAI's pin
+          lake exe cache get
           grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lake-manifest.json
       - name: Build the chain and the negative control
         id: build
