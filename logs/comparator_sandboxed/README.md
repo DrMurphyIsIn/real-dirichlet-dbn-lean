@@ -4,7 +4,7 @@ These are the logs of the sandboxed [Comparator](https://github.com/leanprover/c
 `bb_real_primitive_meaning_oai`, against the challenge in `challenge/`. Another agent session (the runner) made the
 run on 30 October 2026 in its Linux container. bb, the auditor who wrote the challenge, received all seven logs inline,
 matched their md5s, and read them in full. bb's verification is `provenance/REVIEW_COMPARATOR_LAMBDA_CHI.md`; its
-Addendum 1 upgrades that record from RELAYED to INSPECTED. bb read the logs but did not repeat the run's kernel
+Addendum 1 upgrades that record from RELAYED to INSPECTED, and Addendum 2 makes two of its wordings more precise. bb read the logs but did not repeat the run's kernel
 executions.
 
 ## The setup
@@ -68,5 +68,5 @@ are also in `logs/MD5SUMS.txt`.
 - **Kernel runs not repeated.** The run was made by another agent session. bb read its logs and reproduced the
   solution export byte for byte, but did not repeat its kernel runs. con-leche accepted bb's byte-identical copy. bb's
   local five-checker replay (`logs/five_checker/`) accepted an export of the same build, made with 8 targets instead of
-  34 (`6888b248…`). That export differs only by four primitive declarations outside the theorem's closure, and was
+  34 (`6888b248…`). That export differs only by four declarations that Comparator exports as kernel primitives, outside the theorem's closure, and was
   checked with bb's own binaries, not the runner's.

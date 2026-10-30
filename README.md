@@ -185,7 +185,7 @@ These are the components of the trust base:
     con-leche, con-ron, Lean's kernel; lean4lean N/A);
   - accepted the theorem, and rejected both tampered challenges.
 
-  bb read all of its logs and checked their md5s (`provenance/REVIEW_COMPARATOR_LAMBDA_CHI.md` and its Addendum 1). The
+  bb read all of its logs and checked their md5s (`provenance/REVIEW_COMPARATOR_LAMBDA_CHI.md` and its Addenda 1 and 2). The
   solution was compiled inside the sandbox, in an earlier attempt of the same command that a container restart interrupted;
   the recorded run replayed those outputs.
 
@@ -303,7 +303,7 @@ logs/               five-checker replays, in-environment checks, the rc3 audit, 
 logs/comparator_sandboxed/   the sandboxed Comparator run's seven logs (scratch path normalized to $SCRATCH)
 challenge/          the Comparator challenge by the auditor: ChallengeDefs, Challenge, two tampers, configs, pre-flight
 provenance/         ISLAND_SOURCE (where lean/island/ comes from); OAI_ENV.md (what of the local build environment was checked);
-                    REVIEW_COMPARATOR_LAMBDA_CHI.md and its ADDENDUM1 (bb's verification of the sandboxed run)
+                    REVIEW_COMPARATOR_LAMBDA_CHI.md and its ADDENDUM1, ADDENDUM2 (bb's verification of the sandboxed run)
 scripts/            verify_md5.sh, materialize.sh, check_manifest.sh
 paper/              the paper (in preparation)
 ```

@@ -41,7 +41,7 @@ rebuilt from the public pins, against the challenge in `challenge/`.
 - `main_INTERRUPTED_restart.out` is the earlier sandboxed attempt, which compiled the solution before a container
   restart killed it.
 
-bb read all seven logs (`provenance/REVIEW_COMPARATOR_LAMBDA_CHI.md` and its Addendum 1) but did not repeat the
+bb read all seven logs (`provenance/REVIEW_COMPARATOR_LAMBDA_CHI.md` and its Addenda 1 and 2) but did not repeat the
 kernel runs. Six of the logs embed the runner's scratch path, which contains an agent session identifier, so they are
 archived with that prefix replaced by `$SCRATCH`. `comparator_sandboxed/README.md` lists the raw md5 (as run, and as
 the paper cites it) and the normalized md5 (this copy) for each log, with the substitution.

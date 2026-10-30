@@ -8,7 +8,7 @@ copy of bb's, as listed in bb's own manifests `MD5SUMS.txt` (md5 `6c933c842d470e
 part of bb's manifests. `CHALLENGE_NOTES.md` is bb's full design note, and this page summarises it.
 
 **The sandboxed Comparator run has been made and accepted the theorem; both tampers were rejected.** bb verified
-it (`provenance/REVIEW_COMPARATOR_LAMBDA_CHI.md` and its Addendum 1); its logs are in `logs/comparator_sandboxed/`. bb's earlier
+it (`provenance/REVIEW_COMPARATOR_LAMBDA_CHI.md` and its Addenda 1 and 2); its logs are in `logs/comparator_sandboxed/`. bb's earlier
 local, unsandboxed pre-flight is in `preflight/`, described below.
 
 ## What is in here
@@ -88,6 +88,6 @@ The run was made on 30 October 2026 by another agent session, on Linux:
 - against these challenge files, with the solution chain at the md5s in `lean/MD5SUMS.txt`.
 
 It printed "Your solution is okay!", and both tampers were rejected with "Challenge and solution theorem statement do
-not match". bb verified the run against these md5s (REVIEW_COMPARATOR_LAMBDA_CHI.md). bb read all of the run's logs and reproduced the
+not match". bb verified the run against these md5s (`provenance/REVIEW_COMPARATOR_LAMBDA_CHI.md`). bb read all of the run's logs and reproduced the
 solution export byte for byte. The logs are in `logs/comparator_sandboxed/`, with the runner's scratch path replaced by
 `$SCRATCH`.
