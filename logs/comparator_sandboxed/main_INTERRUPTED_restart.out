@@ -1,0 +1,707 @@
+== main  start Fri Oct 30 10:51:23 UTC 2026
+config config.json md5 d563faf75a71cdf711852a4515200bad
+73c1bf9423bfc17c9f2b1ed1496a3f84  Challenge.lean
+67e538bce62d039a63d0cabcffd2797b  ChallengeDefs.lean
+d6ef5198ce5c64810477a0ffe8e26f6f  ChallengeTamperA.lean
+311631378a462aaa7199bce74ad42e6c  ChallengeTamperB.lean
+23ea25e934c8d037c49d6420562f3520  BbOaiMeaning.lean
+4c569252f1eb0ed7830a7e5d0248c115  BbOaiRealPrim.lean
+4f7460543cf4dc51909bacec1ae45b5b  GaussBridge.lean
+e2eb57db4706745afa888eb9eef87c62  lakefile.toml
+458daaf20a2b15fa67eaeb67f2518c08  lake-manifest.json
+fe6195d02cc4cc628ced5ae0aca74814  lean-toolchain
+990f646bcb0d1e7d2cbcbbfe9f854398  $SCRATCH/tools/comparator/.lake/build/bin/comparator
+13a13e8b042cb95de4e07956e8d1f6d2  $SCRATCH/pub/sandbox/landrun-bwrap.sh
+ec897d541231d914d43f036b42465ed8  $SCRATCH/tools/lean4export/.lake/build/bin/lean4export
+0d9bd7d16bd7547c1fb7016363be4e46  $SCRATCH/tools/nanoda_lib/target/release/nanoda_bin
+1048576
+warning: rellich-kondrachov: repository '$SCRATCH/pub/lcc/.lake/packages/rellich-kondrachov' has local changes
+warning: PrimeNumberTheoremAnd: repository '$SCRATCH/pub/lcc/.lake/packages/PrimeNumberTheoremAnd' has local changes
+Building Challenge
+landrun-bwrap: ro=[/ $SCRATCH/pub/lcc /root/.elan/toolchains/leanprover--lean4---v4.34.1 /usr/bin/git] rw=[/dev $SCRATCH/pub/lcc/.lake] env=[PATH HOME LEAN_ABORT_ON_PANIC] cmd=lake
+warning: rellich-kondrachov: repository '$SCRATCH/pub/lcc/.lake/packages/rellich-kondrachov' has local changes
+warning: PrimeNumberTheoremAnd: repository '$SCRATCH/pub/lcc/.lake/packages/PrimeNumberTheoremAnd' has local changes
+✔ [8924/8926] Built ChallengeDefs (8.6s)
+⚠ [8925/8926] Built Challenge (6.3s)
+warning: Challenge.lean:8:8: declaration uses `sorry`
+Build completed successfully (8926 jobs).
+landrun-bwrap: ro=[/ $SCRATCH/pub/lcc $SCRATCH/pub/lcc/.lake /root/.elan/toolchains/leanprover--lean4---v4.34.1] rw=[/dev] env=[PATH HOME LEAN_PATH LEAN_ABORT_ON_PANIC] cmd=$SCRATCH/tools/lean4export/.lake/build/bin/lean4export
+Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, bb_real_primitive_meaning_oai, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam] from Challenge
+Building BbOaiMeaning
+landrun-bwrap: ro=[/ $SCRATCH/pub/lcc /root/.elan/toolchains/leanprover--lean4---v4.34.1 /usr/bin/git] rw=[/dev $SCRATCH/pub/lcc/.lake] env=[PATH HOME LEAN_ABORT_ON_PANIC] cmd=lake
+warning: rellich-kondrachov: repository '$SCRATCH/pub/lcc/.lake/packages/rellich-kondrachov' has local changes
+warning: PrimeNumberTheoremAnd: repository '$SCRATCH/pub/lcc/.lake/packages/PrimeNumberTheoremAnd' has local changes
+✔ [8924/9119] Built RellichKondrachov.MeasureTheory.Function.LpSpace.Restrict (5.4s)
+✔ [8925/9119] Built RellichKondrachov.Analysis.FunctionalSpaces.Sobolev.Euclidean.H1 (8.7s)
+✔ [8926/9119] Built OAI.NumberTheory.DirichletL.Arithmetic.EisensteinCoordinates (12s)
+ℹ [8927/9119] Built DBNHadamardLinear (14s)
+info: DBNHadamardLinear.lean:238:0: 'DBN.eq_linear_of_circleAverage_abs_re_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [8928/9119] Built DBNHadamardMean (13s)
+info: DBNHadamardMean.lean:234:0: 'DBN.exists_exp_eq_of_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: DBNHadamardMean.lean:235:0: 'DBN.circleAverage_abs_re_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [8929/9119] Built DBNHadamardProduct (12s)
+info: DBNHadamardProduct.lean:356:0: 'DBN.hasProd_evenProduct' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: DBNHadamardProduct.lean:357:0: 'DBN.differentiable_evenProduct' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: DBNHadamardProduct.lean:358:0: 'DBN.evenProduct_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: DBNHadamardProduct.lean:359:0: 'DBN.evenProduct_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: DBNHadamardProduct.lean:360:0: 'DBN.norm_evenProduct_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: DBNHadamardProduct.lean:361:0: 'DBN.evenProduct_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: DBNHadamardProduct.lean:362:0: 'DBN.evenProduct_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: DBNHadamardProduct.lean:363:0: 'DBN.finite_setOf_factor_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: DBNHadamardProduct.lean:364:0: 'DBN.analyticOrderNatAt_evenProduct' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [8930/9123] Built DBNHurwitz (9.9s)
+ℹ [8931/9124] Built DBNHadamardCount (12s)
+info: DBNHadamardCount.lean:300:0: 'DBN.summable_zero_multiplicity_rpow' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [8932/9124] Built RellichKondrachov.Analysis.FunctionalSpaces.Sobolev.Euclidean.L2Compactness.Smoothing (6.6s)
+✔ [8933/9124] Built RellichKondrachov.Analysis.FunctionalSpaces.Sobolev.Euclidean.TranslationEstimate (7.1s)
+✔ [8934/9124] Built GenFourier (11s)
+✔ [8935/9124] Built DBNStep (15s)
+✔ [8936/9127] Built RellichKondrachov.Analysis.FunctionalSpaces.Sobolev.Euclidean.Translation (4.4s)
+✔ [8937/9128] Built OAI.NumberTheory.DirichletL.Arithmetic.EisensteinIdeals (9.7s)
+✔ [8938/9128] Built OAI.NumberTheory.DirichletL.GaussSum.ChineseRemainder (11s)
+✔ [8939/9128] Built RellichKondrachov.Analysis.FunctionalSpaces.Sobolev.Euclidean.L2Compactness.Kernels (7.8s)
+✔ [8940/9128] Built OAI.NumberTheory.DirichletL.Mellin.ExponentialSmoothing (10s)
+✔ [8941/9128] Built RellichKondrachov.Analysis.FunctionalSpaces.Sobolev.Euclidean.L2Compactness.Compactness (4.1s)
+✔ [8942/9129] Built RellichKondrachov.Analysis.FunctionalSpaces.Sobolev.Euclidean.TranslationEstimateL2 (8.0s)
+✔ [8943/9130] Built RellichKondrachov.Analysis.FunctionalSpaces.Sobolev.Euclidean.L2Compactness.Approximation (10s)
+✔ [8944/9130] Built GenDefs (12s)
+ℹ [8945/9131] Built DBNHadamard (15s)
+info: DBNHadamard.lean:452:0: 'DBN.evenHadamardData_of_order_lt_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [8946/9132] Built RellichKondrachov.Analysis.FunctionalSpaces.Sobolev.Euclidean.TranslationEstimateH1 (7.4s)
+✔ [8947/9134] Built RellichKondrachov.Analysis.FunctionalSpaces.Sobolev.Euclidean.L2Compactness.ArzelaAscoli (9.9s)
+✔ [8948/9234] Built RellichKondrachov.Analysis.FunctionalSpaces.Sobolev.Euclidean.L2Compactness.TranslationIntegral (8.0s)
+✔ [8949/9256] Built RellichKondrachov.Analysis.FunctionalSpaces.Sobolev.Euclidean.L2Compactness.Transfer (10s)
+✔ [8950/9256] Built OAI.NumberTheory.DirichletL.Moments.Correlation (7.4s)
+✔ [8951/9256] Built OAI.NumberTheory.DirichletL.Mellin.LogProfiles (26s)
+⚠ [8952/9256] Built GenHeatApprox (17s)
+warning: GenHeatApprox.lean:547:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: GenHeatApprox.lean:547:30: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GenHeatApprox.lean:548:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GenHeatApprox.lean:548:20: `if_neg` has been deprecated: Use `ite_eq_right` instead
+✔ [8953/9256] Built OAI.NumberTheory.DirichletL.Moments.CRT (5.4s)
+✔ [8954/9256] Built RellichKondrachov.Analysis.FunctionalSpaces.Sobolev.Euclidean.L2Compactness.FrechetKolmogorov (6.7s)
+✔ [8955/9258] Built OAI.NumberTheory.DirichletL.Moments.PrimePower (5.4s)
+✔ [8956/9258] Built OAI.NumberTheory.DirichletL.ChineseRemainder.AdditiveCharacters (10s)
+✔ [8957/9262] Built OAI.NumberTheory.DirichletL.GaussSum.FiniteFourier (15s)
+✔ [8958/9262] Built GenM1Approx (17s)
+✔ [8959/9262] Built OAI.NumberTheory.DirichletL.Moments.FullCorrelation (7.1s)
+✔ [8960/9262] Built RellichKondrachov.Analysis.FunctionalSpaces.Sobolev.Euclidean.Rellich (19s)
+✔ [8961/9262] Built OAI.NumberTheory.DirichletL.Arithmetic.EisensteinEmbedding (14s)
+✔ [8962/9262] Built OAI.NumberTheory.DirichletL.Moments.Basic (8.3s)
+✔ [8963/9266] Built OAI.NumberTheory.DirichletL.Fourier.PositiveLogProfiles (15s)
+✔ [8964/9275] Built OAI.NumberTheory.DirichletL.Cusp.MatrixPhases (19s)
+✔ [8965/9290] Built OAI.NumberTheory.DirichletL.Detector.Compensation (4.2s)
+✔ [8966/9290] Built GenM1Parametric (9.4s)
+✔ [8967/9292] Built OAI.NumberTheory.DirichletL.GaussSum.CubicNormalization (9.3s)
+✔ [8968/9292] Built OAI.NumberTheory.DirichletL.FiniteFourier (4.3s)
+✔ [8969/9295] Built OAI.NumberTheory.DirichletL.ThetaProduct (14s)
+✔ [8970/9295] Built OAI.NumberTheory.DirichletL.FiniteConductor (6.4s)
+✔ [8971/9295] Built OAI.NumberTheory.DirichletL.GaussSum.SexticNormalization (9.8s)
+✔ [8972/9295] Built OAI.NumberTheory.DirichletL.Supremum (2.9s)
+✔ [8973/9295] Built GenScale (11s)
+✔ [8974/9302] Built OAI.NumberTheory.DirichletL.EisensteinTheta (5.4s)
+✔ [8975/9302] Built OAI.NumberTheory.DirichletL.CharacterTransport (4.6s)
+✔ [8976/9302] Built OAI.NumberTheory.DirichletL.Continuation (5.4s)
+✔ [8977/9302] Built OAI.NumberTheory.DirichletL.ConductorBounds (6.4s)
+✔ [8978/9303] Built OAI.NumberTheory.DirichletL.GaussSum.LocalProductAssembly (8.7s)
+✔ [8979/9303] Built OAI.NumberTheory.DirichletL.LatticeSummability (5.6s)
+✔ [8980/9311] Built OAI.NumberTheory.DirichletL.Hecke.Theta (8.0s)
+✔ [8981/9311] Built OAI.NumberTheory.DirichletL.ConductorPresentation (6.9s)
+✔ [8982/9311] Built GenTheta (15s)
+✔ [8983/9311] Built OAI.NumberTheory.DirichletL.Hecke.ThetaSeries (4.5s)
+✔ [8984/9312] Built OAI.NumberTheory.DirichletL.GaussSum.RamifiedTracePhase (8.5s)
+✔ [8985/9312] Built OAI.NumberTheory.DirichletL.Hecke.Family (5.6s)
+✔ [8986/9312] Built OAI.NumberTheory.DirichletL.ResidueCharacter (4.7s)
+✔ [8987/9312] Built OAI.NumberTheory.DirichletL.Hecke.Coordinates (6.7s)
+✔ [8988/9312] Built OAI.NumberTheory.DirichletL.Hecke.FamilySeries (6.9s)
+✔ [8989/9312] Built OAI.NumberTheory.DirichletL.Arithmetic.LatticeCount (11s)
+✔ [8990/9312] Built GenMellin (11s)
+✔ [8991/9312] Built OAI.NumberTheory.DirichletL.Hecke.Operations (4.4s)
+✔ [8992/9326] Built OAI.NumberTheory.DirichletL.Hecke.CharacterAnalytic (5.5s)
+✔ [8993/9338] Built OAI.NumberTheory.DirichletL.IdealCharacter (6.6s)
+✔ [8994/9338] Built OAI.NumberTheory.DirichletL.GaussSum.QuadraticTrace (7.6s)
+✔ [8995/9419] Built OAI.NumberTheory.DirichletL.Detector.Gauss (4.8s)
+✔ [8996/9419] Built OAI.NumberTheory.DirichletL.EulerFactors (3.9s)
+⚠ [8997/9420] Built GenMellin2 (9.8s)
+warning: GenMellin2.lean:113:10: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: GenMellin2.lean:113:32: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GenMellin2.lean:116:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GenMellin2.lean:116:22: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: GenMellin2.lean:125:13: This simp argument is unused:
+  hg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hh, mul_zero, zero_mul, Real.exp_zero, ofReal_one, one_mul, Complex.cos]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: GenMellin2.lean:125:17: This simp argument is unused:
+  hh
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hg, mul_zero, zero_mul, Real.exp_zero, ofReal_one, one_mul, Complex.cos]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: GenMellin2.lean:125:21: This simp argument is unused:
+  mul_zero
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hg, hh, zero_mul, Real.exp_zero, ofReal_one, one_mul, Complex.cos]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8998/9428] Built OAI.NumberTheory.DirichletL.Hecke.MellinIdentity (4.4s)
+✔ [9000/9428] Built OAI.NumberTheory.DirichletL.RayOrthogonality (6.2s)
+✔ [9001/9430] Built PrimeNumberTheoremAnd.SmoothExistence (7.3s)
+✔ [9002/9434] Built GenBridge (13s)
+✔ [9003/9436] Built PrimeNumberTheoremAnd.Sobolev (12s)
+✔ [9004/9447] Built OAI.NumberTheory.DirichletL.RayQuotient (6.0s)
+✔ [9005/9454] Built PrimeNumberTheoremAnd.Fourier (4.4s)
+✔ [9006/9457] Built OAI.NumberTheory.DirichletL.GaussSum.QuadraticNormalization (24s)
+✔ [9007/9457] Built GenStrip (8.7s)
+✔ [9008/9457] Built OAI.NumberTheory.DirichletL.CubicSieve.Algebra (3.4s)
+✔ [9009/9465] Built OAI.NumberTheory.DirichletL.CubicSieve.Factorization (2.4s)
+✔ [9010/9465] Built OAI.NumberTheory.DirichletL.CubicSieve.Operator (9.2s)
+✔ [9011/9470] Built OAI.NumberTheory.DirichletL.CubicSieve.Blocks (10s)
+⚠ [9012/9472] Built GenThetaFE (25s)
+warning: GenThetaFE.lean:117:27: This simp argument is unused:
+  Int.cast_natCast
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [thZ, pow_one] at *
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: GenThetaFE.lean:203:0: automatically included section variable(s) unused in theorem `DBN.Gen.natCast_cpow_half`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: GenThetaFE.lean:221:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GenThetaFE.lean:221:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GenThetaFE.lean:232:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: GenThetaFE.lean:232:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: GenThetaFE.lean:295:14: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GenThetaFE.lean:296:14: `if_neg` has been deprecated: Use `ite_eq_right` instead
+✔ [9013/9474] Built OAI.NumberTheory.DirichletL.Descent.Marks (7.7s)
+✔ [9014/9474] Built OAI.NumberTheory.DirichletL.Descent.Overlap (5.9s)
+✔ [9015/9485] Built OAI.NumberTheory.DirichletL.Poisson.BinaryGaussian (34s)
+⚠ [9016/9497] Built GenChi4 (10s)
+warning: GenChi4.lean:87:53: `if_neg` has been deprecated: Use `ite_eq_right` instead
+✔ [9017/9506] Built PrimeNumberTheoremAnd.Wiener (43s)
+⚠ [9018/9506] Built GaussQuad (18s)
+warning: GaussQuad.lean:75:23: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+info: GaussQuad.lean:185:4: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+warning: GaussQuad.lean:376:31: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+✔ [9019/9506] Built OAI.NumberTheory.DirichletL.PeriodicThetaRegularity (5.4s)
+✔ [9020/9651] Built OAI.NumberTheory.DirichletL.PrimeCounting.Progressions (5.2s)
+✔ [9021/9659] Built OAI.NumberTheory.DirichletL.GaussSum.GaussianDualLimit (19s)
+✔ [9022/9659] Built OAI.NumberTheory.DirichletL.PrimeCounting.PrimeMass (5.9s)
+⚠ [9023/9665] Built GaussPrime (11s)
+warning: GaussPrime.lean:30:13: `Set.toFinset_setOf` has been deprecated: Use `Set.toFinset_ofPred` instead
+warning: GaussPrime.lean:52:36: Variable name `hp2` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hp2
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: GaussPrime.lean:153:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GaussPrime.lean:159:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: GaussPrime.lean:163:31: This simp argument is unused:
+  I_sq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [h3, I_pow_four]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [9024/9798] Built OAI.NumberTheory.DirichletL.LogarithmicControl (11s)
+✔ [9025/9989] Built OAI.NumberTheory.DirichletL.Detector (9.8s)
+✔ [9026/10045] Built OAI.NumberTheory.DirichletL.Detector.Euler (4.5s)
+✔ [9027/10053] Built OAI.NumberTheory.DirichletL.Detector.Local (6.2s)
+✔ [9028/10053] Built OAI.NumberTheory.DirichletL.ContinuationInversion (7.5s)
+⚠ [9029/10059] Built GaussCRT (13s)
+warning: GaussCRT.lean:117:27: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+✔ [9030/10059] Built OAI.NumberTheory.DirichletL.GaussSum.GaussianFiberMass (20s)
+✔ [9031/10096] Built OAI.NumberTheory.DirichletL.Detector.CorrectionBounds (4.9s)
+✔ [9032/10098] Built OAI.NumberTheory.DirichletL.ContinuationContour (4.5s)
+✔ [9033/10210] Built OAI.NumberTheory.DirichletL.Detector.NormalProduct (3.4s)
+✔ [9034/10271] Built GaussPow (9.0s)
+✔ [9035/10271] Built OAI.NumberTheory.DirichletL.ContinuationPolynomialContour (5.4s)
+✔ [9036/10300] Built OAI.NumberTheory.DirichletL.Detector.Basic (4.0s)
+✔ [9037/10300] Built OAI.NumberTheory.DirichletL.Poisson.GaussianMoments (9.5s)
+✔ [9038/10300] Built OAI.NumberTheory.DirichletL.Parameters (3.4s)
+✔ [9039/10359] Built OAI.NumberTheory.DirichletL.ContinuationShiftedGaussian (4.0s)
+⚠ [9040/10359] Built GaussTwo (11s)
+warning: GaussTwo.lean:141:62: This simp argument is unused:
+  add_zero
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Finset.sum_insert (show (0 : ZMod 8) ∉ ({ 1, 2, 3, 4, 5, 6, 7 } : Finset (ZMod 8)) by decide),
+    Finset.sum_insert (show (1 : ZMod 8) ∉ ({ 2, 3, 4, 5, 6, 7 } : Finset (ZMod 8)) by decide),
+    Finset.sum_insert (show (2 : ZMod 8) ∉ ({ 3, 4, 5, 6, 7 } : Finset (ZMod 8)) by decide),
+    Finset.sum_insert (show (3 : ZMod 8) ∉ ({ 4, 5, 6, 7 } : Finset (ZMod 8)) by decide),
+    Finset.sum_insert (show (4 : ZMod 8) ∉ ({ 5, 6, 7 } : Finset (ZMod 8)) by decide),
+    Finset.sum_insert (show (5 : ZMod 8) ∉ ({ 6, 7 } : Finset (ZMod 8)) by decide),
+    Finset.sum_insert (show (6 : ZMod 8) ∉ ({ 7 } : Finset (ZMod 8)) by decide), Finset.sum_singleton, h0, h2, h4, h6,
+    zero_mul, zero_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: GaussTwo.lean:165:41: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GaussTwo.lean:183:41: `if_neg` has been deprecated: Use `ite_eq_right` instead
+✔ [9041/10364] Built OAI.NumberTheory.DirichletL.Descent.LocalReflection (5.6s)
+✔ [9042/10364] Built OAI.NumberTheory.DirichletL.ParametersSlotLengths (7.5s)
+✔ [9043/10364] Built OAI.NumberTheory.DirichletL.Poisson.OscillatoryGaussian (9.8s)
+✔ [9044/10381] Built OAI.NumberTheory.DirichletL.Descent.Fibers (2.7s)
+✔ [9045/10429] Built OAI.NumberTheory.DirichletL.Descent.SieveComposition (4.4s)
+⚠ [9046/10447] Built GaussSign (11s)
+warning: GaussSign.lean:66:19: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GaussSign.lean:69:19: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: GaussSign.lean:198:27: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GaussSign.lean:199:31: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: GaussSign.lean:204:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GaussSign.lean:205:10: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: GaussSign.lean:211:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GaussSign.lean:211:48: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GaussSign.lean:211:59: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GaussSign.lean:214:10: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: GaussSign.lean:214:52: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GaussSign.lean:214:63: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: GaussSign.lean:215:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GaussSign.lean:217:10: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: GaussSign.lean:217:53: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: GaussSign.lean:217:64: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GaussSign.lean:220:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GaussSign.lean:220:49: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: GaussSign.lean:220:60: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: GaussSign.lean:221:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+✔ [9047/10470] Built OAI.NumberTheory.DirichletL.HeathBrownIteration (5.0s)
+✔ [9048/10470] Built OAI.NumberTheory.DirichletL.PrimeRows.RationalApproximation (13s)
+✔ [9049/10481] Built OAI.NumberTheory.DirichletL.ParametersDetectorScales (16s)
+✔ [9050/10546] Built OAI.NumberTheory.DirichletL.Descent.Basic (4.0s)
+✔ [9051/10674] Built OAI.NumberTheory.DirichletL.CubicDyadicDecay (15s)
+✔ [9052/10782] Built OAI.NumberTheory.DirichletL.Detector.GramCommonParam (5.8s)
+✔ [9053/10782] Built OAI.NumberTheory.DirichletL.ParametersCentralBudget (9.9s)
+✔ [9054/10784] Built OAI.NumberTheory.DirichletL.Endpoint (5.1s)
+✔ [9055/10784] Built OAI.NumberTheory.DirichletL.Detector.GramCommonSum (3.5s)
+✔ [9056/11446] Built OAI.NumberTheory.DirichletL.Detector.GramCommonLinear (4.3s)
+✔ [9058/11897] Built OAI.NumberTheory.DirichletL.GaussSum.AbelPhaseLimit (16s)
+✔ [9059/11897] Built OAI.NumberTheory.DirichletL.Descent.SlotAssignments (2.0s)
+✔ [9060/11897] Built OAI.NumberTheory.DirichletL.ParametersHighData (5.6s)
+✔ [9061/11897] Built OAI.NumberTheory.DirichletL.Inversion.InitialMarkedReserve (2.4s)
+✔ [9062/11897] Built OAI.NumberTheory.DirichletL.ParametersHighDataFine (5.6s)
+⚠ [9063/11897] Built GaussBridge (6.0s)
+warning: GaussBridge.lean:30:14: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GaussBridge.lean:31:14: `if_neg` has been deprecated: Use `ite_eq_right` instead
+✔ [9064/11897] Built OAI.NumberTheory.DirichletL.GaussSum.ThetaLocalRows (13s)
+✔ [9065/11897] Built OAI.NumberTheory.DirichletL.Mellin.LocalNonvanishing (6.4s)
+✔ [9066/11897] Built OAI.NumberTheory.DirichletL.Arithmetic.NormFiberMellin (6.2s)
+✔ [9067/11897] Built OAI.NumberTheory.DirichletL.Hecke.NormFiberCharacters (6.4s)
+✔ [9068/11897] Built OAI.NumberTheory.DirichletL.Hecke.LocalEulerIdentities (6.3s)
+✔ [9069/11897] Built OAI.NumberTheory.DirichletL.Hecke.PrimeExtraction (5.3s)
+✔ [9070/11897] Built OAI.NumberTheory.DirichletL.Mellin.FiniteEulerRestoration (7.5s)
+✔ [9071/11897] Built OAI.NumberTheory.DirichletL.PrimeRows.NormFiberExtraction (7.0s)
+✔ [9072/11897] Built OAI.NumberTheory.DirichletL.Hecke.FiniteEulerFactors (10s)
+✔ [9073/11897] Built OAI.NumberTheory.DirichletL.GaussSum.SecondPoissonScale (15s)
+✔ [9074/11897] Built OAI.NumberTheory.DirichletL.Mellin.CompactScale (10s)
+✔ [9075/11897] Built OAI.NumberTheory.DirichletL.Poisson.EisensteinLattice (9.2s)
+✔ [9076/11897] Built OAI.NumberTheory.DirichletL.Mellin.CompactWeights (7.7s)
+✔ [9077/11897] Built OAI.NumberTheory.DirichletL.GaussSum.SexticRadialPoisson (8.3s)
+✔ [9078/11897] Built OAI.NumberTheory.DirichletL.PrimeRows.IdealGenerators (8.0s)
+✔ [9079/11897] Built OAI.NumberTheory.DirichletL.Poisson.RadialFourier (10s)
+✔ [9080/11897] Built OAI.NumberTheory.DirichletL.PrimeRows.ActiveGaussFactorization (7.8s)
+✔ [9081/11897] Built OAI.NumberTheory.DirichletL.GaussSum.ActiveConductor (9.3s)
+✔ [9082/11897] Built OAI.NumberTheory.DirichletL.GaussSum.CubicTrace (14s)
+✔ [9083/11897] Built OAI.NumberTheory.DirichletL.GaussSum.SquarePhaseFactorization (9.7s)
+✔ [9084/11897] Built OAI.NumberTheory.DirichletL.GaussSum.MixedConversion (11s)
+✔ [9085/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.CrossSeparation (6.3s)
+✔ [9086/11897] Built OAI.NumberTheory.DirichletL.Arithmetic.IdealMobius (7.2s)
+✔ [9087/11897] Built OAI.NumberTheory.DirichletL.Reciprocity.CubicJacobi (11s)
+✔ [9088/11897] Built OAI.NumberTheory.DirichletL.GaussSum.CompletedExpansion (17s)
+✔ [9089/11897] Built OAI.NumberTheory.DirichletL.GaussSum.RayCharacters (7.4s)
+✔ [9090/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.CoefficientCancellation (7.8s)
+✔ [9091/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.InitialBound (12s)
+✔ [9092/11897] Built OAI.NumberTheory.DirichletL.Mellin.ReflectedKernel (6.6s)
+✔ [9093/11897] Built OAI.NumberTheory.DirichletL.Arithmetic.SquarefreeDivisors (6.0s)
+✔ [9094/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.FiniteOperator (13s)
+✔ [9095/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.CubeLabels (14s)
+✔ [9096/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.MainTermDifference (7.5s)
+✔ [9097/11897] Built OAI.NumberTheory.DirichletL.Mellin.InverseContour (8.2s)
+✔ [9098/11897] Built OAI.NumberTheory.DirichletL.Mellin.UniformKernelBounds (7.2s)
+✔ [9099/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.CrossFactorization (8.1s)
+✔ [9100/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.LocalBrackets (12s)
+✔ [9101/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.CoprimeBilinearBound (12s)
+✔ [9102/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.RayExpansion (9.4s)
+✔ [9103/11897] Built OAI.NumberTheory.DirichletL.GaussSum.ReflectionBrackets (21s)
+✔ [9104/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.IdealQuotients (8.0s)
+✔ [9105/11897] Built OAI.NumberTheory.DirichletL.Reciprocity.RamifiedSymbol (19s)
+✔ [9106/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.KernelEnergy (11s)
+✔ [9107/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.DivisorBlocks (11s)
+✔ [9108/11897] Built OAI.NumberTheory.DirichletL.Poisson.QuadraticProfiles (8.4s)
+✔ [9109/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.FirstPassage (7.1s)
+✔ [9110/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.RayCoefficients (6.8s)
+✔ [9111/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.SecondPoisson (10s)
+✔ [9112/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.Rows (22s)
+✔ [9113/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.HyperbolicSpace (10s)
+✔ [9114/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.PrimitiveRows (11s)
+✔ [9115/11897] Built OAI.NumberTheory.DirichletL.Poisson.PrincipalTruncation (13s)
+✔ [9116/11897] Built OAI.NumberTheory.DirichletL.Fourier.FrequencyTwists (8.0s)
+✔ [9117/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.ChildTransfer (7.9s)
+✔ [9118/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.IntegratedTransfer (8.9s)
+✔ [9119/11897] Built OAI.NumberTheory.DirichletL.Fourier.TupleWeights (9.3s)
+✔ [9120/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.RowMajorants (11s)
+✔ [9121/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.FourierCoefficients (8.5s)
+✔ [9122/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.GcdReduction (11s)
+✔ [9123/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.PrimePools (11s)
+✔ [9124/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.AnnularRecursion (18s)
+✔ [9125/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.FrequencyBlocks (8.9s)
+✔ [9126/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.FixedProfiles (6.7s)
+✔ [9127/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.ConstantTermSupport (6.2s)
+✔ [9128/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.SquareParts (7.9s)
+✔ [9129/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.ResidualSectors (21s)
+✔ [9130/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.UnrestrictedCharacters (24s)
+✔ [9131/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.ConjugateProfiles (8.0s)
+✔ [9132/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.RamifiedNormWeights (19s)
+✔ [9133/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.PrincipalTruncation (7.2s)
+✔ [9134/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.FrequencyCutoffs (7.4s)
+✔ [9135/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.ConstantDirichletSeries (7.0s)
+✔ [9136/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.DyadicColumns (8.2s)
+✔ [9137/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.TruncatedSecondTransfer (7.6s)
+✔ [9138/11897] Built OAI.NumberTheory.DirichletL.Fourier.LogDensity (8.4s)
+✔ [9139/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.TwistedProfiles (9.4s)
+✔ [9140/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.FirstCoreCutoff (10s)
+✔ [9141/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.PrincipalDifference (11s)
+✔ [9142/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.SpatialDerivatives (13s)
+✔ [9143/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.SmoothSummands (9.3s)
+✔ [9144/11897] Built OAI.NumberTheory.DirichletL.Poisson.LatticeEnvelopes (11s)
+✔ [9145/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.SupportNorms (8.3s)
+✔ [9146/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.MiddleWindows (8.5s)
+✔ [9147/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.GreenIntegrals (11s)
+✔ [9148/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.GreenIdentity (10s)
+✔ [9149/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.LogarithmicTargets (8.4s)
+✔ [9150/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.CuspIntegration (10s)
+✔ [9151/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.SmoothCuspCutoffs (10s)
+✔ [9152/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.MaskedPrincipalBounds (9.9s)
+✔ [9153/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.DualMiddleExpansion (12s)
+✔ [9154/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.SeedDefects (12s)
+✔ [9155/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.LogarithmicSectors (12s)
+✔ [9156/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.GlobalEncoding (8.7s)
+✔ [9157/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.SquarefreeTransfer (10s)
+✔ [9158/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.PrincipalNormalization (8.4s)
+✔ [9159/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.PrincipalMajorants (10s)
+✔ [9160/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.RetainedDualBounds (28s)
+✔ [9161/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.PrincipalDensity (11s)
+✔ [9162/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.HighKernelGeometry (19s)
+✔ [9163/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.CuspCoercivity (10s)
+✔ [9164/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.CommonMasks (8.2s)
+✔ [9165/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.QuotientTopology (12s)
+✔ [9166/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.ScaleCaps (13s)
+✔ [9167/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.PoissonComparison (21s)
+✔ [9168/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.ArithmeticBins (8.5s)
+✔ [9169/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.HyperbolicVolume (11s)
+✔ [9170/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.UniformTransfer (11s)
+✔ [9171/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.GlobalBinLoss (19s)
+✔ [9172/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.PoissonConstants (13s)
+✔ [9173/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.FundamentalDomain (22s)
+✔ [9174/11897] Built OAI.NumberTheory.DirichletL.GaussSum.GlobalScales (10s)
+✔ [9175/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.AnnularLifting (18s)
+✔ [9176/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.SelectedExponents (21s)
+✔ [9177/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.CompactProfiles (9.8s)
+✔ [9178/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.LogarithmicLoss (11s)
+✔ [9179/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.LiteralSources (7.0s)
+✔ [9180/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.PooledRows (7.1s)
+✔ [9181/11897] Built OAI.NumberTheory.DirichletL.MeanSquare.TransformedColumns (11s)
+✔ [9182/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.ProductColumns (12s)
+✔ [9183/11897] Built OAI.NumberTheory.DirichletL.QuadraticSieve.UniformTailBounds (9.9s)
+✔ [9184/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.CubeBlocks (6.0s)
+✔ [9185/11897] Built OAI.NumberTheory.DirichletL.GaussSum.PowerfulParts (8.6s)
+✔ [9186/11897] Built OAI.NumberTheory.DirichletL.MeanSquare.SourceTransfer (11s)
+✔ [9187/11897] Built OAI.NumberTheory.DirichletL.MeanSquare.LogarithmicBins (7.5s)
+✔ [9188/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.RowCaps (7.9s)
+✔ [9189/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.SmoothTests (6.7s)
+✔ [9190/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.DivisorTargets (11s)
+✔ [9191/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.NormalizedMass (9.1s)
+✔ [9192/11897] Built OAI.NumberTheory.DirichletL.GaussSum.ReflectedBranches (7.6s)
+✔ [9193/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.CuspHeight (7.5s)
+✔ [9194/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.DirichletForm (10s)
+✔ [9195/11897] Built OAI.NumberTheory.DirichletL.MeanSquare.InputEnergy (9.4s)
+✔ [9196/11897] Built OAI.NumberTheory.DirichletL.MeanSquare.OutsideIdeals (4.0s)
+✔ [9197/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.QuantitativePassage (9.5s)
+✔ [9198/11897] Built OAI.NumberTheory.DirichletL.MeanSquare.PoissonSource (9.5s)
+✔ [9199/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.RadialWindows (10s)
+✔ [9200/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.DyadicKernel (14s)
+✔ [9201/11897] Built OAI.NumberTheory.DirichletL.MeanSquare.ReflectedDyadicSeries (8.6s)
+✔ [9202/11897] Built OAI.NumberTheory.DirichletL.GaussSum.BranchScaling (10s)
+✔ [9203/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.LocalCutoffs (10s)
+✔ [9204/11897] Built OAI.NumberTheory.DirichletL.MeanSquare.HarmonicAggregation (10s)
+✔ [9205/11897] Built OAI.NumberTheory.DirichletL.GaussSum.CompletedDyadicRows (14s)
+✔ [9206/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.PaddedPassage (15s)
+✔ [9207/11897] Built OAI.NumberTheory.DirichletL.MeanSquare.DiagonalDensity (13s)
+✔ [9208/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.VariationalLaplacian (16s)
+✔ [9209/11897] Built OAI.NumberTheory.DirichletL.MeanSquare.HighRadialBounds (9.3s)
+✔ [9210/11897] Built OAI.NumberTheory.DirichletL.MeanSquare.SourceRemainders (8.0s)
+✔ [9211/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.DualZeroMode (13s)
+✔ [9212/11897] Built OAI.NumberTheory.DirichletL.MeanSquare.CanonicalDensity (7.0s)
+✔ [9213/11897] Built OAI.NumberTheory.DirichletL.MeanSquare.RetainedDensity (11s)
+✔ [9214/11897] Built OAI.NumberTheory.DirichletL.MeanSquare.CanonicalTailBounds (9.8s)
+✔ [9215/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.ReopenedFibers (14s)
+✔ [9216/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.ReopeningSeparation (9.6s)
+✔ [9217/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.CompactEnergyFamilies (15s)
+✔ [9218/11897] Built OAI.NumberTheory.DirichletL.RowCompletion.SupportBounds (10s)
+✔ [9219/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.RadialProfiles (15s)
+✔ [9220/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.LogSeparation (16s)
+✔ [9221/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.CanonicalLogEnergy (9.9s)
+✔ [9222/11897] Built OAI.NumberTheory.DirichletL.RowCompletion.PolynomialHeight (13s)
+✔ [9223/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.CoordinateLaplacian (7.4s)
+✔ [9224/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.DensityBudgets (10s)
+✔ [9225/11897] Built OAI.NumberTheory.DirichletL.MeanSquare.PolynomialHeight (14s)
+✔ [9226/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.RankMargins (10s)
+✔ [9227/11897] Built OAI.NumberTheory.DirichletL.MeanSquare.UniformPolynomialHeight (12s)
+✔ [9228/11897] Built OAI.NumberTheory.DirichletL.MeanSquare.UnitRows (7.7s)
+✔ [9229/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.BarrierPotential (8.6s)
+✔ [9230/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.ReopeningBounds (10s)
+✔ [9231/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.CutoffOrders (10s)
+✔ [9232/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.ClosedRecursion (12s)
+✔ [9233/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.FredholmAlternative (12s)
+✔ [9234/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.UnitNormalization (13s)
+✔ [9235/11897] Built OAI.NumberTheory.DirichletL.RowCompletion.CompletedEnergy (13s)
+✔ [9236/11897] Built OAI.NumberTheory.DirichletL.RowCompletion.CubicReopening (16s)
+✔ [9237/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.MeromorphicResolvent (42s)
+✔ [9238/11897] Built OAI.NumberTheory.DirichletL.RowCompletion.DensityTransfer (16s)
+✔ [9239/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.SeedHeight (7.3s)
+✔ [9240/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.CuspResidues (10s)
+✔ [9241/11897] Built OAI.NumberTheory.DirichletL.RowCompletion.InitialDensity (12s)
+✔ [9242/11897] Built OAI.NumberTheory.DirichletL.MeanSquare.ThetaDensity (7.1s)
+✔ [9243/11897] Built OAI.NumberTheory.DirichletL.Mellin.SixthPowerAverage (7.8s)
+✔ [9244/11897] Built OAI.NumberTheory.DirichletL.Hecke.MobiusEulerCorrection (9.5s)
+✔ [9245/11897] Built OAI.NumberTheory.DirichletL.RowCompletion.ThetaNonvanishing (9.0s)
+✔ [9246/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.CutoffApproximation (10s)
+✔ [9247/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.ConjugateLevelAction (34s)
+✔ [9248/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.ScatteringCoefficients (8.1s)
+✔ [9249/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.WhittakerContinuation (7.1s)
+✔ [9250/11897] Built OAI.NumberTheory.DirichletL.Reciprocity.KubotaCharacter (6.7s)
+✔ [9251/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.GaussFactorization (13s)
+✔ [9252/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.ResidualFourierBounds (11s)
+✔ [9253/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.RamifiedGaussSeries (17s)
+✔ [9254/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.ResidualFourierSeries (8.3s)
+✔ [9255/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.SourceProjection (8.7s)
+✔ [9256/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.SourceQuotient (8.1s)
+✔ [9257/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.ScatteringResidues (16s)
+✔ [9258/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.OppositeCusp (14s)
+✔ [9259/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.ResidualFourierExpansion (6.1s)
+✔ [9260/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.RationalTranslations (8.5s)
+✔ [9261/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.ArbitraryCuspPullback (12s)
+✔ [9262/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.CuspAverage (8.6s)
+✔ [9263/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.CuspDilation (10s)
+✔ [9264/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.BesselMellinTransform (8.9s)
+✔ [9265/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.TranslatedFourierResidues (9.1s)
+✔ [9266/11897] Built OAI.NumberTheory.DirichletL.Mellin.VerticalContourShift (7.2s)
+✔ [9267/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.ResidualCuspDecay (15s)
+✔ [9268/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.PrimePowerGaussSums (15s)
+✔ [9269/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.SourceBesselExpansion (9.3s)
+✔ [9270/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.BesselDerivatives (12s)
+✔ [9271/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.InverseCuspCoordinates (7.9s)
+✔ [9272/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.ReflectedCuspMellin (7.0s)
+✔ [9273/11897] Built OAI.NumberTheory.DirichletL.Reciprocity.CubeCorrespondence (8.6s)
+✔ [9274/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.ConjugateCuspProfiles (7.5s)
+✔ [9275/11897] Built OAI.NumberTheory.DirichletL.Cusp.ResiduesModThree (16s)
+✔ [9276/11897] Built OAI.NumberTheory.DirichletL.Reciprocity.PrimaryCongruences (9.5s)
+✔ [9277/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.CubeResidueStrata (11s)
+✔ [9278/11897] Built OAI.NumberTheory.DirichletL.Reciprocity.RamifiedCuspPhases (10s)
+✔ [9279/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.AffineCuspFourier (11s)
+✔ [9280/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.IntegralCover (9.9s)
+✔ [9281/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.CoverTrace (8.7s)
+✔ [9282/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.CubeCuspAverage (10s)
+✔ [9283/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.InverseCorrespondence (8.6s)
+✔ [9284/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.CorrespondenceTests (10s)
+✔ [9285/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.CorrespondencePullback (8.5s)
+✔ [9286/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.RamifiedSixBranches (9.7s)
+✔ [9287/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.CorrespondenceAdjoint (8.0s)
+✔ [9288/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.CorrespondenceEnergy (9.7s)
+✔ [9289/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.CubeEigenrelation (8.7s)
+✔ [9290/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.ResidualOrthogonality (10s)
+✔ [9291/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.PrimeRecurrence (8.0s)
+✔ [9292/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.PrimeGaussFactors (8.4s)
+✔ [9293/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.SquarefreeCoefficients (8.1s)
+✔ [9294/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.SourceMellinInversion (7.6s)
+✔ [9295/11897] Built OAI.NumberTheory.DirichletL.GaussSum.BesselReflection (8.2s)
+✔ [9296/11897] Built OAI.NumberTheory.DirichletL.GaussSum.DualKernelSummability (10s)
+✔ [9297/11897] Built OAI.NumberTheory.DirichletL.GaussSum.MellinSupport (8.1s)
+✔ [9298/11897] Built OAI.NumberTheory.DirichletL.GaussSum.FiniteTranslations (8.5s)
+✔ [9299/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.RamifiedTransform (11s)
+✔ [9300/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.EntireMellinProfile (9.3s)
+✔ [9301/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.RamifiedValuation (9.5s)
+✔ [9302/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.SourceCuspKernels (7.2s)
+✔ [9303/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.FullFrequencyExpansion (8.7s)
+✔ [9304/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.FixedCuspArrays (9.4s)
+✔ [9305/11897] Built OAI.NumberTheory.DirichletL.Cusp.WeylRepresentatives (10s)
+✔ [9306/11897] Built OAI.NumberTheory.DirichletL.ChineseRemainder.PrimaryCompletions (7.6s)
+✔ [9307/11897] Built OAI.NumberTheory.DirichletL.Cusp.ResiduePhases (10s)
+✔ [9308/11897] Built OAI.NumberTheory.DirichletL.ChineseRemainder.FrequencyLifts (9.3s)
+✔ [9309/11897] Built OAI.NumberTheory.DirichletL.RowCompletion.PeriodicRows (6.7s)
+✔ [9310/11897] Built OAI.NumberTheory.DirichletL.GaussSum.ReflectionPool (14s)
+✔ [9311/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.FixedConductor (8.9s)
+✔ [9312/11897] Built OAI.NumberTheory.DirichletL.RowCompletion.FixedCuspBranches (8.5s)
+✔ [9313/11897] Built OAI.NumberTheory.DirichletL.Cusp.StaticReflectionPhases (9.9s)
+✔ [9314/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.FixedFrequencyExpansion (9.1s)
+✔ [9315/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.FixedThetaTwists (9.9s)
+✔ [9316/11897] Built OAI.NumberTheory.DirichletL.GaussSum.FixedRayFibers (7.6s)
+✔ [9317/11897] Built OAI.NumberTheory.DirichletL.Eisenstein.ReflectionFibers (6.5s)
+✔ [9318/11897] Built OAI.NumberTheory.DirichletL.RowCompletion.ControlledPrimeStrata (8.1s)
+✔ [9319/11897] Built OAI.NumberTheory.DirichletL.RowCompletion.FreePrimePools (30s)
+✔ [9320/11897] Built OAI.NumberTheory.DirichletL.GaussSum.ResidualEquivalence (16s)
+✔ [9321/11897] Built OAI.NumberTheory.DirichletL.RowCompletion.RowAmplitudes (8.9s)
+✔ [9322/11897] Built OAI.NumberTheory.DirichletL.GaussSum.ActiveReindexing (64s)
+✔ [9323/11897] Built OAI.NumberTheory.DirichletL.RowCompletion.ReflectedFibers (13s)
+✔ [9324/11897] Built OAI.NumberTheory.DirichletL.RowCompletion.BranchDecoding (9.3s)
+✔ [9325/11897] Built OAI.NumberTheory.DirichletL.RowCompletion.ZeroFreeRegion (3.5s)
+✔ [9326/11897] Built OAI.NumberTheory.DirichletL.Foundation (2.4s)
+✔ [9327/11897] Built OAI.NumberTheory.DirichletL.Descent.PoissonTails (4.5s)
+✔ [9328/11897] Built OAI.NumberTheory.DirichletL.Descent.DescentProfiles (5.0s)
+✔ [9329/11897] Built OAI.NumberTheory.DirichletL.Inversion.CanonicalReferenceThreshold (5.0s)
+✔ [9330/11897] Built OAI.NumberTheory.DirichletL.Inversion.InitialOverlap (5.1s)
+✔ [9331/11897] Built OAI.NumberTheory.DirichletL.Inversion.InitialFibers (4.4s)
+✔ [9332/11897] Built OAI.NumberTheory.DirichletL.Detector.GramIdealSummation (4.6s)
+✔ [9333/11897] Built OAI.NumberTheory.DirichletL.Inversion.KernelSourceUniform (7.5s)
+✔ [9334/11897] Built OAI.NumberTheory.DirichletL.Detector.GramLatticeDecay (9.3s)
+✔ [9335/11897] Built OAI.NumberTheory.DirichletL.Descent.Widths (5.7s)
+✔ [9336/11897] Built OAI.NumberTheory.DirichletL.Descent.Poisson (5.4s)
+✔ [9337/11897] Built OAI.NumberTheory.DirichletL.CompactProfileFamily (4.7s)
+✔ [9338/11897] Built OAI.NumberTheory.DirichletL.Hecke.DetectorProfiles (4.5s)
+✔ [9339/11897] Built OAI.NumberTheory.DirichletL.ParametersProbeWindows (7.5s)
+✔ [9340/11897] Built OAI.NumberTheory.DirichletL.Detector.RadialMellin (8.4s)
+✔ [9341/11897] Built OAI.NumberTheory.DirichletL.Descent.IdealMasks (3.8s)
+✔ [9342/11897] Built OAI.NumberTheory.DirichletL.TraceCharacter (4.1s)
+✔ [9343/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.Poisson (4.9s)
+✔ [9344/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.Ideal (4.3s)
+✔ [9345/11897] Built OAI.NumberTheory.DirichletL.IdealEuler (4.3s)
+✔ [9346/11897] Built OAI.NumberTheory.DirichletL.Detector.PrimePower (4.4s)
+✔ [9347/11897] Built OAI.NumberTheory.DirichletL.Hecke.IdealBridge (3.5s)
+✔ [9348/11897] Built OAI.NumberTheory.DirichletL.CenteredExceptionalCount (5.6s)
+✔ [9349/11897] Built OAI.NumberTheory.DirichletL.Detector.Phase (4.2s)
+✔ [9350/11897] Built OAI.NumberTheory.DirichletL.Moments.Lattice (4.6s)
+✔ [9351/11897] Built OAI.NumberTheory.DirichletL.Moments.Mask (3.7s)
+✔ [9352/11897] Built OAI.NumberTheory.DirichletL.Moments.Canonical (4.2s)
+✔ [9353/11897] Built OAI.NumberTheory.DirichletL.Inversion.InitialOverlapFourier (3.0s)
+✔ [9354/11897] Built OAI.NumberTheory.DirichletL.Descent.ChildCutoff (4.8s)
+✔ [9355/11897] Built OAI.NumberTheory.DirichletL.Descent.DescentHeight (3.4s)
+✔ [9356/11897] Built OAI.NumberTheory.DirichletL.Descent.ActualProfiles (3.8s)
+✔ [9357/11897] Built OAI.NumberTheory.DirichletL.Inversion.InitialExcludedSource (3.8s)
+✔ [9358/11897] Built OAI.NumberTheory.DirichletL.Inversion.SecondFibers (5.9s)
+✔ [9359/11897] Built OAI.NumberTheory.DirichletL.Inversion.InitialPoissonBridge (6.9s)
+✔ [9360/11897] Built OAI.NumberTheory.DirichletL.Detector.GramAnnularLattice (5.4s)
+✔ [9361/11897] Built OAI.NumberTheory.DirichletL.Hecke.DetectorProfilesBounds (5.1s)
+✔ [9362/11897] Built OAI.NumberTheory.DirichletL.Inversion.TerminalWidths (9.0s)
+✔ [9363/11897] Built OAI.NumberTheory.DirichletL.PrimeLogProfile (5.8s)
+✔ [9364/11897] Built OAI.NumberTheory.DirichletL.Descent.MarkBounds (3.5s)
+✔ [9365/11897] Built OAI.NumberTheory.DirichletL.Descent.Quadratic (4.3s)
+✔ [9366/11897] Built OAI.NumberTheory.DirichletL.Descent.Decomposition (4.6s)
+✔ [9367/11897] Built OAI.NumberTheory.DirichletL.Descent.Completion (10s)
+✔ [9368/11897] Built OAI.NumberTheory.DirichletL.TraceConductor (3.5s)
+✔ [9369/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.Initial (5.1s)
+✔ [9370/11897] Built OAI.NumberTheory.DirichletL.UnitSexticWitness (4.1s)
+✔ [9371/11897] Built OAI.NumberTheory.DirichletL.Descent.Hybrid (5.3s)
+✔ [9372/11897] Built OAI.NumberTheory.DirichletL.IdealMangoldt (5.1s)
+✔ [9373/11897] Built OAI.NumberTheory.DirichletL.Detector.GaussValuation (4.2s)
+✔ [9374/11897] Built OAI.NumberTheory.DirichletL.Hecke.Euler (3.9s)
+✔ [9375/11897] Built OAI.NumberTheory.DirichletL.Hecke.Boundary (5.8s)
+✔ [9376/11897] Built OAI.NumberTheory.DirichletL.Hecke.IdealOperations (3.5s)
+✔ [9377/11897] Built OAI.NumberTheory.DirichletL.Detector.Completed (3.3s)
+✔ [9378/11897] Built OAI.NumberTheory.DirichletL.Detector.LowGramExceptional (3.4s)
+✔ [9379/11897] Built OAI.NumberTheory.DirichletL.Detector.PhaseCancellation (3.3s)
+✔ [9380/11897] Built OAI.NumberTheory.DirichletL.Moments.Primary (4.1s)
+✔ [9381/11897] Built OAI.NumberTheory.DirichletL.Detector.GramLocalExtension (3.5s)
+✔ [9382/11897] Built OAI.NumberTheory.DirichletL.Hecke.LocalRamification (3.5s)
+✔ [9383/11897] Built OAI.NumberTheory.DirichletL.Moments.CommonSupport (4.7s)
+✔ [9384/11897] Built OAI.NumberTheory.DirichletL.Descent.WindowFourier (4.7s)
+✔ [9385/11897] Built OAI.NumberTheory.DirichletL.Detector.GramJointConstruction (6.2s)
+✔ [9386/11897] Built OAI.NumberTheory.DirichletL.Inversion.ClippingProfiles (9.4s)
+✔ [9387/11897] Built OAI.NumberTheory.DirichletL.Hecke.DetectorProfilesUniform (4.0s)
+✔ [9388/11897] Built OAI.NumberTheory.DirichletL.Detector.LowReflectedExponent (7.6s)
+✔ [9389/11897] Built OAI.NumberTheory.DirichletL.Descent.MarkedTails (5.6s)
+✔ [9390/11897] Built OAI.NumberTheory.DirichletL.Inversion.PrincipalEnergy (9.5s)
+✔ [9391/11897] Built OAI.NumberTheory.DirichletL.Descent.Canonical (6.6s)
+✔ [9392/11897] Built OAI.NumberTheory.DirichletL.Descent.ReopenedSource (5.1s)
+✔ [9393/11897] Built OAI.NumberTheory.DirichletL.Descent.MarkedFourier (3.9s)
+✔ [9394/11897] Built OAI.NumberTheory.DirichletL.Detector.GramPeriodicPoisson (25s)
+✔ [9395/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.Norm (4.7s)
+✔ [9396/11897] Built OAI.NumberTheory.DirichletL.GaussianTheta (6.4s)
+✔ [9397/11897] Built OAI.NumberTheory.DirichletL.Descent.CompletionSplit (14s)
+✔ [9398/11897] Built OAI.NumberTheory.DirichletL.Descent.Reconstruction (2.9s)
+✔ [9399/11897] Built OAI.NumberTheory.DirichletL.PrimeCounting.IdealPrimeMass (3.8s)
+✔ [9400/11897] Built OAI.NumberTheory.DirichletL.Descent.HybridReduction (4.2s)
+✔ [9401/11897] Built OAI.NumberTheory.DirichletL.IdealLogDerivative (4.5s)
+✔ [9402/11897] Built OAI.NumberTheory.DirichletL.Detector.Sextic (3.8s)
+✔ [9403/11897] Built OAI.NumberTheory.DirichletL.Hecke.Dirichlet (3.6s)
+✔ [9404/11897] Built OAI.NumberTheory.DirichletL.Hecke.DetectorWitnessArithmetic (3.5s)
+✔ [9405/11897] Built OAI.NumberTheory.DirichletL.Hecke.ZeroSupremum (3.3s)
+✔ [9406/11897] Built OAI.NumberTheory.DirichletL.Hecke.EulerLog (5.5s)
+✔ [9407/11897] Built OAI.NumberTheory.DirichletL.Hecke.BoundaryIntegration (3.4s)
+✔ [9408/11897] Built OAI.NumberTheory.DirichletL.Hecke.Conjugation (3.8s)
+✔ [9409/11897] Built OAI.NumberTheory.DirichletL.Hecke.RowClosure (4.7s)
+✔ [9410/11897] Built OAI.NumberTheory.DirichletL.Detector.Row (3.3s)
+✔ [9411/11897] Built OAI.NumberTheory.DirichletL.Detector.GramFrequencySummation (3.7s)
+✔ [9412/11897] Built OAI.NumberTheory.DirichletL.Moments.MaskedVolume (3.7s)
+✔ [9413/11897] Built OAI.NumberTheory.DirichletL.Moments.SupportedCorrelation (3.5s)
+✔ [9414/11897] Built OAI.NumberTheory.DirichletL.Descent.RootWindows (3.2s)
+✔ [9415/11897] Built OAI.NumberTheory.DirichletL.Hecke.DetectorFourier (4.7s)
+✔ [9416/11897] Built OAI.NumberTheory.DirichletL.Detector.LowReflectedLength (5.8s)
+✔ [9417/11897] Built OAI.NumberTheory.DirichletL.Detector.GramJointProfile (7.9s)
+✔ [9418/11897] Built OAI.NumberTheory.DirichletL.Descent.SecondTailCost (6.1s)
+✔ [9419/11897] Built OAI.NumberTheory.DirichletL.Descent.PrincipalChild (2.9s)
+✔ [9420/11897] Built OAI.NumberTheory.DirichletL.Descent.GeneratorTransport (3.4s)
+✔ [9421/11897] Built OAI.NumberTheory.DirichletL.Descent.FirstWholeTail (6.4s)
+✔ [9422/11897] Built OAI.NumberTheory.DirichletL.Descent.ReopenedMarks (3.6s)
+✔ [9423/11897] Built OAI.NumberTheory.DirichletL.Descent.ReopenedBlocks (3.3s)
+✔ [9424/11897] Built OAI.NumberTheory.DirichletL.Descent.MarkedTwists (3.1s)
+✔ [9425/11897] Built OAI.NumberTheory.DirichletL.Descent.MarkedStratum (3.6s)
+✔ [9426/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.Extraction (3.2s)
+✔ [9427/11897] Built OAI.NumberTheory.DirichletL.Hecke.Primitive (3.7s)
+✔ [9428/11897] Built OAI.NumberTheory.DirichletL.ThetaRegularity (4.8s)
+✔ [9429/11897] Built OAI.NumberTheory.DirichletL.Descent.Dyadic (4.3s)
+✔ [9430/11897] Built OAI.NumberTheory.DirichletL.PrimeCounting.AnnularPrimeMass (5.8s)
+✔ [9431/11897] Built OAI.NumberTheory.DirichletL.Detector.PrimePhase (4.7s)
+✔ [9432/11897] Built OAI.NumberTheory.DirichletL.Descent.CompletionSupport (10s)
+✔ [9433/11897] Built OAI.NumberTheory.DirichletL.PrimeCounting.RayAsymptotic (5.7s)
+✔ [9434/11897] Built OAI.NumberTheory.DirichletL.Detector.CongruenceScalar (3.2s)
+✔ [9435/11897] Built OAI.NumberTheory.DirichletL.Hecke.Reciprocal (3.0s)
+✔ [9436/11897] Built OAI.NumberTheory.DirichletL.Hecke.DetectorPartition (4.0s)
+✔ [9437/11897] Built OAI.NumberTheory.DirichletL.Hecke.DetectorTail (5.2s)
+✔ [9438/11897] Built OAI.NumberTheory.DirichletL.Hecke.DetectorZeros (4.7s)
+✔ [9439/11897] Built OAI.NumberTheory.DirichletL.Hecke.ExceptionalRows (3.1s)
+✔ [9440/11897] Built OAI.NumberTheory.DirichletL.Detector.Physical (3.6s)
+✔ [9441/11897] Built OAI.NumberTheory.DirichletL.Detector.EulerCoordinates (3.4s)
+✔ [9442/11897] Built OAI.NumberTheory.DirichletL.Detector.RowAnalytic (3.2s)
+✔ [9443/11897] Built OAI.NumberTheory.DirichletL.Moments.MobiusRegroup (3.8s)
+✔ [9444/11897] Built OAI.NumberTheory.DirichletL.Detector.GramCommonActual (3.9s)
+✔ [9445/11897] Built OAI.NumberTheory.DirichletL.Moments.Cancellation (4.0s)
+✔ [9446/11897] Built OAI.NumberTheory.DirichletL.Moments.FixedRay (4.4s)
+✔ [9447/11897] Built OAI.NumberTheory.DirichletL.Descent.FullProfile (3.6s)
+✔ [9448/11897] Built OAI.NumberTheory.DirichletL.Hecke.DetectorFourierSeparation (3.5s)
+✔ [9449/11897] Built OAI.NumberTheory.DirichletL.Moments.Support (4.0s)
+✔ [9450/11897] Built OAI.NumberTheory.DirichletL.Descent.SecondWholeTail (3.9s)
+✔ [9451/11897] Built OAI.NumberTheory.DirichletL.Descent.ReopenedPriority (2.9s)
+✔ [9452/11897] Built OAI.NumberTheory.DirichletL.Descent.MarkedReflection (3.6s)
+✔ [9453/11897] Built OAI.NumberTheory.DirichletL.CubicSieve.Elements (5.8s)
+✔ [9454/11897] Built OAI.NumberTheory.DirichletL.Reflection.PowerfulBudget (4.6s)
+✔ [9455/11897] Built OAI.NumberTheory.DirichletL.Descent.Grid (4.3s)
+✔ [9456/11897] Built OAI.NumberTheory.DirichletL.Hecke.Strip (5.6s)
+✔ [9457/11897] Built OAI.NumberTheory.DirichletL.Descent.CompletePool (4.5s)
+✔ [9458/11897] Built OAI.NumberTheory.DirichletL.Detector.PrimeConstants (3.6s)
+✔ [9459/11897] Built OAI.NumberTheory.DirichletL.Detector.PhasePowers (3.4s)
+✔ [9460/11897] Built OAI.NumberTheory.DirichletL.Detector.LiftedFourier (3.6s)
+✔ [9461/11897] Built OAI.NumberTheory.DirichletL.Hecke.ReciprocalBound (3.0s)
+✔ [9462/11897] Built OAI.NumberTheory.DirichletL.Hecke.Origin (3.5s)
+✔ [9463/11897] Built OAI.NumberTheory.DirichletL.Hecke.FiniteDeletion (3.2s)
+✔ [9464/11897] Built OAI.NumberTheory.DirichletL.Hecke.DetectorFinite (4.1s)
+✔ [9465/11897] Built OAI.NumberTheory.DirichletL.Hecke.DetectorFamilyInclusion (3.3s)
+✔ [9466/11897] Built OAI.NumberTheory.DirichletL.Detector.MellinScaling (3.2s)
+✔ [9467/11897] Built OAI.NumberTheory.DirichletL.Hecke.RowNonprincipal (3.8s)

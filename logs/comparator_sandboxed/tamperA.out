@@ -1,0 +1,185 @@
+== tamperA  start Fri Oct 30 13:16:53 UTC 2026
+config config_tamperA.json md5 1c2534bbdba4e1171b5183d6fdc30a2f
+73c1bf9423bfc17c9f2b1ed1496a3f84  Challenge.lean
+67e538bce62d039a63d0cabcffd2797b  ChallengeDefs.lean
+d6ef5198ce5c64810477a0ffe8e26f6f  ChallengeTamperA.lean
+311631378a462aaa7199bce74ad42e6c  ChallengeTamperB.lean
+23ea25e934c8d037c49d6420562f3520  BbOaiMeaning.lean
+4c569252f1eb0ed7830a7e5d0248c115  BbOaiRealPrim.lean
+4f7460543cf4dc51909bacec1ae45b5b  GaussBridge.lean
+e2eb57db4706745afa888eb9eef87c62  lakefile.toml
+458daaf20a2b15fa67eaeb67f2518c08  lake-manifest.json
+fe6195d02cc4cc628ced5ae0aca74814  lean-toolchain
+990f646bcb0d1e7d2cbcbbfe9f854398  $SCRATCH/tools/comparator/.lake/build/bin/comparator
+13a13e8b042cb95de4e07956e8d1f6d2  $SCRATCH/pub/sandbox/landrun-bwrap.sh
+ec897d541231d914d43f036b42465ed8  $SCRATCH/tools/lean4export/.lake/build/bin/lean4export
+0d9bd7d16bd7547c1fb7016363be4e46  $SCRATCH/tools/nanoda_lib/target/release/nanoda_bin
+1048576
+warning: rellich-kondrachov: repository '$SCRATCH/pub/lcc/.lake/packages/rellich-kondrachov' has local changes
+warning: PrimeNumberTheoremAnd: repository '$SCRATCH/pub/lcc/.lake/packages/PrimeNumberTheoremAnd' has local changes
+Building ChallengeTamperA
+landrun-bwrap: ro=[/ $SCRATCH/pub/lcc /root/.elan/toolchains/leanprover--lean4---v4.34.1 /usr/bin/git] rw=[/dev $SCRATCH/pub/lcc/.lake] env=[PATH HOME LEAN_ABORT_ON_PANIC] cmd=lake
+warning: rellich-kondrachov: repository '$SCRATCH/pub/lcc/.lake/packages/rellich-kondrachov' has local changes
+warning: PrimeNumberTheoremAnd: repository '$SCRATCH/pub/lcc/.lake/packages/PrimeNumberTheoremAnd' has local changes
+⚠ [8925/8926] Built ChallengeTamperA (16s)
+warning: ChallengeTamperA.lean:7:8: declaration uses `sorry`
+Build completed successfully (8926 jobs).
+landrun-bwrap: ro=[/ $SCRATCH/pub/lcc $SCRATCH/pub/lcc/.lake /root/.elan/toolchains/leanprover--lean4---v4.34.1] rw=[/dev] env=[PATH HOME LEAN_PATH LEAN_ABORT_ON_PANIC] cmd=$SCRATCH/tools/lean4export/.lake/build/bin/lean4export
+Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, bb_real_primitive_meaning_oai, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam] from ChallengeTamperA
+Building BbOaiMeaning
+landrun-bwrap: ro=[/ $SCRATCH/pub/lcc /root/.elan/toolchains/leanprover--lean4---v4.34.1 /usr/bin/git] rw=[/dev $SCRATCH/pub/lcc/.lake] env=[PATH HOME LEAN_ABORT_ON_PANIC] cmd=lake
+warning: rellich-kondrachov: repository '$SCRATCH/pub/lcc/.lake/packages/rellich-kondrachov' has local changes
+warning: PrimeNumberTheoremAnd: repository '$SCRATCH/pub/lcc/.lake/packages/PrimeNumberTheoremAnd' has local changes
+⚠ [9388/9545] Replayed GenHeatApprox
+warning: GenHeatApprox.lean:547:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: GenHeatApprox.lean:547:30: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GenHeatApprox.lean:548:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GenHeatApprox.lean:548:20: `if_neg` has been deprecated: Use `ite_eq_right` instead
+ℹ [9389/9545] Replayed DBNHadamardCount
+info: DBNHadamardCount.lean:300:0: 'DBN.summable_zero_multiplicity_rpow' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [9390/9545] Replayed DBNHadamardProduct
+info: DBNHadamardProduct.lean:356:0: 'DBN.hasProd_evenProduct' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: DBNHadamardProduct.lean:357:0: 'DBN.differentiable_evenProduct' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: DBNHadamardProduct.lean:358:0: 'DBN.evenProduct_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: DBNHadamardProduct.lean:359:0: 'DBN.evenProduct_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: DBNHadamardProduct.lean:360:0: 'DBN.norm_evenProduct_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: DBNHadamardProduct.lean:361:0: 'DBN.evenProduct_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: DBNHadamardProduct.lean:362:0: 'DBN.evenProduct_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: DBNHadamardProduct.lean:363:0: 'DBN.finite_setOf_factor_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: DBNHadamardProduct.lean:364:0: 'DBN.analyticOrderNatAt_evenProduct' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [9391/9545] Replayed DBNHadamardMean
+info: DBNHadamardMean.lean:234:0: 'DBN.exists_exp_eq_of_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: DBNHadamardMean.lean:235:0: 'DBN.circleAverage_abs_re_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [9392/9545] Replayed DBNHadamardLinear
+info: DBNHadamardLinear.lean:238:0: 'DBN.eq_linear_of_circleAverage_abs_re_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [9393/9545] Replayed DBNHadamard
+info: DBNHadamard.lean:452:0: 'DBN.evenHadamardData_of_order_lt_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [9399/9545] Replayed GenMellin2
+warning: GenMellin2.lean:113:10: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: GenMellin2.lean:113:32: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GenMellin2.lean:116:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GenMellin2.lean:116:22: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: GenMellin2.lean:125:13: This simp argument is unused:
+  hg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hh, mul_zero, zero_mul, Real.exp_zero, ofReal_one, one_mul, Complex.cos]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: GenMellin2.lean:125:17: This simp argument is unused:
+  hh
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hg, mul_zero, zero_mul, Real.exp_zero, ofReal_one, one_mul, Complex.cos]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: GenMellin2.lean:125:21: This simp argument is unused:
+  mul_zero
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hg, hh, zero_mul, Real.exp_zero, ofReal_one, one_mul, Complex.cos]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [9402/9545] Replayed GenThetaFE
+warning: GenThetaFE.lean:117:27: This simp argument is unused:
+  Int.cast_natCast
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [thZ, pow_one] at *
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: GenThetaFE.lean:203:0: automatically included section variable(s) unused in theorem `DBN.Gen.natCast_cpow_half`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: GenThetaFE.lean:221:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GenThetaFE.lean:221:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GenThetaFE.lean:232:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: GenThetaFE.lean:232:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: GenThetaFE.lean:295:14: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GenThetaFE.lean:296:14: `if_neg` has been deprecated: Use `ite_eq_right` instead
+⚠ [9403/9545] Replayed GaussQuad
+warning: GaussQuad.lean:75:23: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+info: GaussQuad.lean:185:4: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+warning: GaussQuad.lean:376:31: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+⚠ [9404/9545] Replayed GaussPrime
+warning: GaussPrime.lean:30:13: `Set.toFinset_setOf` has been deprecated: Use `Set.toFinset_ofPred` instead
+warning: GaussPrime.lean:52:36: Variable name `hp2` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hp2
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: GaussPrime.lean:153:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GaussPrime.lean:159:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: GaussPrime.lean:163:31: This simp argument is unused:
+  I_sq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [h3, I_pow_four]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [9405/9545] Replayed GaussCRT
+warning: GaussCRT.lean:117:27: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+⚠ [9407/9545] Replayed GenChi4
+warning: GenChi4.lean:87:53: `if_neg` has been deprecated: Use `ite_eq_right` instead
+⚠ [9408/9545] Replayed GaussTwo
+warning: GaussTwo.lean:141:62: This simp argument is unused:
+  add_zero
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Finset.sum_insert (show (0 : ZMod 8) ∉ ({ 1, 2, 3, 4, 5, 6, 7 } : Finset (ZMod 8)) by decide),
+    Finset.sum_insert (show (1 : ZMod 8) ∉ ({ 2, 3, 4, 5, 6, 7 } : Finset (ZMod 8)) by decide),
+    Finset.sum_insert (show (2 : ZMod 8) ∉ ({ 3, 4, 5, 6, 7 } : Finset (ZMod 8)) by decide),
+    Finset.sum_insert (show (3 : ZMod 8) ∉ ({ 4, 5, 6, 7 } : Finset (ZMod 8)) by decide),
+    Finset.sum_insert (show (4 : ZMod 8) ∉ ({ 5, 6, 7 } : Finset (ZMod 8)) by decide),
+    Finset.sum_insert (show (5 : ZMod 8) ∉ ({ 6, 7 } : Finset (ZMod 8)) by decide),
+    Finset.sum_insert (show (6 : ZMod 8) ∉ ({ 7 } : Finset (ZMod 8)) by decide), Finset.sum_singleton, h0, h2, h4, h6,
+    zero_mul, zero_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: GaussTwo.lean:165:41: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GaussTwo.lean:183:41: `if_neg` has been deprecated: Use `ite_eq_right` instead
+⚠ [9409/9545] Replayed GaussSign
+warning: GaussSign.lean:66:19: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GaussSign.lean:69:19: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: GaussSign.lean:198:27: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GaussSign.lean:199:31: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: GaussSign.lean:204:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GaussSign.lean:205:10: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: GaussSign.lean:211:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GaussSign.lean:211:48: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GaussSign.lean:211:59: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GaussSign.lean:214:10: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: GaussSign.lean:214:52: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GaussSign.lean:214:63: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: GaussSign.lean:215:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GaussSign.lean:217:10: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: GaussSign.lean:217:53: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: GaussSign.lean:217:64: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GaussSign.lean:220:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GaussSign.lean:220:49: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: GaussSign.lean:220:60: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: GaussSign.lean:221:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+⚠ [11896/11897] Replayed GaussBridge
+warning: GaussBridge.lean:30:14: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: GaussBridge.lean:31:14: `if_neg` has been deprecated: Use `ite_eq_right` instead
+Build completed successfully (11897 jobs).
+landrun-bwrap: ro=[/ $SCRATCH/pub/lcc $SCRATCH/pub/lcc/.lake /root/.elan/toolchains/leanprover--lean4---v4.34.1] rw=[/dev] env=[PATH HOME LEAN_PATH LEAN_ABORT_ON_PANIC] cmd=$SCRATCH/tools/lean4export/.lake/build/bin/lean4export
+Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, bb_real_primitive_meaning_oai, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam] from BbOaiMeaning
+uncaught exception: Challenge and solution theorem statement do not match: 'bb_real_primitive_meaning_oai'
+LAMBDACHI-tamperA-EXIT 1
+Fri Oct 30 13:22:31 UTC 2026

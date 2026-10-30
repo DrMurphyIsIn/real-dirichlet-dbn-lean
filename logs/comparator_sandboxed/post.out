@@ -1,0 +1,26 @@
+== post start Fri Oct 30 14:14:38 UTC 2026
+ec897d541231d914d43f036b42465ed8  $SCRATCH/tools/lean4export/.lake/build/bin/lean4export
+13a13e8b042cb95de4e07956e8d1f6d2  $SCRATCH/pub/sandbox/landrun-bwrap.sh
+warning: rellich-kondrachov: repository '$SCRATCH/pub/lcc/.lake/packages/rellich-kondrachov' has local changes
+warning: PrimeNumberTheoremAnd: repository '$SCRATCH/pub/lcc/.lake/packages/PrimeNumberTheoremAnd' has local changes
+landrun-bwrap: ro=[/ $SCRATCH/pub/lcc $SCRATCH/pub/lcc/.lake /root/.elan/toolchains/leanprover--lean4---v4.34.1] rw=[/dev] env=[PATH HOME LEAN_PATH LEAN_ABORT_ON_PANIC=1] cmd=$SCRATCH/tools/lean4export/.lake/build/bin/lean4export
+export rc=0
+export bytes 1730282328
+5ca44ad56ff72d181c96b92a3d78d999  $SCRATCH/pub/export/BbOaiMeaning.ndjson
+EXPORT NON-EMPTY
+meta {"meta":{"exporter":{"name":"lean4export","version":"3.1.0"},"format":{"version":"3.1.0"},"lean":{"githash":"5045d0056413266e57c625dcd7c365b10e377c52","version":"4.34.1"}}}
+lines 31291921
+kinds {'inductive': 1452, 'quot': 4, 'def': 21917, 'thm': 101212, 'axiom': 3, 'opaque': 55}
+constants 127675
+== challenge-side olean md5s (run .lake)
+08daf671834d7dbe620d11fd7ce0fea3  ChallengeDefs.olean
+f2f8f98e442499deae6cf0272eb6239e  Challenge.olean
+378bc6012a6a33dea61efd59ee4eba04  ChallengeTamperA.olean
+fd95cca00b796de545df29774990c36b  ChallengeTamperB.olean
+7324ee676ea3d1b6e31de6d4843dd363  ChallengeDefs.ilean
+b8507d7c2cc16426a1e155821f191d02  Challenge.ilean
+405ac2af789478d18b4d25b4e815d961  ChallengeTamperA.ilean
+4e3acc3993d0f30ee971ad95a40f8275  ChallengeTamperB.ilean
+== mathlib olean manifest
+mathlib oleans 8548, manifest md5 1dac43923751a182188079bcde7bdfdd
+POST-EXIT Fri Oct 30 14:20:23 UTC 2026

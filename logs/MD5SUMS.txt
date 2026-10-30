@@ -1,5 +1,12 @@
-f1db811b389f2af33e1977b6eb1965cf  README.md
-218aa2bee14019dbdf0f6becb7a545d6  comparator_sandboxed/README.md
+2f519e5141f1743cfe7254e335a266cb  README.md
+965f2c0535e6accbda9939fd020719b1  comparator_sandboxed/README.md
+b2cb533c8a499b8fa888e880021d8866  comparator_sandboxed/fresh_check.out
+27549b58ecb5ffd6936702dea01802fe  comparator_sandboxed/main.out
+6a445130462472cecb7f145889dfbce7  comparator_sandboxed/main_INTERRUPTED_restart.out
+0c511e13101f9340ed0266c959e4e241  comparator_sandboxed/paranoid.out
+6ecd62eb836213a4992a9b19462248ba  comparator_sandboxed/post.out
+ebe6a1050ccc3e1edc71791d994bc08e  comparator_sandboxed/tamperA.out
+43d6f357498db7d5e6b9c0190035f760  comparator_sandboxed/tamperB.out
 0be9c25ad7d56db5824b3362d9e95e7c  five_checker/meaning/km_ctrl_con-leche.out
 b6de81d2756a3b71765632fcbd1300b5  five_checker/meaning/km_ctrl_con-ron.out
 d41d8cd98f00b204e9800998ecf8427e  five_checker/meaning/km_ctrl_leanchecker-paranoid.out

@@ -39,8 +39,7 @@
   - Everything was rebuilt and audited by a separate AI session (bb); its records are in `logs/`.
   - Those replays were local and unsandboxed. A sandboxed Comparator run against a separately written challenge
     also accepted it, and rejected both tampered challenges (`challenge/`, `logs/comparator_sandboxed/`). It ran as
-    uid 0 with all capabilities dropped, and its logs were relayed to bb, who reproduced the solution export byte
-    for byte.
+    uid 0 with all capabilities dropped; bb read its logs in full and reproduced the solution export byte for byte.
 - **Checkers.** nanoda (<https://github.com/ammkrn/nanoda_lib>), con-leche, con-ron, and Lean's leanchecker,
   as bundled with Lean v4.35.0-rc3. The export tool is lean4export 3.1.0, and Comparator is
   <https://github.com/leanprover/comparator>.

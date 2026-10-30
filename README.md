@@ -185,14 +185,18 @@ These are the components of the trust base:
     con-leche, con-ron, Lean's kernel; lean4lean N/A);
   - accepted the theorem, and rejected both tampered challenges.
 
-  Its logs were relayed to bb (REVIEW_COMPARATOR_LAMBDA_CHI.md).
+  bb read all of its logs and checked their md5s (`provenance/REVIEW_COMPARATOR_LAMBDA_CHI.md` and its Addendum 1). The
+  solution was compiled inside the sandbox, in an earlier attempt of the same command that a container restart interrupted;
+  the recorded run replayed those outputs.
 
   The caveats the result carries:
   - It ran as uid 0, so Comparator's assumption that it is not run by a privileged user is met in spirit, not in
     letter.
   - lean4lean could not take part: its bundled build cannot read v4.34.1 exports.
-  - bb did not see the logs. Their verdict lines are relayed; bb reproduced the solution export byte for byte, but
-    not the kernel verdicts.
+  - The run was made by another agent session. bb read its logs and reproduced the solution export byte for byte, but did
+    not repeat its kernel runs.
+  - One unsandboxed `lake build Challenge`, run between the two attempts to test Lake's replay behaviour, compiled nothing;
+    the challenge oleans match a fresh rebuild.
 
 ## What this does and does not advance
 
@@ -296,9 +300,10 @@ lean/OAI_PIN        openai/math repo, commit, toolchain, Mathlib, and md5s of th
 lean/lakefile-stanza.lean   the lean_lib targets appended to OpenAI's lakefile
 lean/MD5SUMS.txt    md5 of every file under lean/, cross-checked against the auditor's records
 logs/               five-checker replays, in-environment checks, the rc3 audit, numerics, md5 manifest
-logs/comparator_sandboxed/   placeholder until the sandboxed Comparator run's logs are archived here
+logs/comparator_sandboxed/   the sandboxed Comparator run's seven logs (scratch path normalized to $SCRATCH)
 challenge/          the Comparator challenge by the auditor: ChallengeDefs, Challenge, two tampers, configs, pre-flight
-provenance/         ISLAND_SOURCE (where lean/island/ comes from); OAI_ENV.md (what of the local build environment was checked)
+provenance/         ISLAND_SOURCE (where lean/island/ comes from); OAI_ENV.md (what of the local build environment was checked);
+                    REVIEW_COMPARATOR_LAMBDA_CHI.md and its ADDENDUM1 (bb's verification of the sandboxed run)
 scripts/            verify_md5.sh, materialize.sh, check_manifest.sh
 paper/              the paper (in preparation)
 ```

@@ -1,15 +1,16 @@
 # Verification logs
 
-Everything here is a byte-for-byte copy of the auditor bb's own records from 29 October 2026, except one file
-noted below, and every file's md5 is in `MD5SUMS.txt` (`scripts/verify_md5.sh logs` checks them). The runs were
-local and unsandboxed, on macOS. They are not a Comparator run; that one is still to come
-(`comparator_sandboxed/`).
+Every file's md5 is in `MD5SUMS.txt` (`scripts/verify_md5.sh logs` checks them).
+- Everything outside `comparator_sandboxed/` is a byte-for-byte copy of the auditor bb's own records from 29 October
+  2026, except one file noted below. Those runs were local and unsandboxed, on macOS.
+- `comparator_sandboxed/` holds the logs of the sandboxed Comparator run made on 30 October 2026 by another agent
+  session. They are copies with the runner's scratch path normalized; see below.
 
 ## `five_checker/`: the kernel replays
 
 The chain was exported from OpenAI's environment (Lean v4.34.1, Mathlib `d13f23b`, openai/math `adc7f124`) with
-`lean4export` 3.1.0, and the export was fed to five independent checkers: Lean's `leanchecker`, the same in
-paranoid mode, nanoda, con-leche and con-ron. Each run also checked a negative control,
+`lean4export` 3.1.0, and the export was fed to five checkers from three implementation lineages: Lean's
+`leanchecker`, the same in paranoid mode (Lean's kernel, twice), nanoda, and the con-leche/con-ron pair. Each run also checked a negative control,
 `BbNeg.bogus : 4 = 5`, a false theorem slipped into the environment with `debug.skipKernelTC`
 (`lean/checks/BbOaiSkip.lean`). A checker that accepted the control would have made the run invalid; all five
 rejected it.
@@ -27,6 +28,23 @@ rejected it.
 Both runs used the checkers bundled with Lean v4.35.0-rc3, which read the same export format (3.1.0). lean4lean
 is N/A: the available build crashes on v4.34.1 exports before it reaches any declaration ("unknown constant
 'Decidable.intro'"), so it was not counted.
+
+## `comparator_sandboxed/`: the sandboxed Comparator run
+
+Comparator v4.34.0 ran in a bwrap sandbox (uid 0, all capabilities dropped, no network), on OpenAI's environment
+rebuilt from the public pins, against the challenge in `challenge/`.
+- `main.out` (nanoda and Lean's kernel) and `paranoid.out` (leanchecker-paranoid, nanoda, con-leche, con-ron and
+  Lean's kernel) both end "Your solution is okay!".
+- `tamperA.out` and `tamperB.out` are both rejected: "Challenge and solution theorem statement do not match".
+- `post.out` records the solution export, md5 `5ca44ad5…`. It is byte-identical to the one bb made from its own build.
+- `fresh_check.out` compares the challenge and Mathlib oleans with fresh copies.
+- `main_INTERRUPTED_restart.out` is the earlier sandboxed attempt, which compiled the solution before a container
+  restart killed it.
+
+bb read all seven logs (`provenance/REVIEW_COMPARATOR_LAMBDA_CHI.md` and its Addendum 1) but did not repeat the
+kernel runs. Six of the logs embed the runner's scratch path, which contains an agent session identifier, so they are
+archived with that prefix replaced by `$SCRATCH`. `comparator_sandboxed/README.md` lists the raw md5 (as run, and as
+the paper cites it) and the normalized md5 (this copy) for each log, with the substitution.
 
 ## `oai_env/`: the build and the statement checks in OpenAI's environment
 
@@ -61,6 +79,6 @@ These are mpmath scripts written by the auditor, independent of the Lean sources
 
 They are records. Nothing in the Lean proof depends on them.
 
-**The one modified file.** In `bb_gauss_numeric.out`, the first line is a SymPy deprecation warning that carried
+**The one modified file outside `comparator_sandboxed/`.** In `bb_gauss_numeric.out`, the first line is a SymPy deprecation warning that carried
 the auditor's absolute home path; it has been replaced by `$HOME`. The original md5 is
 `5ef0d24b0537de416b2ae95a45e9c25c`, and this copy's md5 is in `MD5SUMS.txt`. No other byte differs.
