@@ -159,13 +159,14 @@ These are the components of the trust base:
   accepted. The manuscript it
   formalises is unrefereed. OpenAI's tree builds with 23 compatibility patches to third-party dependencies,
   which their lakefile applies. Every exported constant still has its axioms checked, so no patch can add an
-  axiom unseen, and the statement uses no constant from a patched package: only Mathlib, Lean's core library and the two
-  definitions above.
+  axiom unseen, and the statement uses no constant from a patched package: only Mathlib, Lean's core library and our two
+  definitions, `DBN.Gen.Hchi` and `DBN.Gen.parityK` (the challenge that states the theorem builds against Mathlib
+  alone, `challenge/`).
 - **Mathlib's definitions**, at `d13f23b`: `DirichletCharacter`, `IsPrimitive`, `LFunction`,
   `completedLFunction`, `Gammaℝ`, the Bochner integral, `Complex.cos`. They are trusted as code, as for any Lean
   proof.
 - **Our definitions**, `DBN.Gen.Hchi` and `DBN.Gen.parityK` and what they unfold to (`PhiC`, `thetaC`). These are
-  the only non-Mathlib constants in the statement. The second half, with Fourier uniqueness, is what lets a reader check that `Hchi` means
+  the only constants in the statement from outside Mathlib and Lean's core library. The second half, with Fourier uniqueness, is what lets a reader check that `Hchi` means
   what this README says: the reader need only check that `Hchi χ t z = ∫₀^∞ e^{tu²} F(u) cos(zu) du` for one function F
   independent of t and z. The Comparator challenge isolates them, verbatim, in one
   small `challenge/ChallengeDefs.lean`: six constants (`thetaC`, `PhiC` and its two auxiliary proof terms,
@@ -175,7 +176,7 @@ These are the components of the trust base:
   `adc7f124`, Lean v4.34.1, Mathlib `d13f23b`. Its sources, lakefile, manifest and patches were checked against a
   clone of `adc7f124`. Its `.lake/packages` dependency checkouts were NOT hashed; they were touched on 2026-10-24
   (`provenance/OAI_ENV.md`).
-- **The sandboxed Comparator run.** The sandboxed Comparator run (`logs/comparator_sandboxed/`) rebuilt OpenAI's
+- **The sandboxed Comparator run** (`logs/comparator_sandboxed/`) rebuilt OpenAI's
   environment from the public pins, with Mathlib from its official build cache at `d13f23b`. Its solution export is
   byte-identical to the one bb made from this local tree (md5 `5ca44ad5…`), which closes the unhashed-checkout gap for
   the theorem's closure, relative to that cache. That run:
@@ -187,9 +188,9 @@ These are the components of the trust base:
   Its logs were relayed to bb (REVIEW_COMPARATOR_LAMBDA_CHI.md).
 
   The caveats the result carries:
-  - It ran as uid 0, so Comparator's assumption that the checker is not a privileged user is met in spirit, not in
+  - It ran as uid 0, so Comparator's assumption that it is not run by a privileged user is met in spirit, not in
     letter.
-  - lean4lean could not take part.
+  - lean4lean could not take part: its bundled build cannot read v4.34.1 exports.
   - bb did not see the logs. Their verdict lines are relayed; bb reproduced the solution export byte for byte, but
     not the kernel verdicts.
 
