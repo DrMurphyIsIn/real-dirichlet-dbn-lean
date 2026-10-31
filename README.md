@@ -262,7 +262,7 @@ return code is in `logs/oai_env/progress.txt`.
 lakefile has to stay the workspace root, because its hooks patch dependencies before Lake resolves them.
 
 ```sh
-scripts/verify_md5.sh                  # every file under lean/ and logs/ against its manifest
+scripts/verify_md5.sh                  # every manifest: lean/, logs/, challenge/, provenance/
 scripts/materialize.sh --check-island  # openai/math at the pin, our modules inside; island re-derived from source
 cd work/oai
 lake update && ../../scripts/check_manifest.sh && lake exe cache get   # stops if lake update rewrote the manifest
@@ -307,6 +307,14 @@ provenance/         ISLAND_SOURCE (where lean/island/ comes from); OAI_ENV.md (w
                     REVIEW_COMPARATOR_LAMBDA_CHI.md and its ADDENDUM1, ADDENDUM2 (bb's verification of the sandboxed run)
                     REVIEW_CT_RERUNS.md (the capability-dropped Comparator re-runs of P2, Ingham and CT main, for the paper's
                     companion section)
+                    the auditor's stage-by-stage records, byte-identical: REVIEW_GEN_D1_D2a.md (generic library, theta
+                    kernel), REVIEW_D2b_BRIDGE.md (Mellin bridge), REVIEW_D2c_STRIP.md (zero strip), REVIEW_D2bp_CHI4.md
+                    (theta FE and chi_{-4}), NOTE_D2_GAUSS_SIGN.md (the root-number hypothesis), REPORT_OAI_PORT.md (the port to
+                    OpenAI's environment), REVIEW_GAUSS_SIGN_AND_OAI.md (Gauss's sign theorem and the composition),
+                    REVIEW_GAUSS_BRIDGE_ADD1.md (the general-chi meaning link), REVIEW_P1P6_BUNDLE.md, REVIEW_CTQ.md,
+                    REVIEW_INGHAM.md and REVIEW_CTFREE_KERNELS.md (the companion results), COMPARATOR_RUN_SPEC.md (the
+                    specification of the sandboxed run)
+                    MD5SUMS.txt: md5 of all 17 auditor records (scripts/verify_md5.sh checks it)
 scripts/            verify_md5.sh, materialize.sh, check_manifest.sh
 paper/              the paper (added with the versioned release)
 ```
