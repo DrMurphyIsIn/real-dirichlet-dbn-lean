@@ -8,6 +8,8 @@
 set -euo pipefail
 HERE="$(cd "$(dirname "$0")/.." && pwd)"
 md5of() { if command -v md5sum >/dev/null 2>&1; then md5sum "$1" | cut -d' ' -f1; else md5 -q "$1"; fi; }
+# listed MANIFEST PATH: exact match of PATH against the path field of a manifest line ("<32-hex md5>  <path>").
+listed() { awk -v p="$2" 'substr($0, 35) == p { found = 1 } END { exit !found }' "$1"; }
 fail=0
 for d in "${@:-lean logs provenance}"; do
   for dir in $d; do
@@ -24,7 +26,7 @@ for d in "${@:-lean logs provenance}"; do
     while IFS= read -r f; do
       rel="${f#"$HERE/$dir/"}"
       [ "$rel" = "MD5SUMS.txt" ] && continue
-      grep -q "  $rel\$" "$M" || { echo "UNLISTED $dir/$rel"; fail=1; }
+      listed "$M" "$rel" || { echo "UNLISTED $dir/$rel"; fail=1; }
     done < <(find "$HERE/$dir" -type f ! -name .DS_Store | sort)
     echo "$dir/MD5SUMS.txt: $n entries checked"
   done
@@ -44,7 +46,7 @@ if [ $# -eq 0 ] || [[ " $* " == *" challenge "* ]]; then
     while IFS= read -r f; do
       b="$(basename "$f")"
       [ "$b" = "MD5SUMS.txt" ] || [ "$f" = "$HERE/challenge/README.md" ] && continue
-      grep -q "  $b\$" "$M" || { echo "UNLISTED ${f#"$HERE/"}"; fail=1; }
+      listed "$M" "$b" || { echo "UNLISTED ${f#"$HERE/"}"; fail=1; }
     done < <(find "$D" -maxdepth 1 -type f ! -name .DS_Store | sort)
     echo "${M#"$HERE/"}: $n entries checked"
   done
