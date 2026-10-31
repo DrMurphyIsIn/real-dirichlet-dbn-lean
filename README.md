@@ -304,6 +304,8 @@ logs/comparator_sandboxed/   the sandboxed Comparator run's seven logs (scratch 
 challenge/          the Comparator challenge by the auditor: ChallengeDefs, Challenge, two tampers, configs, pre-flight
 provenance/         ISLAND_SOURCE (where lean/island/ comes from); OAI_ENV.md (what of the local build environment was checked);
                     REVIEW_COMPARATOR_LAMBDA_CHI.md and its ADDENDUM1, ADDENDUM2 (bb's verification of the sandboxed run)
+                    REVIEW_CT_RERUNS.md (the capability-dropped Comparator re-runs of P2, Ingham and CT main, for the paper's
+                    companion section)
 scripts/            verify_md5.sh, materialize.sh, check_manifest.sh
 paper/              the paper (in preparation)
 ```
