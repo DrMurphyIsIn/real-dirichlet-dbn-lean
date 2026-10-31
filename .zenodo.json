@@ -7,6 +7,7 @@
   "keywords": ["de Bruijn-Newman constant", "Dirichlet L-functions", "real primitive characters", "Gauss sums", "heat flow", "Lean 4", "formal verification"],
   "version": "v1.0.0",
   "related_identifiers": [
+    {"identifier": "https://github.com/DrMurphyIsIn/real-dirichlet-dbn-lean", "relation": "isSupplementTo", "scheme": "url"},
     {"identifier": "arXiv:2610.27343", "relation": "references", "scheme": "arxiv"},
     {"identifier": "https://github.com/openai/math/tree/adc7f1241b42e322a6451854ab7e4b4c146bf78a", "relation": "requires", "scheme": "url"},
     {"identifier": "10.5281/zenodo.23324360", "relation": "isDerivedFrom", "scheme": "doi"}

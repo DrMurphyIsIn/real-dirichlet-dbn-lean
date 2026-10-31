@@ -2,8 +2,10 @@
 
 > **Status: public pre-release.** The Lean proof is complete. Five checkers from three implementation lineages replayed it
 > locally, and a sandboxed Comparator run against a separately written challenge (`challenge/`) accepted it
-> (`logs/comparator_sandboxed/`). The accompanying paper will be added to `paper/` with the versioned release. No DOI has
-> been assigned yet.
+> (`logs/comparator_sandboxed/`). The accompanying paper will be added to `paper/` with the versioned release. Reserved DOI
+> [10.5281/zenodo.23840082](https://doi.org/10.5281/zenodo.23840082) (v1.0.0; all versions:
+> [10.5281/zenodo.23840081](https://doi.org/10.5281/zenodo.23840081)); the links resolve once the Zenodo record is
+> published.
 
 ## The question
 
