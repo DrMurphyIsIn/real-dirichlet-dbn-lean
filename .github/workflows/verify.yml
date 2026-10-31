@@ -5,7 +5,7 @@
 # to be rejected. Several CPU-hours cold; the build is checkpointed between runs.
 #
 # This workflow has not been run yet. The five-checker replay and the sandboxed Comparator run are not part of it
-# (the export alone is 1.7 GB); a Comparator step against challenge/ will be added after the sandboxed run.
+# (the export alone is 1.7 GB); a Comparator step against challenge/ may be added later; the sandboxed run's logs are in logs/comparator_sandboxed/.
 name: verify
 # Manual-only until its first run passes; the push trigger is restored after that.
 on:

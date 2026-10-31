@@ -308,7 +308,7 @@ provenance/         ISLAND_SOURCE (where lean/island/ comes from); OAI_ENV.md (w
                     REVIEW_CT_RERUNS.md (the capability-dropped Comparator re-runs of P2, Ingham and CT main, for the paper's
                     companion section)
 scripts/            verify_md5.sh, materialize.sh, check_manifest.sh
-paper/              the paper (in preparation)
+paper/              the paper (added with the versioned release)
 ```
 
 ## Credit
