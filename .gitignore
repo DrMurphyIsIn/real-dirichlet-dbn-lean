@@ -7,3 +7,6 @@ paper/*.bbl
 paper/*.blg
 paper/arxiv/
 .DS_Store
+paper/main_v*.tex
+paper/refs_v*.bib
+paper/*.synctex.gz

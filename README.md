@@ -1,11 +1,10 @@
 # Λ_χ ≤ 9/32 for every real primitive Dirichlet character, kernel-checked
 
-> **Status: public pre-release.** The Lean proof is complete. Five checkers from three implementation lineages replayed it
-> locally, and a sandboxed Comparator run against a separately written challenge (`challenge/`) accepted it
-> (`logs/comparator_sandboxed/`). The accompanying paper will be added to `paper/` with the versioned release. Reserved DOI
+> **Status: v1.0.0, released 31 October 2026.** The Lean proof is complete. Five checkers from three implementation
+> lineages replayed it locally, and a sandboxed Comparator run against a separately written challenge (`challenge/`)
+> accepted it (`logs/comparator_sandboxed/`). The accompanying paper is in `paper/`. DOI
 > [10.5281/zenodo.23840082](https://doi.org/10.5281/zenodo.23840082) (v1.0.0; all versions:
-> [10.5281/zenodo.23840081](https://doi.org/10.5281/zenodo.23840081)); the links resolve once the Zenodo record is
-> published.
+> [10.5281/zenodo.23840081](https://doi.org/10.5281/zenodo.23840081)).
 
 ## The question
 
@@ -318,7 +317,7 @@ provenance/         ISLAND_SOURCE (where lean/island/ comes from); OAI_ENV.md (w
                     specification of the sandboxed run)
                     MD5SUMS.txt: md5 of every file in provenance/, the 17 records included (scripts/verify_md5.sh checks it)
 scripts/            verify_md5.sh, materialize.sh, check_manifest.sh
-paper/              the paper (added with the versioned release)
+paper/              the paper: main.tex, refs.bib, main.pdf
 ```
 
 ## Credit

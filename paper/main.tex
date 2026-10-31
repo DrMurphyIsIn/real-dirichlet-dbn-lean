@@ -1,0 +1,681 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{url}
+\setlength{\emergencystretch}{2.5em}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=black, citecolor=black, urlcolor=blue}
+\hypersetup{pdftitle={Every real primitive Dirichlet L-function has de Bruijn–Newman constant at most 9/32: a kernel-checked proof in Lean 4}, pdfauthor={Peter W. Murphy}}
+\usepackage[capitalise,noabbrev]{cleveref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+
+\newcommand{\lean}[1]{\texttt{#1}}
+\newcommand{\re}{\operatorname{Re}}
+\newcommand{\im}{\operatorname{Im}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\GR}{\Gamma_{\mathbb{R}}}
+\newcommand{\Lc}{\Lambda}
+
+\definecolor{leanbg}{HTML}{F4F2EC}
+\lstdefinelanguage{Lean}{
+  morekeywords={theorem,lemma,def,noncomputable,import,namespace,end,open,in,by,fun,sorry,example,variable,scoped,Classical,structure,where},
+  sensitive=true, morecomment=[l]{--}, morecomment=[s]{/-}{-/}, morestring=[b]",
+}
+\lstset{language=Lean, basicstyle=\small\ttfamily, backgroundcolor=\color{leanbg},
+  frame=single, framerule=0pt, framesep=5pt, xleftmargin=5pt, xrightmargin=5pt,
+  breaklines=true, columns=fullflexible, keepspaces=true, showstringspaces=false,
+  literate={ℝ}{{$\mathbb{R}$}}1 {ℂ}{{$\mathbb{C}$}}1 {ℕ}{{$\mathbb{N}$}}1 {ℤ}{{$\mathbb{Z}$}}1
+           {∀}{{$\forall$}}1 {∃}{{$\exists$}}1 {→}{{$\to$}}1 {≠}{{$\neq$}}1 {≤}{{$\le$}}1 {≥}{{$\ge$}}1
+           {∧}{{$\wedge$}}1 {θ}{{$\theta$}}1 {Φ}{{$\Phi$}}1 {π}{{$\pi$}}1 {∑}{{$\sum$}}1 {∫}{{$\int$}}1
+           {↦}{{$\mapsto$}}1 {←}{{$\leftarrow$}}1 {∈}{{$\in$}}1 {ξ}{{$\xi$}}1 {·}{{$\cdot$}}1
+           {⟨}{{$\langle$}}1 {⟩}{{$\rangle$}}1 {₀}{{$_0$}}1 {²}{{$^2$}}1 {ε}{{$\varepsilon$}}1
+           {σ}{{$\sigma$}}1 {τ}{{$\tau$}}1 {δ}{{$\delta$}}1 {γ}{{$\gamma$}}1 {ρ}{{$\rho$}}1
+           {‖}{{$\|$}}1 {ψ}{{$\psi$}}1 {χ}{{$\chi$}}1 {↑}{{$\uparrow$}}1 {√}{{$\surd$}}1
+           {⁻}{{$^{-}$}}1 {¹}{{$^{1}$}}1 {ℓ}{{$\ell$}}1 {∣}{{$\mid$}}1 {Λ}{{$\Lambda$}}1 {Γ}{{$\Gamma$}}1
+           {𝓕}{{$\mathcal{F}$}}1 {𝓝}{{$\mathcal{N}$}}1 {¬}{{$\neg$}}1 {Σ}{{$\Sigma$}}1 {−}{{$-$}}1 {₄}{{$_4$}}1}
+
+\title{Every real primitive Dirichlet $L$-function has\\ de Bruijn--Newman constant at most $9/32$:\\ a kernel-checked proof in Lean~4}
+\author{Peter W. Murphy}
+\date{Version 1.0.0, 31 October 2026\\[2pt]
+\small DOI \href{https://doi.org/10.5281/zenodo.23840082}{10.5281/zenodo.23840082}\\[2pt]
+\small Repository \url{https://github.com/DrMurphyIsIn/real-dirichlet-dbn-lean}\\[2pt]
+\small The text of this paper is released under CC-BY-4.0; the Lean code under Apache-2.0.}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $\chi$ be a real primitive Dirichlet character of conductor $N \ge 3$ and parity $k \in \{0,1\}$, let $\Lc(s,\chi) = (N/\pi)^{(s+k)/2}\Gamma(\tfrac{s+k}{2})L(s,\chi)$ be its completed $L$-function, and let
+\[
+H^\chi_t(z) \;=\; \int_0^\infty e^{tu^2}\,\Phi_\chi(u)\cos(zu)\,du
+\]
+be the de Bruijn--Newman heat flow of $\Lc(\cdot,\chi)$, normalised so that $H^\chi_0(z) = \tfrac18\Lc(\tfrac12 + \tfrac{iz}{2},\chi)$. We give a proof, checked by the Lean~4 kernel, that for every such $\chi$ and every $t \ge 9/32$ all zeros of $H^\chi_t$ are real; equivalently, the generalised de Bruijn--Newman constant satisfies $\Lc_\chi \le 9/32$.
+
+The mathematics is not new, and we say exactly whose it is. De Bruijn's strip-contraction theorem (1950) gives $\Lc_\chi \le D^2/2$ whenever the zeros of $H^\chi_0$ lie in $|\im z| \le D$. Freire, Gonz\'alez-Riquelme, Mu\~noz, Poblete and Salinas observed (arXiv:2610.27343, Remarks 3.1 and 3.4) that the zero-free half-plane $\re s > 7/8$ for Dirichlet $L$-functions asserted by OpenAI would give $D = 3/4$, and hence $\Lc_\chi \le 9/32$. What this paper adds is a complete formal proof of that composition. For conductors up to $400$, FGMPS's unconditional bounds are stronger for $136$ of the $242$ characters; what is new is that $9/32$, for every conductor, is a kernel-checked theorem. OpenAI's half-plane enters as their own kernel-checked Lean theorem. Every other step is proved in Lean on top of Mathlib: de Bruijn's theorem for a general class of kernels, the identification of the theta integral with Mathlib's completed $L$-function, and Gauss's sign theorem for real primitive characters. The final theorem depends only on the axioms \lean{propext}, \lean{Classical.choice} and \lean{Quot.sound}. In local, unsandboxed replays five checkers accept it (Lean's kernel, run twice, \lean{nanoda}, and the \lean{con-leche}/\lean{con-ron} pair), and all five reject a deliberately unsound control; and a sandboxed Comparator run against a separately written challenge accepts it (made by another agent session; the auditor reproduced its solution export byte for byte).
+
+The result rests on OpenAI's Lean proof, whose accompanying manuscript is unrefereed. It is not progress on the Generalised Riemann Hypothesis, which is the statement $\Lc_\chi \le 0$. A short, separable section records two companion results for $\zeta$ that use no OpenAI code: $\Lc \le 225/512$ and $\psi(x) = x + O_\varepsilon(x^{31/32+\varepsilon})$, both from Cureton and Thorner's half-plane $\re s > 31/32$.
+\end{abstract}
+
+\tableofcontents
+
+%======================================================================
+\section{Introduction}\label{sec:intro}
+%======================================================================
+
+\subsection{The de Bruijn--Newman constant}
+
+Let $\xi(s) = \tfrac12 s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s)$ be Riemann's entire function. Following Rodgers and Tao \cite{RodgersTao2020} and Polymath15 \cite{Polymath2019}, put
+\begin{equation}\label{eq:Hzeta}
+H_t(z) = \int_0^\infty e^{tu^2}\,\Phi(u)\cos(zu)\,du,\qquad
+\Phi(u) = \sum_{n\ge1}\bigl(2\pi^2n^4e^{9u} - 3\pi n^2e^{5u}\bigr)e^{-\pi n^2e^{4u}} .
+\end{equation}
+Then $H_0(z) = \tfrac18\xi(\tfrac12 + \tfrac{iz}{2})$, so the Riemann Hypothesis says that every zero of $H_0$ is real. The family $H_t$ solves the backward heat equation $\partial_t H_t = -\partial_z^2 H_t$. De Bruijn \cite{deBruijn1950} showed that real zeros stay real as $t$ increases and that every zero of $H_t$ is real for $t \ge 1/2$. Newman \cite{Newman1976} showed that some $H_t$ has non-real zeros. Together these give a constant $\Lc \in (-\infty, 1/2]$ such that every zero of $H_t$ is real exactly when $t \ge \Lc$. The Riemann Hypothesis is $\Lc \le 0$. Rodgers and Tao proved $\Lc \ge 0$ \cite{RodgersTao2020}. On the other side, Ki, Kim and Lee made de Bruijn's bound strict \cite{KKL2009}, Polymath15 proved $\Lc \le 0.22$ \cite{Polymath2019}, and Platt and Trudgian proved $\Lc \le 0.2$ \cite{PlattTrudgian2021}.
+
+\subsection{The Dirichlet analogue}
+
+For a real primitive character $\chi$ of conductor $N \ge 3$ the same construction applies to $\Lc(s,\chi)$. We follow the normalisation of Freire, Gonz\'alez-Riquelme, Mu\~noz, Poblete and Salinas \cite{FGMPS2026}, cited below as FGMPS. Their heat flow is $H^L_t(z) = \int_\R e^{tu^2+izu}\Phi_L(u)\,du$ with $H^L_0(z) = \xi_L(\tfrac{1+iz}{2})$, where $\xi_L$ is our $\Lc(\cdot,\chi)$ (\cite[(1.2), (1.3), (2.6)]{FGMPS2026}). Our $H^\chi_t$ equals $H^L_t/8$ (\cref{sec:normalisation}), so the two families have the same zeros at every time $t$.
+
+FGMPS state that there is a finite constant $\Lc_\chi$ (their $\Lc_L$) such that every zero of $H^\chi_t$ is real if and only if $t \ge \Lc_\chi$; they credit the existence of $\Lc_\chi$ to Newman's work \cite{Newman1976}. The Generalised Riemann Hypothesis for $L(s,\chi)$ is equivalent to $\Lc_\chi \le 0$. Dobner proved $\Lc_\chi \ge 0$ for this family as part of a theorem for the whole extended Selberg class \cite{Dobner2021}, and de Bruijn's argument gives $\Lc_\chi \le 1/2$ from the critical strip. For the lower-bound side, FGMPS also survey work of Stopple \cite{Stopple2014}, of Andrade, Chang and Miller \cite{AndradeChangMiller2014}, and of Newman and Wu \cite{NewmanWu2020}; we have not read these papers and cite them only through FGMPS.
+
+Before October 2026, the trivial bound $1/2$ was the only known upper bound \cite[\S1.4]{FGMPS2026}. FGMPS then proved the first non-trivial ones. They extend Polymath15's method to Dirichlet $L$-functions, using Platt's verification of GRH \cite{Platt2016} and interval arithmetic. They obtain the unconditional uniform bound
+\[
+\Lc_\chi \le 953/3200 = 0.2978125 \qquad (3 \le N \le 400),
+\]
+together with stronger individual bounds for each of the $242$ real primitive characters in that range \cite[Theorem 1.1, \S7.7]{FGMPS2026}. They also record a conditional statement, which is the one this paper formalizes. Remark~3.1 of \cite{FGMPS2026} reads:
+\begin{quote}\small
+``the zero-free half-plane $\re s > 7/8$ asserted in [24, Theorem 1.1], together with the functional equation, would imply the initial strip with $D = 3/4$. The conclusions reported for this value of $D$ are conditional on that global strip hypothesis.''
+\end{quote}
+Here [24] is OpenAI's preprint \cite{OAI7over8}. Remark~3.4 of \cite{FGMPS2026} adds: ``The initial strip hypothesis alone gives $\Lc_L \le D^2/2$ by Theorem 2.6''. Their Theorem 2.6 is de Bruijn's strip contraction, ``essentially contained in Theorem 13 of [9]'', where [9] is \cite{deBruijn1950}. At $D = 3/4$ this gives $\Lc_\chi \le 9/32$, for every conductor.
+
+\subsection{OpenAI's half-plane}
+
+On 30 September 2026 OpenAI released a preprint whose Theorem 1.1 asserts that every Dirichlet $L$-function, $\zeta$ included, has no zero in $\re s > 7/8$, apart from the pole of a principal character at $s = 1$ \cite{OAI7over8}. A companion preprint of 5 October, ``written with human assistance'', isolates the weaker half-plane $\re s > 11/12$ as an intermediate step and proves it separately \cite{OAIqrh}; FGMPS note that it would give $D = 5/6$ \cite[Remark~3.1]{FGMPS2026}. The release includes a Lean~4 library \cite{OAIlean} with the theorem
+\begin{lstlisting}
+theorem OAI.DirichletCharacter.LFunction_ne_zero_of_seven_eighths_lt_re
+    {q : ℕ} [NeZero q] (χ : DirichletCharacter ℂ q) {s : ℂ}
+    (hs : (7 / 8 : ℝ) < s.re) (hpole : ¬ (χ = 1 ∧ s = 1)) :
+    _root_.DirichletCharacter.LFunction χ s ≠ 0
+\end{lstlisting}
+\noindent
+The statement is copied from OpenAI's challenge file at commit \lean{adc7f124},
+\[\text{\path{lean/ComparatorChallenges/DirichletSevenEighths.lean}},\]
+where its proof is \lean{sorry}. The proof itself is in \path{lean/OAI/NumberTheory/DirichletL/}\allowbreak\path{Nonvanishing.lean}. The statement is about Mathlib's own \lean{DirichletCharacter.\allowbreak{}LFunction}, holds for every modulus and every character, and has no constants. Neither manuscript has been refereed. The Lean proof was replayed by the kernel in this programme on 7 October 2026; \cref{sec:trust} says exactly what that trust consists of.
+
+\subsection{What this paper does}
+
+\begin{theorem}[main theorem; Lean: \lean{bb\_\allowbreak{}real\_\allowbreak{}primitive\_\allowbreak{}meaning\_\allowbreak{}oai}]\label{thm:main}
+Let $\chi$ be a primitive Dirichlet character modulo $N$, with $\chi \ne 1$ and $\chi$ real-valued, and let $k \in \{0,1\}$ be its parity. Then:
+\begin{enumerate}[label=(\alph*)]
+\item for every real $t \ge 9/32$, every zero of $H^\chi_t$ is real;
+\item for every $z \in \C$, with $s = \tfrac12 + \tfrac{iz}{2}$,
+\[
+H^\chi_0(z) = \tfrac18\, N^{(s+k)/2}\,\Lc_{\mathrm{M}}(s,\chi) = \tfrac18\,\Lc(s,\chi),
+\]
+where $\Lc_{\mathrm{M}}(s,\chi)$ is Mathlib's \lean{DirichletCharacter.\allowbreak{}completedLFunction}, the entire function equal to $\GR(s+k)L(s,\chi)$ away from the poles of $\GR(s+k)$, and $\GR(s) = \pi^{-s/2}\Gamma(s/2)$.
+\end{enumerate}
+Consequently $\Lc_\chi \le 9/32$.
+\end{theorem}
+
+Part (a) is the bound. Part (b) is there so that a reader need check only the outer shape of our definition: that $H^\chi_t(z) = \int_0^\infty e^{tu^2}F(u)\cos(zu)\,du$ for one function $F$, independent of $t$ and $z$. Part (b) proves that at $t = 0$ this is $\tfrac18$ of the completed $L$-function of $\chi$, as Mathlib defines it. Since the identity holds for all $z \in \C$ (at $z = iy$ with $y < -1$ it forces $F\cosh(yu)$ to be integrable) and the cosine transform determines $F$, $F$ is the classical $\Phi_\chi$, whatever the formula in the definition says. \Cref{sec:statement} gives the Lean statement and a guide to reading it line by line.
+
+\paragraph{What is ours, and what is not.} The theorem is FGMPS's conditional observation with its hypothesis discharged. The steps and their sources are:
+
+\begin{center}\small
+\begin{tabular}{@{}P{0.42\linewidth}P{0.25\linewidth}P{0.25\linewidth}@{}}
+\toprule
+Step & Mathematics due to & In Lean \\
+\midrule
+Zero-free half-plane $\re s > 7/8$ for $L(s,\chi)$ & OpenAI \cite{OAI7over8} & OpenAI \cite{OAIlean} \\
+Half-plane plus functional equation give $D = 3/4$ & FGMPS, Rem.~3.1 \cite{FGMPS2026} (classical) & this work \\
+Strip $D$ gives $\Lc_\chi \le D^2/2$ & de Bruijn \cite{deBruijn1950}; FGMPS Thm.~2.6, Rem.~3.4 & this work (generic) \\
+Theta kernel, its Mellin transform, and the bridge to $\Lc(s,\chi)$ & classical & this work, on Mathlib's $L$-function API \\
+Root number $\varepsilon(\chi) = 1$ for real primitive $\chi$ & Gauss \cite{Gauss1811} & this work \\
+$L$-functions, Gauss sums, functional equation, Hurwitz kernels & classical & Mathlib \cite{Mathlib2020} \\
+de Bruijn's theorem for $\zeta$, Hadamard products, Hurwitz's theorem & de Bruijn; classical & the \lean{dbn} island \cite{Murphy932} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent
+The contribution of this paper is the kernel proof from end to end, together with three reusable formal components that, as far as we know, were not previously available in Lean:
+\begin{enumerate}[label=(\roman*)]
+\item de Bruijn's strip-contraction theorem for an abstract even kernel with double-exponential decay of arbitrary rate (\cref{sec:debruijn}). It generalises the \lean{dbn} island's theorem for $\zeta$ \cite{Murphy932}, with a Fourier-injectivity argument in place of the positivity of $\Phi$;
+\item the bridge from the Dirichlet theta kernel to Mathlib's \lean{completedLFunction}, with the theta functional equation for real primitive characters (\cref{sec:theta});
+\item Gauss's sign theorem, $\varepsilon(\chi) = 1$ for every real primitive $\chi$, in Mathlib's normalisation, including the closed form of the quadratic Gauss sum for every $N \ge 1$ (\cref{sec:gauss}). At Mathlib revision \lean{0493595e} there is no sign lemma for \lean{rootNumber} \cite[NOTE\_D2]{bbrecords}.
+\end{enumerate}
+
+\paragraph{What this paper does not do.} There is no new analytic input. The bound $9/32$ is the number FGMPS already wrote down conditionally. For $3 \le N \le 400$ it is not the best available: FGMPS's unconditional individual bounds beat $9/32$ for $136$ of the $242$ characters in that range \cite[\S7.7, Table 8]{FGMPS2026}. One example is $\chi_{-4}$, for which they prove $\Lc_{\chi_{-4}} \le 0.26$ \cite[\S7.5]{FGMPS2026}. Their bounds also do not depend on OpenAI. Our bound is uniform in $N$, but it is only as good as OpenAI's theorem, whose manuscript is unrefereed. Granting OpenAI's half-plane, FGMPS's own $D = 3/4$ search improves on $9/32$ for $149$ of the $242$ characters \cite[Table~8]{FGMPS2026}, and their Remark~3.4 gives $9/32$ for the rest and for every larger conductor. So no bound in this paper is better than what FGMPS's paper gives once OpenAI's theorem is granted; what is new is that the bound $9/32$, for every conductor, is a kernel-checked theorem. Nothing here bears on GRH, which is $\Lc_\chi \le 0$. We do not formalize Dobner's lower bound $\Lc_\chi \ge 0$, nor the existence of $\Lc_\chi$ as an infimum (Remark~\ref{rem:sinf}).
+
+\paragraph{How to read this paper.} \Cref{sec:statement} states the theorem formally and explains how to read it. \Cref{sec:math} gives the mathematics in full, for a number theorist who does not read Lean. \Cref{sec:formal} describes the formalization and its trust base, \cref{sec:verification} the checks it passed, and \cref{sec:companion} the optional companion results for $\zeta$. \Cref{sec:limits} lists the limitations and \cref{sec:ai} states how AI was used.
+
+%======================================================================
+\section{The statement}\label{sec:statement}
+%======================================================================
+
+\subsection{The definitions}
+
+Four non-Mathlib definitions appear in the statement. Here they are, excerpted verbatim from the challenge file \lean{ChallengeDefs.lean} (md5 \lean{67e538bc}; only its \lean{namespace} and \lean{open} lines and the docstring of \lean{Hchi} are omitted), which copies them from the audited sources \lean{GenTheta.lean} (md5 \lean{3dbf6dec}) and \lean{GenThetaFE.lean} (md5 \lean{8aeec9b0}):
+
+\begin{lstlisting}
+variable (c : ℕ → ℝ) (k : ℕ) (q : ℝ)
+
+/-- `θ_c(x) = Σ_n c(n) n^k exp(−π n² x / q)`. -/
+noncomputable def thetaC (x : ℝ) : ℝ :=
+  ∑' n : ℕ, c n * (n : ℝ) ^ k * Real.exp (-π * (n : ℝ) ^ 2 * x / q)
+
+/-- `Φ_c(u) = e^{(1+2k)u} θ_c(e^{4u})`. -/
+noncomputable def PhiC (u : ℝ) : ℝ :=
+  Real.exp ((1 + 2 * k) * u) * thetaC c k q (Real.exp (4 * u))
+
+variable {N : ℕ} [NeZero N] (χ : DirichletCharacter ℂ N)
+
+variable {χ} {c : ℕ → ℝ} {k : ℕ}
+
+open scoped Classical in
+/-- The parity weight `k(χ) = 0` (even) / `1` (odd). -/
+noncomputable def parityK (χ : DirichletCharacter ℂ N) : ℕ := if χ.Even then 0 else 1
+
+open scoped Classical in
+noncomputable def Hchi (χ : DirichletCharacter ℂ N) (t : ℝ) (z : ℂ) : ℂ :=
+  ∫ u in Ioi (0 : ℝ), ((Real.exp (t * u ^ 2) : ℝ) : ℂ) *
+    ((PhiC (fun n ↦ (χ n).re) (parityK χ) N u : ℝ) : ℂ) * Complex.cos (z * u)
+\end{lstlisting}
+
+\noindent
+In mathematical notation, with $c(n) = \re\chi(n)$, $k = k(\chi)$ and $q = N$:
+\begin{equation}\label{eq:defs}
+\begin{gathered}
+\theta_\chi(x) = \sum_{n\ge0}\chi(n)\,n^k e^{-\pi n^2x/N},\qquad
+\Phi_\chi(u) = e^{(1+2k)u}\,\theta_\chi(e^{4u}),\\
+H^\chi_t(z) = \int_0^\infty e^{tu^2}\Phi_\chi(u)\cos(zu)\,du .
+\end{gathered}
+\end{equation}
+Three points about these transcriptions:
+\begin{itemize}
+\item The sum is a Mathlib \lean{tsum} over all $n \in \N$, including $n = 0$. The $n = 0$ term vanishes because $\chi(0) = 0$ when $N \ne 1$, and $\chi \ne 1$ forces $N \ne 1$. The proofs derive this internally.
+\item For real-valued $\chi$, $c(n) = \re\chi(n) = \chi(n)$. The definition takes the real part so that $\Phi_\chi$ is real-valued by construction. It makes sense for every Dirichlet character, but it is only meaningful for real ones.
+\item The integral is a Bochner integral over $(0,\infty)$ for Lebesgue measure. \lean{Complex.cos} is the entire cosine, so $H^\chi_t(z)$ is defined for complex $z$. Integrability for every real $t$ and complex $z$ is proved, from the decay estimate \eqref{eq:decay} below. A Bochner integral of a non-integrable function would silently be $0$, so this proof matters.
+\end{itemize}
+
+\subsection{The theorem}
+
+The theorem, as stated and proved in OpenAI's environment (file \lean{BbOaiMeaning.lean}, md5 \lean{23ea25e9}), is:
+
+\begin{lstlisting}[numbers=left,numberstyle=\tiny,numbersep=4pt]
+open Complex in
+theorem bb_real_primitive_meaning_oai :
+    (∀ {N : ℕ} [NeZero N] (χ : DirichletCharacter ℂ N), χ.IsPrimitive → χ ≠ 1 → (∀ n : ℕ, (χ n).im = 0) →
+      ∀ t : ℝ, 9 / 32 ≤ t → ∀ z : ℂ, DBN.Gen.Hchi χ t z = 0 → z.im = 0) ∧
+    (∀ {N : ℕ} [NeZero N] (χ : DirichletCharacter ℂ N), χ.IsPrimitive → χ ≠ 1 → (∀ n : ℕ, (χ n).im = 0) → ∀ z : ℂ,
+      DBN.Gen.Hchi χ 0 z = (1 / 8) * (N : ℂ) ^ ((1 / 2 + I * z / 2 + DBN.Gen.parityK χ) / 2) *
+        DirichletCharacter.completedLFunction χ (1 / 2 + I * z / 2)) :=
+  ⟨bb_real_primitive_real_zeros_oai, fun χ hprim hχ1 hreal z ↦ DBN.Gen.Hchi_bridge χ hprim hχ1 hreal z⟩
+\end{lstlisting}
+
+\paragraph{Reading guide.}
+\begin{center}\small
+\begin{longtable}{@{}p{0.08\linewidth}p{0.86\linewidth}@{}}
+\toprule
+Line & Reading \\
+\midrule
+1 & Inside this declaration, \lean{I} means the imaginary unit \lean{Complex.I}. \\
+2 & The name of the theorem. The prefix \lean{bb\_\allowbreak{}} records that the auditor wrote this composition file. \\
+3 & For every modulus $N \ge 1$ (\lean{NeZero N} says $N \ne 0$; the braces make $N$ implicit) and every Dirichlet character $\chi$ modulo $N$ with values in $\C$ that is primitive in Mathlib's sense (\lean{IsPrimitive}: its conductor is $N$), is not the trivial character, and takes only real values at the natural numbers, \dots \\
+4 & \dots and for every real $t \ge 9/32$ and every complex $z$ with $H^\chi_t(z) = 0$, we have $\im z = 0$. This is part (a) of \cref{thm:main}. The numerals \lean{9 /\allowbreak{} 32} are elaborated in $\R$; \lean{\#check} with \lean{pp.numericTypes} prints \lstinline[basicstyle=\ttfamily,backgroundcolor={}]|(9 / 32 : ℝ)|. \\
+5 & And, with the same hypotheses on $\chi$, for every complex $z$: \\
+6--7 & $H^\chi_0(z) = \tfrac18 \cdot N^{(s+k)/2}\cdot\Lc_{\mathrm{M}}(s,\chi)$, where $s = \tfrac12 + \tfrac{iz}{2}$, $k = k(\chi)$, and $N^{(\cdot)}$ is Mathlib's complex power with base the natural number $N$ cast to $\C$. Here \lean{completedLFunction} is Mathlib's, from \lean{Mathlib.NumberTheory.LSeries.DirichletContinuation}. This is part (b). \\
+8 & The proof: the pair of the two theorems \lean{bb\_\allowbreak{}real\_\allowbreak{}primitive\_\allowbreak{}real\_\allowbreak{}zeros\_\allowbreak{}oai} and \lean{Hchi\_\allowbreak{}bridge}, described in \cref{sec:formal}. \\
+\bottomrule
+\end{longtable}
+\end{center}
+
+\noindent
+Part (a) alone uses $43$ constants ($29$ from Mathlib, $13$ from \lean{Init}, and \lean{Hchi}); the whole conjunction uses $59$ ($37$ from Mathlib, $20$ from \lean{Init}, and \lean{Hchi} and \lean{parityK} from \lean{GenThetaFE}). Every one of them comes from Lean's core library (\lean{Init}), from Mathlib, or from \lean{GenThetaFE} (\lean{Hchi} and \lean{parityK}). None comes from OpenAI's \lean{OAI.*} namespace. The auditor's program, which lists each constant of the statement together with the module that declares it, confirms this \cite[REVIEW\_GAUSS\_SIGN\_AND\_OAI \S B.3; ADD1 \S3]{bbrecords}.
+
+\subsection{Mathlib's completed $L$-function, and the classical one}\label{sec:mathlibLambda}
+
+Mathlib's $\Lc_{\mathrm{M}}(s,\chi) = $ \lstinline[basicstyle=\ttfamily,backgroundcolor={}]|completedLFunction χ s| omits the conductor factor. Its relevant facts, read from Mathlib's source at revision \lean{0493595e} \cite[ADD1 \S5]{bbrecords}, are:
+\begin{itemize}
+\item \lstinline[basicstyle=\ttfamily,backgroundcolor={}]|gammaFactor χ s = if χ.Even then Gammaℝ s else Gammaℝ (s + 1)|, where $\GR(s) = \pi^{-s/2}\Gamma(s/2)$;
+\item \lean{LFunction\_\allowbreak{}eq\_\allowbreak{}completed\_\allowbreak{}div\_\allowbreak{}gammaFactor}: $L(s,\chi) = \Lc_{\mathrm{M}}(s,\chi)/\GR(s+k)$ when $s \ne 0$ or $N \ne 1$;
+\item \lean{IsPrimitive.completedLFunction\_\allowbreak{}one\_\allowbreak{}sub}: for primitive $\chi$,
+\begin{equation}\label{eq:FE}
+\Lc_{\mathrm{M}}(1-s,\chi) = N^{s-1/2}\,\varepsilon(\chi)\,\Lc_{\mathrm{M}}(s,\chi^{-1}),
+\end{equation}
+with \lstinline[basicstyle=\ttfamily,backgroundcolor={}]|rootNumber χ| $= \varepsilon(\chi) = \tau(\chi)/(i^k N^{1/2})$, where $\tau(\chi) = \sum_{a \bmod N}\chi(a)e^{2\pi i a/N}$ (\lstinline[basicstyle=\ttfamily,backgroundcolor={}]|gaussSum χ stdAddChar|).
+\end{itemize}
+Hence $N^{(s+k)/2}\Lc_{\mathrm{M}}(s,\chi) = (N/\pi)^{(s+k)/2}\Gamma(\tfrac{s+k}2)L(s,\chi) = \Lc(s,\chi)$ is the classical completed $L$-function. It satisfies $\Lc(1-s,\chi) = \varepsilon(\chi)\Lc(s,\bar\chi)$, because the powers of $N$ in \eqref{eq:FE} combine. Since $N^{(s+k)/2} \ne 0$, part (b) says that the zeros of $H^\chi_0$ are exactly the points $z$ with $\Lc(\tfrac12 + \tfrac{iz}2,\chi) = 0$. These points are in bijection with the non-trivial zeros of $L(s,\chi)$. The identification of $N^{(s+k)/2}\Lc_{\mathrm{M}}$ with the classical $\Lc$ is this reading of Mathlib's definitions; the Lean statement itself is about Mathlib's constant.
+
+\subsection{Relation to the FGMPS normalisation}\label{sec:normalisation}
+
+In \cite[(1.3)]{FGMPS2026}, $\Phi_L(u) = 4\varphi_L(e^{4u})$ with $\varphi_L(x) = x^{1/4+a/2}\psi_L(x)$ and $\psi_L(x) = \sum_{n\ge1}n^a\chi(n)e^{-n^2\pi x/m}$. Here $m = N$ and $a = k$, and $x^{1/4 + a/2}$ at $x = e^{4u}$ is $e^{(1+2k)u}$, so $\Phi_L = 4\Phi_\chi$. For even $\Phi_\chi$ (\cref{sec:theta}), $H^L_t(z) = \int_\R e^{tu^2}\Phi_L(u)e^{izu}\,du = 8H^\chi_t(z)$ for every real $t$. So both families have the same zeros at every time, and the constant $\Lc_\chi$ is the same in both conventions. This identity for $t \ne 0$ is a one-line unfolding of the definitions, not a Lean theorem: FGMPS's $H^L_t$ is not defined in Lean. What is formal is part (b), which anchors $\Phi_\chi$ to $\Lc(s,\chi)$.
+
+\begin{remark}[the infimum-free form]\label{rem:sinf}
+As in our earlier papers \cite{Murphy932,MurphyNewman}, ``$\Lc_\chi \le 9/32$'' is stated as ``for every $t \ge 9/32$ every zero of $H^\chi_t$ is real''. Once $\Lc_\chi$ exists and de Bruijn's monotonicity holds, the two are equivalent. Monotonicity is in the formalization (\lean{dbn\_\allowbreak{}real\_\allowbreak{}zeros\_\allowbreak{}upset}); it is stated for abstract kernels and transfers to $H^\chi_t$ through the rescaling of \cref{sec:debruijn}. Existence, which rests on Newman's theorem, is not. Stating the bound without an infimum keeps the theorem a statement about the zeros of an explicit entire function.
+\end{remark}
+
+%======================================================================
+\section{The mathematics}\label{sec:math}
+%======================================================================
+
+This section is self-contained. Every theorem, proposition and corollary in it is proved in the formalization; the two places where a remark is not formalized say so. Lean names are given in brackets for readers who want to find them.
+
+\subsection{The theta kernel and the bridge}\label{sec:theta}
+
+Throughout, $\chi$ is a non-trivial real Dirichlet character modulo $N$ with parity $k$: $\chi(-1) = (-1)^k$, so $\Lc_{\mathrm{M}}(s,\chi) = \GR(s+k)L(s,\chi)$ away from the poles of $\GR(s+k)$.
+
+\paragraph{Decay.} Since $|\chi(n)| \le 1$ and $\chi(0) = 0$, for $x \ge 1$
+\[
+|\theta_\chi(x)| \le \sum_{n\ge1}n^k e^{-\pi n^2x/N} \le e^{-\pi x/(2N)}\sum_{n\ge1}n^ke^{-\pi n^2/(2N)},
+\]
+using $n^2x \ge (n^2+x)/2$ for $n, x \ge 1$. Hence, for $u \ge 0$,
+\begin{equation}\label{eq:decay}
+|\Phi_\chi(u)| \le S_{k,N}\; e^{(1+2k)u}\exp\!\bigl(-\tfrac{\pi}{2N}e^{4u}\bigr)
+\qquad\text{[\lean{abs\_\allowbreak{}PhiC\_\allowbreak{}le}]}.
+\end{equation}
+The true rate is $\pi/N$; the weaker rate suffices for everything below. $\Phi_\chi$ is continuous [\lean{continuous\_\allowbreak{}PhiC}]. It is not identically zero, because the $n = 1$ term dominates as $u \to \infty$ [\lean{exists\_\allowbreak{}PhiC\_\allowbreak{}ne\_\allowbreak{}zero}].
+
+\paragraph{The Mellin transform.} For $\re s > 1$, integrating term by term,
+\[
+\int_0^\infty \theta_\chi(x)\,x^{(s+k)/2}\,\frac{dx}{x}
+= \sum_{n\ge1}\chi(n)n^k\Bigl(\frac{N}{\pi n^2}\Bigr)^{(s+k)/2}\Gamma\Bigl(\frac{s+k}2\Bigr)
+= \Lc(s,\chi)
+\]
+[\lean{mellin\_\allowbreak{}thetaC}, \lean{div\_\allowbreak{}pi\_\allowbreak{}cpow\_\allowbreak{}mul\_\allowbreak{}Gamma}].
+Put $x = e^{4u}$ and $s = \tfrac12 + \tfrac{iz}2$. Then $x^{(s+k)/2} = e^{(1+2k)u}e^{izu}$ and $dx/x = 4\,du$, so
+\begin{equation}\label{eq:fourier}
+\Lc(\tfrac12 + \tfrac{iz}2,\chi) = 4\int_\R \Phi_\chi(u)\,e^{izu}\,du\qquad(\im z < -1)\qquad\text{[\lean{fourier\_\allowbreak{}PhiC\_\allowbreak{}eq\_\allowbreak{}mellin}]}.
+\end{equation}
+
+\paragraph{Evenness and the bridge.} If $\Phi_\chi$ is even, the two-sided integral in \eqref{eq:fourier} is twice the one-sided cosine integral [\lean{Hd\_\allowbreak{}zero\_\allowbreak{}eq\_\allowbreak{}half\_\allowbreak{}fourier}]. So $H^\chi_0(z) = \tfrac18\Lc(\tfrac12 + \tfrac{iz}{2},\chi)$ for $\im z < -1$. Both sides are entire: the left by differentiation under the integral, using \eqref{eq:decay}, and the right because $\chi \ne 1$. Since they agree on an open set, they agree everywhere [\lean{DBN.Gen.bridge}]. Primitivity is not used here, and evenness is used only to fold the integral. The formula holds for every real $\chi \ne 1$ whose kernel is even.
+
+\paragraph{The theta functional equation.} For real primitive $\chi$, Poisson summation gives
+\begin{equation}\label{eq:thetaFE}
+\theta_\chi(1/x) = \varepsilon(\chi)\,x^{(1+2k)/2}\,\theta_\chi(x)\qquad(x > 0).
+\end{equation}
+The formalization proves this with $\varepsilon(\chi) = 1$ as a hypothesis [\lean{theta\_\allowbreak{}fe}]. It splits $\sum_{n\in\Z}$ into residue classes modulo $N$, applies Mathlib's functional equations for the even and odd Hurwitz theta kernels, and recombines the classes with Mathlib's Gauss-sum identity for the Fourier transform of a primitive character (\lean{IsPrimitive.fourierTransform\_\allowbreak{}eq\_\allowbreak{}inv\_\allowbreak{}mul\_\allowbreak{}gaussSum}), using $\chi^{-1} = \chi$. Substituting $x = e^{4u}$ into \eqref{eq:thetaFE} gives
+\[
+\Phi_\chi(-u) = \varepsilon(\chi)\,\Phi_\chi(u)\qquad\text{[\lean{PhiC\_\allowbreak{}even\_\allowbreak{}of\_\allowbreak{}rootNumber}, for } \varepsilon = 1\text{]}.
+\]
+So $\Phi_\chi$ is even exactly when $\varepsilon(\chi) = 1$. Gauss's sign theorem supplies this.
+
+\subsection{Gauss's sign theorem}\label{sec:gauss}
+
+\begin{theorem}[Gauss; Lean: \lean{DBN.Gen.rootNumber\_\allowbreak{}eq\_\allowbreak{}one\_\allowbreak{}of\_\allowbreak{}real\_\allowbreak{}primitive}]\label{thm:gauss}
+Every real primitive Dirichlet character $\chi$ has $\varepsilon(\chi) = 1$, that is, $\tau(\chi) = \sqrt N$ if $\chi$ is even and $\tau(\chi) = i\sqrt N$ if $\chi$ is odd.
+\end{theorem}
+
+\begin{lstlisting}
+theorem DBN.Gen.rootNumber_eq_one_of_real_primitive {N : ℕ} [NeZero N] (χ : DirichletCharacter ℂ N)
+    (hprim : χ.IsPrimitive) (hreal : ∀ n : ℕ, (χ n).im = 0) :
+    DirichletCharacter.rootNumber χ = 1
+\end{lstlisting}
+
+\noindent
+The statement uses only constants from Mathlib and \lean{Init}; \lean{rootNumber} is Mathlib's own definition \cite[REVIEW\_GAUSS\_SIGN\_AND\_OAI \S A.3]{bbrecords}. Gauss found the sign of the quadratic Gauss sum in 1805 (his letter to Olbers of 3 September 1805 is the usual reference); the proof, \emph{Summatio quarumdam serierum singularium}, was presented in 1808 and printed in 1811 \cite{Gauss1811}. We have not checked these dates against the originals; for the history of the theorem see Berndt, Evans and Williams \cite{BEW1998}. The classical deduction for real primitive characters goes through their identification with Kronecker symbols of fundamental discriminants; see \cite[Theorems 9.13, 9.16]{MontgomeryVaughan2006}, as cited in \cite[Lemma 2.9]{FGMPS2026}. The formalization follows a different, self-contained route in three stages, 1,419 lines in all:
+\begin{enumerate}[label=S\arabic*.]
+\item \emph{The quadratic Gauss sum.} For every $N \ge 1$, $G(N) = \sum_{j=0}^{N-1}e^{2\pi ij^2/N} = \tfrac12(1+i)(1+(-i)^N)\sqrt N$ [\lean{gaussG\_\allowbreak{}eq}]. The proof is analytic. It evaluates the Jacobi theta function at $\tau_t = 2/N + it$ as $t \to 0^+$ in two ways: directly, by residue classes, and through the transformation $\tau \mapsto -1/\tau$.
+\item \emph{Prime conductor.} For an odd prime $p$, a real character $\chi \ne 1$ modulo $p$ is the Legendre symbol and is primitive. Its Gauss sum is $G(p)$, which gives $\varepsilon = 1$ [\lean{rootNumber\_\allowbreak{}eq\_\allowbreak{}one\_\allowbreak{}of\_\allowbreak{}prime}].
+\item \emph{Induction on the conductor.} Strong induction on $N$ peels off one odd prime $p \parallel N$ at a time, writing $\chi = \chi_p\chi'$ by the Chinese remainder theorem. Alongside $\varepsilon = 1$ it carries the invariant $\chi(\ell) = \bigl(\tfrac{\chi(-1)N}{\ell}\bigr)$ for odd primes $\ell \nmid N$. With this invariant, the cross term $\chi_p(N/p)\chi'(p)$ reduces to $\bigl(\tfrac{\chi'(-1)}{p}\bigr)$ without a further appeal to reciprocity; quadratic reciprocity is used only to establish the invariant for the Legendre factor. The base cases are the levels $1$, $4$ and $8$, that is, the characters $1, \chi_{-4}, \chi_8, \chi_{-8}$. The levels $2$ and $2^e$ with $e \ge 4$, and any level divisible by $p^2$ for an odd prime $p$, carry no real primitive character [\lean{gauss\_\allowbreak{}sign\_\allowbreak{}aux}].
+\end{enumerate}
+The theorem quantifies over Mathlib's \lean{IsPrimitive} directly. It does not use the correspondence between real primitive characters and fundamental discriminants.
+
+\begin{remark}[the sign is needed for evenness, not for the strip]
+The zero strip of \cref{sec:strip} does not depend on $\varepsilon$, because \eqref{eq:FE}, with $\chi^{-1} = \chi$, sends a zero at $s$ to a zero at $1 - s$ whatever the value of $\varepsilon$. The sign matters only because the formalized de Bruijn theorem is stated for even kernels. The auditor noted an alternative \cite[NOTE\_D2 \S2]{bbrecords}. For real primitive $\chi$, applying \eqref{eq:FE} twice gives $\varepsilon^2 = 1$ without any Gauss-sum work, and the case $\varepsilon = -1$ would need a version of de Bruijn's theorem for odd kernels ($z\,K(z^2)$ in place of $K(z^2)$). This route was not formalized (it is one of the two unformalized remarks of this section); Gauss's theorem was proved instead.
+\end{remark}
+
+\subsection{De Bruijn's strip theorem}\label{sec:debruijn}
+
+\begin{definition}[Lean: \lean{DBN.Gen.Kernel}]
+A \emph{kernel} is a continuous even function $\Phi : \R \to \R$, not identically zero, with $|\Phi(u)| \le C e^{9u}\exp(-\tfrac\pi2e^{4u})$ for $u \ge 0$. Its heat flow is $H_t(z) = \int_0^\infty e^{tu^2}\Phi(u)\cos(zu)\,du$.
+\end{definition}
+
+The template $e^{9u}\exp(-\tfrac\pi2 e^{4u})$ is the decay of Riemann's $\Phi$ in \eqref{eq:Hzeta}. The definition abstracts the \lean{dbn} island's $\Phi$ \cite{Murphy932}: the auditor instantiated the generic library with the island's $\Phi$ and recovered the island's theorem verbatim \cite[REVIEW\_GEN\_D1\_D2a \S1]{bbrecords}.
+
+\begin{theorem}[de Bruijn \cite{deBruijn1950}; Lean: \lean{DBN.Gen.dbn\_\allowbreak{}debruijn\_\allowbreak{}parametric}]\label{thm:debruijn}
+Let $\Phi$ be a kernel, and let $t_0, Y \in \R$. If every zero of $H_{t_0}$ satisfies $(\im z)^2 \le Y$, then for every $t \ge t_0$ every zero of $H_t$ satisfies $(\im z)^2 \le \max(Y - 2(t-t_0), 0)$.
+\end{theorem}
+
+\noindent
+This is the form stated in \cite[Theorem 3.2]{Polymath2019} and \cite[Theorem 2.6]{FGMPS2026}, both of which attribute it to \cite[Theorem 13]{deBruijn1950}; we have not consulted de Bruijn's paper directly, and the formal proof does not depend on it. The formalized proof has four steps:
+
+\begin{enumerate}[label=\arabic*.]
+\item \emph{Discretise the heat kernel.} For $s = t - t_0 > 0$, $N \ge 1$ and $\delta = \sqrt{2s/N}$, put
+\[
+G_N(z) = \int_0^\infty \cosh(\delta u)^N\,e^{t_0u^2}\Phi(u)\cos(zu)\,du .
+\]
+Multiplying the kernel by $\cosh(\delta u)$ corresponds to the vertical shift average $(T_\delta f)(z) = \tfrac12(f(z+i\delta) + f(z-i\delta))$. So $G_N = T_\delta^N H_{t_0}$. Moreover $\cosh(u\sqrt{2s/N})^N \to e^{su^2}$, and $G_N \to H_t$ locally uniformly on $\C$ [\lean{m1W\_\allowbreak{}succ}, \lean{m1\_\allowbreak{}tendstoLocallyUniformly\_\allowbreak{}G}]. The island's design notes record that the cruder discretisation $(1 + su^2/N)^N$ preserves a zero strip but does not shrink it; this is not formalized, and that discretisation is not used.
+\item \emph{The step lemma.} Let $f$ be entire, real on $\R$ and even, with an even Hadamard product. If its zeros satisfy $(\im z)^2 \le \Delta$, then the zeros of $T_\delta f$ satisfy $(\im z)^2 \le \max(\Delta - \delta^2, 0)$ [\lean{shiftAvg\_\allowbreak{}zero\_\allowbreak{}im\_\allowbreak{}sq\_\allowbreak{}le}]. The proof works factor by factor. For $\im w > 0$ beyond the threshold, each factor of the product is strictly larger at $w + i\delta$ than at $w - i\delta$. So $|f(w+i\delta)| > |f(w-i\delta)|$, which rules out $f(w+i\delta) = -f(w-i\delta)$. Iterating $N$ times lowers $\Delta$ by $N\delta^2 = 2s$.
+\item \emph{Hadamard.} Each $G_N$ is even, real and entire of order at most $3/2 < 2$, so it has an even Hadamard product. The bound on the order holds for every real $t_0$, negative included, because the double-exponential decay of $\Phi$ absorbs $e^{t_0u^2}$ [\lean{m1\_\allowbreak{}evenHadamardData\_\allowbreak{}W}].
+\item \emph{Hurwitz.} The $G_N$ have no zeros in the open set $\{(\im z)^2 > \max(Y - 2s, 0)\}$ and converge locally uniformly to $H_t$. By Hurwitz's theorem $H_t$ has no zeros there either, provided $H_t \not\equiv 0$ [\lean{hurwitz\_\allowbreak{}ne\_\allowbreak{}zero\_\allowbreak{}of\_\allowbreak{}entire}].
+\end{enumerate}
+
+\paragraph{Fourier injectivity in place of positivity.} For $\zeta$, the island proved $H_t \not\equiv 0$ from $\Phi > 0$, which gives $H_t(0) > 0$. A Dirichlet kernel $\Phi_\chi$ need not be positive. And $H^\chi_0(0) \ne 0$ is equivalent to $L(\tfrac12,\chi) \ne 0$, which is Chowla's conjecture and open in general. The generic library therefore uses Fourier injectivity instead [\lean{exists\_\allowbreak{}cosTransform\_\allowbreak{}ne\_\allowbreak{}zero}, \lean{H\_\allowbreak{}exists\_\allowbreak{}ne\_\allowbreak{}zero}]. Let $w$ be even, continuous, integrable and not identically zero. If its cosine transform vanished on $\R$, then, $w$ being even, its whole Fourier transform would vanish, and Fourier inversion (Mathlib's \lean{Continuous.fourierInv\_\allowbreak{}fourier\_\allowbreak{}eq}) would give $w = 0$. Applying this to $w(u) = e^{tu^2}\Phi(u)$ shows $H_t \not\equiv 0$ for every real $t$, with no arithmetic input.
+
+\paragraph{Other decay rates.} A \emph{decay kernel} [\lean{DBN.Gen.DecayKernel}] is a continuous even $\Phi \not\equiv 0$ with $|\Phi(u)| \le Ce^{au}\exp(-be^{4u})$ for $u \ge 0$, for some real $a$ and some $b > 0$. Its rescaling $\Phi(2\,\cdot)$ is a kernel in the sense above: with $x = e^{4u}$,
+\[
+2au - bx^2 \le \frac{(|2a-9|+\pi/2)^2}{4b} + 9u - \frac\pi2 x \qquad (u \ge 0),
+\]
+and the substitution $v = 2u$ gives $H^{\Phi}_t(z) = 2H^{\Phi(2\cdot)}_{4t}(2z)$ [\lean{DecayKernel.template}, \lean{DecayKernel.Hd\_\allowbreak{}eq}]. Under the rescaling a strip $(\im z)^2 \le Y$ at time $0$ becomes $(\im z)^2 \le 4Y$, and time $t$ becomes $4t$. \Cref{thm:debruijn} then gives:
+
+\begin{corollary}[Lean: \lean{DecayKernel.real\_\allowbreak{}zeros\_\allowbreak{}of\_\allowbreak{}strip}]\label{cor:strip}
+Let $Y \ge 0$. If every zero of $H^\Phi_0$ satisfies $(\im z)^2 \le Y$, then every zero of $H^\Phi_t$ is real for $t \ge Y/2$.
+\end{corollary}
+
+\noindent
+By \eqref{eq:decay}, $\Phi_\chi$ is a decay kernel with $a = 1 + 2k$ and $b = \pi/(2N)$, once it is known to be even [\lean{thetaDecayKernel}].
+
+\subsection{From the half-plane $7/8$ to the strip $D = 3/4$}\label{sec:strip}
+
+\begin{proposition}[Lean: \lean{DBN.Gen.zero\_\allowbreak{}strip}]\label{prop:strip}
+Let $\chi$ be real, primitive and non-trivial, with $\Phi_\chi$ even, and suppose $L(s,\chi) \ne 0$ for $\re s > 7/8$. Then every zero $z$ of $H^\chi_0$ satisfies $(\im z)^2 \le 9/16$.
+\end{proposition}
+
+\begin{proof}
+Let $H^\chi_0(z) = 0$ and $s = \tfrac12 + \tfrac{iz}2$, so $\re s = \tfrac12 - \tfrac12\im z$. By the bridge and $N^{(s+k)/2} \ne 0$, $\Lc_{\mathrm{M}}(s,\chi) = 0$. If $\re s > 7/8$, then $\GR(s+k) \ne 0$ and $L(s,\chi) = \Lc_{\mathrm{M}}(s,\chi)/\GR(s+k) = 0$, a contradiction; so $\re s \le 7/8$. A real-valued character is its own inverse: $|\chi(a)| = 1$ on units together with $\chi(a) \in \R$ forces $\chi(a) = \pm1$ [\lean{inv\_\allowbreak{}eq\_\allowbreak{}self\_\allowbreak{}of\_\allowbreak{}real}]. So \eqref{eq:FE} gives $\Lc_{\mathrm{M}}(1-s,\chi) = N^{s-1/2}\varepsilon(\chi)\Lc_{\mathrm{M}}(s,\chi) = 0$, and the same argument applied to $1-s$ gives $\re(1-s) \le 7/8$, that is, $\re s \ge 1/8$. Hence $|\im z| \le 3/4$.
+\end{proof}
+
+\noindent
+Primitivity enters in three places: here, through \eqref{eq:FE}; in the theta functional equation \eqref{eq:thetaFE}; and in Gauss's theorem. With $Y = 9/16$, Corollary~\ref{cor:strip} gives real zeros for $t \ge 9/32 = 2(7/8 - 1/2)^2$ [\lean{DBN.Gen.dirichlet\_\allowbreak{}real\_\allowbreak{}zeros}]. Discharging evenness by \cref{thm:gauss} [\lean{DBN.Gen.real\_\allowbreak{}primitive\_\allowbreak{}real\_\allowbreak{}zeros}], and the half-plane by OpenAI's theorem with $\chi \ne 1$ excluding the pole, proves \cref{thm:main}(a).
+
+\subsection{An example: $\chi_{-4}$}\label{sec:chi4}
+
+The non-trivial character modulo $4$, $\chi_{-4}(n) = (-1)^{(n-1)/2}$ for odd $n$, is odd ($k = 1$), so
+\[
+\theta_{\chi_{-4}}(x) = \sum_{n\ \mathrm{odd}}(-1)^{(n-1)/2}\,n\,e^{-\pi n^2x/4},\qquad
+\Phi_{\chi_{-4}}(u) = e^{3u}\,\theta_{\chi_{-4}}(e^{4u}).
+\]
+Its Gauss sum is $\tau(\chi_{-4}) = e^{2\pi i/4} - e^{2\pi i\cdot3/4} = 2i$, so $\varepsilon(\chi_{-4}) = 2i/(i\cdot2) = 1$, and $\theta_{\chi_{-4}}(1/x) = x^{3/2}\theta_{\chi_{-4}}(x)$. In Lean this character is \lstinline[basicstyle=\ttfamily,backgroundcolor={}]|chiM4 := ZMod.χ₄.ringHomComp (Int.castRingHom ℂ)|. Its primitivity, non-triviality, reality, oddness, $\tau = 2i$ and $\varepsilon = 1$ are proved by direct computation in \lean{GenChi4.lean}, independently of the general Gauss theorem [\lean{chiM4\_\allowbreak{}isPrimitive}, \lean{gaussSum\_\allowbreak{}chiM4}, \lean{rootNumber\_\allowbreak{}chiM4}]. The corresponding special case was the first one to be proved in OpenAI's environment:
+\begin{lstlisting}
+theorem bb_chiM4_real_zeros_oai :
+    ∀ t : ℝ, 9 / 32 ≤ t → ∀ z : ℂ, DBN.Gen.Hchi DBN.Gen.chiM4 t z = 0 → z.im = 0
+\end{lstlisting}
+As an independent numerical sanity check of the bridge, the auditor compared both sides in \lean{mpmath} at 30 digits \cite[REVIEW\_D2b\_BRIDGE]{bbrecords}. The left side was $H^{\chi_{-4}}_0(z)$, computed by quadrature; the right side was $\tfrac18 4^{(s+1)/2}\GR(s+1)L(s,\chi_{-4})$:
+\begin{center}\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+$z$ & both sides & $|\text{difference}|$ \\
+\midrule
+$0$ & $0.122589201757214188$ & $5\cdot10^{-31}$ \\
+$1$ & $0.120217919764671738$ & $1\cdot10^{-32}$ \\
+$0.5 + 0.25i$ & $0.122140362295467626 - 0.000595884686946844\,i$ & $5\cdot10^{-31}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+At $z = 0$ the value is $\tfrac18\Lc(\tfrac12,\chi_{-4})$, numerically non-zero; the proof does not use this. FGMPS prove the stronger unconditional bound $\Lc_{\chi_{-4}} \le 0.26$ \cite[\S7.5]{FGMPS2026}. Moreover, once OpenAI's theorem is granted, $9/32$ for $\chi_{-4}$ already follows on paper from FGMPS's Remark~3.4. The example is here to make the objects concrete; what is new for $\chi_{-4}$, as for every conductor, is only that the bound is a kernel-checked theorem.
+
+\subsection{What the proof does not use}
+
+Apart from OpenAI's theorem, whose internals we do not describe, the proof uses no numerical verification of GRH, no zero computation, no Riemann--Siegel formula, no interval arithmetic, no positivity of $\Phi_\chi$, and no non-vanishing at the central point. Its only arithmetic inputs are OpenAI's half-plane and Gauss's sign theorem. Everything else is the functional equation and complex analysis.
+
+%======================================================================
+\section{The formalization}\label{sec:formal}
+%======================================================================
+
+\subsection{Architecture}
+
+The proof has five layers. Each imports only Mathlib and the layers above it; the composition layer also imports OpenAI's \path{OAI.NumberTheory.DirichletL.Nonvanishing}. Line counts were taken from the audited sources; the md5 prefixes are those recorded in the auditor's reviews \cite{bbrecords} and were rechecked for this draft.
+
+\begin{center}\small
+\begin{tabular}{@{}P{0.2\linewidth}P{0.11\linewidth}P{0.62\linewidth}@{}}
+\toprule
+Layer & Files, lines & Content \\
+\midrule
+\lean{dbn} island \cite{Murphy932} (commit \lean{afd94c7}) & 7, 2{,}193 & \lean{DBNStep} (the shift average and the step lemma), \lean{DBNHurwitz}, and \lean{DBNHadamard} with its four sub-modules (Hadamard factorisation of even entire functions of order $<2$). Pure complex analysis, with no $\Phi$. \\
+\lean{Gen} & 13, 2{,}788 & \lean{GenFourier}, \lean{GenDefs}, \lean{GenHeatApprox}, \lean{GenM1Approx}, \lean{GenM1Parametric}: \cref{thm:debruijn} for abstract kernels. \lean{GenScale}: Corollary~\ref{cor:strip}. \lean{GenTheta}, \lean{GenMellin}, \lean{GenMellin2}, \lean{GenBridge}: \cref{sec:theta}. \lean{GenStrip}: Proposition~\ref{prop:strip}. \lean{GenThetaFE}: \eqref{eq:thetaFE}, \lean{Hchi}. \lean{GenChi4}: \cref{sec:chi4}. \\
+\lean{Gauss} & 6, 1{,}419 & \lean{GaussQuad} (S1), \lean{GaussPrime} (S2), \lean{GaussCRT}, \lean{GaussPow}, \lean{GaussTwo}, \lean{GaussSign} (S3): \cref{thm:gauss} and \lean{real\_\allowbreak{}primitive\_\allowbreak{}real\_\allowbreak{}zeros}, the main theorem with the half-plane as a hypothesis. \\
+\lean{GaussBridge} & 1, 36 & \lean{Hchi\_\allowbreak{}bridge}: part (b) with no extra hypotheses. \\
+Composition & 2 & \lean{BbOaiRealPrim}, \lean{BbOaiMeaning}: OpenAI's theorem discharges the half-plane; the conjunction. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent
+The seven island files (in the order of the table) have md5 prefixes \lean{e76f64ba}, \lean{1ca47174}, \lean{8069c2da}, \lean{da8f08cd}, \lean{f6e28cd1}, \lean{b4d07462}, \lean{46c3b886} (\lean{DBNHadamardCount}, \lean{DBNHadamardLinear}, \lean{DBNHadamardMean}, \lean{DBNHadamardProduct}, \lean{DBNStep}, \lean{DBNHurwitz}, \lean{DBNHadamard}). The thirteen \lean{Gen} files and six \lean{Gauss} files have md5 prefixes
+\lean{261aa493}, \lean{c5c6e856}, \lean{282fe6c7}, \lean{23f22b65}, \lean{99f5dfdc}, \lean{6f608628}, \lean{3dbf6dec}, \lean{cb5c2820}, \lean{67e1af81}, \lean{5691f87d}, \lean{8aa81558}, \lean{8aeec9b0}, \lean{9acc262c} and
+\lean{51b4e494}, \lean{6fb94967}, \lean{dce09dba}, \lean{16bd30ef}, \lean{3800b2cc}, \lean{03883647};
+\lean{GaussBridge} is \lean{4f746054}; the composition files are \lean{BbOaiRealPrim} \lean{4c569252} and \lean{BbOaiMeaning} \lean{23ea25e9}. Four of the \lean{Gen} files (\lean{GenDefs}, \lean{GenHeatApprox}, \lean{GenM1Approx}, \lean{GenM1Parametric}) are generated mechanically from the island by a text transform that abstracts $\Phi$. The auditor re-ran the generator and obtained byte-identical outputs \cite[REVIEW\_GEN\_D1\_D2a]{bbrecords}.
+
+The main theorem with the half-plane as a hypothesis is:
+\begin{lstlisting}
+theorem DBN.Gen.real_primitive_real_zeros {N : ℕ} [NeZero N] (χ : DirichletCharacter ℂ N)
+    (hprim : χ.IsPrimitive) (hχ1 : χ ≠ 1) (hreal : ∀ n : ℕ, (χ n).im = 0)
+    (hL : ∀ s : ℂ, (7 / 8 : ℝ) < s.re → DirichletCharacter.LFunction χ s ≠ 0) :
+    ∀ t : ℝ, 9 / 32 ≤ t → ∀ z : ℂ, Hchi χ t z = 0 → z.im = 0
+\end{lstlisting}
+\noindent
+The composition with OpenAI's theorem, in full, is:
+\begin{lstlisting}
+import GaussSign
+import OAI.NumberTheory.DirichletL.Nonvanishing
+
+theorem bb_real_primitive_real_zeros_oai :
+    ∀ {N : ℕ} [NeZero N] (χ : DirichletCharacter ℂ N), χ.IsPrimitive → χ ≠ 1 → (∀ n : ℕ, (χ n).im = 0) →
+    ∀ t : ℝ, 9 / 32 ≤ t → ∀ z : ℂ, DBN.Gen.Hchi χ t z = 0 → z.im = 0 :=
+  fun χ hprim hχ1 hreal ↦ DBN.Gen.real_primitive_real_zeros χ hprim hχ1 hreal (fun _ hs ↦
+    OAI.DirichletCharacter.LFunction_ne_zero_of_seven_eighths_lt_re χ hs (fun h ↦ hχ1 h.1))
+\end{lstlisting}
+\noindent
+OpenAI's side condition $\neg(\chi = 1 \wedge s = 1)$ follows from $\chi \ne 1$.
+
+\subsection{Two environments}
+
+OpenAI's theorem lives at Lean \lean{v4.34.1} with Mathlib \lean{d13f23b}. Our chain was developed and first audited at Lean \lean{v4.35.0-rc3} with Mathlib \lean{0493595e}. Combining a theorem from one Mathlib revision with a hypothesis stated in another would leave a seam: the two revisions must define \lean{DirichletCharacter.\allowbreak{}LFunction} in the same way. We avoided that question. The whole chain was rebuilt from source inside OpenAI's built environment, with an empty port diff: all $27$ chain files, island included, are byte-identical to the versions audited at \lean{v4.35.0-rc3} (the island files differ from the island's release \lean{afd94c7} by two previously audited port lines). The final theorem was then proved there \cite[REVIEW\_GAUSS\_SIGN\_AND\_OAI \S B.1; ADD1 \S3]{bbrecords}. The OpenAI environment is a materialised copy of \lean{openai/\allowbreak{}math}'s \lean{lean/\allowbreak{}} directory from a replay on 7 October 2026. A recursive \lean{diff} of its \lean{OAI} tree against a git clone at \lean{adc7f1241b42}, covering 121,734 files, is empty. The lakefile, manifest, toolchain and patches agree, and \lean{Nonvanishing.lean} (md5 \lean{ea8efdb1}) re-elaborates from source \cite[REPORT\_OAI\_PORT (b)]{bbrecords}. The dependency checkouts of that local tree (\path{.lake/packages}, Mathlib among them) were not hashed against the pinned commits; the sandboxed Comparator run re-created them from the public pins: Mathlib from its official build cache at \lean{d13f23b}, and the two other packages OpenAI's theorem imports (\lean{PrimeNumberTheoremAnd}, \lean{rellich-kondrachov}) cloned at their pins and patched with OpenAI's patches. Its solution export is byte-identical to the one the auditor made from the local tree (\cref{sec:comparator}), which closes this gap for the closure of the main theorem \cite[REVIEW\_COMPARATOR\_LAMBDA\_CHI \S4]{bbrecords}.
+
+\subsection{The trust base}\label{sec:trust}
+
+To believe \cref{thm:main} on the strength of this formalization, one has to trust:
+\begin{enumerate}
+\item \emph{The Lean kernel}, plus the further checkers that replayed the export (\cref{sec:verification}), from three implementation lineages.
+\item \emph{OpenAI's Lean proof} of the $7/8$ half-plane, as checked by the kernel. Its mathematical manuscript \cite{OAI7over8} is unrefereed, as is the companion $11/12$ preprint \cite{OAIqrh}. Its proof term is in the replayed environment, so the kernel checks are a check of OpenAI's proof too. But no human has refereed the argument.
+\item \emph{Mathlib's definitions} at \lean{d13f23b}, in particular \lean{DirichletCharacter}, \lean{IsPrimitive}, \lean{LFunction}, \lean{completedLFunction}, \lstinline[basicstyle=\ttfamily,backgroundcolor={}]|Gammaℝ|, the complex power, \lean{tsum} and the Bochner integral, as compiled in Mathlib's official build cache at \lean{d13f23b}, from which the sandboxed run took them; the local build tree gives a byte-identical export of the main theorem's environment (\cref{sec:comparator}).
+\item \emph{Our four definitions} of \cref{sec:statement} (\lean{thetaC}, \lean{PhiC}, \lean{parityK}, \lean{Hchi}). Part (b) of \cref{thm:main}, with Fourier uniqueness, is the check that \lean{Hchi} means what we say; what remains to be read is its outer heat-integral shape. The identification with FGMPS's normalisation for $t \ne 0$ (\cref{sec:normalisation}) is by hand.
+\item \emph{The checking runs themselves.} The local replays on macOS were unsandboxed. The sandboxed Comparator run of \cref{sec:comparator} ran as uid 0 with all capabilities dropped; it was made by another agent session, and the auditor read all of its logs but did not repeat its kernel runs.
+\end{enumerate}
+Not trusted: any proof in our chain or in OpenAI's library. Every proof is checked by the kernel.
+
+\subsection{How to read and check it}
+
+A reader who wants to check the statement without reading proofs needs three things: \lean{ChallengeDefs.lean} (the four definitions, 56 lines, md5 \lean{67e538bc}); \lean{Challenge.lean} (the statement of \cref{sec:statement} with \lean{:= sorry}, md5 \lean{73c1bf94}); and the Mathlib definitions listed above. A reader who wants to follow the proof should read \lean{GenStrip.lean} (89 lines) first: it is the proof of Proposition~\ref{prop:strip} and of the main theorem in hypothesis form. Then read \lean{GenScale.lean} and \lean{GenM1Parametric.lean} for de Bruijn, and \lean{GenThetaFE.lean} and \lean{GaussSign.lean} for the arithmetic. The release repository's README gives two routes for reproducing the result, summarised here.
+\begin{enumerate}
+\item \emph{The auditor's build.} Clone \lean{openai/\allowbreak{}math} and check out \lean{adc7f124}; its Lean project is \path{lean/}, with toolchain \lean{v4.34.1} and Mathlib \lean{d13f23b}. In \path{lean/}, run \lean{lake update}, \lean{lake exe cache get} and \lean{lake build OAI.NumberTheory.DirichletL.Nonvanishing}, which is OpenAI's documented procedure and applies their dependency patches. Afterwards, check that \path{lean/lake-manifest.json} is unchanged (md5 \lean{8c3ec864}), for example with \path{<release>/scripts/check_manifest.sh}~\path{<clone>/lean/lake-manifest.json}; otherwise the dependencies are no longer those pinned by OpenAI. Then compile the $29$ chain modules of the release (\path{lean/island}, \path{lean/gen}, \path{lean/gauss}, \path{lean/main}) with plain \lean{lean}, in the order listed in the README, against that build. Finally run \lean{BbOaiMeaningCheck.lean} (axioms and closure walks for both halves), \lean{BbOaiMeaningRef.lean} (the \lean{pp.all} statement with no OpenAI module in scope) and \lean{BbOaiMeaningTamper.lean}, which must fail with $3$ errors, and compare the outputs with \path{logs/oai_env/}. This mirrors how the Lean results of \cref{sec:verification} were obtained; the auditor used OpenAI's tree as built in the 7 October replay (\cref{sec:formal}) rather than a fresh clone.
+\item \emph{Through Lake.} \path{scripts/verify_md5.sh} checks every file under \path{lean/}, \path{logs/} and \path{provenance/} against its manifest, and the challenge files against the auditor's two manifests in \path{challenge/}. \path{scripts/materialize.sh} sets up \lean{openai/\allowbreak{}math} at the pin with the chain inside it as five \lean{lean\_lib} targets; one then builds those targets and runs the same three checks with \lean{lake env lean}. This route, and the continuous-integration workflow that runs it on Linux, had not been run at the time of this version. (OpenAI's package sets \lean{autoImplicit} off; the stanza sets it back on for each of the five chain libraries, matching how the chain was compiled, but this override is untested. A mismatch could only fail loudly, as an unknown-identifier error, and could not change a statement.)
+\end{enumerate}
+The five-checker replay of \cref{sec:verification} exports the environment with \lean{lean4export} and runs each checker on the export, as in the scripts under \path{logs/five_checker/}.
+
+%======================================================================
+\section{Verification}\label{sec:verification}
+%======================================================================
+
+All results in this section were produced by the auditor (an AI agent session; see \cref{sec:ai}) and are recorded, with md5 sums for every input and output, in its reviews \cite{bbrecords}.
+
+\subsection{Axioms}
+
+\lean{\#print axioms} reports \lean{[propext, Classical.choice, Quot.sound]} for \lean{bb\_\allowbreak{}real\_\allowbreak{}primitive\_\allowbreak{}meaning\_\allowbreak{}oai}, \lean{Hchi\_\allowbreak{}bridge}, \lean{bb\_\allowbreak{}real\_\allowbreak{}primitive\_\allowbreak{}real\_\allowbreak{}zeros\_\allowbreak{}oai} and \lean{rootNumber\_\allowbreak{}eq\_\allowbreak{}one\_\allowbreak{}of\_\allowbreak{}real\_\allowbreak{}primitive}. \lean{\#print axioms} reads a cached summary, so the auditor also walked the term-level closure directly: types, values, constructors and recursor rules. The walk over the $126{,}656$ constants in the closure of the main theorem finds the same three axioms \cite[ADD1 \S3]{bbrecords}. A static scan of the Gauss and bridge sources finds no \lean{sorry}, \lean{admit}, \lean{axiom}, \lean{native\_\allowbreak{}decide}, \lean{implemented\_\allowbreak{}by}, \lean{extern}, \lean{unsafe}, \lean{opaque}, \lean{set\_\allowbreak{}option}, \lean{macro}, \lean{elab} or \lean{\#eval}. The only textual hit, in a doc comment, is the word ``admit'' \cite[\S A.2; ADD1 \S1]{bbrecords}.
+
+\subsection{Five checkers from three lineages, and a control they must reject}
+
+The environment containing the main theorem was exported with \lean{lean4export} \cite{lean4export} (v4.34.1 build, export format 3.1.0) to a file of $1{,}730{,}561{,}283$ bytes (md5 \lean{6888b248}). The export was given to five checkers. These are the checkers bundled with the Lean \lean{v4.35.0-rc3} toolchain, which read the same export format. Alongside it, a control was exported and checked: a ``theorem'' \lean{BbNeg.bogus : 4 = 5} admitted into the environment by switching off the elaborator's kernel check (\lean{debug.skipKernelTC}; export md5 \lean{bf973608}). A checker that accepts the control is not checking anything. The runs were guarded so that an empty or failed export aborts the run, and any acceptance of the control marks it invalid. The guards exist because an earlier run in the same programme exported zero bytes because of a toolchain mismatch, and every checker then ``accepted'' the empty file, the control included \cite[REVIEW\_CTFREE\_KERNELS]{bbrecords}.
+
+\begin{center}\small
+\begin{tabular}{@{}P{0.3\linewidth}P{0.36\linewidth}P{0.26\linewidth}@{}}
+\toprule
+Checker & main theorem (\lean{6888b248}) & control \lean{4 = 5} \\
+\midrule
+\lean{leanchecker} (Lean's kernel) & accept, 270 s & reject (rc 1) \\
+\lean{leanchecker-paranoid} & accept, 320 s & reject (rc 1) \\
+\lean{nanoda} \cite{nanoda} & accept, 57 s & reject (rc 101, panic in \lean{def\_\allowbreak{}eq}) \\
+\lean{con-leche} & accept, ``accepted 124635 declarations (\texttt{-{}-verified})'' & reject (rc 1) \\
+\lean{con-ron} & accept, ``accepted 124635 declarations (\texttt{-{}-verified})'' & reject (rc 1) \\
+\lean{lean4lean} \cite{lean4lean} & N/A: crashes before reaching any target & N/A \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent
+All five accept, and all five reject the control \cite[ADD1 \S4]{bbrecords}. The rc3 \lean{lean4lean} cannot read v4.34.1 exports: it fails with ``unknown constant \lean{Decidable.intro}'' on every file, the control included, so it is recorded as not applicable rather than as a rejection. The two \lean{leanchecker} variants run Lean's own kernel. \lean{nanoda} is an independent implementation in Rust. \lean{con-leche} is a separate kernel implementation written in Lean, with its own term datatypes (\lean{ConLeche.Expr}, \lean{ConLeche.Level}, \lean{ConLeche.Name}); its help text states a soundness theorem for its default \lean{-{}-verified} mode, ``\lean{ConLeche.no\_\allowbreak{}proof\_\allowbreak{}of\_\allowbreak{}False}'' (if the declaration fold accepts, no constant of type \lean{False} is in the environment). \lean{con-ron} describes itself as a Rust port of \lean{con-leche}. Both are bundled with the Lean \lean{v4.35.0-rc3} toolchain, whose \lean{lake comparator -{}-paranoid} runs them alongside \lean{leanchecker-paranoid}, \lean{lean4lean} and \lean{nanoda} (\path{Lake/CLI/Check.lean} in the toolchain's sources). \lean{con-leche} \cite{conleche} was implemented, and proved consistent in Lean, by Claude under the supervision of Joachim Breitner at the Lean FRO; its README states the theorems \lean{no\_False\_declaration} and \lean{model\_exists} (every accepted environment has a model in set theory, following Carneiro's model of Lean's type theory). \lean{con-ron} \cite{conron} is a Rust port of it, written by AI under Breitner's supervision, with an Aeneas proof that it refines \lean{con-leche}'s checking algorithm; it differs in term representation, caching, compiler and runtime. Both ship with Lean \lean{v4.35.0} \cite{deMoura2026}. They are independent of Lean's C++ kernel, but not of each other. The five acceptances therefore come from three implementation lineages: Lean's kernel, \lean{nanoda}, and the \lean{con-leche}/\lean{con-ron} pair. Separate runs of the same kind accepted part (a) alone (export md5 \lean{ae0c51bd}, $124{,}633$ declarations) and the $\chi_{-4}$ case (\lean{7c142b2c}, $124{,}395$ declarations), and rejected the control \cite[REVIEW\_GAUSS\_SIGN\_AND\_OAI \S B.6; REPORT\_OAI\_PORT (a)]{bbrecords}.
+
+\subsection{Tampered statements}
+
+Each headline statement was also compiled with one number changed, with the proof unchanged. We distinguish two kinds of rejection. A \emph{genuine} rejection means the changed statement is false, or contradicts a proved lemma. A \emph{proof-reach} rejection means only that the given proof does not reach the changed statement; it shows a hypothesis or constant is load-bearing, not that the changed statement is false.
+
+\begin{center}\small
+\begin{tabular}{@{}P{0.48\linewidth}P{0.24\linewidth}P{0.2\linewidth}@{}}
+\toprule
+Change & Result & Kind \\
+\midrule
+half-plane $7/8 \to 3/4$ in the composition & rejected at OpenAI's theorem & proof-reach (OpenAI's theorem does not reach $3/4$) \\
+heat time $9/32 \to 1/4$ & rejected & proof-reach \\
+bridge constant $1/8 \to 1/4$ & rejected & genuine \\
+parity $k \to 1-k$ in the bridge & rejected & genuine \\
+bridge without primitivity & rejected at \lean{assumption} & proof-reach \\
+$\varepsilon(\chi) = -1$ for real primitive $\chi$ & rejected & genuine \\
+$(1+i) \to (1-i)$ in the closed form of $G(N)$ & rejected & genuine \\
+$\varepsilon(\chi_{-4}) = -1$; $\tau(\chi_{-4}) = -2i$ & rejected & genuine \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent
+The auditor's earlier records called the first row ``genuine'', meaning that the rejection happens at OpenAI's interface; under the definition above it is proof-reach, since the changed hypothesis is implied by GRH and is not known to be false. Sources: \cite[REVIEW\_GAUSS\_SIGN\_AND\_OAI \S\S A.6, B.5; ADD1 \S\S2, 3; REVIEW\_D2bp\_CHI4]{bbrecords}.
+
+\subsection{Statement identity with and without OpenAI's code}
+
+Loading OpenAI's library into the environment could, in principle, change what a statement means, for instance through an instance or a declaration that shadows a Mathlib name. To rule this out, the auditor printed the statements with \lean{pp.all}, in which every implicit argument and instance is explicit, in two environments: one containing OpenAI's library, and one containing only our chain and Mathlib. The text of part (a) ($4{,}017$ characters) and the text of part (b) ($7{,}778$ characters) are byte-identical across the two \cite[REVIEW\_GAUSS\_SIGN\_AND\_OAI \S B.3; ADD1 \S3]{bbrecords}. At the $\chi_{-4}$ stage the OpenAI environment had $13{,}708$ modules, with no module-name collisions and no \lean{DBN.*} constant from a foreign module \cite[REPORT\_OAI\_PORT]{bbrecords}.
+
+\subsection{Independent numerics}
+
+These computations check conventions and normalisations; they are plain floating point or \lean{mpmath}, not certificates. With its own implementation of the Kronecker symbol, in Mathlib's normalisation $\varepsilon = \tau/(i^k\sqrt N)$, the auditor checked \cite[\S A.7]{bbrecords}:
+\begin{itemize}
+\item the closed form of $G(N)$ for $N = 1, \dots, 200$ (largest error $6.6\cdot10^{-38}$);
+\item $\varepsilon = 1$ for real characters of odd prime conductor $p < 500$ ($4.2\cdot10^{-41}$);
+\item $\varepsilon(\chi_D) = 1$ for every fundamental discriminant $0 < |D| \le 2000$, of both signs: $1{,}218$ discriminants, largest error $4.3\cdot10^{-31}$.
+\end{itemize}
+The bridge was also checked numerically for $\chi_{-4}$ (\cref{sec:chi4}).
+
+\subsection{The sandboxed Comparator run}\label{sec:comparator}
+
+\noindent
+\emph{What was run} \cite[COMPARATOR\_RUN\_SPEC]{bbrecords}. Comparator \cite{Comparator} checks a solution against a separately written challenge. It elaborates the challenge statement against a minimal trusted definitions file. It requires that the solution's theorem have exactly that type and that every definition the statement uses be identical, as a \lean{ConstantInfo}, to the challenge's. It then checks the axiom whitelist and replays the proof through the kernel and further checkers, inside a sandbox. For this theorem the auditor wrote:
+\begin{itemize}
+\item \lean{Challenge.lean} (md5 \lean{73c1bf94}): the statement of \cref{sec:statement}, verbatim, with \lean{:= sorry};
+\item \lean{ChallengeDefs.lean} (md5 \lean{67e538bc}): the trusted definitions. It introduces exactly six non-Mathlib constants: \lean{thetaC}, \lean{PhiC} with its two auxiliary proof terms, \lean{parityK} and \lean{Hchi};
+\item \lean{config.json} (md5 \lean{d563faf7}): axioms \lean{propext}, \lean{Quot.sound}, \lean{Classical.choice}; nanoda enabled;
+\item two tampered challenges that must be rejected: heat time $9/32 \to 1/4$ (\lean{d6ef5198}) and bridge constant $1/8 \to 1/4$ (\lean{31163137}).
+\end{itemize}
+The run was made inside a \lean{bwrap} sandbox on a Linux machine, on OpenAI's environment plus our chain at the audited md5s, once with Comparator's default kernels and once with the paranoid kernel set; the auditor then read the run's logs in full and verified them \cite[REVIEW\_COMPARATOR\_LAMBDA\_CHI and its Addendum~1]{bbrecords}.
+
+\medskip\noindent
+\emph{Caveat that the result carries.} The run was made as uid 0 with all capabilities dropped (\lean{-{}-cap-drop ALL}), in an ephemeral single-tenant container; Comparator's assumption that the checker is not run by a privileged user is met in spirit, not in letter. Mathlib was taken from its official build cache at \lean{d13f23b}. The challenge-side oleans were compared with a fresh rebuild after the run, because the queued runs share one build directory (Comparator's assumption that the solution has not been compiled before the challenge).
+
+\medskip\noindent
+\emph{Results.} The run was made on 30 October 2026 by another agent session, with Comparator \lean{v4.34.0} and a \lean{bwrap} sandbox in place of \lean{landrun} (uid 0, all capabilities dropped, no network), on OpenAI's environment rebuilt from its public pins (Mathlib from its official build cache at \lean{d13f23b}; \lean{PrimeNumberTheoremAnd} and \lean{rellich-kondrachov} cloned at their pins and patched with OpenAI's patches; OpenAI's sources unmodified) and our chain at the audited md5s. With the challenge files listed above, Comparator printed ``Your solution is okay!'' both with \lean{nanoda} and Lean's kernel (log md5 \lean{fc80db0a}) and with the paranoid set \lean{leanchecker-paranoid}, \lean{nanoda}, \lean{con-leche}, \lean{con-ron} and Lean's kernel (log md5 \lean{fb164675}; \lean{con-leche} and \lean{con-ron} report $124{,}639$ declarations); \lean{lean4lean} cannot read \lean{v4.34.1} exports and was not run. In Comparator \lean{v4.34.0} that message is printed only after the statement comparison, the axiom check and every kernel have passed. Both tampered challenges were rejected with ``Challenge and solution theorem statement do not match'' (log md5s \lean{78a706f6}, \lean{d1f16445}). The auditor read all of the run's logs (\cite[REVIEW\_COMPARATOR\_LAMBDA\_CHI, Addendum~1]{bbrecords}) and reproduced the solution export independently, from its own build: it is byte-identical ($1{,}730{,}282{,}328$ bytes, md5 \lean{5ca44ad5}), so the sandboxed kernels checked, byte for byte, the export of the auditor's own build. The five-checker replay of \cref{sec:verification} used an export of that build with fewer targets (md5 \lean{6888b248}): its $124{,}635$ declaration records contain the whole closure of the main theorem and are a subset of these $124{,}639$. The extra four, \lean{Nat.lor}, \lean{Nat.xor}, \lean{String.mk} and an auxiliary proof, lie outside that closure; Comparator exports them because it lists them as kernel primitives. The auditor also ran \lean{con-leche} on its own copy of the \lean{5ca44ad5} export, and it accepted all $124{,}639$ declarations \cite[REVIEW\_COMPARATOR\_LAMBDA\_CHI, Addendum~2]{bbrecords}. The solution was compiled inside the sandbox, in an earlier attempt of the same Comparator command that a container restart interrupted (log md5 \lean{144a7c6b}); the recorded run replayed those build outputs. Before that attempt the build directory was wiped and Mathlib's cache downloaded afresh, discarding an earlier attempt that had been made without the capability drop. Between the two attempts one unsandboxed \lean{lake build Challenge} was run to test Lake's replay behaviour; it compiled nothing (these preparatory steps are from the runner's record; the logs are consistent with them). Because the queued runs share one build directory, the challenge-side oleans were rebuilt afterwards in a fresh directory and found identical (Comparator's assumption that the solution was not compiled before the challenge) \cite[REVIEW\_COMPARATOR\_LAMBDA\_CHI \S\S2--5 and Addenda~1--2]{bbrecords}.
+
+%======================================================================
+\section{Optional: companion results for $\zeta$ that use no OpenAI code}\label{sec:companion}
+%======================================================================
+
+\emph{This section is independent of the rest of the paper and may be omitted.}
+
+Cureton and Thorner \cite{CuretonThorner2026} proved, with the AxiomProver system, a zero-free half-plane for every Dedekind zeta function. Version~1 of their report states $\re s > 1 - 1/6000$, as does their repository \cite{CuretonThornerLean} at its first public commit \lean{284348a4}. Commit \lean{201bc40} (13 October 2026) strengthens the theorem \lean{main} to $\re s > 31/32$ for every number field; we use the repository at \lean{09afbb4}, which also adds a Hecke-$L$ corollary at $31/32$. We have seen no revised report stating $31/32$; that half-plane rests on the Lean repository. At $K = \mathbb{Q}$ this gives $\zeta(s) \ne 0$ for $\re s > 31/32$, $s \ne 1$. The reduction from their statement to Mathlib's \lean{riemannZeta} was written and audited in this programme \cite[REVIEW\_CTQ]{bbrecords}. Their code imports no module of \lean{openai/\allowbreak{}math} \cite[REVIEW\_CTQ]{bbrecords}. Two classical consequences were then formalized:
+
+\begin{enumerate}
+\item \emph{$\Lc \le 225/512$.} For the $\zeta$ heat flow \eqref{eq:Hzeta}, as defined on the \lean{dbn} island: every zero of $H_t$ is real for $t \ge 225/512 = 2(31/32 - 1/2)^2$. This is the same composition as Proposition~\ref{prop:strip}, with $D = 15/16$.
+\item \emph{Ingham's theorem in the kernel.} The general statement \lean{Ingham.ingham}:
+\begin{lstlisting}
+∀ {a : ℝ}, 1/2 ≤ a → a < 1 → (∀ s : ℂ, a < s.re → riemannZeta s ≠ 0) →
+  ∀ ε : ℝ, 0 < ε → ∃ C, ∀ x : ℝ, 2 ≤ x → |ψ x − x| ≤ C * x ^ (a + ε)
+\end{lstlisting}
+with Mathlib's Chebyshev $\psi$ and real powers, and $C$ depending only on $a$ and $\varepsilon$. The proof uses a Perron formula with the weight $1/(s(s+1))$. The main term comes from writing $-\zeta'/\zeta = 1/(s-1) - \zeta_1'/\zeta_1$ with $\zeta_1 = (s-1)\zeta$ and evaluating the $1/(s-1)$ piece exactly. The rest of the integrand, $(\zeta_1'/\zeta_1)(s)\,x^s/(s(s+1))$, is holomorphic on $\re s > a$, $s = 1$ included, so the shift from $\re s = 2$ to a line $\re s = \sigma_0$ with $a < \sigma_0 < 1$ needs no residue theorem. A Borel--Carath\'eodory bound controls $\zeta_1'/\zeta_1$. At $a = 31/32$ it gives $\psi(x) = x + O_\varepsilon(x^{31/32+\varepsilon})$. This is the classical direction of Ingham \cite{Ingham1932}; nothing in it is new mathematics.
+\end{enumerate}
+
+\noindent
+Neither bound is close to the state of the art: $225/512 \approx 0.439$ is far weaker than Platt and Trudgian's $\Lc \le 0.2$ \cite{PlattTrudgian2021} and Polymath15's $0.22$ \cite{Polymath2019}, and $\Lc \le 9/32$ for $\zeta$ has been kernel-checked from OpenAI's theorem \cite{Murphy932}. Their only point is independence: both hold in an environment that contains no OpenAI code.
+
+\emph{Status of the checks.} In hypothesis form, with Cureton--Thorner's conclusion $\forall s,\ 31/32 < \re s \to s \ne 1 \to \zeta(s) \ne 0$ as an explicit hypothesis, both compositions carry the standard three axioms. Six checkers (\lean{leanchecker}, \lean{leanchecker-paranoid}, \lean{lean4lean}, \lean{nanoda}, \lean{con-leche}, \lean{con-ron}) accepted both, and all six rejected the same kind of \lean{skipKernelTC} control. This is a same-version run, in which \lean{lean4lean} can read the export \cite[REVIEW\_CTFREE\_KERNELS]{bbrecords}. Tampers (the exponent $15/16$ from the $31/32$ half-plane, and the quantifier swap $\exists C\,\forall\varepsilon$) were rejected \cite[REVIEW\_INGHAM]{bbrecords}. The unconditional forms rest on Cureton--Thorner's theorem \lean{main}. The auditor did not run their code. All three Comparator runs below were made on 30--31 October 2026 by another agent session. Each used the toolchain-provided \lean{lake comparator} of Lean \lean{v4.35.0-rc3} with \lean{-{}-paranoid} (\lean{leanchecker-paranoid}, \lean{lean4lean}, \lean{nanoda}, \lean{con-leche}, \lean{con-ron} and Lean's kernel), in a \lean{bwrap} sandbox as uid 0 with all capabilities dropped, on Cureton--Thorner's repository at \lean{09afbb4} (its lakefile extended by 30 additive lines that only declare the libraries of our compositions and challenges) with Mathlib from its official build cache. The installed toolchain, checkers included, is file-for-file the published \lean{v4.35.0-rc3} release. The auditor checked each run's relayed configuration, challenge and solution md5s, sandbox probe, verdicts and exit code against its own records, but did not see the logs \cite[REVIEW\_CT\_RERUNS]{bbrecords}. Cureton--Thorner's own challenge (\lean{main} and \lean{heckeCorollary}): ``Your solution is okay!'', all six kernels accepting (log md5 \lean{a33d06b0}). The P2 and Ingham statements are kernel-checked from the type of \lean{main} itself, whose reduction to Mathlib's \lean{riemannZeta} was audited separately \cite[REVIEW\_CTQ, Addendum~1]{bbrecords}. P2: PASS, six kernels (log \lean{fed70f9a}); tamper ($224/512$) rejected, exit 1 (log \lean{90424a05}); the trusted definitions of the P2 challenge match the audited \lean{DBNDefs} (md5 \lean{acfa852d}). Ingham: PASS, six kernels (log \lean{dd6fa95b}); tamper ($15/16$) rejected (log \lean{33d0ea1c}). Every solution module these runs used was compiled inside the sandbox, except Cureton--Thorner's vendored class-field-theory package, which had been compiled earlier without it; rebuilt inside the sandbox at the same path, it gave byte-identical build outputs. These runs replace earlier ones whose sandbox did not drop capabilities. The challenge-side build outputs were rebuilt afterwards in a fresh directory and found byte-identical (Comparator's assumption that the solution was not compiled before the challenge). The result rests on Cureton--Thorner \lean{main} at \lean{09afbb4}.
+
+%======================================================================
+\section{Limitations}\label{sec:limits}
+%======================================================================
+
+\begin{enumerate}
+\item \emph{OpenAI's manuscript is unrefereed.} The $7/8$ half-plane is a kernel-checked Lean theorem, but its mathematical proof has not been refereed, and FGMPS treat it as ``asserted''. Our theorem is exactly as reliable as that Lean proof and the definitions it is stated in.
+\item \emph{The replays are local and unsandboxed.} All the checks of \cref{sec:verification} ran on one macOS machine, outside any sandbox, driven by AI agent sessions. The sandboxed Comparator run (\cref{sec:comparator}) closes this gap only in part: it ran as uid 0 with all capabilities dropped, Mathlib came from its official build cache, \lean{lean4lean} could not take part, and it was made by another agent session: the auditor read its logs and reproduced the solution export byte for byte, but did not repeat its kernel runs.
+\item \emph{Cross-version checking.} The export was made with the v4.34.1 exporter and checked by checkers bundled with v4.35.0-rc3, which read the same export format. \lean{lean4lean} could not take part.
+\item \emph{Mathlib's definitions are trusted.} In particular \lean{IsPrimitive}, \lean{LFunction} and \lean{completedLFunction} are taken to mean what their docstrings say. Part (b) of \cref{thm:main} makes our own definition of $H^\chi_t$ answer to Mathlib's $L$-function, but it cannot check Mathlib.
+\item \emph{Gauss's sign theorem is proved for real primitive characters only.} That is all the proof needs. We do not prove anything about the root number of a complex character, and the remark in \cref{sec:gauss} about avoiding the sign altogether is unformalized.
+\item \emph{The constant $\Lc_\chi$ is not defined in Lean} (Remark~\ref{rem:sinf}). Nor is the identification of $H^\chi_t$ with FGMPS's $H^L_t$ for $t \ne 0$, which is by hand (\cref{sec:normalisation}).
+\item \emph{The local build tree's dependencies were not hashed.} See \path{provenance/OAI_ENV.md} in the release. The kernel replays check every proof, but the definitions the statement uses were taken as they stood in that tree. For the main theorem's closure this gap is closed, relative to Mathlib's official build cache at \lean{d13f23b}, by the byte-identical export of \cref{sec:comparator}.
+\item \emph{The audits were done by AI sessions.} No human has read the Lean proofs; the kernel checks them, and a human should read the statement and \lean{ChallengeDefs} (\cref{sec:statement}).
+\item \emph{The numerics are checks, not proofs.} Nothing in the formal proof depends on them.
+\end{enumerate}
+
+%======================================================================
+\section{Use of AI}\label{sec:ai}
+%======================================================================
+
+This work was done with AI agent sessions (Claude, by Anthropic) under the direction of the author. We describe who did what as precisely as we can.
+
+\begin{itemize}
+\item \emph{Proof engineering.} An agent session (the ``contrarian'') wrote the Lean sources of the \lean{Gen} layer, the Gauss layer and \lean{GaussBridge}, and the generator that derives four \lean{Gen} files from the island. The \lean{dbn} island itself was written in September and October 2026 with AI assistance under the author's direction, as recorded in \cite{Murphy932,MurphyNewman}.
+\item \emph{Audit and composition.} A second, separate agent session (the auditor, ``bb'') reviewed each layer as it arrived. It read the new sources in full and rebuilt the whole chain from source (OpenAI's library was used as built in the 7 October replay, with \path{Nonvanishing.lean} re-elaborated), and wrote its own check files, tampered statements and closure walks. It wrote the numerical checks of \cref{sec:verification}, wrote the two composition files and ran all the checker replays. Its reviews are labelled ``AI review, NOT an operator read-back''. They are the records cited as \cite{bbrecords}. It also wrote the Comparator challenge files of \cref{sec:comparator} and read that run's seven logs in full, matched their md5s, and reproduced its solution export byte for byte.
+\item \emph{Coordination and this paper.} A third session (the ``lead'') coordinated the work and wrote the publication plan. This paper was drafted by a further agent session, from the auditor's records and from sources it read. Every number in it is traceable to those records or sources, and anything it could not verify is marked as unresolved.
+\item \emph{The author's role.} The author directed the programme: the author decided which results to pursue, approved running the work in OpenAI's environment and the publication of this result, chose the venue, and read and approved the final text.
+\end{itemize}
+
+\noindent
+The Lean kernel is the trusted component. No proof in this work is accepted on the word of an AI session. According to their READMEs, two of the checkers used in \cref{sec:verification} were themselves written with AI under human supervision (Joachim Breitner, Lean FRO): \lean{con-leche}, including its consistency proof, by Claude, and its Rust port \lean{con-ron} by an AI system the README does not name \cite{conleche,conron}; the five acceptances of \cref{sec:verification} also include Lean's own kernel and \lean{nanoda}, which do not share their code. The definitions and the statement are what a human reader must check, and \cref{sec:statement} is written to make that check feasible. The definitions and the statement (\cref{sec:statement}) were read by the author before publication; no outside reader has checked them.
+
+%======================================================================
+\section*{Acknowledgements}
+%======================================================================
+
+The bound is Freire, Gonz\'alez-Riquelme, Mu\~noz, Poblete and Salinas's conditional observation; the engine is de Bruijn's theorem; the half-plane and its Lean proof are OpenAI's; the sign is Gauss's. Mathlib's $L$-function library made the bridge to $\Lc(s,\chi)$ a statement about a shared definition rather than a private one. The independent checker \lean{nanoda} is Chris Bailey's; \lean{lean4export} and Comparator are from the Lean FRO (Comparator by Henrik B\"oving). The checker \lean{con-leche} \cite{conleche} was written by Claude, and its Rust port \lean{con-ron} \cite{conron} by an AI system its README does not name, both under the supervision of Joachim Breitner at the Lean FRO. Cureton and Thorner's half-plane and Lean development make the companion section possible.
+
+\bibliographystyle{amsplain}
+\bibliography{refs}
+
+\appendix
+\section{The auditor's records}\label{app:records}
+
+The records cited as \cite{bbrecords} are the following files. They are archived, each with its md5, in the \path{provenance/} directory of the release repository:
+\begin{itemize}\small
+\item \lean{REVIEW\_\allowbreak{}GEN\_\allowbreak{}D1\_\allowbreak{}D2a.md}: the generic de Bruijn library, and the theta kernel;
+\item \lean{REVIEW\_\allowbreak{}D2b\_\allowbreak{}BRIDGE.md}: the Mellin bridge;
+\item \lean{REVIEW\_\allowbreak{}D2c\_\allowbreak{}STRIP.md}: the zero strip;
+\item \lean{REVIEW\_\allowbreak{}D2bp\_\allowbreak{}CHI4.md}: the theta functional equation, and $\chi_{-4}$;
+\item \lean{NOTE\_\allowbreak{}D2\_\allowbreak{}GAUSS\_\allowbreak{}SIGN.md}: Mathlib's root number, and the sign;
+\item \lean{REPORT\_\allowbreak{}OAI\_\allowbreak{}PORT.md}: the port to OpenAI's environment, and provenance;
+\item \lean{REVIEW\_\allowbreak{}GAUSS\_\allowbreak{}SIGN\_\allowbreak{}AND\_\allowbreak{}OAI.md}: Gauss's sign theorem, and the composition;
+\item \lean{REVIEW\_\allowbreak{}GAUSS\_\allowbreak{}BRIDGE\_\allowbreak{}ADD1.md} (``ADD1''): part (b), and the conjunction;
+\item \lean{REVIEW\_\allowbreak{}P1P6\_\allowbreak{}BUNDLE.md}: including the literature status of the statement (its \S6);
+\item \lean{REVIEW\_\allowbreak{}CTQ.md}, \lean{REVIEW\_\allowbreak{}INGHAM.md}, \lean{REVIEW\_\allowbreak{}CTFREE\_\allowbreak{}KERNELS.md}: the companion results;
+\item \lean{REVIEW\_\allowbreak{}CT\_\allowbreak{}RERUNS.md}: the capability-dropped Comparator re-runs of P2, Ingham and CT main;
+\item \lean{COMPARATOR\_\allowbreak{}RUN\_\allowbreak{}SPEC.md}: the specification of the sandboxed run;
+\item \lean{REVIEW\_\allowbreak{}COMPARATOR\_\allowbreak{}LAMBDA\_\allowbreak{}CHI.md}: the verification of that run, with \lean{REVIEW\_\allowbreak{}COMPARATOR\_\allowbreak{}LAMBDA\_\allowbreak{}CHI\_\allowbreak{}ADDENDUM1.md}, the inspection of its logs, and \lean{REVIEW\_\allowbreak{}COMPARATOR\_\allowbreak{}LAMBDA\_\allowbreak{}CHI\_\allowbreak{}ADDENDUM2.md}, two precision corrections.
+\end{itemize}
+
+\end{document}
