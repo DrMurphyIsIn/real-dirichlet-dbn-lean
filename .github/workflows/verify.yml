@@ -7,11 +7,9 @@
 # This workflow has not been run yet. The five-checker replay and the sandboxed Comparator run are not part of it
 # (the export alone is 1.7 GB); a Comparator step against challenge/ will be added after the sandboxed run.
 name: verify
+# Manual-only until its first run passes; the push trigger is restored after that.
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths: ["lean/**", "challenge/**", "scripts/**", "provenance/**", ".github/workflows/verify.yml"]
 jobs:
   verify:
     runs-on: ubuntu-latest

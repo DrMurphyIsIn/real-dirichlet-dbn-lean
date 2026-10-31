@@ -1,8 +1,9 @@
 # Λ_χ ≤ 9/32 for every real primitive Dirichlet character, kernel-checked
 
-> **Status: local release candidate, not yet public.** The Lean proof is complete. Five checkers from three implementation
-> lineages replayed it locally, and a sandboxed Comparator run against a separately written challenge (`challenge/`) accepted
-> it (`logs/comparator_sandboxed/`). The paper is being written (`paper/`). No DOI has been assigned yet.
+> **Status: public pre-release.** The Lean proof is complete. Five checkers from three implementation lineages replayed it
+> locally, and a sandboxed Comparator run against a separately written challenge (`challenge/`) accepted it
+> (`logs/comparator_sandboxed/`). The accompanying paper will be added to `paper/` with the versioned release. No DOI has
+> been assigned yet.
 
 ## The question
 
