@@ -1,7 +1,7 @@
 #!/bin/bash
-# Check the md5 manifests of this repository: every file listed in lean/MD5SUMS.txt and logs/MD5SUMS.txt must have
-# the recorded md5, and every file under lean/ and logs/ must be listed; likewise for the auditor's two manifests in
-# challenge/, and for provenance/MD5SUMS.txt (the auditor's records). Works with md5sum (Linux) or md5 (macOS).
+# Check the md5 manifests of this repository: every file listed in lean/MD5SUMS.txt, logs/MD5SUMS.txt and
+# provenance/MD5SUMS.txt must have the recorded md5, and every file under lean/, logs/ and provenance/ must be listed;
+# likewise for the auditor's two manifests in challenge/. Works with md5sum (Linux) or md5 (macOS).
 #
 #   scripts/verify_md5.sh            # all manifests
 #   scripts/verify_md5.sh lean       # one of them (lean, logs, challenge or provenance)
@@ -9,9 +9,9 @@ set -euo pipefail
 HERE="$(cd "$(dirname "$0")/.." && pwd)"
 md5of() { if command -v md5sum >/dev/null 2>&1; then md5sum "$1" | cut -d' ' -f1; else md5 -q "$1"; fi; }
 fail=0
-for d in "${@:-lean logs}"; do
+for d in "${@:-lean logs provenance}"; do
   for dir in $d; do
-    [ "$dir" = challenge ] || [ "$dir" = provenance ] && continue
+    [ "$dir" = challenge ] && continue
     M="$HERE/$dir/MD5SUMS.txt"
     [ -f "$M" ] || { echo "missing manifest: $dir/MD5SUMS.txt"; fail=1; continue; }
     n=0
@@ -48,25 +48,5 @@ if [ $# -eq 0 ] || [[ " $* " == *" challenge "* ]]; then
     done < <(find "$D" -maxdepth 1 -type f ! -name .DS_Store | sort)
     echo "${M#"$HERE/"}: $n entries checked"
   done
-fi
-# provenance/MD5SUMS.txt lists the auditor's records, archived byte-identically; the assembler's own notes
-# (ISLAND_SOURCE, OAI_ENV.md) are outside it.
-if [ $# -eq 0 ] || [[ " $* " == *" provenance "* ]]; then
-  M="$HERE/provenance/MD5SUMS.txt"; D="$HERE/provenance"; n=0
-  if [ ! -f "$M" ]; then echo "missing manifest: provenance/MD5SUMS.txt"; fail=1
-  else
-    while read -r h p; do
-      [ -z "$h" ] && continue
-      n=$((n + 1))
-      if [ ! -f "$D/$p" ]; then echo "MISSING  provenance/$p"; fail=1
-      elif [ "$(md5of "$D/$p")" != "$h" ]; then echo "MISMATCH provenance/$p"; fail=1; fi
-    done < "$M"
-    while IFS= read -r f; do
-      b="$(basename "$f")"
-      case "$b" in MD5SUMS.txt|ISLAND_SOURCE|OAI_ENV.md) continue;; esac
-      grep -q "  $b\$" "$M" || { echo "UNLISTED provenance/$b"; fail=1; }
-    done < <(find "$D" -maxdepth 1 -type f ! -name .DS_Store | sort)
-    echo "provenance/MD5SUMS.txt: $n entries checked"
-  fi
 fi
 [ "$fail" = 0 ] && echo "all md5s match" || { echo "md5 check FAILED"; exit 1; }

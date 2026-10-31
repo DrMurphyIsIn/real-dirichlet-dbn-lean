@@ -314,7 +314,7 @@ provenance/         ISLAND_SOURCE (where lean/island/ comes from); OAI_ENV.md (w
                     REVIEW_GAUSS_BRIDGE_ADD1.md (the general-chi meaning link), REVIEW_P1P6_BUNDLE.md, REVIEW_CTQ.md,
                     REVIEW_INGHAM.md and REVIEW_CTFREE_KERNELS.md (the companion results), COMPARATOR_RUN_SPEC.md (the
                     specification of the sandboxed run)
-                    MD5SUMS.txt: md5 of all 17 auditor records (scripts/verify_md5.sh checks it)
+                    MD5SUMS.txt: md5 of every file in provenance/, the 17 records included (scripts/verify_md5.sh checks it)
 scripts/            verify_md5.sh, materialize.sh, check_manifest.sh
 paper/              the paper (added with the versioned release)
 ```
