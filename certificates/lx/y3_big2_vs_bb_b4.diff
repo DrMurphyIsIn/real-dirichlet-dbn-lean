@@ -1,0 +1,21 @@
+67,75c67,70
+<     # Y3 B4 (bb REVIEW_Y3 sec. 4, code = bb_big2_b4.py a410901b; re-derived by Y3, memo sec. 4.5): after the contour shift the
+<     # weight is exactly phi(g) on w = c2 + tau g, and the bulk/tail split is Re w = us, i.e. g* = (us - Re c2)/tau.  Re c2 has
+<     # only the LOWER bound Uc2 (Re beta1 grows like log v / 2 in xaware mode), so g* <= gs and the bulk points with
+<     # g in [g*, lo gs) are in neither the Riemann sum nor the U-tail.  On that gap, uniformly in v >= v0:
+<     #   us <= Re w < Re c1 (guard: tau Z1 + lo gs < 0);  |Re(w-c)| <= max(R - us, tau^2 (P1+Z1)), |Im(w-c)| <= tau^2 I_;
+<     #   |rG| <= |hG|^2 M/2 with M at real part us (P^2 M decreasing in v, P5 A.9.2(d));
+<     #   |rL| <= log z(us) + log z(Re c1) + |w - c1| |beta2| <= log z(us) + log z(Rc1) + sup_{u >= Rc1} (u - us + tau^2 Z1) Z(u)
+<     #   (grid sup with monotone Z_up; for u >= 60, (u - c) Z(u) is decreasing because Z' <= -log2 Z, so its value at 60 bounds it);
+<     #   numerator |hG| M + Z(us) + Z1;  gap mass <= P(g < lo gs) = Phi(lo gs).
+---
+>     # bb B4 probe: bulk points (Re w >= us) with g < lo(gs) lie in neither the Riemann sum nor the U-tail
+>     # (the true split is g* = (us - Re c2)/tau <= (us - Uc2)/tau, and Re c2 has no upper bound in xaware mode).
+>     # v-uniform majorant on that set: |Re(w-c)| <= max(R - us, tau^2 (P1+Z1)), |Im(w-c)| <= tau^2 I_;
+>     # |hL| <= (Re c1 - us) + tau^2 Z1 with Re c1 >= Rc1; |rL| <= log z(us) + log z(Rc1) + sup_{u>=Rc1} (u-us+tau^2 Z1) Z(u).
+89a85
+>     GAP = dict(gs=float(gs.lower()), Cg=float(Cg.upper()), numg=float(numg.upper()), massg=float(massg.upper()))
+190c186
+<     return flo(S), dict(L=float(Lfac.mid()), rho=float(rho_lo), Z1=float(Z1), Pb=float(Pb), Ie=float(Ie.upper()), Nb=float(Nb.upper()), T0=float(T0.upper()), T1=float(T1.upper()), K=float(K.upper()))
+---
+>     return flo(S), dict(GAP=GAP, L=float(Lfac.mid()), rho=float(rho_lo), Z1=float(Z1), Pb=float(Pb), Ie=float(Ie.upper()), Nb=float(Nb.upper()), T0=float(T0.upper()), T1=float(T1.upper()), K=float(K.upper()))

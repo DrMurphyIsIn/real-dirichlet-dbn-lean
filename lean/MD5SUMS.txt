@@ -53,3 +53,5 @@ b2a0cedc85f0d6cabe616e5de66d2fa2  lakefile-stanza.lean
 4c569252f1eb0ed7830a7e5d0248c115  main/BbOaiRealPrim.lean
 5cbeceb616473a03ef6282b2df8579b8  patches/0001-prod_le_prod0-rename.patch
 b622f7f8473f04ccd298e334a19d9db1  patches/0002-posLog_le_posLog-hypothesis.patch
+01a24ec68592020eb4c33192cfb91b9d  v2/DQ1_P5.lean
+da84f0436aca154d6f7a2d5ef0e4071d  v2/NOTE.md

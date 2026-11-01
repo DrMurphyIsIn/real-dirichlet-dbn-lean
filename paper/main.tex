@@ -59,8 +59,8 @@
 
 \title{Every real primitive Dirichlet $L$-function has\\ de Bruijn--Newman constant at most $9/32$:\\ a kernel-checked proof in Lean~4}
 \author{Peter W. Murphy}
-\date{Version 1.0.0, 31 October 2026\\[2pt]
-\small DOI \href{https://doi.org/10.5281/zenodo.23840082}{10.5281/zenodo.23840082}\\[2pt]
+\date{Version 2.0.0, released TODO_DATE\\[2pt]
+\small DOI of this version: \href{https://doi.org/10.5281/zenodo.TODO_V2}{10.5281/zenodo.TODO_V2}. Version 1.0.0: \href{https://doi.org/10.5281/zenodo.23840082}{10.5281/zenodo.23840082}; all versions: \href{https://doi.org/10.5281/zenodo.23840081}{10.5281/zenodo.23840081}\\[2pt]
 \small Repository \url{https://github.com/DrMurphyIsIn/real-dirichlet-dbn-lean}\\[2pt]
 \small The text of this paper is released under CC-BY-4.0; the Lean code under Apache-2.0.}
 
@@ -77,6 +77,8 @@ be the de Bruijn--Newman heat flow of $\Lc(\cdot,\chi)$, normalised so that $H^\
 The mathematics is not new, and we say exactly whose it is. De Bruijn's strip-contraction theorem (1950) gives $\Lc_\chi \le D^2/2$ whenever the zeros of $H^\chi_0$ lie in $|\im z| \le D$. Freire, Gonz\'alez-Riquelme, Mu\~noz, Poblete and Salinas observed (arXiv:2610.27343, Remarks 3.1 and 3.4) that the zero-free half-plane $\re s > 7/8$ for Dirichlet $L$-functions asserted by OpenAI would give $D = 3/4$, and hence $\Lc_\chi \le 9/32$. What this paper adds is a complete formal proof of that composition. For conductors up to $400$, FGMPS's unconditional bounds are stronger for $136$ of the $242$ characters; what is new is that $9/32$, for every conductor, is a kernel-checked theorem. OpenAI's half-plane enters as their own kernel-checked Lean theorem. Every other step is proved in Lean on top of Mathlib: de Bruijn's theorem for a general class of kernels, the identification of the theta integral with Mathlib's completed $L$-function, and Gauss's sign theorem for real primitive characters. The final theorem depends only on the axioms \lean{propext}, \lean{Classical.choice} and \lean{Quot.sound}. In local, unsandboxed replays five checkers accept it (Lean's kernel, run twice, \lean{nanoda}, and the \lean{con-leche}/\lean{con-ron} pair), and all five reject a deliberately unsound control; and a sandboxed Comparator run against a separately written challenge accepts it (made by another agent session; the auditor reproduced its solution export byte for byte).
 
 The result rests on OpenAI's Lean proof, whose accompanying manuscript is unrefereed. It is not progress on the Generalised Riemann Hypothesis, which is the statement $\Lc_\chi \le 0$. A short, separable section records two companion results for $\zeta$ that use no OpenAI code: $\Lc \le 225/512$ and $\psi(x) = x + O_\varepsilon(x^{31/32+\varepsilon})$, both from Cureton and Thorner's half-plane $\re s > 31/32$.
+
+Version 2 adds three bounds on the same constant, in trust classes weaker than the kernel-checked theorem, and says which class each one is in (\cref{sec:v2}). (1) \emph{Unconditionally}, with no GRH, no zero-free half-plane and no numerical verification of zeros, and with a Siegel zero allowed if there is one: for every real primitive $\chi$ of conductor $N \ge 10^8$, $\Lc_\chi \le T(\ell) + \tfrac12 b(\ell) < 9/32$, where $\ell = \log(N/\pi)$ and $T$, $b$ are explicit elementary functions; the bound is $0.27643$ at $N = 10^8$ and is asymptotic to $\sqrt5\,\log\log N/\log N$. (2) Given OpenAI's half-plane, exactly as in version~1: $\Lc_\chi \le 0.27912 < 9/32$ for \emph{every} real primitive $\chi$, a strict improvement on $9/32$. (3) Unconditionally: $\Lc_\chi \le 0.49330$ for every real primitive $\chi$, which, as far as we could check, is the first bound below $1/2$ that is uniform in the conductor and uses no zero-free half-plane, no GRH and no zero verification. The method bounds the logarithmic derivative $-\im(H'_t/H_t)$ from below at a fixed height above the real axis by ball arithmetic (Arb), and feeds that bound into the zero-contraction inequalities of Planat and of Hakimoglu-Brown. These results are \emph{not} kernel-checked. They rest on Arb certificates that a separate AI auditor session reproduced (identical in every field except wall time), on AI-written proofs reviewed by one AI reviewer, and on unrefereed preprints. One step is kernel-checked: that the explicit function in (1) is below $9/32$ for every $N \ge 10^8$. Nothing in version~2 bears on GRH either.
 \end{abstract}
 
 \tableofcontents
@@ -169,7 +171,39 @@ The contribution of this paper is the kernel proof from end to end, together wit
 
 \paragraph{What this paper does not do.} There is no new analytic input. The bound $9/32$ is the number FGMPS already wrote down conditionally. For $3 \le N \le 400$ it is not the best available: FGMPS's unconditional individual bounds beat $9/32$ for $136$ of the $242$ characters in that range \cite[\S7.7, Table 8]{FGMPS2026}. One example is $\chi_{-4}$, for which they prove $\Lc_{\chi_{-4}} \le 0.26$ \cite[\S7.5]{FGMPS2026}. Their bounds also do not depend on OpenAI. Our bound is uniform in $N$, but it is only as good as OpenAI's theorem, whose manuscript is unrefereed. Granting OpenAI's half-plane, FGMPS's own $D = 3/4$ search improves on $9/32$ for $149$ of the $242$ characters \cite[Table~8]{FGMPS2026}, and their Remark~3.4 gives $9/32$ for the rest and for every larger conductor. So no bound in this paper is better than what FGMPS's paper gives once OpenAI's theorem is granted; what is new is that the bound $9/32$, for every conductor, is a kernel-checked theorem. Nothing here bears on GRH, which is $\Lc_\chi \le 0$. We do not formalize Dobner's lower bound $\Lc_\chi \ge 0$, nor the existence of $\Lc_\chi$ as an infimum (Remark~\ref{rem:sinf}).
 
-\paragraph{How to read this paper.} \Cref{sec:statement} states the theorem formally and explains how to read it. \Cref{sec:math} gives the mathematics in full, for a number theorist who does not read Lean. \Cref{sec:formal} describes the formalization and its trust base, \cref{sec:verification} the checks it passed, and \cref{sec:companion} the optional companion results for $\zeta$. \Cref{sec:limits} lists the limitations and \cref{sec:ai} states how AI was used.
+\subsection{What version 2 adds}\label{sec:v2intro}
+
+Version 1 of this paper was a formal proof of a known conditional observation. Version 2 keeps that theorem and its verification record unchanged (\cref{sec:statement,sec:math,sec:formal,sec:verification} are as published, apart from cross-references), and adds three bounds on the same constant $\Lc_\chi$ that were obtained afterwards by a different method, with explicit dependence on the conductor. They are stated here informally; \cref{sec:v2} gives the exact statements, the method, the certificates and the records. Throughout, $\ell = \log(N/\pi)$.
+
+\begin{theorem}[informal; \cref{thm:C2}]\label{thm:Aintro}
+Let $\chi$ be a real primitive Dirichlet character of conductor $N \ge 10^8$. Then
+\[
+\Lc_\chi \;\le\; T(\ell) + \tfrac12\,b(\ell) \;<\; \tfrac{9}{32},
+\]
+where $T$ and $b$ are the explicit functions of \eqref{eq:C2bound}. Nothing is assumed beyond $\chi$ being real and primitive: no GRH, no zero-free half-plane, no numerical verification of zeros; a Siegel zero, if there is one, is allowed. At $N = 10^8$ the bound is $0.27643$; at $\ell = 10^3$ it is $0.0123$; asymptotically it is $(\sqrt5 + o(1))\log\log N/\log N$.
+\end{theorem}
+
+\begin{theorem}[informal; \cref{thm:Y3}]\label{thm:Bintro}
+Assume, exactly as in \cref{thm:main}, OpenAI's zero-free half-plane $\re s > 7/8$ for $L(s,\chi)$. Then $\Lc_\chi \le 0.27912 < 9/32$ for every real primitive $\chi \ne 1$: at most $0.2791114$ for odd $\chi$ and $0.2783189$ for even $\chi$ when $N < 10^8$, and at most $0.27643$ when $N \ge 10^8$, by \cref{thm:Aintro}.
+\end{theorem}
+
+\begin{theorem}[informal; \cref{thm:U1}]\label{thm:Cintro}
+Unconditionally, $\Lc_\chi \le 0.49330$ for every real primitive $\chi \ne 1$.
+\end{theorem}
+
+\noindent
+The method is not the one of \cref{sec:math}. It lower-bounds $S_\chi(x,p,t) = -\im(H'_t/H_t)(x+ip)$, the logarithmic derivative of the heat flow at a fixed height $p$ above the real axis, uniformly in $x$ and over a range of $t$, by interval (ball) arithmetic, and feeds the bound into the contraction inequalities for the highest non-real zero due to Planat \cite{Planat2026} and Hakimoglu-Brown \cite{HakimogluBrown2026}. Where \cref{thm:main} used only the functional equation and complex analysis, these results use real computation. The conductor enters $S_\chi$ explicitly only through the term $\ell/4$, and otherwise only through the centre of a Gaussian average, which $\ell$ moves to the right; that is why the bounds improve with $N$ and why, from $N = 10^8$ on, no hypothesis on the zeros is needed at all.
+
+\paragraph{Trust classes.} This paper now contains results in four distinct trust classes, and we keep them apart throughout.
+\begin{enumerate}[label=(T\arabic*)]
+\item\label{T1} \emph{Kernel-checked.} \Cref{thm:main}, as in version~1: a Lean~4 theorem replayed by five checkers and accepted by a sandboxed Comparator run. Also, new in version~2, the single arithmetic statement that the explicit function of \cref{thm:Aintro} is below $9/32$ for every $N \ge 10^8$ (\lean{C2.C2bound\_\allowbreak{}lt\_\allowbreak{}9\_\allowbreak{}32}, \cref{sec:v2lean}). That statement was checked by the Lean kernel in one build, in a different environment from version~1's, and was not replayed by further checkers.
+\item\label{T2} \emph{Arb-certified.} Lower bounds for $S_\chi$ over boxes of parameters, computed in ball arithmetic with outward rounding \cite{flint}, with every box, its result and the failure count recorded in a ledger. The auditor re-ran every ledger that \cref{sec:v2} depends on and obtained ledgers identical in every field except wall time (REVIEW\_Y3, REVIEW\_Y3\_G1 and, for the two P5 components, REVIEW\_PRERELEASE\_v2.0.0 \cite{dq1records}). These are rigorous numerical certificates, not kernel-checked proofs: their soundness depends on the certifier programs, which are AI-written and were reviewed by one AI reviewer; four defects in an earlier version of them were found, three by a second agent session and one by the reviewer (\cref{sec:defects}).
+\item\label{T3} \emph{AI-written proofs, reviewed by one AI reviewer.} The analytic steps that connect the certificates to the bounds: the Gaussian-tilt identity for $S_\chi$, the reduction of the domain, the tail lemmas, the confinement lemma, and the assembly with the cited contraction theorems. No human has refereed them.
+\item\label{T4} \emph{Cited.} De Bruijn's strip theorem; FGMPS's heat-kernel form, finiteness theorem and effective approximation; Planat's and Hakimoglu-Brown's contraction inequalities; Euler-product and convexity bounds for $L(s,\chi)$, read in Bennett, Martin, O'Bryant and Rechnitzer \cite{BMOR2020}; three formulas from the DLMF \cite{DLMF}; and OpenAI's half-plane, for \cref{thm:Bintro} only. FGMPS, Planat, Hakimoglu-Brown and OpenAI are unrefereed preprints (Hakimoglu-Brown's is a working draft), and the two contraction papers are written for Riemann's $\xi$; their transposition to Dirichlet $L$-functions is in class \ref{T3}.
+\end{enumerate}
+\Cref{sec:v2trust} assigns each step of the new results to its class. Nothing in version~2 is RH or GRH progress; every statement is a bound on $\Lc_\chi$ strictly above~$0$.
+
+\paragraph{How to read this paper.} \Cref{sec:statement} states the kernel-checked theorem formally and explains how to read it. \Cref{sec:math} gives its mathematics in full, for a number theorist who does not read Lean. \Cref{sec:formal} describes the formalization and its trust base, \cref{sec:verification} the checks it passed, and \cref{sec:companion} the optional companion results for $\zeta$. \Cref{sec:v2} is version~2: the method, the three new bounds, their certificates, the defects found and repaired on the way, and the one arithmetic step that is kernel-checked. \Cref{sec:limits} lists the limitations and \cref{sec:ai} states how AI was used.
 
 %======================================================================
 \section{The statement}\label{sec:statement}
@@ -618,6 +652,234 @@ Neither bound is close to the state of the art: $225/512 \approx 0.439$ is far w
 \emph{Status of the checks.} In hypothesis form, with Cureton--Thorner's conclusion $\forall s,\ 31/32 < \re s \to s \ne 1 \to \zeta(s) \ne 0$ as an explicit hypothesis, both compositions carry the standard three axioms. Six checkers (\lean{leanchecker}, \lean{leanchecker-paranoid}, \lean{lean4lean}, \lean{nanoda}, \lean{con-leche}, \lean{con-ron}) accepted both, and all six rejected the same kind of \lean{skipKernelTC} control. This is a same-version run, in which \lean{lean4lean} can read the export \cite[REVIEW\_CTFREE\_KERNELS]{bbrecords}. Tampers (the exponent $15/16$ from the $31/32$ half-plane, and the quantifier swap $\exists C\,\forall\varepsilon$) were rejected \cite[REVIEW\_INGHAM]{bbrecords}. The unconditional forms rest on Cureton--Thorner's theorem \lean{main}. The auditor did not run their code. All three Comparator runs below were made on 30--31 October 2026 by another agent session. Each used the toolchain-provided \lean{lake comparator} of Lean \lean{v4.35.0-rc3} with \lean{-{}-paranoid} (\lean{leanchecker-paranoid}, \lean{lean4lean}, \lean{nanoda}, \lean{con-leche}, \lean{con-ron} and Lean's kernel), in a \lean{bwrap} sandbox as uid 0 with all capabilities dropped, on Cureton--Thorner's repository at \lean{09afbb4} (its lakefile extended by 30 additive lines that only declare the libraries of our compositions and challenges) with Mathlib from its official build cache. The installed toolchain, checkers included, is file-for-file the published \lean{v4.35.0-rc3} release. The auditor checked each run's relayed configuration, challenge and solution md5s, sandbox probe, verdicts and exit code against its own records, but did not see the logs \cite[REVIEW\_CT\_RERUNS]{bbrecords}. Cureton--Thorner's own challenge (\lean{main} and \lean{heckeCorollary}): ``Your solution is okay!'', all six kernels accepting (log md5 \lean{a33d06b0}). The P2 and Ingham statements are kernel-checked from the type of \lean{main} itself, whose reduction to Mathlib's \lean{riemannZeta} was audited separately \cite[REVIEW\_CTQ, Addendum~1]{bbrecords}. P2: PASS, six kernels (log \lean{fed70f9a}); tamper ($224/512$) rejected, exit 1 (log \lean{90424a05}); the trusted definitions of the P2 challenge match the audited \lean{DBNDefs} (md5 \lean{acfa852d}). Ingham: PASS, six kernels (log \lean{dd6fa95b}); tamper ($15/16$) rejected (log \lean{33d0ea1c}). Every solution module these runs used was compiled inside the sandbox, except Cureton--Thorner's vendored class-field-theory package, which had been compiled earlier without it; rebuilt inside the sandbox at the same path, it gave byte-identical build outputs. These runs replace earlier ones whose sandbox did not drop capabilities. The challenge-side build outputs were rebuilt afterwards in a fresh directory and found byte-identical (Comparator's assumption that the solution was not compiled before the challenge). The result rests on Cureton--Thorner \lean{main} at \lean{09afbb4}.
 
 %======================================================================
+\section{Version 2: an unconditional large-conductor bound, and every conductor below $9/32$}\label{sec:v2}
+%======================================================================
+
+This section is new in version~2. It records three bounds on $\Lc_\chi$ obtained between 31 October and 1 November 2026 by AI agent sessions in the same programme (\cref{sec:ai}), after version~1 was published. \emph{Nothing in it is kernel-checked unless it says so.} The records cited as \cite{dq1records} are listed in Appendix~\ref{app:v2records} and archived with their md5s in \path{provenance/}; the certificates are in \path{certificates/} of the release. We have tried to make the section readable without the records, but every number in it comes from them, and a reader who wants to check a number should go to the ledger named beside it.
+
+\paragraph{Conventions for this section.} The records write the conductor as $m$ and $L$ for $\log(m/\pi)$. Here we keep $N$ for the conductor and write $\ell = \log(N/\pi)$, to avoid a clash with $L(s,\chi)$; in Lean the same quantity is \lean{C2.Lc m}. The parity is $a = k(\chi) \in \{0,1\}$. The heat flow is FGMPS's $H^L_t$, in its Gaussian form \cite[(4.1)]{FGMPS2026}, read at source:
+\begin{equation}\label{eq:gaussform}
+H_t(z) = \int_{-\infty}^{\infty} \xi_L\Bigl(\frac{1+iz}{2} + \sqrt t\,v\Bigr)\frac{e^{-v^2}}{\sqrt\pi}\,dv ,
+\end{equation}
+where $\xi_L(s) = (N/\pi)^{(s+a)/2}\Gamma(\tfrac{s+a}{2})L(s,\chi)$ is the completed $L$-function, our $\Lc(s,\chi)$. By \cref{sec:normalisation}, $H^L_t = 8H^\chi_t$ for every real $t$, so the zeros, and the constant $\Lc_\chi$, are the same as in \cref{thm:main}; that identification is by hand, not formal. All statements below are of the form ``every zero of $H_t$ is real for every $t \ge c$'', as in Remark~\ref{rem:sinf}.
+
+\subsection{The method: a floor for the logarithmic derivative, and one contraction step}\label{sec:v2method}
+
+\paragraph{The quantity.} For $x \in \R$, $p > 0$ and $t$ real, put
+\[
+S_\chi(x,p,t) \;=\; -\im\,\frac{H'_t}{H_t}(x+ip) .
+\]
+When the zeros of $H_t$ are all below height $p$, this is a sum over the zeros of positive terms, and it measures how strongly the point $x + ip$ ``feels'' the zeros beneath it.
+
+\paragraph{The contraction inequalities (cited; stated for $\xi$).} Planat \cite[Theorem 2.1]{Planat2026} proves, for Riemann's $\xi$ in the Polymath normalisation, that along every interval of time on which the maximal-height zero $z(t) = x(t) + iy(t)$ is simple,
+\[
+\frac{d}{dt}\,y(t)^2 \;\le\; -2 - 4y(t)^2\,G_t(z(t)),
+\]
+where $G_t(z) \ge 0$ collects the interaction of $z$ with the other zeros; dropping $G$ gives de Bruijn's classical $(y^2)' \le -2$. His Proposition~2.3 then bounds $G$ from below by the logarithmic derivative at a point above the zero: for $\eta \ge \sqrt5\,y$, the point $x + i\eta$ is zero-free and
+\[
+G_t(z) \;\ge\; \frac{L_\eta(t;x)}{\eta} - \frac{2}{\eta^2 - y^2},\qquad L_\eta(t;x) = -\im\frac{H'_t}{H_t}(x+i\eta).
+\]
+Hakimoglu-Brown \cite[p.~9]{HakimogluBrown2026} writes the combination, for $q = y^2$ and $p^2 \ge 5q$, as
+\begin{equation}\label{eq:HBineq}
+q' \;\le\; -2 - \frac{4q}{p}\,S(x,p,t) + \frac{8q}{p^2 - q},
+\end{equation}
+and his Theorem~9 turns it into a stepped comparison: if $S(x,p,t) \ge C$ on a time interval, for all relevant $x$, and $p^2 \ge 5q$ there, then with $k = 4C/p - 8/(p^2 - q) > 0$ one has $q' \le -2 - kq$, so the squared height of the highest zero lies under the barrier $Q(t) = (q_0 + 2/k)e^{-k(t - t_0)} - 2/k$ once it starts at $q_0$ at time $t_0$. Both papers are about $\zeta$: Planat's uses the Polymath normalisation and Hakimoglu-Brown's Theorem~9 carries constants specific to his application ($t_n \le 1/5$, a floor $b = 1/25$, and a finite region beyond which his Lemma~2 confines the zeros). What is used here is a single step of that comparison, transposed to $H_t$ for a Dirichlet character with its own confinement lemma and its own constants. The transposition, with the treatment of multiple zeros and of zeros on $i\R$ through FGMPS's Proposition~3.2 and Lemma~3.7, is an AI-written argument in class \ref{T3} \cite[P5 memo \S A.13.3; Y3 memo \S3.2]{dq1records}, reviewed by the auditor.
+
+\paragraph{The landing time.} Suppose the zeros of $H_0$ lie in $|\im z| \le \sqrt{q_0}$. On $[0, t_{\min}]$ the classical inequality gives $q(t_{\min}) \le q_0 - 2t_{\min}$. If $S_\chi(x,p,t) \ge C$ for all $x$ and all $t \in [t_{\min}, T]$, with $p^2 \ge 5q_0$ and $k = 4C/p - 8/(p^2 - q_0) > 0$, then the barrier reaches a small level $b > 0$ at time
+\begin{equation}\label{eq:landing}
+T \;=\; t_{\min} + \frac1k\log\frac{2 + k(q_0 - 2t_{\min})}{2 + kb},
+\end{equation}
+and de Bruijn's strip theorem, in the time-shifted form of \cite[Theorem 2.6]{FGMPS2026} ($\Lc_L \le t_0 + \tfrac12 y_0^2$), finishes: $\Lc_\chi \le T + b/2$. The comparison needs the first contact of the barrier with a zero to be attained, which is a compactness statement: a \emph{confinement lemma} saying that for $|x|$ beyond an explicit $X$ the zeros of $H_t$ at heights between $\sqrt b$ and $1$ are absent. That lemma (``Lemma Z$'$'' in the records) is derived from FGMPS's effective approximation \cite[Theorem 4.3, Proposition 4.18]{FGMPS2026}, with its constants certified in Arb; see \cref{sec:C2}.
+
+Two features of \eqref{eq:landing} explain everything that follows. From the trivial strip $q_0 = 1$, beating $9/32$ needs $k \ge 3.765$ (a float computation, \cite[Y3 memo \S2]{dq1records}), which forces $\ell$ large: this is why the unconditional \cref{thm:C2} starts at $N = 10^8$, and the obstruction is Siegel-shaped, since a Siegel zero sits on $i\R$ at height at most $1$ and is exactly what keeps $q_0 = 1$ unconditional. From OpenAI's strip $q_0 = 9/16$, on the other hand, \emph{any} $k > 0$ gives $T + b/2 < q_0/2 = 9/32$: a strict improvement on version~1 needs only a positive floor, and that is \cref{thm:Y3}.
+
+\paragraph{The floor, and why it is uniform in $\chi$.} Write $z = x + ip$ in \eqref{eq:gaussform} and use the functional equation $\xi_L(s) = \xi_L(1-s)$ (for real $\chi$, $\varepsilon(\chi) = 1$ by \cref{thm:gauss}) to move the argument to the right of the critical line; the conductor factor $(N/\pi)^{\sqrt t v/2} = e^{\ell\sqrt t v/2}$ then completes a square in the Gaussian and shifts its centre. The result (\cite[P5 memo \S A.3, \S A.6]{dq1records}, reviewed in REVIEW\_P5) is the exact identity
+\begin{equation}\label{eq:tilt}
+S_\chi(x,p,t) \;=\; \frac{\ell}{4} + \frac12\,\re\frac{D'(c)}{D(c)},\qquad
+D(c) = \mathbb{E}_g\bigl[\Phi_a(c + \tau g)\bigr],\quad \Phi_a(w) = \Gamma\Bigl(\frac{w+a}2\Bigr)L(w,\chi),
+\end{equation}
+with $g$ a standard Gaussian, $\tau = \sqrt{t/2}$, $c = R - ix/2$ and $R = \tfrac{1+p}{2} + \tfrac{t\ell}{4}$. So the conductor enters $S_\chi$ explicitly only through the term $\ell/4$, and otherwise only through the centre $R$ of the Gaussian average, which $\ell$ moves to the right; what remains is the logarithmic derivative of a Gaussian average of $\Gamma\cdot L$ along a horizontal segment centred at real part $R \ge \tfrac{1+p}{2} > 1$. In that region $L(w,\chi)$ is controlled by its Euler product alone: $\zeta(2\sigma)/\zeta(\sigma) \le |L(\sigma+it,\chi)| \le \zeta(\sigma)$ and $|L'/L(w,\chi)| \le -\zeta'/\zeta(\re w)$ \cite[Lemma 2.1 and the proof of Proposition 2.2]{BMOR2020}, with Rademacher's convexity bound \cite[Lemma 5.6, (5.3)]{BMOR2020} and the functional equation for the Gaussian tails that reach into the strip; the $\Gamma$ factor is handled by the digamma series \cite[5.7.6, 5.15.1]{DLMF} and $|\Gamma(x+iy)| \le |\Gamma(x)|$ \cite[5.6.6]{DLMF}, and $\zeta$, $-\zeta'$ and $-\zeta'/\zeta$ are decreasing on $(1,\infty)$ \cite[p.~11]{HakimogluBrown2026}. None of these inputs distinguishes one real character from another. The certified floor is therefore a statement about every real primitive $\chi$ with a given $(\ell, a)$ at once, and the zeros of $L(s,\chi)$, Siegel zeros included, never enter it. This is the sense in which the method is blind to GRH: it bounds $\Lc_\chi$ without knowing anything about where the zeros are, and that is also why it cannot say anything about $\Lc_\chi \le 0$.
+
+\paragraph{The certifiers.} The floor is certified over boxes in the parameters $(R, \tau, x)$. Three programs cover the domain: a box certifier for $0 \le x \le 10^4$ (``G1''), which bisects boxes until each one certifies $S_\chi - \ell/4 \ge$ the target; a certifier for all $x \ge 10^4$ at once (``LX''), which evaluates the bound at $x = 10^4$ and relies on a proved monotonicity in $x$ of every piece of it (\cite[P5 memo \S A.9.2]{dq1records}; the auditor spot-checked part (a) of that lemma and read parts (b)--(g) without fully re-deriving them); and an analytic lemma for the small-$\tau$ region, which is where every $\ell > 4\cdot10^4$ lives (``STL'', \cite[P5 memo \S A.9.3]{dq1records}, with constants in Arb). Negative $x$ is reduced to positive $x$ by $S_\chi(-x,p,t) = S_\chi(x,p,t)$, which follows from $H_t(-\bar z) = \overline{H_t(z)}$ for real $\chi$; this reflection is one of the statements proved in Lean (\cref{sec:v2lean}), under an explicit reflection hypothesis on $L(s,\chi)$. Every certifier is a \lean{python-flint} program working in balls with outward rounding, run with the BLAS pinned to one thread per worker (one core per worker; the G1 cover used six workers), and every run writes a ledger with the box count, the worst certified value and the list of failures; a run with a non-empty failure list certifies nothing.
+
+\subsection{Theorem C2: every conductor from $10^8$ on, unconditionally}\label{sec:C2}
+
+\begin{theorem}[C2; classes \ref{T2}--\ref{T4}, not kernel-checked except where stated]\label{thm:C2}
+Let $\chi$ be a real primitive Dirichlet character of conductor $N \ge 10^8$, of either parity, and let $\ell = \log(N/\pi)$. Put
+\begin{equation}\label{eq:C2bound}
+\begin{gathered}
+t_{\min} = \min(10^{-4}, 4/\ell),\qquad b = \min(10^{-4}, \ell^{-2}),\qquad k = \frac{4}{\sqrt5}\Bigl(\frac{\ell}{4} - 1\Bigr) - 2,\\[2pt]
+T(\ell) = t_{\min} + \frac1k\log\frac{2 + k(1 - 2t_{\min})}{2 + kb}.
+\end{gathered}
+\end{equation}
+Then every zero of $H_t$ is real for every $t \ge T(\ell) + b/2$. That is, $\Lc_\chi \le T(\ell) + b/2$.
+\end{theorem}
+
+\noindent
+\emph{Hypotheses.} Only that $\chi$ is real and primitive with $N \ge 10^8$. GRH is not assumed; no zero-free half-plane is assumed (the initial strip is the trivial $|\im z| \le 1$, so OpenAI's theorem is not used); no numerical verification of zeros is used. A Siegel zero, if there is one, lies on $i\R$ at height at most $1$ and is untouched by the argument.
+
+\emph{Values} (Arb, \cite[P5 memo \S A.13.1]{dq1records}; REVIEW\_P5\_A12 item 7). At $N = 10^8$ the bound is $0.2764281989$ (the ball has radius $10^{-59}$). It is below $9/32$ for every $N \ge 10^8$: on $\ell \in [\ell_0, 4\cdot10^4]$, where $\ell_0 = \log(10^8/\pi) = 17.2759\ldots$, the function $T$ is strictly decreasing (an Arb proof over $8{,}000$ boxes, \path{rhi_monotone}), and for $\ell \ge 4\cdot10^4$ one has $T \le 10^{-4} + \log(1 + k/2)/k \le 6.09\cdot10^{-4}$. The same fact, by a cruder route, is the kernel-checked statement of \cref{sec:v2lean}. At $\ell = 10^3$ the bound is $0.0122908$, at $\ell = 10^4$ it is $0.00182589$, and asymptotically it is $(\sqrt5 + o(1))\,\log\log N/\log N$, which is much larger than $1/\log N$, consistent with the Siegel sanity check of \cref{sec:v2checks}. The formula \eqref{eq:C2bound} itself falls below $9/32$ near $N = 10^{7.83}$, but the theorem is stated, and certified, only for $N \ge 10^8$. For comparison, \cref{thm:main} gives $9/32 = 0.28125$ with OpenAI's theorem; \cref{thm:C2} gives $0.27643$ at $N = 10^8$ without it, and less from there on.
+
+\paragraph{How the proof goes (\cite[P5 memo \S A.13.3]{dq1records}).} With $p = \sqrt5$, $q_0 = 1$ and $C = \ell/4 - 1$, so that $k = 4C/\sqrt5 - 8/(5-1) = (4/\sqrt5)(\ell/4 - 1) - 2$ as in \eqref{eq:C2bound}:
+\begin{enumerate}
+\item On $[0, t_{\min}]$ the maximal zero height contracts classically.
+\item On $[t_{\min}, T(\ell)]$ the floor $S_\chi(x,\sqrt5,t) \ge \ell/4 - 1$, for every real $x$ (components 4a--4c below), feeds the one-step comparison \eqref{eq:HBineq}.
+\item The first contact of the barrier $\sqrt{Q(t)}$ with a zero is attained, because Lemma Z$'$ (component 5) confines all zeros of height at least $\sqrt b$ to $|x| < X(\ell)$, uniformly in $t$.
+\item Hence the maximal squared height is at most $b$ at time $T(\ell)$.
+\item De Bruijn's strip theorem gives $\Lc_\chi \le T(\ell) + b/2$.
+\end{enumerate}
+
+\paragraph{The components, with their trust classes and records.}\label{sec:v2trust}
+\begin{center}\small
+\begin{longtable}{@{}P{0.04\linewidth}P{0.30\linewidth}P{0.36\linewidth}P{0.22\linewidth}@{}}
+\toprule
+\# & Component & Content, certificate & Class; review \\
+\midrule
+1 & Domain reduction & The floor is needed only for $t \in [t_{\min}(\ell), T(\ell)]$; in $(R,\tau)$ this is a compact region for $\ell \le 4\cdot10^4$ and the small-$\tau$ region $\tau \le 0.01745$, $R \ge 2.618$ for $\ell > 4\cdot10^4$ \cite[P5 memo \S A.9.0]{dq1records} & \ref{T3}; FGMPS Thm.~2.6 \ref{T4}. REVIEW\_P5\_DELTA \\
+2 & Gaussian tilt \eqref{eq:tilt} & The exact identity for $S_\chi$; FGMPS (4.1) & \ref{T3}, \ref{T4}. REVIEW\_P5 \\
+3 & Transfer & Planat Thm.~2.1 and Prop.~2.3; Hakimoglu-Brown Thm.~9, one step at $p = \sqrt5$. The bridge numerator $(c^2-1)(c^2-5)$ was certified in Telperion and matched to Planat's Prop.~2.3 by the auditor, who did \emph{not} re-check the Telperion certificate & \ref{T4}; transposition \ref{T3}. REVIEW\_P5 \\
+4a & Floor, compact part (G1) & $S_\chi(x,\sqrt5,t) \ge \ell/4 - 1$ for $\ell \in [\ell_0, 4\cdot10^4]$, $t \in [10^{-4}, T(\ell)]$, $0 \le x \le 10^4$, both parities. Certifier \lean{y3\_cert.py} (md5 \lean{5b375c5b}) with \lean{y3\_big.py} (\lean{aa232458}), domain \lean{c2\_domain.py} (\lean{f84d38a1}), driver \lean{g1\_sweep\_y3.py} (\lean{a591107d}); four ledgers, $67{,}679$ certified leaves, $0$ capped, $0$ failed, worst certified value $-0.9999990867 \ge -1$; $0.43$ CPU-hours & \ref{T2}. REVIEW\_Y3\_G1: reproduced, identical in every field except wall time \\
+4b & Floor, $|x| \ge 10^4$ (LX) & $S_\chi \ge \ell/4 - 0.77$ for $\ell \le 4\cdot10^4$, $t \in [10^{-4}, T(\ell)]$, $|x| \ge 10^4$. Proved $x$-monotonicity (\S A.9.2) plus \lean{y3\_big2.py} (\lean{aafeba32}) over $(R,\tau)$ boxes: \lean{lx\_cover\_p5patched.out} (\lean{5aa52aef}), $3{,}069$ boxes, $0$ failed, worst $-0.7689010122$ & \ref{T2}; monotonicity \ref{T3} (parts (b)--(g) read, not fully re-derived). REVIEW\_Y3, REVIEW\_Y3\_G1: reproduced \\
+4c & Floor, $\ell > 4\cdot10^4$ (STL) & $S_\chi \ge \ell/4 - 0.18$ for $\tau \le 0.0175$, $R \ge 2.618$, every $x$; analytic, with constants in Arb ($Z(2.6179) = 0.250988$ gives $-0.17525$). Contains every domain point with $\ell > 4\cdot10^4$ & \ref{T3}. REVIEW\_P5\_DELTA, REVIEW\_P5\_A11 \\
+4d & Domain tiling & The upper edge $R_{\mathrm{hi}}(\tau)$ of the compact region is monotone on each side of $\tau^*$: \lean{rhi\_monotone.py} (\lean{66a25bab}), $8{,}000$ boxes, $0$ failures; outward edges & \ref{T2}. REVIEW\_P5\_A11 \\
+5 & Confinement (Lemma Z$'$) & $H_t(x+iy) \ne 0$ for $|x| \ge 4e^{8\max(4\cdot10^4,\ell) - \ell}$, $\min(0.01, 1/\ell) \le |y| \le 1$, $t_{\min} \le t \le \tfrac12$. From FGMPS Thm.~4.3 and Prop.~4.18, which FGMPS state for $3 \le N \le 4\cdot10^5$; the extension to every $N$ is P5's reading of their proof, checked at source by the auditor. Constants in Arb: \lean{p2z\_arb.py} (\lean{b732f0ef}), $61{,}440$ boxes, $0$ failed, worst $Q = 0.908 > 0$ & \ref{T3}, \ref{T4}, \ref{T2}. REVIEW\_P5\_A12 \\
+6 & Special functions & DLMF 5.15.1, 5.7.6, 5.6.6; BMOR Lemma~2.1, the $|\log L| \le \log\zeta$ step of Prop.~2.2, Lemma~5.6; FGMPS Lemma~4.2(5) (uniform Stirling; also proved directly in \cref{sec:defects}); Hakimoglu-Brown p.~11 & \ref{T4}. REVIEW\_P5 \\
+7 & Values, and ``$< 9/32$'' & Arb; and \cref{sec:v2lean} & \ref{T2}; \ref{T1}. REVIEW\_P5\_A12, REVIEW\_LEAN\_DQ1 \\
+\bottomrule
+\end{longtable}
+\end{center}
+
+\noindent
+The four G1 ledgers are:
+\begin{center}\small
+\begin{tabular}{@{}lrrrrrrl@{}}
+\toprule
+ledger & initial boxes & evaluations & leaves & capped & failed & worst & md5 (DONE) \\
+\midrule
+\lean{y3g1\_corner\_a0} & 320 & 5,538 & 2,929 & 0 & 0 & $-0.9999656033$ & \lean{79194715} \\
+\lean{y3g1\_corner\_a1} & 320 & 378 & 349 & 0 & 0 & $-0.9988738033$ & \lean{0c5a24e4} \\
+\lean{y3g1\_rem\_a0} & 4,576 & 74,495 & 37,065 & 0 & 0 & $-0.9999990867$ & \lean{43e1f9bc} \\
+\lean{y3g1\_rem\_a1} & 4,576 & 50,165 & 27,336 & 0 & 0 & $-0.9999363845$ & \lean{f630953b} \\
+\bottomrule
+\end{tabular}
+\end{center}
+The ``corner'' jobs cover the hard corner $\ell$ near $\ell_0$, small $t$, $x \le 5$, where the margin is thinnest; the ``rem'' jobs cover the rest, and drop boxes that fall outside the domain or inside the STL region. The jobs ran with six workers, box caps of $300$ and $240$ seconds, bisection depth at most $30$, and took $12.6$, $1.0$, $152.9$ and $93.1$ seconds of wall time: about $0.43$ CPU-hours in all. The auditor re-ran all four from copies and obtained the same ledgers in every field except wall time \cite[REVIEW\_Y3\_G1]{dq1records}.
+
+\subsection{Four defects in the certifiers, and the re-run}\label{sec:defects}
+
+We record this because it bears on how much to trust class \ref{T2}. The first version of \cref{thm:C2} was certified by the P5 session's own certifiers, with $440{,}993$ leaves in $2.9$ CPU-hours, and the auditor passed them in four reviews (REVIEW\_P5, \_DELTA, \_A11, \_A12), checking each majorant cell by cell and re-running a $184$-box sample. The next session (Y3), which copied the certifiers for \cref{thm:Y3}, found three defects in them, and the auditor, adjudicating those, found a fourth \cite[Y3 memo \S4; REVIEW\_Y3]{dq1records}:
+\begin{enumerate}[label=B\arabic*.]
+\item In the G1 certifier, a Riemann sum over a box could extend to points where the real part of the argument of $-\zeta'/\zeta$ fell below $1$; there the ``majorant'' is negative and the enclosure is not established. This \emph{formally invalidated} the G1 certificate. (In the LX certifier the same cells produce a NaN and the box is rejected, so LX failed safe.)
+\item In the LX certifier, a lower bound for the Gaussian mass of the bulk was taken at the wrong end of the box, so it was an upper bound; the denominator was overestimated and a box value could come out too high. This \emph{invalidated the LX certificate as run}; the corrected cover passes with the same constant, the worst value moving from $-0.7689010032$ to $-0.7689010038$ with this fix alone.
+\item The closed-form majorant for the far tail of LX is not integrable as $U \to -\infty$ (its logarithm grows like $+(1-U)^2/(4v_0)$), so the step ``$\int_{-\infty}^{U_{\min}} \le 2q(U_{\min})/\mathrm{rate}$'' had no proof as written. A proof-step gap with no effect on any value; repaired by a three-region tail argument whose new ingredient, $\log|\Gamma(x+iy)| \ge \log\Gamma(x) - \pi|y|/2 - \tfrac12\log(1+4y^2)$ for $x \ge \tfrac12$, is proved from \cite[5.7.6]{DLMF}. The same region also uses the upper bound $\log\Gamma(y) \le y\log y$ for real $y = (s_1 + a)/2 \ge 1250$, which the records take from FGMPS's uniform Stirling estimate \cite[Lemma 4.2(5)]{FGMPS2026}, read at source: for $|\im z| \ge 1$ or $\re z \ge 1$, $\Gamma(z) = \sqrt{2\pi}\exp\bigl((z-\tfrac12)\log z - z + O_{\le}(1/(12(\max\{\re z, |\im z|\} - \tfrac12)))\bigr)$, which on the real axis gives $\log\Gamma(y) \le y\log y$ for $y \ge 2$. Since that inequality is load-bearing, here is a self-contained proof for every real $y \ge 1$ (PROVED; it is not in the records). Write $y = n + \theta$ with $n = \lfloor y\rfloor \ge 1$ and $0 \le \theta < 1$. Then $\Gamma(y) = \Gamma(1+\theta)\prod_{j=1}^{n-1}(\theta + j)$. Each factor $\theta + j \le y$, and $\Gamma(1+\theta) \le 1$ because $\log\Gamma$ is convex (H\"older's inequality in the integral $\int_0^\infty t^{y-1}e^{-t}\,dt$) with $\Gamma(1) = \Gamma(2) = 1$. So $\Gamma(y) \le y^{\,n-1} \le y^{\,y-1}$, and $\log\Gamma(y) \le (y-1)\log y \le y\log y$. (For $y < 1$ the inequality fails, since $\log\Gamma(y) > 0 > y\log y$ there; the range $y \ge 1250$ is what region IIb uses.)
+\item (Found by the auditor.) In LX, after the contour shift, the bulk Riemann sum started at a point that is an \emph{upper} bound for the true start of the bulk, so a set of points was in neither the sum nor the tail. A coverage gap, proof step only; repaired by a uniform bound for the missing set, written by the auditor, re-derived independently by Y3, and adopted. With it the LX worst value is $-0.7689010122$.
+\end{enumerate}
+All four repairs were judged sound by the auditor, who is not an independent check of B4 and says so. With the repaired G1 certifier the whole G1 cover was re-run, with the record's jobs and parameters, and passed with $67{,}679$ leaves instead of $440{,}993$: the B1 clamp removes a near-pole majorant that had forced deep bisection. In $1{,}087$ measured box pairs the patch never lowered a floor and sometimes raised one. The P5 outputs are superseded and kept as history (\path{provenance/P5_SUPERSEDED.md}); the certificates of record are those in the table above, and \cref{thm:C2} rests on them. The auditor's own account of what it had failed to check \cite[REVIEW\_Y3 \S7]{dq1records} is four items: that every majorant is used inside its domain at every point of a ball; that every bound feeding a denominator has the right direction over the whole ball; that a closed-form tail is integrable and not merely of the right local slope; and that a bulk/tail split is the same set on both sides when a contour shift has an unknown real part. We state them here because they are the kind of error that ball arithmetic does not catch: the arithmetic was rigorous, and the enclosure it was asked to compute was the wrong one.
+
+\subsection{The arithmetic step, kernel-checked}\label{sec:v2lean}
+
+The single statement of version~2 that is a Lean theorem is that the bound of \cref{thm:C2} is below $9/32$ for every $N \ge 10^8$. The file \lean{DQ1\_P5.lean} (md5 \lean{01a24ec6}, $346$ lines; \path{lean/v2/} in the release) defines, in a namespace \lean{C2}, the heat flow in its Gaussian form \eqref{eq:gaussform} on top of Mathlib's \lean{DirichletCharacter.LFunction} and \lean{Complex.Gamma},
+\begin{lstlisting}
+def xi (χ : DirichletCharacter ℂ m) (s : ℂ) : ℂ :=
+  ((m : ℂ) / (Real.pi : ℂ)) ^ ((s + (parity χ : ℂ)) / 2) * Complex.Gamma ((s + (parity χ : ℂ)) / 2) *
+    DirichletCharacter.LFunction χ s
+def H (χ : DirichletCharacter ℂ m) (t : ℝ) (z : ℂ) : ℂ :=
+  ∫ v : ℝ, xi χ ((1 + I * z) / 2 + ((Real.sqrt t * v : ℝ) : ℂ)) * ((Real.exp (-v ^ 2) / Real.sqrt Real.pi : ℝ) : ℂ)
+\end{lstlisting}
+together with the functions of \eqref{eq:C2bound}, transcribed symbol for symbol,
+\begin{lstlisting}
+def Lc (m : ℕ) : ℝ := Real.log ((m : ℝ) / Real.pi)
+def tmin (L : ℝ) : ℝ := min (1 / 10000) (4 / L)
+def bC2 (L : ℝ) : ℝ := min (1 / 10000) (1 / L ^ 2)
+def kC2 (L : ℝ) : ℝ := 4 / Real.sqrt 5 * (L / 4 - 1) - 2
+def TC2 (L : ℝ) : ℝ :=
+  tmin L + Real.log ((2 + kC2 L * (1 - 2 * tmin L)) / (2 + kC2 L * bC2 L)) / kC2 L
+def C2bound (m : ℕ) : ℝ := TC2 (Lc m) + bC2 (Lc m) / 2
+\end{lstlisting}
+and proves
+\begin{lstlisting}
+theorem C2bound_lt_9_32 (hm : 10 ^ 8 ≤ m) : C2bound m < 9 / 32
+\end{lstlisting}
+by pure real analysis, with no Arb input: $T \le 10^{-4} + f(k)$ with $f(k) = \log(1 + k/2)/k$, $f$ is antitone on $(0,\infty)$, $\ell \ge \ell_0 \ge 17.25$, hence $k \ge 3.925$ and $b \le 17.25^{-2}$, and $10^{-4} + 1.0862/3.925 + 1/(2\cdot17.25^2) = 0.27852 < 0.28125$. This is cruder than Arb's $0.27643$ but it is what the theorem needs. The file also proves \lean{STL\_applies} (that every domain point with $\ell > 4\cdot10^4$ satisfies the hypotheses of the STL lemma), and \lean{H\_conj}, \lean{S\_neg} and \lean{TL\_floor\_C2\_of\_nonneg} (the reflection $S_\chi(-x) = S_\chi(x)$ and the reduction of the floor to $x \ge 0$), the last three under the explicit hypothesis $L(\bar s,\chi) = \overline{L(s,\chi)}$, which is true for real $\chi$ but is not in Mathlib. The theorem of \cref{thm:C2} itself, the floor, the confinement lemma, LX and STL are recorded in the same file as \lean{Prop}-valued definitions, for instance
+\begin{lstlisting}
+def C2_large_conductor_statement : Prop :=
+  ∀ {m : ℕ} [NeZero m], 10 ^ 8 ≤ m → ∀ (χ : DirichletCharacter ℂ m), χ.IsPrimitive → IsRealChar χ →
+    ∀ t : ℝ, C2bound m ≤ t → ∀ z : ℂ, H χ t z = 0 → z.im = 0
+\end{lstlisting}
+with no \lean{axiom} and no \lean{sorry}: they are stated, not proved, and nothing in the file claims them.
+
+\emph{What this check consists of.} The file was built once by the DQ-1 Lean builder session at Lean \lean{v4.35.0} with a Mathlib of the same version, in a private environment that is \emph{not} the OpenAI environment of \cref{sec:formal}: exit code $0$, no errors, and \lean{\#print axioms} reporting \lean{[propext, Classical.choice, Quot.sound]} for each of the five proved declarations. The auditor reviewed the file for faithfulness to the statement of record, symbol by symbol, and checked the arithmetic of the proof route, but did not run Lean (REVIEW\_LEAN\_DQ1). There was no five-checker replay, no Comparator run and no tamper test. There is also no formal connection between \lean{C2.H} and version~1's \lean{DBN.Gen.Hchi}: the former is the Gaussian form \eqref{eq:gaussform} on Mathlib's \lean{LFunction} and is defined for $t > 0$ (Mathlib's $\Gamma$ takes a junk value at its poles, which lie on a null set of the integration variable), the latter is the cosine transform of the theta kernel; that they are the same flow up to the factor $8$ is FGMPS's (4.1) and \cref{sec:normalisation}, by hand. So the kernel-checked content of version~2 is the unconditional arithmetic fact that $T(\ell) + b/2 < 9/32$ for every $N \ge 10^8$; that this quantity bounds $\Lc_\chi$ is \cref{thm:C2}, in classes \ref{T2}--\ref{T4}.
+
+\subsection{Theorem Y3: every conductor, given the half-plane}\label{sec:Y3}
+
+\begin{theorem}[Y3; classes \ref{T2}--\ref{T4}; conditional on OpenAI's half-plane, as \cref{thm:main}]\label{thm:Y3}
+Let $\chi$ be a real primitive Dirichlet character of conductor $N \ge 3$, and assume that $L(s,\chi) \ne 0$ for $\re s > 7/8$. Then every zero of $H_t$ is real for every $t \ge 0.27912$. More precisely, for $N < 10^8$,
+\[
+\Lc_\chi \le 0.2791114 \ (\chi \text{ odd}),\qquad \Lc_\chi \le 0.2783189 \ (\chi \text{ even}),
+\]
+the worst cases being $N = 3$ and $N = 5$, and for $N \ge 10^8$ \cref{thm:C2} gives $\Lc_\chi \le 0.2764282$ with no hypothesis at all.
+\end{theorem}
+
+\noindent
+This is a strict improvement on version~1's $9/32 = 0.28125$ for every conductor, by at least $2.1\cdot10^{-3}$. The hypothesis is discharged exactly as in \cref{thm:main}, by OpenAI's kernel-checked theorem; with the functional equation it gives the strip $|\im z| \le 3/4$, that is, $q_0 = 9/16$, and $t_{\min} = b = 10^{-4}$. The proof is the method of \cref{sec:v2method} with the probe height $p = 20$ and the floors below, from the Y3 session \cite[Y3 memo \S3]{dq1records}; the auditor re-ran the two certificates and obtained ledgers identical in every field except wall time, recomputed the landing independently in \lean{mpmath} at $50$ digits, and checked the sources named above at source (REVIEW\_Y3 \S6).
+
+\begin{center}\small
+\begin{tabular}{@{}lllllllr@{}}
+\toprule
+ledger & parity & $N \in$ & $t \in$ & floor $S_\chi - \ell/4 \ge$ & worst G1 / LX & leaves & md5 \\
+\midrule
+\lean{u20\_a1} & odd & $[3, 10^8]$ & $[10^{-4}, 0.499]$ & $0.385$ & $0.3903$ / $1.811$ & 3,672 & \lean{4a1c199c} \\
+\lean{u20\_a0} & even & $[5, 10^8]$ & $[10^{-4}, 0.499]$ & $0.36$ & $0.3640$ / $1.811$ & 3,672 & \lean{953e869c} \\
+\bottomrule
+\end{tabular}
+\end{center}
+Each took about $40$ seconds, with $0$ failures. (At $N = 3$ one has $\ell = \log(3/\pi) < 0$, which the certifier's domain handling accommodates; the auditor checked this.) The landing \eqref{eq:landing} with $k = 4(\ell/4 + \mathrm{CF})/p - 8/(p^2 - q_0)$ is decreasing in $k$, and $k$ increases with $\ell$, so each band's worst case is its lowest conductor. The auditor's independent landing values are:
+\begin{center}\small
+\begin{tabular}{@{}llllll@{}}
+\toprule
+case & $N$ & $k$ & $T$ & $\Lc_\chi \le$ & margin \\
+\midrule
+odd, $q_0 = 9/16$ & 3 & 0.054666 & 0.2790613 & 0.27911134 & $9/32 - \Lc_\chi \ge 2.14\cdot10^{-3}$ \\
+even, $q_0 = 9/16$ & 5 & 0.075207 & 0.2782689 & 0.27831886 & $2.93\cdot10^{-3}$ \\
+odd, $q_0 = 1$ & 3 & 0.054644 & 0.4932441 & 0.49329408 & $\tfrac12 - \Lc_\chi \ge 6.71\cdot10^{-3}$ \\
+even, $q_0 = 1$ & 5 & 0.075185 & 0.4907846 & 0.49083455 & $9.17\cdot10^{-3}$ \\
+C2 at $N = 10^8$ & $10^8$ & 3.937186 & 0.2763782 & 0.27642820 & $4.82\cdot10^{-3}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+Two labels, which we keep as the records keep them: the even constant $0.2783189$ is the \emph{certificate value}, computed from the exact binary floating-point floor $0.36$ that the sweep compared against, rounded up. The records also carry \emph{Lean-rational} values, from the rational floors $3599/10000 \le 0.36$ and $385/1000 \le 0.385$ chosen for a future Lean statement: exactly $0.27831962506\ldots$ (even) and $0.27911134136\ldots$ (odd), so, rounded up, $0.2783197$ and $0.2791114$. (The records display them to seven digits rounded to nearest, as $0.2783196$ and $0.2791113$; those displays are not upper bounds. The Lean statements sketched in the records use $27833/100000$ and $27912/100000$, which are safe.) The theorem above uses the certificate values. The confinement lemma for this range, Lemma Z$'$ for $3 \le N \le 10^8$, was certified separately (\lean{p2z\_small}: $76{,}800$ boxes, $0$ failed, worst $Q \ge 0.9455$); for $N \le 4\cdot10^5$ FGMPS's Theorem~2.7 also gives it directly.
+
+\emph{Why a height of $20$.} At height $p$ the $\Gamma$ factor alone contributes about $\tfrac14\psi(\tfrac{1+p}{4} + \tfrac a2) \approx \tfrac14\log(p/4)$ to $S_\chi - \ell/4$, and this beats the loss $8/(p^2 - q_0) \approx 8/p^2$ in $k$ once $p$ is large, for \emph{every} $N \ge 3$; the arithmetic enters only through the small term $\tfrac12\zeta'/\zeta(\tfrac{1+p}{2})$. The price is that $k$ is small ($0.055$ to $0.075$ at the worst conductors), so the gain over $9/32$ is small, of the order of $kq_0^2/8$. The Y3 memo also records five certified bands with smaller $p$ in the middle range, which give smaller constants there (for instance at most $0.2424$ at $N = 10^4$ and $0.2139$ at $N = 10^6$ for either parity, \cite[Y3 memo \S3.4]{dq1records}); we do not restate them. We also do not use the per-character minimum of these bounds with FGMPS's unconditional ones, which would lower the uniform constant to $0.27832$, because it would rest on FGMPS's Table~10, which we have read but not reproduced.
+
+\subsection{Theorem U1: every conductor, unconditionally}\label{sec:U1}
+
+\begin{theorem}[U1; classes \ref{T2}--\ref{T4}; no hypothesis]\label{thm:U1}
+Let $\chi$ be a real primitive Dirichlet character of conductor $N \ge 3$. Then every zero of $H_t$ is real for every $t \ge 0.49330$: $\Lc_\chi \le 0.4932941$ for odd $\chi$ and $\Lc_\chi \le 0.4908346$ for even $\chi$ when $N < 10^8$ (certificate values, rounded up), and $\Lc_\chi \le 0.2764282$ when $N \ge 10^8$.
+\end{theorem}
+
+\noindent
+This is the same pair of certificates as \cref{thm:Y3}, with the trivial initial strip $q_0 = 1$ in place of $9/16$ (the certificate's $t$-range $[10^{-4}, 0.499]$ contains the landing time $0.49324$, and $p = 20 \ge \sqrt5$). The gain over de Bruijn's $1/2$ is $6.7\cdot10^{-3}$, which is small; the point is what the statement does not use.
+
+\emph{What is new here, checked at source.} FGMPS write, in their survey of previous work: ``On the upper-bound side, only the trivial bound $\Lc_L \le \tfrac12$ from de Bruijn's argument was known. Theorem 1.1 gives the first non-trivial upper bounds for a Dirichlet $L$-function'' \cite[\S1]{FGMPS2026}. Their Theorem~1.1 is stated for $3 \le N \le 400$ and uses Platt's verification of GRH to a height $h_N \ge 10^8/N$; their large-$x$ results (Theorems~2.7, 4.3, 8.1) are stated for $N \le 4\cdot10^5$ and give zero localisation, not a bound on $\Lc_L$. So FGMPS leave every $N > 400$ at $1/2$ without further hypotheses. With OpenAI's half-plane granted, version~1 of this paper (and FGMPS's Remark~3.4) already give $9/32 < 1/2$ for every $N$. The accurate claim is therefore: \cref{thm:U1} is the first bound below $1/2$ that is uniform in the conductor and uses no zero-free half-plane, no GRH and no numerical zero verification. A search of the literature (alphaXiv, by the Y3 session) found no other upper bound on $\Lc_L$ for Dirichlet $L$-functions; that is a search result, not a proof of absence.
+
+\begin{remark}[C2's threshold lowered]\label{rem:U2}
+The same machinery at $p = 5/2$, with floors certified from measured worst values ($-0.55$ for odd and $-0.76$ for even $\chi$; ledgers \lean{c25\_a1}, \lean{c25\_a0}, reproduced by the auditor), gives unconditionally $\Lc_\chi \le 0.2811138 < 9/32$ for odd $\chi$ with $N \ge 15{,}848{,}932$ and $\Lc_\chi \le 0.2812404 < 9/32$ for even $\chi$ with $N \ge 36{,}307{,}806$ \cite[Y3 memo \S3.5]{dq1records}. The margins are $1.36\cdot10^{-4}$ and $9.67\cdot10^{-6}$: thin, but decided, since the floor is used as the exact binary float the sweep compared against. The one-step method from $q_0 = 1$ cannot go below about $N = 10^{7.03}$ (odd) or $10^{7.34}$ (even) even with the exact $t = 0$ floor; the rest of the gap is certifier slack.
+\end{remark}
+
+\subsection{Consistency checks}\label{sec:v2checks}
+
+None of these is part of a proof.
+\begin{itemize}
+\item \emph{Against FGMPS.} For the seven smallest conductors, FGMPS's unconditional bounds (their Table~10, $D = 1$) and \cref{thm:Y3}'s conditional ones are: $\chi_{-3}$: $0.26967$ vs $0.27911$; $\chi_{-4}$: $0.26$ vs $0.27856$; $\chi_5$: $0.27912$ vs $0.27832$; $\chi_{-7}$: $0.28097$ vs $0.27748$; $\chi_{-8}$: $0.26007$ vs $0.27723$; $\chi_8$: $0.26343$ vs $0.27742$; $\chi_{-11}$: $0.28605$ vs $0.27663$. Both are upper bounds, so no contradiction is possible; the two methods are complementary, and for the $93$ characters with $N \le 400$ for which FGMPS's $D = 3/4$ search keeps the strip bound $9/32$ \cite[\S7.7]{FGMPS2026}, \cref{thm:Y3} improves all of them.
+\item \emph{Against direct computation.} For six actual characters ($\chi_{-3}, \chi_{-4}, \chi_5, \chi_{-7}, \chi_8, \chi_{-11}$) the Y3 session computed $S_\chi(x, 20, t)$ directly in \lean{mpmath} from \eqref{eq:tilt} on a grid of $t$ and $x$; the minimum of $S_\chi - \ell/4$ was $0.030$ above the certified floor everywhere sampled, and equal to the exact $t = 0$ floor to $10^{-3}$. So the certificate is tight, and the $p = 20$ route is at its structural limit.
+\item \emph{Siegel sanity.} Every bound here is a constant at least $0.18$, and no rate is $o(1/\log N)$; a method that gave $\Lc_\chi = o(1/\log N)$ uniformly without excluding Siegel zeros would be suspect. The method also gives nothing for the ``zoo'' of fake $L$-functions with the right functional equation but off-line zeros, because they violate its Euler-product inputs; the floor itself never sees zeros.
+\end{itemize}
+
+\subsection{Reproducing the certificates}\label{sec:v2repro}
+
+The \path{certificates/} directory of the release holds the as-run sources, drivers, ledgers and outputs, each with its md5 in \path{certificates/MANIFEST.md}, and a README with the exact commands. The certifiers need Python~3 with \lean{python-flint} and run one core per worker, with the BLAS pinned to one thread. Costs measured on the record runs: the four G1 jobs, $0.43$ CPU-hours with six workers; the LX cover, $36$ seconds; each of the four Y3 band ledgers, $40$ to $70$ seconds; the two confinement checks, $2$ seconds each; the Lean file, $18$ seconds at Lean \lean{v4.35.0}. A reader who re-runs a certifier should compare the ledger's \lean{evaluations}, \lean{certified}, \lean{worst} and \lean{failed} fields with the record's; the auditor's reproductions matched every field except wall time.
+
+%======================================================================
 \section{Limitations}\label{sec:limits}
 %======================================================================
 
@@ -631,6 +893,13 @@ Neither bound is close to the state of the art: $225/512 \approx 0.439$ is far w
 \item \emph{The local build tree's dependencies were not hashed.} See \path{provenance/OAI_ENV.md} in the release. The kernel replays check every proof, but the definitions the statement uses were taken as they stood in that tree. For the main theorem's closure this gap is closed, relative to Mathlib's official build cache at \lean{d13f23b}, by the byte-identical export of \cref{sec:comparator}.
 \item \emph{The audits were done by AI sessions.} No human has read the Lean proofs; the kernel checks them, and a human should read the statement and \lean{ChallengeDefs} (\cref{sec:statement}).
 \item \emph{The numerics are checks, not proofs.} Nothing in the formal proof depends on them.
+\item \emph{Version 2's bounds are not kernel-checked.} \Cref{thm:C2,thm:Y3,thm:U1} are in classes \ref{T2}--\ref{T4}: Arb certificates, AI-written proofs reviewed by one AI reviewer, and unrefereed preprints. The one kernel-checked statement of \cref{sec:v2lean} is the arithmetic of the explicit function, checked by one kernel in one build, with no further checkers and no Comparator run. The Lean statement layer sketched for \cref{thm:Y3,thm:U1} in the Y3 memo was not built.
+\item \emph{The certifiers are programs.} Ball arithmetic guarantees the arithmetic, not the enclosure asked for. Four defects (\cref{sec:defects}) were found in certifiers that four reviews had passed; the repaired certifiers were reviewed and their outputs reproduced, but another defect of the same kind would not be caught by re-running them. A reader who wants to trust class \ref{T2} should read the certifier sources.
+\item \emph{The contraction inequalities are preprints about $\zeta$.} Planat's Theorem~2.1 and Proposition~2.3, and Hakimoglu-Brown's Theorem~9 and paired-zero inequality, are stated for Riemann's $\xi$; Hakimoglu-Brown's paper is a working draft. Their use for $H_t$ of a Dirichlet character, with a different confinement lemma and different constants, is an AI-written transposition. FGMPS's Theorem~4.3 and Proposition~4.18 are stated for $3 \le N \le 4\cdot10^5$; their use for every $N$ is our reading of their proof, checked at source by the auditor but by no one else.
+\item \emph{Two steps were read, not re-derived, by the auditor:} the Telperion-certified bridge numerator in component~3, and parts (b)--(g) of the $x$-monotonicity lemma behind LX (component~4b). The auditor says so in its reviews, and we repeat it here.
+\item \emph{No formal link between the two heat flows.} \lean{C2.H} (version~2) and \lean{DBN.Gen.Hchi} (version~1) are different Lean definitions, in different environments; that they define the same flow up to the factor $8$ is by hand (\cref{sec:normalisation}).
+\item \emph{Some margins are thin.} Remark~\ref{rem:U2}'s even case is below $9/32$ by $9.67\cdot10^{-6}$. The decision rests on using the floor as the exact binary float the certifier compared against; the Lean-rational constants are chosen on the safe side of those floats.
+\item \emph{Nothing here is GRH progress}, in either version. The unconditional bounds are consistent with the existence of Siegel zeros, and the method does not see zeros at all.
 \end{enumerate}
 
 %======================================================================
@@ -643,7 +912,8 @@ This work was done with AI agent sessions (Claude, by Anthropic) under the direc
 \item \emph{Proof engineering.} An agent session (the ``contrarian'') wrote the Lean sources of the \lean{Gen} layer, the Gauss layer and \lean{GaussBridge}, and the generator that derives four \lean{Gen} files from the island. The \lean{dbn} island itself was written in September and October 2026 with AI assistance under the author's direction, as recorded in \cite{Murphy932,MurphyNewman}.
 \item \emph{Audit and composition.} A second, separate agent session (the auditor, ``bb'') reviewed each layer as it arrived. It read the new sources in full and rebuilt the whole chain from source (OpenAI's library was used as built in the 7 October replay, with \path{Nonvanishing.lean} re-elaborated), and wrote its own check files, tampered statements and closure walks. It wrote the numerical checks of \cref{sec:verification}, wrote the two composition files and ran all the checker replays. Its reviews are labelled ``AI review, NOT an operator read-back''. They are the records cited as \cite{bbrecords}. It also wrote the Comparator challenge files of \cref{sec:comparator} and read that run's seven logs in full, matched their md5s, and reproduced its solution export byte for byte.
 \item \emph{Coordination and this paper.} A third session (the ``lead'') coordinated the work and wrote the publication plan. This paper was drafted by a further agent session, from the auditor's records and from sources it read. Every number in it is traceable to those records or sources, and anything it could not verify is marked as unresolved.
-\item \emph{The author's role.} The author directed the programme: the author decided which results to pursue, approved running the work in OpenAI's environment and the publication of this result, chose the venue, and read and approved the final text.
+\item \emph{Version 2.} The large-conductor bound (\cref{thm:C2}), the Gaussian-tilt identity, the domain reduction, the three certifiers and the first certificates were the work of one agent session (``P5''), in the course of a research dive on a different question, whose memo records the statement of record (\S A.13). A second session (``Y3'') obtained \cref{thm:Y3,thm:U1}, found defects B1--B3, wrote the repairs, and ran the G1 re-run. The auditor (``bb'', the same auditor session lineage as in version~1) reviewed P5 in four rounds, adjudicated B1--B3, found B4 and wrote its repair, reproduced every certificate of record (identical in every field except wall time), reviewed the Lean file for faithfulness, and reviewed the whole package before release. A Lean-builder session wrote and built \lean{DQ1\_P5.lean}. The lead session ruled that the release form is a new version of this record rather than a separate note. This version of the paper was drafted by a further agent session from those records and from the sources, each read at source; every number in \cref{sec:v2} is traceable to a ledger or a source, and what could not be verified is marked.
+\item \emph{The author's role.} The author directed the programme: the author decided which results to pursue, approved running the work in OpenAI's environment and the publication of this result, chose the venue, and read and approved the final text. For version~2 the author approved the release of the large-conductor bound and the rest of the lead's list on 1 November 2026, and read and approved this text (TODO: confirm at release).
 \end{itemize}
 
 \noindent
@@ -653,7 +923,7 @@ The Lean kernel is the trusted component. No proof in this work is accepted on t
 \section*{Acknowledgements}
 %======================================================================
 
-The bound is Freire, Gonz\'alez-Riquelme, Mu\~noz, Poblete and Salinas's conditional observation; the engine is de Bruijn's theorem; the half-plane and its Lean proof are OpenAI's; the sign is Gauss's. Mathlib's $L$-function library made the bridge to $\Lc(s,\chi)$ a statement about a shared definition rather than a private one. The independent checker \lean{nanoda} is Chris Bailey's; \lean{lean4export} and Comparator are from the Lean FRO (Comparator by Henrik B\"oving). The checker \lean{con-leche} \cite{conleche} was written by Claude, and its Rust port \lean{con-ron} \cite{conron} by an AI system its README does not name, both under the supervision of Joachim Breitner at the Lean FRO. Cureton and Thorner's half-plane and Lean development make the companion section possible.
+The bound is Freire, Gonz\'alez-Riquelme, Mu\~noz, Poblete and Salinas's conditional observation; the engine is de Bruijn's theorem; the half-plane and its Lean proof are OpenAI's; the sign is Gauss's. Mathlib's $L$-function library made the bridge to $\Lc(s,\chi)$ a statement about a shared definition rather than a private one. The independent checker \lean{nanoda} is Chris Bailey's; \lean{lean4export} and Comparator are from the Lean FRO (Comparator by Henrik B\"oving). The checker \lean{con-leche} \cite{conleche} was written by Claude, and its Rust port \lean{con-ron} \cite{conron} by an AI system its README does not name, both under the supervision of Joachim Breitner at the Lean FRO. Cureton and Thorner's half-plane and Lean development make the companion section possible. Version~2 adds debts: the contraction inequalities are Planat's and Hakimoglu-Brown's; the Gaussian form of the heat flow, the strip theorem in its time-shifted form, the finiteness theorem and the effective approximation are FGMPS's; the Euler-product and convexity bounds for $L(s,\chi)$ were read in Bennett, Martin, O'Bryant and Rechnitzer, who quote Rademacher; the digamma and Gamma inequalities are from the DLMF; the ball arithmetic is Fredrik Johansson's Arb, through \lean{python-flint}.
 
 \bibliographystyle{amsplain}
 \bibliography{refs}
@@ -677,5 +947,20 @@ The records cited as \cite{bbrecords} are the following files. They are archived
 \item \lean{COMPARATOR\_\allowbreak{}RUN\_\allowbreak{}SPEC.md}: the specification of the sandboxed run;
 \item \lean{REVIEW\_\allowbreak{}COMPARATOR\_\allowbreak{}LAMBDA\_\allowbreak{}CHI.md}: the verification of that run, with \lean{REVIEW\_\allowbreak{}COMPARATOR\_\allowbreak{}LAMBDA\_\allowbreak{}CHI\_\allowbreak{}ADDENDUM1.md}, the inspection of its logs, and \lean{REVIEW\_\allowbreak{}COMPARATOR\_\allowbreak{}LAMBDA\_\allowbreak{}CHI\_\allowbreak{}ADDENDUM2.md}, two precision corrections.
 \end{itemize}
+
+\section{The records of version 2}\label{app:v2records}
+
+The records cited as \cite{dq1records} are the following files, archived with their md5s in \path{provenance/} of the release (the first eight characters of each md5 are given):
+\begin{itemize}\small
+\item \lean{P5\_\allowbreak{}memo\_\allowbreak{}extract.md} (\lean{4b3688f2}): sections A.3 and A.6--A.13 of the P5 session's memo, reproduced verbatim; the full memo (md5 \lean{e3676c4c}, $1{,}775$ lines) is held internally, since most of it concerns other questions, and the extract's header records the line ranges taken. \S A.3 and \S A.6, the $t = 0$ floor and the Gaussian tilt; \S A.7, the explicit floor; \S A.9, the domain reduction, the double contour shift, LX and STL; \S A.12.2, Lemma Z$'$; \S A.13, the statement of record of \cref{thm:C2} with its component table and the Lean statement layer. The reviews cite the full memo by its md5 and by section number, and the section numbers are unchanged in the extract;
+\item \lean{P5\_\allowbreak{}SUPERSEDED.md} (\lean{f723042e}): which P5 outputs are superseded by the re-runs, and by what;
+\item \lean{Y3\_\allowbreak{}memo\_\allowbreak{}extract.md} (\lean{ebb8f66b}): sections 0--5, 8 and 9 of the Y3 session's memo, reproduced verbatim; the full memo (md5 \lean{3779ce49}, $720$ lines) is held internally, and the two omitted sections (\S6--\S7) are internal dive bookkeeping that nothing here cites. \S2, where C2 fails below $10^8$ and why; \S3, \cref{thm:Y3,thm:U1} and Remark~\ref{rem:U2}; \S4, defects B1--B4, their repairs, and the G1 re-run (\S4.6); \S5, the consistency checks; \S8, a Lean statement layer, not built; \S9, the file and md5 table;
+\item \lean{REVIEW\_\allowbreak{}P5.md} (\lean{e909a59c}), \lean{REVIEW\_\allowbreak{}P5\_\allowbreak{}DELTA.md} (\lean{206b88e7}), \lean{REVIEW\_\allowbreak{}P5\_\allowbreak{}A11.md} (\lean{e570fc33}), \lean{REVIEW\_\allowbreak{}P5\_\allowbreak{}A12.md} (\lean{f6cade54}), \lean{REVIEW\_\allowbreak{}P5\_\allowbreak{}FINAL.md} (\lean{9ae4f16c}): the auditor's four reviews of P5 and its delta on the statement of record;
+\item \lean{REVIEW\_\allowbreak{}Y3.md} (\lean{799a8fa8}): the adjudication of B1--B3, the finding of B4, the gate for the G1 re-run, and the review of \cref{thm:Y3,thm:U1} with their reproductions;
+\item \lean{REVIEW\_\allowbreak{}Y3\_\allowbreak{}G1.md} (\lean{4b4d8aab}): the confirmation of the G1 re-run and of the B4 adoption, with reproductions of all four ledgers and of the LX cover, identical in every field except wall time;
+\item \lean{REVIEW\_\allowbreak{}LEAN\_\allowbreak{}DQ1.md} (\lean{e4e14877}): the faithfulness review of \lean{DQ1\_P5.lean}, among other files of the same build;
+\item \lean{REVIEW\_\allowbreak{}PRERELEASE\_\allowbreak{}v2.0.0.md} (\lean{d3a2e9eb}): the auditor's pre-release review of this version's package, which also re-ran \lean{p2z\_arb} and \lean{rhi\_monotone} (components 4d and 5) from copies and obtained byte-identical outputs.
+\end{itemize}
+The certificates themselves (sources, drivers, ledgers, outputs) are in \path{certificates/}, with every md5 in \path{certificates/MANIFEST.md}. Paths of the form \path{~/rh-team/...} inside these records refer to the programme's internal working tree at the time of writing; they are not part of the release, and the copies are not redacted, so that their md5s match the originals.
 
 \end{document}

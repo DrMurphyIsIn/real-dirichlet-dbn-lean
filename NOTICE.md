@@ -44,6 +44,24 @@
 - **Checkers.** nanoda (<https://github.com/ammkrn/nanoda_lib>), con-leche, con-ron, and Lean's leanchecker,
   as bundled with Lean v4.35.0-rc3. The export tool is lean4export 3.1.0, and Comparator is
   <https://github.com/leanprover/comparator>.
+- **Version 2.** Three further bounds on Λ_χ for real primitive χ (paper §7):
+  - C2: Λ_χ ≤ T(ℓ) + b(ℓ)/2 < 9/32 for conductor N ≥ 10⁸, unconditionally;
+  - Y3: Λ_χ ≤ 0.27912 for every χ, given OpenAI's half-plane;
+  - U1: Λ_χ ≤ 0.49330 for every χ, unconditionally.
+
+  These are **not kernel-checked**. They rest on Arb certificates (`certificates/`), which the auditor reproduced
+  identically in every field except wall time; on AI-written proofs reviewed by one AI reviewer; and on unrefereed
+  preprints. The one arithmetic step `C2.C2bound_lt_9_32` (`lean/v2/`) is a Lean theorem, built once at v4.35.0.
+
+  Mathematics credited:
+  - the contraction inequalities of Planat (arXiv:2609.37164, Theorem 2.1, Proposition 2.3) and Hakimoglu-Brown
+    (arXiv:2610.12803, Theorem 9; a working draft), both written for ξ and transposed here;
+  - FGMPS (arXiv:2610.27343): the Gaussian form (4.1), Theorem 2.6, Theorem 4.3, Proposition 4.18 and Lemma 4.2;
+  - Bennett, Martin, O'Bryant and Rechnitzer (arXiv:2005.02989), including Rademacher's convexity bound;
+  - the DLMF (5.6.6, 5.7.6, 5.15.1);
+  - Arb/FLINT and python-flint.
+
+  The records are in `provenance/` (paper Appendix B).
 - **Machine assistance.** All the Lean code here, the audits and the tooling were written by AI agent sessions
   (Claude, Anthropic), working under the direction of the author.
   - One session developed the generic library, the theta and Mellin modules, the Gauss sign theorem and the
@@ -52,6 +70,8 @@
     theorem and the check, reference and tamper files, and ran the replays.
   - The author set the scope and the accuracy rules, approved the steps that ran in OpenAI's environment, and
     decides what is published.
+  - Version 2's certifiers, analysis and paper section were written by further AI agent sessions and audited by
+    bb, who re-ran every certificate.
 
   The Lean kernel is the trusted component: every claim here is either a kernel-checked theorem or labelled
   otherwise.

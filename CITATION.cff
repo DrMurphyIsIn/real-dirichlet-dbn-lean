@@ -1,18 +1,21 @@
 cff-version: 1.2.0
-message: "If you use this work, please cite it as below, and cite de Bruijn (1950) for the engine, Freire, Gonzalez-Riquelme, Munoz, Poblete and Salinas (arXiv:2610.27343) for the conditional statement, and OpenAI's quasi-Riemann hypothesis preprint for the 7/8 half-plane."
+message: "If you use this work, please cite it as below, and cite de Bruijn (1950) for the engine, Freire, Gonzalez-Riquelme, Munoz, Poblete and Salinas (arXiv:2610.27343) for the conditional statement, OpenAI's quasi-Riemann hypothesis preprint for the 7/8 half-plane, and Planat (arXiv:2609.37164) and Hakimoglu-Brown (arXiv:2610.12803) for the contraction inequalities used in version 2."
 title: "Every real primitive Dirichlet L-function has de Bruijn-Newman constant at most 9/32: a kernel-checked proof in Lean 4"
 authors:
   - family-names: Murphy
     given-names: Peter W.
 repository-code: "https://github.com/DrMurphyIsIn/real-dirichlet-dbn-lean"
 license: Apache-2.0
-version: v1.0.0
-date-released: 2026-10-31
-doi: 10.5281/zenodo.23840082
+version: v2.0.0
+date-released: TODO_DATE
+doi: 10.5281/zenodo.TODO_V2
 identifiers:
   - type: doi
+    value: 10.5281/zenodo.TODO_V2
+    description: "Zenodo archive of release v2.0.0"
+  - type: doi
     value: 10.5281/zenodo.23840082
-    description: "Zenodo archive of release v1.0.0"
+    description: "Zenodo archive of release v1.0.0 (the kernel-checked theorem; unchanged in v2.0.0)"
   - type: doi
     value: 10.5281/zenodo.23840081
     description: "Zenodo concept DOI (all versions; resolves to the latest)"
@@ -36,4 +39,13 @@ abstract: >-
   bridge from the theta kernel to Mathlib's completedLFunction. The conditional statement Lambda_L <= 9/32 under
   a zero-free strip of half-width 3/4 is due to Freire, Gonzalez-Riquelme, Munoz, Poblete and Salinas
   (arXiv:2610.27343); the engine is de Bruijn's 1950 theorem. This is not a new analytic bound and not progress
-  on the generalized Riemann hypothesis, which corresponds to Lambda_chi <= 0.
+  on the generalized Riemann hypothesis, which corresponds to Lambda_chi <= 0. Version 2.0.0 adds, to the same
+  record, three bounds on Lambda_chi obtained by a different method (an Arb-certified lower bound for -Im(H'/H) at
+  a fixed height, fed into the contraction inequalities of Planat, arXiv:2609.37164, and Hakimoglu-Brown,
+  arXiv:2610.12803): unconditionally Lambda_chi <= T(l) + b(l)/2 < 9/32 for every real primitive chi of conductor
+  N >= 10^8, with l = log(N/pi) and T, b explicit (0.27643 at N = 10^8); given OpenAI's 7/8 as before,
+  Lambda_chi <= 0.27912 < 9/32 for every real primitive chi; and unconditionally Lambda_chi <= 0.49330 for every
+  real primitive chi. These three are NOT kernel-checked: they rest on Arb certificates reproduced by a separate AI
+  auditor session, on AI-written proofs reviewed by one AI reviewer, and on unrefereed preprints, and the paper
+  (section 7) states their trust classes; one arithmetic step (C2.C2bound_lt_9_32) is a Lean theorem built once at
+  Lean v4.35.0.

@@ -1,0 +1,12 @@
+STL sample R=2.62 tau=0.0175 a=0: xaware(v>=2500) 1.6838  xfree(v<=2500) -0.1714
+STL sample R=2.62 tau=0.0175 a=1: xaware(v>=2500) 1.6838  xfree(v<=2500) -0.0569
+STL sample R=2.62 tau=0.001 a=0: xaware(v>=2500) 1.6863  xfree(v<=2500) -0.1657
+STL sample R=2.62 tau=0.001 a=1: xaware(v>=2500) 1.6863  xfree(v<=2500) -0.0524
+STL sample R=5.0 tau=0.0175 a=0: xaware(v>=2500) 1.7977  xfree(v<=2500) 0.1605
+STL sample R=5.0 tau=0.0175 a=1: xaware(v>=2500) 1.7977  xfree(v<=2500) 0.2156
+STL sample R=10.0 tau=0.0175 a=0: xaware(v>=2500) 1.8113  xfree(v<=2500) 0.3756
+STL sample R=10.0 tau=0.0175 a=1: xaware(v>=2500) 1.8113  xfree(v<=2500) 0.4019
+STL sample R=100.0 tau=0.0175 a=0: xaware(v>=2500) 1.8117  xfree(v<=2500) 0.9754
+STL sample R=100.0 tau=0.0175 a=1: xaware(v>=2500) 1.8117  xfree(v<=2500) 0.9780
+STL sample R=100.0 tau=0.0001 a=0: xaware(v>=2500) 1.8117  xfree(v<=2500) 0.9755
+STL sample R=100.0 tau=0.0001 a=1: xaware(v>=2500) 1.8117  xfree(v<=2500) 0.9780

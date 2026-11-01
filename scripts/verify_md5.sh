@@ -1,17 +1,18 @@
 #!/bin/bash
-# Check the md5 manifests of this repository: every file listed in lean/MD5SUMS.txt, logs/MD5SUMS.txt and
-# provenance/MD5SUMS.txt must have the recorded md5, and every file under lean/, logs/ and provenance/ must be listed;
-# likewise for the auditor's two manifests in challenge/. Works with md5sum (Linux) or md5 (macOS).
+# Check the md5 manifests of this repository: every file listed in lean/MD5SUMS.txt, logs/MD5SUMS.txt,
+# provenance/MD5SUMS.txt and certificates/MD5SUMS.txt must have the recorded md5, and every file under lean/ (including
+# the version-2 layer in lean/v2/), logs/, provenance/ and certificates/ must be listed; likewise for the auditor's two
+# manifests in challenge/. Works with md5sum (Linux) or md5 (macOS).
 #
 #   scripts/verify_md5.sh            # all manifests
-#   scripts/verify_md5.sh lean       # one of them (lean, logs, challenge or provenance)
+#   scripts/verify_md5.sh lean       # one of them (lean, logs, challenge, provenance or certificates)
 set -euo pipefail
 HERE="$(cd "$(dirname "$0")/.." && pwd)"
 md5of() { if command -v md5sum >/dev/null 2>&1; then md5sum "$1" | cut -d' ' -f1; else md5 -q "$1"; fi; }
 # listed MANIFEST PATH: exact match of PATH against the path field of a manifest line ("<32-hex md5>  <path>").
 listed() { awk -v p="$2" 'substr($0, 35) == p { found = 1 } END { exit !found }' "$1"; }
 fail=0
-for d in "${@:-lean logs provenance}"; do
+for d in "${@:-lean logs provenance certificates}"; do
   for dir in $d; do
     [ "$dir" = challenge ] && continue
     M="$HERE/$dir/MD5SUMS.txt"
