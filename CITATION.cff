@@ -7,11 +7,11 @@ authors:
 repository-code: "https://github.com/DrMurphyIsIn/real-dirichlet-dbn-lean"
 license: Apache-2.0
 version: v2.0.0
-date-released: TODO_DATE
-doi: 10.5281/zenodo.TODO_V2
+date-released: 2026-11-01
+doi: 10.5281/zenodo.23858929
 identifiers:
   - type: doi
-    value: 10.5281/zenodo.TODO_V2
+    value: 10.5281/zenodo.23858929
     description: "Zenodo archive of release v2.0.0"
   - type: doi
     value: 10.5281/zenodo.23840082

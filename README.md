@@ -1,10 +1,10 @@
 # Λ_χ ≤ 9/32 for every real primitive Dirichlet character, kernel-checked
 
-> **Status: v2.0.0, released TODO_DATE.** Version 1's kernel-checked theorem (Λ_χ ≤ 9/32, below) is unchanged: five
+> **Status: v2.0.0, released 1 November 2026.** Version 1's kernel-checked theorem (Λ_χ ≤ 9/32, below) is unchanged: five
 > checkers from three implementation lineages replayed it locally, and a sandboxed Comparator run against a separately
 > written challenge (`challenge/`) accepted it (`logs/comparator_sandboxed/`). Version 2 adds three further bounds on the
 > same constant in weaker trust classes (see "Version 2" below and §7 of the paper). The paper is in `paper/`. DOI
-> [10.5281/zenodo.TODO_V2](https://doi.org/10.5281/zenodo.TODO_V2) (v2.0.0); v1.0.0 is
+> [10.5281/zenodo.23858929](https://doi.org/10.5281/zenodo.23858929) (v2.0.0); v1.0.0 is
 > [10.5281/zenodo.23840082](https://doi.org/10.5281/zenodo.23840082); all versions:
 > [10.5281/zenodo.23840081](https://doi.org/10.5281/zenodo.23840081).
 
