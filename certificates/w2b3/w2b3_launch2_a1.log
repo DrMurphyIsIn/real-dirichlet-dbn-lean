@@ -1,0 +1,79 @@
+started w2b3_cov2_a1_m1650000_s0 [0s]
+started w2b3_cov2_a1_m1650000_s1 [0s]
+finished w2b3_cov2_a1_m1650000_s1: rc=0 n_failed=0 worst_g1=-0.1912 worst_lx=1.6048 maxG_g1=0.2029 maxG_lx=0.1431 evals=568 sec=11.0
+started w2b3_cov2_a1_m1650000_s2 [15s]
+finished w2b3_cov2_a1_m1650000_s2: rc=0 n_failed=0 worst_g1=-0.1905 worst_lx=1.6066 maxG_g1=0.2032 maxG_lx=0.1395 evals=321 sec=6.3
+started w2b3_cov2_a1_m1650000_s3 [25s]
+finished w2b3_cov2_a1_m1650000_s3: rc=0 n_failed=0 worst_g1=-0.1892 worst_lx=1.6087 maxG_g1=0.2032 maxG_lx=0.1358 evals=222 sec=4.5
+started w2b3_cov2_a1_m1650000_s4 [30s]
+finished w2b3_cov2_a1_m1650000_s0: rc=0 n_failed=0 worst_g1=-0.2026 worst_lx=1.6049 maxG_g1=0.2134 maxG_lx=0.1487 evals=1851 sec=34.1
+finished w2b3_cov2_a1_m1650000_s4: rc=0 n_failed=0 worst_g1=-0.1880 worst_lx=1.6119 maxG_g1=0.2031 maxG_lx=0.1321 evals=154 sec=3.2
+started w2b3_cov2_a1_m1650000_s5 [35s]
+started w2b3_cov2_a1_m1650000_s6 [35s]
+finished w2b3_cov2_a1_m1650000_s5: rc=0 n_failed=0 worst_g1=-0.1855 worst_lx=1.6151 maxG_g1=0.2027 maxG_lx=0.1285 evals=129 sec=2.8
+finished w2b3_cov2_a1_m1650000_s6: rc=0 n_failed=0 worst_g1=-0.1830 worst_lx=1.6184 maxG_g1=0.2016 maxG_lx=0.1248 evals=106 sec=2.4
+started w2b3_cov2_a1_m1650000_s7 [40s]
+started w2b3_cov2_a1_m1650000_s8 [40s]
+finished w2b3_cov2_a1_m1650000_s7: rc=0 n_failed=0 worst_g1=-0.1805 worst_lx=1.6219 maxG_g1=0.2002 maxG_lx=0.1212 evals=110 sec=2.4
+finished w2b3_cov2_a1_m1650000_s8: rc=0 n_failed=0 worst_g1=-0.1782 worst_lx=1.6254 maxG_g1=0.1996 maxG_lx=0.1177 evals=87 sec=1.9
+started w2b3_cov2_a1_m1650000_s9 [45s]
+started w2b3_cov2_a1_m1650000_s10 [45s]
+finished w2b3_cov2_a1_m1650000_s9: rc=0 n_failed=0 worst_g1=-0.1752 worst_lx=1.6290 maxG_g1=0.1978 maxG_lx=0.1142 evals=95 sec=2.0
+finished w2b3_cov2_a1_m1650000_s10: rc=0 n_failed=0 worst_g1=-0.1720 worst_lx=1.6336 maxG_g1=0.1969 maxG_lx=0.1106 evals=93 sec=2.0
+started w2b3_cov2_a1_m1650000_s11 [50s]
+started w2b3_cov2_a1_m1650000_s12 [50s]
+finished w2b3_cov2_a1_m1650000_s11: rc=0 n_failed=0 worst_g1=-0.1704 worst_lx=1.6371 maxG_g1=0.1952 maxG_lx=0.1073 evals=91 sec=1.9
+finished w2b3_cov2_a1_m1650000_s12: rc=0 n_failed=0 worst_g1=-0.1661 worst_lx=1.6407 maxG_g1=0.1936 maxG_lx=0.1041 evals=95 sec=2.1
+started w2b3_cov2_a1_m1650000_s13 [55s]
+started w2b3_cov2_a1_m1650000_s14 [55s]
+finished w2b3_cov2_a1_m1650000_s13: rc=0 n_failed=0 worst_g1=-0.1627 worst_lx=1.6442 maxG_g1=0.1916 maxG_lx=0.1011 evals=66 sec=1.6
+finished w2b3_cov2_a1_m1650000_s14: rc=0 n_failed=0 worst_g1=-0.1592 worst_lx=1.6477 maxG_g1=0.1903 maxG_lx=0.0981 evals=66 sec=1.6
+started w2b3_cov2_a1_m1650000_s15 [60s]
+started w2b3_cov2_a1_m1650000_s16 [60s]
+finished w2b3_cov2_a1_m1650000_s15: rc=0 n_failed=0 worst_g1=-0.1583 worst_lx=1.6511 maxG_g1=0.1891 maxG_lx=0.0952 evals=64 sec=1.5
+finished w2b3_cov2_a1_m1650000_s16: rc=0 n_failed=0 worst_g1=-0.1523 worst_lx=1.6545 maxG_g1=0.1880 maxG_lx=0.0923 evals=66 sec=1.6
+started w2b3_cov2_a1_m1650000_s17 [65s]
+started w2b3_cov2_a1_m1650000_s18 [65s]
+finished w2b3_cov2_a1_m1650000_s17: rc=0 n_failed=0 worst_g1=-0.1487 worst_lx=1.6579 maxG_g1=0.1870 maxG_lx=0.0896 evals=70 sec=1.5
+finished w2b3_cov2_a1_m1650000_s18: rc=0 n_failed=0 worst_g1=-0.1468 worst_lx=1.6612 maxG_g1=0.1857 maxG_lx=0.0870 evals=68 sec=1.5
+started w2b3_cov2_a1_m1650000_s19 [70s]
+started w2b3_cov2_a1_m1650000_s20 [70s]
+finished w2b3_cov2_a1_m1650000_s19: rc=0 n_failed=0 worst_g1=-0.1429 worst_lx=1.6644 maxG_g1=0.1863 maxG_lx=0.0844 evals=70 sec=1.5
+finished w2b3_cov2_a1_m1650000_s20: rc=0 n_failed=0 worst_g1=-0.1408 worst_lx=1.6683 maxG_g1=0.1847 maxG_lx=0.0817 evals=109 sec=2.3
+started w2b3_cov2_a1_m1650000_s21 [75s]
+started w2b3_cov2_a1_m1650000_s22 [75s]
+finished w2b3_cov2_a1_m1650000_s21: rc=0 n_failed=0 worst_g1=-0.1334 worst_lx=1.6745 maxG_g1=0.1813 maxG_lx=0.0769 evals=109 sec=2.3
+finished w2b3_cov2_a1_m1650000_s22: rc=0 n_failed=0 worst_g1=-0.1309 worst_lx=1.6804 maxG_g1=0.1803 maxG_lx=0.0724 evals=103 sec=2.2
+started w2b3_cov2_a1_m1650000_s23 [80s]
+started w2b3_cov2_a1_m1650000_s24 [80s]
+finished w2b3_cov2_a1_m1650000_s23: rc=0 n_failed=0 worst_g1=-0.1187 worst_lx=1.6861 maxG_g1=0.1768 maxG_lx=0.0682 evals=76 sec=1.7
+finished w2b3_cov2_a1_m1650000_s24: rc=0 n_failed=0 worst_g1=-0.1163 worst_lx=1.6915 maxG_g1=0.1743 maxG_lx=0.0643 evals=80 sec=1.8
+started w2b3_cov2_a1_m1650000_s25 [85s]
+started w2b3_cov2_a1_m1650000_s26 [85s]
+finished w2b3_cov2_a1_m1650000_s25: rc=0 n_failed=0 worst_g1=-0.1089 worst_lx=1.6972 maxG_g1=0.1718 maxG_lx=0.0604 evals=80 sec=1.8
+finished w2b3_cov2_a1_m1650000_s26: rc=0 n_failed=0 worst_g1=-0.1023 worst_lx=1.7022 maxG_g1=0.1691 maxG_lx=0.0569 evals=80 sec=1.8
+started w2b3_cov2_a1_m1650000_s27 [90s]
+started w2b3_cov2_a1_m1650000_s28 [90s]
+finished w2b3_cov2_a1_m1650000_s27: rc=0 n_failed=0 worst_g1=-0.0956 worst_lx=1.7070 maxG_g1=0.1664 maxG_lx=0.0536 evals=80 sec=1.9
+finished w2b3_cov2_a1_m1650000_s28: rc=0 n_failed=0 worst_g1=-0.0890 worst_lx=1.7115 maxG_g1=0.1638 maxG_lx=0.0506 evals=78 sec=1.8
+started w2b3_cov2_a1_m1650000_s29 [95s]
+started w2b3_cov2_a1_m1650000_s30 [95s]
+finished w2b3_cov2_a1_m1650000_s29: rc=0 n_failed=0 worst_g1=-0.0825 worst_lx=1.7158 maxG_g1=0.1605 maxG_lx=0.0477 evals=86 sec=1.9
+finished w2b3_cov2_a1_m1650000_s30: rc=0 n_failed=0 worst_g1=-0.0782 worst_lx=1.7203 maxG_g1=0.1564 maxG_lx=0.0449 evals=98 sec=2.2
+started w2b3_cov2_a1_m1650000_s31 [100s]
+started w2b3_cov2_a1_m1650000_s32 [100s]
+finished w2b3_cov2_a1_m1650000_s31: rc=0 n_failed=0 worst_g1=-0.0719 worst_lx=1.7242 maxG_g1=0.1525 maxG_lx=0.0424 evals=104 sec=2.4
+finished w2b3_cov2_a1_m1650000_s32: rc=0 n_failed=0 worst_g1=-0.0613 worst_lx=1.7280 maxG_g1=0.1486 maxG_lx=0.0401 evals=110 sec=2.5
+started w2b3_cov2_a1_m1650000_s33 [105s]
+started w2b3_cov2_a1_m1650000_s34 [105s]
+finished w2b3_cov2_a1_m1650000_s33: rc=0 n_failed=0 worst_g1=-0.0576 worst_lx=1.7315 maxG_g1=0.1479 maxG_lx=0.0379 evals=98 sec=2.2
+finished w2b3_cov2_a1_m1650000_s34: rc=0 n_failed=0 worst_g1=-0.0536 worst_lx=1.7349 maxG_g1=0.1433 maxG_lx=0.0358 evals=106 sec=2.4
+started w2b3_cov2_a1_m1650000_s35 [110s]
+started w2b3_cov2_a1_m1650000_s36 [110s]
+finished w2b3_cov2_a1_m1650000_s35: rc=0 n_failed=0 worst_g1=-0.0477 worst_lx=1.7385 maxG_g1=0.1395 maxG_lx=0.0338 evals=108 sec=2.4
+finished w2b3_cov2_a1_m1650000_s36: rc=0 n_failed=0 worst_g1=-0.0364 worst_lx=1.7416 maxG_g1=0.1340 maxG_lx=0.0320 evals=69 sec=1.7
+started w2b3_cov2_a1_m1650000_s37 [115s]
+started w2b3_cov2_a1_m1650000_s38 [115s]
+finished w2b3_cov2_a1_m1650000_s37: rc=0 n_failed=0 worst_g1=-0.0341 worst_lx=1.7445 maxG_g1=0.1342 maxG_lx=0.0302 evals=53 sec=1.4
+finished w2b3_cov2_a1_m1650000_s38: rc=0 n_failed=0 worst_g1=-0.0302 worst_lx=1.7474 maxG_g1=0.1291 maxG_lx=0.0286 evals=59 sec=1.5
+all done [120s]

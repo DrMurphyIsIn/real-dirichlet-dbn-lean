@@ -1,7 +1,7 @@
-# Re-running the certificates of version 2
+# Re-running the certificates of version 2 (and, from version 2.1.0, of the middle range in `w2b3/`)
 
 Everything here is a Python 3 program using `python-flint` (Arb ball arithmetic). Each certifier returns a rigorous lower bound
-over a box, with outward rounding, and each driver writes a ledger with the box count, the worst certified value and the list of
+over a box, with outward rounding (the `w2b3/` certifiers also return a rigorous upper bound for the vertical derivative), and each driver writes a ledger with the box count, the worst certified value and the list of
 failures. **A ledger with a non-empty failure list certifies nothing.** The results in the paper are the statements "every box
 passed, worst value ≥ the stated floor"; to check them, re-run the driver and compare the `evaluations`, `certified`, `worst` and
 `failed` (or `n_failed`) fields with the record's `.DONE` file. The auditor's reproductions matched every field except wall time.
@@ -104,6 +104,21 @@ and the confinement lemma for 3 ≤ m ≤ 10⁸:
 Note on the band ledgers: they were produced with the B1–B3 version of `y3_big2.py` (md5 a8f10bcd); the file here is the B1–B4
 version (aafeba32). The auditor re-swept every band with the B1–B4 file and obtained ledgers identical in every field except wall time (REVIEW_Y3 §4, §6.1),
 so a re-run with the file here should reproduce the record.
+
+## 5a. Theorem W2B3, version 2.1.0: the middle range (`w2b3/`)
+
+Odd χ with 1 650 000 ≤ m ≤ 10⁸: Λ_χ ≤ 0.2807226; even χ with 3 700 000 ≤ m ≤ 10⁸: Λ_χ ≤ 0.2808812; unconditional, not
+kernel-checked. Thirty-nine slab ledgers per parity (each certifying a floor for S − L/4 and a ceiling for ∂_pS), two exact
+Bernstein certificates and an Arb landing. `w2b3/README.md` says what every file is and gives the commands; the cheap checks are
+
+    cd w2b3 && export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1
+    python3 w2b3_bound.py 1650000 w2b3_phi_a1_m1650000.json $(for i in $(seq 0 38); do echo w2b3_cov2_a1_m1650000_s$i.DONE; done)   # 0.2807226
+    python3 w2b3_bound.py 3700000 w2b3_phi_a0_m3700000.json $(for i in $(seq 0 38); do echo w2b3_cov2_a0_m3700000_s$i.DONE; done)   # 0.2808812
+    python3 w2b3_phi.py --selftest                                                                                                # negative control REFUSED
+    Y3_P=7/2 python3 w2b3_check.py                                                                                                # S bit-identical: True
+
+and the full re-sweep of the 78 slabs is about 5 CPU-minutes (`w2b3_launch.py`, see the README there). The record's ledgers were
+reproduced field by field by the auditor (REVIEW_W2B3, Addendum 1) and again, from the files shipped here, for this release.
 
 ## 6. The Lean file (`../lean/`)
 

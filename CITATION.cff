@@ -6,13 +6,16 @@ authors:
     given-names: Peter W.
 repository-code: "https://github.com/DrMurphyIsIn/real-dirichlet-dbn-lean"
 license: Apache-2.0
-version: v2.0.0
-date-released: 2026-11-01
-doi: 10.5281/zenodo.23858929
+version: v2.1.0
+date-released: 2026-11-03
+doi: "10.5281/zenodo.23931764"
 identifiers:
   - type: doi
+    value: "10.5281/zenodo.23931764"
+    description: "Zenodo archive of release v2.1.0"
+  - type: doi
     value: 10.5281/zenodo.23858929
-    description: "Zenodo archive of release v2.0.0"
+    description: "Zenodo archive of release v2.0.0 (unchanged in v2.1.0: nothing withdrawn)"
   - type: doi
     value: 10.5281/zenodo.23840082
     description: "Zenodo archive of release v1.0.0 (the kernel-checked theorem; unchanged in v2.0.0)"
@@ -48,4 +51,8 @@ abstract: >-
   real primitive chi. These three are NOT kernel-checked: they rest on Arb certificates reproduced by a separate AI
   auditor session, on AI-written proofs reviewed by one AI reviewer, and on unrefereed preprints, and the paper
   (section 7) states their trust classes; one arithmetic step (C2.C2bound_lt_9_32) is a Lean theorem built once at
-  Lean v4.35.0.
+  Lean v4.35.0. Version 2.1.0 adds, in the same trust classes as the first of these and not kernel-checked, the middle
+  range: unconditionally Lambda_chi <= 0.2807226 < 9/32 for odd real primitive chi of conductor N >= 1,650,000 and
+  Lambda_chi <= 0.2808812 < 9/32 for even ones with N >= 3,700,000, by Hakimoglu-Brown's derivative-kernel comparison
+  (Lemma 10 and Theorem 12 of arXiv:2610.12803) with thirty-nine certified time slabs per parity; nothing in version
+  2.0.0 is withdrawn.

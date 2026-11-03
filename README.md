@@ -1,10 +1,11 @@
 # Λ_χ ≤ 9/32 for every real primitive Dirichlet character, kernel-checked
 
-> **Status: v2.0.0, released 1 November 2026.** Version 1's kernel-checked theorem (Λ_χ ≤ 9/32, below) is unchanged: five
+> **Status: v2.1.0, released 3 November 2026.** Version 1's kernel-checked theorem (Λ_χ ≤ 9/32, below) is unchanged: five
 > checkers from three implementation lineages replayed it locally, and a sandboxed Comparator run against a separately
 > written challenge (`challenge/`) accepted it (`logs/comparator_sandboxed/`). Version 2 adds three further bounds on the
-> same constant in weaker trust classes (see "Version 2" below and §7 of the paper). The paper is in `paper/`. DOI
-> [10.5281/zenodo.23858929](https://doi.org/10.5281/zenodo.23858929) (v2.0.0); v1.0.0 is
+> same constant in weaker trust classes, and version 2.1.0 a fourth, the middle range of conductors (see "Version 2" below
+> and §7 of the paper); nothing in v2.0.0 is withdrawn. The paper is in `paper/`. DOI of this version: [10.5281/zenodo.23931764](https://doi.org/10.5281/zenodo.23931764);
+> v2.0.0 is [10.5281/zenodo.23858929](https://doi.org/10.5281/zenodo.23858929); v1.0.0 is
 > [10.5281/zenodo.23840082](https://doi.org/10.5281/zenodo.23840082); all versions:
 > [10.5281/zenodo.23840081](https://doi.org/10.5281/zenodo.23840081).
 
@@ -233,6 +234,13 @@ Write N for the conductor of χ and ℓ = log(N/π).
 - **Y3: every conductor, strictly below 9/32.** Granting OpenAI's half-plane as in version 1, Λ_χ ≤ 0.27912 for every
   real primitive χ. This strictly improves version 1's 9/32.
 - **U1: every conductor, unconditionally.** Λ_χ ≤ 0.49330 for every real primitive χ, with no hypothesis at all.
+- **W2B3 (v2.1.0): the middle range, unconditionally.** Λ_χ ≤ 0.2807226 < 9/32 for every odd real primitive χ with
+  N ≥ 1,650,000, and Λ_χ ≤ 0.2808812 < 9/32 for every even one with N ≥ 3,700,000 (C2 takes over at 10⁸). Same
+  hypotheses as C2 (none), same trust classes as C2 (Arb certificates, AI-written analysis reviewed by one AI reviewer,
+  unrefereed preprints); not kernel-checked, and with no Lean statement. It applies Hakimoglu-Brown's derivative kernel
+  (arXiv:2610.12803, Lemma 10 and Theorem 12) to the uniform floor: thirty-nine time slabs per parity, each with a
+  certified floor for −Im(H′/H) and a certified ceiling for its vertical derivative, exact-rational Bernstein certificates
+  of his positivity condition, and an Arb landing (`certificates/w2b3/`, paper §7.5).
 
 **The method.** It starts from an Arb-certified lower bound for −Im(H′/H) at a fixed height, a "floor". That floor is
 fed into the vertical-contraction inequalities of Planat (arXiv:2609.37164) and Hakimoglu-Brown (arXiv:2610.12803),
@@ -242,10 +250,11 @@ citation.
 
 **What is checked, and how.**
 
-- **Not kernel-checked.** C2, Y3 and U1 are not kernel-checked theorems.
+- **Not kernel-checked.** C2, Y3, U1 and W2B3 are not kernel-checked theorems.
 - **Arb certificates.** The numerical floors are ball-arithmetic certificates with outward rounding (`certificates/`).
-  A separate AI auditor session re-ran every ledger the three bounds depend on, and got results identical in every
-  field except wall time.
+  A separate AI auditor session re-ran every ledger the four bounds depend on, and got results identical in every
+  field except wall time (for W2B3, every field except wall time and the code-md5 stamp; it also found one defect in
+  the new derivative certifier, which was fixed and the ledgers re-issued before release).
 - **AI-written analysis.** The analytic steps that connect the certificates to the bounds were written by AI agent
   sessions and reviewed by one AI reviewer. Nobody has refereed them.
 - **Four defects already found.** An earlier version of the certifiers had four defects: a second agent session found
@@ -255,8 +264,15 @@ citation.
   the explicit bound is below 9/32 for every N ≥ 10⁸. It was built once, at Lean v4.35.0, outside version 1's
   environment, and was not replayed. That this quantity bounds Λ_χ is the non-kernel-checked part.
 
-All three are still not progress on GRH, which would be Λ_χ ≤ 0. The records behind version 2 are in `provenance/`,
-listed in Appendix B of the paper. Paths of the form `~/rh-team/...` inside those records refer to the programme's
+All four are still not progress on GRH, which would be Λ_χ ≤ 0. The records behind version 2 are in `provenance/`,
+listed in Appendix B of the paper (the two records of v2.1.0 are listed there by md5; see the paper for where they are held).
+
+**Versions.**
+
+- v1.0.0 (31 October 2026): the kernel-checked theorem Λ_χ ≤ 9/32 and its verification record.
+- v2.0.0 (1 November 2026): adds C2, Y3 and U1 with their certificates and the one Lean arithmetic step; v1 unchanged.
+- v2.1.0 (3 November 2026): adds W2B3, the middle range, with its certificates in `certificates/w2b3/`; nothing in v2.0.0 is
+  withdrawn. Paths of the form `~/rh-team/...` inside those records refer to the programme's
 internal working tree at the time of writing; they are not part of the release. The copies are not redacted, so that
 their md5s match the originals.
 
@@ -361,6 +377,7 @@ provenance/         ISLAND_SOURCE (where lean/island/ comes from); OAI_ENV.md (w
 scripts/            verify_md5.sh, materialize.sh, check_manifest.sh
 lean/v2/            version 2: DQ1_P5.lean (the arithmetic step C2.C2bound_lt_9_32, built once at Lean v4.35.0) and NOTE.md
 certificates/       version 2: the Arb certifiers, drivers and ledgers behind C2, Y3 and U1 (MANIFEST.md, README.md, MD5SUMS.txt)
+certificates/w2b3/  version 2.1.0: the derivative certifiers, slab ledgers, Bernstein certificates and landings behind W2B3
 provenance/ (v2)    P5_memo_extract.md, Y3_memo_extract.md, P5_SUPERSEDED.md and the auditor's version-2 reviews REVIEW_P5*.md,
                     REVIEW_Y3.md, REVIEW_Y3_G1.md, REVIEW_LEAN_DQ1.md, REVIEW_PRERELEASE_v2.0.0.md
 paper/              the paper: main.tex, refs.bib, main.pdf
@@ -391,7 +408,9 @@ paper/              the paper: main.tex, refs.bib, main.pdf
   - The author set the scope and the accuracy rules, approved the work in OpenAI's environment, and decides what
     is published.
   - Version 2's certifiers and analysis were written by further AI agent sessions, and audited by bb, who re-ran
-    every certificate.
+    every certificate. Version 2.1.0's derivative kernel is Hakimoglu-Brown's (arXiv:2610.12803, Lemma 10 and Theorem 12,
+    with the Bernstein form of its positivity certificate); its certifiers were written by a further session and audited
+    by bb in the same way.
 
 See `NOTICE.md`. Licensing is in `LICENSING.md`: the code is Apache-2.0 and the paper and prose are CC-BY-4.0.
 Not yet refereed.

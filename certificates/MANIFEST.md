@@ -1,8 +1,10 @@
-# certificates/ — the as-run certificate bundle for version 2.0.0
+# certificates/ — the as-run certificate bundle for version 2.0.0, and the w2b3/ bundle added in version 2.1.0
 
 Every file is a byte-for-byte copy (`cp`, never moved) from the programme's internal `dq1/` working tree (its `P5/scripts/`, `Y3/scripts/` and `Y3/g1_rerun/` directories) as of 2026-11-01. The md5 is the full md5 of the
 copy; it equals the md5 of the original. Prefixes quoted in the paper, the memos and the reviews are the first eight characters.
 The layout is by result; where one source file serves two results it appears in both directories (same md5).
+The exception is five scripts in `w2b3/` (version 2.1.0), whose shipped copies differ from the as-run ones in comments and
+import-path lines only; `w2b3/README.md` lists both md5s for each.
 
 ## g1_rerun/ — Theorem C2, component 4a (G1: the compact part of the floor), certificate of record
 
@@ -112,6 +114,26 @@ which reproduced u20_a0/a1 and c25_a0/a1, identical in every field except wall t
 | p2z_small.json | 002d6e66df8dc5ca810db4cca2c45af3 | its ledger |
 | p2z_small.DONE | 5cacd90ef9eb397d8fe99c101085a9e1 | summary: 76,800 boxes, 0 failed, worst Q 0.9455107877, 2.0 s, complete |
 | p2z_small.log | e91df616aa1b87d0224edec56beb3186 | stdout |
+
+## w2b3/ — Theorem W2B3 (version 2.1.0): the middle range, odd m ≥ 1 650 000 / even m ≥ 3 700 000, certificates of record
+
+Added in version 2.1.0. The derivative-kernel route (Hakimoglu-Brown Lemma 10 and Theorem 12 on the uniform floor), paper §7.5;
+W2B3 memo §5, §6, §9 (md5 c5cd8f39) and REVIEW_W2B3 with its Addenda 1 and 2 (md5 e195ebaa). Copied from the W2B3 working directory
+after the fix F1 and the re-issue of the record on 2026-11-03. `w2b3/README.md` describes every file and the cheap re-run checks;
+`w2b3/MD5SUMS.txt` has the full md5 of every file there. The headline entries:
+
+| file(s) | md5 | what it is |
+|---|---|---|
+| w2b3_cov2_a1_m1650000_s{0..38}.DONE/.json/.log (117 files) | 39 DONE files concatenated in slab order: 696148f1a45adc37c05441d293c92692 | odd ledgers of record: 4 926 boxes certified (6 078 evaluations), 0 failed, 39/39 complete; each certifies S − L/4 ≥ CF_i and ∂_pS ≤ CG_i on its slab × [1 650 000, 10⁸] × every x |
+| w2b3_cov2_a0_m3700000_s{0..38}.DONE/.json/.log (117 files) | concatenated: 0be5d4cf2907753825ec6dbf52de9a09 | even ledgers of record: 5 925 boxes (8 076 evaluations), 0 failed, 39/39 complete |
+| w2b3_phi_a1_m1650000.json, w2b3_phi_a0_m3700000.json | 4e72c6558975750574ec39d9f4c5684f, c32133866a3de741364dc0ca7068710f | exact-rational Bernstein certificates of Φ_i ≥ 0, 39 rows each, all certified |
+| w2b3_bound2_a1.json, w2b3_bound2_a0.json | 87e26183fbbc4f1180d3cadde7747829, 55c37c93a810831549b2dff681224368 | the Arb landings: Λ_χ ≤ 0.2807226 (odd), 0.2808812 (even), both in slab 38 |
+| w2b3_bound.py, w2b3_phi.py, w2b3_launch.py, w2b3_design.py | 4b4ca675…, 797ff1d8…, 49f7fd30…, 7ad66fa0… (as run) | landing, certificate, launcher, design |
+| w2b3_cert.py, w2b3_big2.py, w2b3_sweep.py, w2b3_check.py, w2b3_measure.py | as run: f2e56a85, 4b780036, 9efa5464, a198a5ee, f3b36538 (stamped in the ledgers); shipped: see w2b3/MD5SUMS.txt | the two derivative certifiers, the sweep driver, the bit-identity check, the measurement |
+| y3_big.py, y3_cert.py, y3_big2.py | aa232458…, 5b375c5b…, aafeba32… | the version-2.0.0 helpers, same files as in g1_rerun/ and lx/ |
+
+Superseded and not copied: the pre-F1 certifier (adaf2ee3), sweep (9c5babc3), big2 (e7f43d44), ledgers (w2b3_cov_*, concatenated
+d496a4f8 / feb27a07) and landings (byte-identical to the ones above), and the negative-control copies.
 
 ## Not copied
 
